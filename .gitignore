@@ -3,3 +3,9 @@
 /UnityProject/Library/metadata
 /UnityProject/Library/*.log
 /UnityProject/Library/ShaderCache
+/UnityProject/*.csproj
+/UnityProject/*.sln
+/UnityProject/obj
+/UnityProject/Library/CurrentLayout.dwlt
+/UnityProject/.vs
+/UnityProject/Library/CrashedAssetImports.txt
