@@ -63,7 +63,6 @@ public class DragArrow : MonoBehaviour
         if (false == _Press)
         {
             ClockData.DoCalculateString(this.key, (int)(m_Angle));
-            
         }
     }
 }
