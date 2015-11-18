@@ -11,6 +11,7 @@ public static class ClockData
     public static void SetupAMPM( bool _PM )
     {
         m_AMPM = (true == _PM) ? 12 : 0;
+        CalculateString();
     }
     public static void SetupLabel(UILabel _Label)
     {

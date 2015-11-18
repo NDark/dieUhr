@@ -24,9 +24,19 @@ public class DragArrow : MonoBehaviour
         }
         m_Sprite = this.GetComponent<UISprite>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    public void SetupAM()
+    {
+        ClockData.SetupAMPM(false);
+    }
+
+    public void SetupPM()
+    {
+        ClockData.SetupAMPM(true);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (true == m_IsPress)
         {
