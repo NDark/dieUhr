@@ -26,6 +26,19 @@ public class DragArrow : MonoBehaviour
         m_Sprite = this.GetComponent<UISprite>();
     }
 
+    public void ChooseDeutsch()
+    {
+        Localization.language = "Deutsch";
+    }
+    public void ChooseEnglish()
+    {
+        Localization.language = "English";
+    }
+    public void ChooseTraditionChinese()
+    {
+        Localization.language = "TraditionalChinese";
+    }
+
     public void SetupAM()
     {
         ClockData.SetupAMPM(false);
@@ -34,6 +47,11 @@ public class DragArrow : MonoBehaviour
     public void SetupPM()
     {
         ClockData.SetupAMPM(true);
+    }
+
+    public void DoUpdate()
+    {
+        ClockData.CalculateString();
     }
 
     // Update is called once per frame

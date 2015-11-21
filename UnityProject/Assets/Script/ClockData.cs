@@ -9,18 +9,6 @@ public static class ClockData
     static int m_Hour = 0;
     static int m_AMPM = 0;
 
-    public static void ChooseDeutsch()
-    {
-        Localization.language = "Deutsch";
-    }
-    public static void ChooseEnglish()
-    {
-        Localization.language = "English";
-    }
-    public static void ChooseTraditionChinese()
-    {
-        Localization.language = "TraditionChinese";
-    }
     public static void SetupAMPM( bool _PM )
     {
         m_AMPM = (true == _PM) ? 12 : 0;
@@ -43,7 +31,7 @@ public static class ClockData
         CalculateString();
     }
 
-    static void CalculateString()
+    public static void CalculateString()
     {
         Debug.Log("m_Minute" + m_Minute);
         Debug.Log("m_Hour"+ m_Hour);
@@ -57,51 +45,141 @@ public static class ClockData
         string hourStr = "";
         string additionalStr = "";
 
-        // special case
-        if (m_Minute == 0)
+        if ("TraditionalChinese" == Localization.language)
         {
-            hourStr = (hour24).ToString() + " Uhr";
+            // special case
+            if (m_Minute == 0)
+            {
+                hourStr = (hour24).ToString() + " " + Localization.Get("Uhr") + "鐘";
+                m_Label.text = hourStr;
+            }
+            else
+            {
+                hourStr = (hour24).ToString();
+                minuteStr = (m_Minute).ToString();
+                m_Label.text = hourStr + " " + Localization.Get("Uhr") + " " + minuteStr + " 分" + additionalStr;
+            }
         }
-        else if (m_Minute == 15)
+        else if ("English" == Localization.language || 
+            "Deutsch" == Localization.language)
         {
-            minuteStr = "Viertel";
-            hourStr = " nach " + (hour24).ToString();
+            // special case
+            if (m_Minute == 0)
+            {
+                if (hour24 == 0)
+                {
+                    if (Localization.language == "Deutsch")
+                    {
 
-            additionalStr = " (" + minuteStr + " " + (hour24 + 1).ToString() + ")" ;
-        }
-        else if (m_Minute == 45)
-        {
-            minuteStr = "Viertel";
-            hourStr = " vor " + (hour24 + 1).ToString();
+                    }
+                    else if (Localization.language == "English")
+                    {
+                    }
 
-            additionalStr = " (" + "Dreiviertel" + " " + (hour24 + 1).ToString() + ")";
-        }
-        else if (m_Minute == 30)
-        {
-            minuteStr = "Halb ";
-            hourStr = (hour24 + 1).ToString();
-        }
-        else if (m_Minute >= 20 && m_Minute < 30)
-        {
-            minuteStr = (30-m_Minute).ToString() ;
-            hourStr = " vor halb " + (hour24 + 1).ToString();
-        }
-        else if (m_Minute > 30 && m_Minute <= 40)
-        {
-            minuteStr = (m_Minute-30).ToString();
-            hourStr = " nach halb " + (hour24 + 1).ToString();
-        }
-        else if (m_Minute > 40 && m_Minute < 60)
-        {
-            minuteStr = (60 - m_Minute).ToString();
-            hourStr = " vor " + (hour24 + 1).ToString();
-        }
-        else if (m_Minute > 0 && m_Minute < 20)
-        {
-            minuteStr = (m_Minute).ToString();
-            hourStr = " nach " + (hour24).ToString();
+                }
+                else
+                {
+                    hourStr = (hour24).ToString() + " " + Localization.Get("Uhr");
+                    m_Label.text = minuteStr + " " + hourStr + additionalStr;
+                }
+
+
+            }
+            else if (m_Minute == 15)
+            {
+                if (Localization.language == "Deutsch")
+                {
+                    // Viertel after (hour)
+                    minuteStr = Localization.Get("Viertel");
+                    hourStr = " " + Localization.Get("nach") + " " + (hour24).ToString();
+
+                    additionalStr = " (" + minuteStr + " " + Localization.Get("to") + " " + (hour24 + 1).ToString() + ")";
+                }
+                else if (Localization.language == "English")
+                {
+                    // Viertel after (hour)
+                    minuteStr = Localization.Get("Viertel");
+                    hourStr = " " + Localization.Get("nach") + " " + (hour24).ToString();
+                }
+                m_Label.text = minuteStr + " " + hourStr + additionalStr;
+            }
+            else if (m_Minute == 45)
+            {
+                if (Localization.language == "Deutsch")
+                {
+                    minuteStr = Localization.Get("Viertel");
+                    hourStr = " " + Localization.Get("vor") + " " + (hour24 + 1).ToString();
+
+                    additionalStr = " (" + Localization.Get("Dreiviertel") + " " + (hour24 + 1).ToString() + ")";
+                }
+                else if (Localization.language == "English")
+                {
+                    minuteStr = Localization.Get("Dreiviertel");
+                    hourStr = " " + (hour24 + 1).ToString();
+                }
+                m_Label.text = minuteStr + " " + hourStr + additionalStr;
+            }
+            else if (m_Minute == 30)
+            {
+                minuteStr = Localization.Get("Halb") + " ";
+                if (Localization.language == "Deutsch")
+                {
+                    hourStr = (hour24 + 1).ToString();
+                }
+                else if (Localization.language == "English")
+                {
+                    hourStr = (hour24).ToString();
+                }
+                m_Label.text = minuteStr + " " + hourStr + additionalStr;
+            }
+            else
+            {
+                if (Localization.language == "Deutsch")
+                {
+                    if (m_Minute >= 20 && m_Minute < 30)
+                    {
+                        minuteStr = (30 - m_Minute).ToString();
+                        hourStr = " vor halb " + (hour24 + 1).ToString();
+                    }
+                    else if (m_Minute > 30 && m_Minute <= 40)
+                    {
+                        minuteStr = (m_Minute - 30).ToString();
+                        hourStr = " nach halb " + (hour24 + 1).ToString();
+                    }
+                    else if (m_Minute > 40 && m_Minute < 60)
+                    {
+                        minuteStr = (60 - m_Minute).ToString();
+                        hourStr = " vor " + (hour24 + 1).ToString();
+                    }
+                    else if (m_Minute > 0 && m_Minute < 20)
+                    {
+                        minuteStr = (m_Minute).ToString();
+                        hourStr = " nach " + (hour24).ToString();
+                    }
+                    m_Label.text = minuteStr + " " + hourStr ;
+
+                }
+                else if (Localization.language == "English")
+                {
+                    hourStr = (hour24).ToString();
+                    if (m_Minute < 10)
+                    {
+                        minuteStr = "(o) " + (m_Minute).ToString();
+                    }
+                    else
+                    {
+                        minuteStr = (m_Minute).ToString();
+                    }
+                    m_Label.text = hourStr + " " + minuteStr;
+
+                }
+
+
+            }
+
+
+            
         }
 
-        m_Label.text = minuteStr + " " + hourStr + additionalStr ;
     }
 }

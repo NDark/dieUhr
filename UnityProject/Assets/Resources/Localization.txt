@@ -1,0 +1,11 @@
+﻿KEY,Deutsch,English,TraditionalChinese
+IntroductionTitle,IntroductionTitle,IntroductionTitle,說明
+IntroductionContent,IntroductionContent,IntroductionContent,說明內容
+Dreiviertel,Dreiviertel,A quarter to,四十五分
+Viertel,Viertel,A quarter,十五分
+nach,nach,past,之後
+vor,vor,before,之前
+Halb,Halb,Half past,半
+halb,halb,half,半
+Uhr,Uhr,o'clock,點
+to,,to,差
