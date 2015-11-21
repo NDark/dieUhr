@@ -26,18 +26,7 @@ public class DragArrow : MonoBehaviour
         m_Sprite = this.GetComponent<UISprite>();
     }
 
-    public void ChooseDeutsch()
-    {
-        Localization.language = "Deutsch";
-    }
-    public void ChooseEnglish()
-    {
-        Localization.language = "English";
-    }
-    public void ChooseTraditionChinese()
-    {
-        Localization.language = "TraditionalChinese";
-    }
+
 
     public void SetupAM()
     {
