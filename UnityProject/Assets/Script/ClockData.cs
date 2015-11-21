@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/**
+
+https://www.ego4u.com/en/cram-up/vocabulary/time
+
+*/
+using UnityEngine;
 using System.Collections;
 
 public static class ClockData
@@ -48,7 +53,11 @@ public static class ClockData
         if ("TraditionalChinese" == Localization.language)
         {
             // special case
-            if (m_Minute == 0)
+            if (m_Minute == 0 && hour24 == 0)
+            {
+                m_Label.text = Localization.Get("Mitternacht");
+            }
+            else if (m_Minute == 0)
             {
                 hourStr = (hour24).ToString() + " " + Localization.Get("Uhr") + "鐘";
                 m_Label.text = hourStr;
@@ -64,26 +73,14 @@ public static class ClockData
             "Deutsch" == Localization.language)
         {
             // special case
-            if (m_Minute == 0)
+            if (m_Minute == 0 && hour24 == 0)
             {
-                if (hour24 == 0)
-                {
-                    if (Localization.language == "Deutsch")
-                    {
-
-                    }
-                    else if (Localization.language == "English")
-                    {
-                    }
-
-                }
-                else
-                {
-                    hourStr = (hour24).ToString() + " " + Localization.Get("Uhr");
-                    m_Label.text = minuteStr + " " + hourStr + additionalStr;
-                }
-
-
+                m_Label.text = Localization.Get("Mitternacht");
+            }
+            else if (m_Minute == 0 )
+            {
+                hourStr = (hour24).ToString() + " " + Localization.Get("Uhr");
+                m_Label.text = minuteStr + " " + hourStr + additionalStr;
             }
             else if (m_Minute == 15)
             {
@@ -156,7 +153,7 @@ public static class ClockData
                         minuteStr = (m_Minute).ToString();
                         hourStr = " nach " + (hour24).ToString();
                     }
-                    m_Label.text = minuteStr + " " + hourStr ;
+                    m_Label.text = minuteStr + " " + hourStr;
 
                 }
                 else if (Localization.language == "English")

@@ -9,3 +9,4 @@ Halb,Halb,Half past,半
 halb,halb,half,半
 Uhr,Uhr,o'clock,點
 to,,to,差
+Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
