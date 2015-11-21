@@ -1,5 +1,5 @@
 ﻿KEY,Deutsch,English,TraditionalChinese
-IntroductionTitle,IntroductionTitle,IntroductionTitle,說明
+IntroductionTitle,Einführung,Introduction,說明
 IntroductionContent,IntroductionContent,IntroductionContent,說明內容
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
@@ -10,3 +10,4 @@ halb,halb,half,半
 Uhr,Uhr,o'clock,點
 to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
+SubTitle,(A traditional Clock System),A traditional Clock System,傳統的德文時間系統
