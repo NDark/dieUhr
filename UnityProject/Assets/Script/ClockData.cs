@@ -8,6 +8,19 @@ public static class ClockData
     static int m_Minute = 0;
     static int m_Hour = 0;
     static int m_AMPM = 0;
+
+    public static void ChooseDeutsch()
+    {
+        Localization.language = "Deutsch";
+    }
+    public static void ChooseEnglish()
+    {
+        Localization.language = "English";
+    }
+    public static void ChooseTraditionChinese()
+    {
+        Localization.language = "TraditionChinese";
+    }
     public static void SetupAMPM( bool _PM )
     {
         m_AMPM = (true == _PM) ? 12 : 0;
