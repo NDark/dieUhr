@@ -42,18 +42,26 @@ public static class ClockData
         int hour24 = (m_Hour + m_AMPM);
         string minuteStr = "";
         string hourStr = "";
-        
+        string additionalStr = "";
 
         // special case
-        if (m_Minute == 15)
+        if (m_Minute == 0)
+        {
+            hourStr = (hour24).ToString() + " Uhr";
+        }
+        else if (m_Minute == 15)
         {
             minuteStr = "Viertel";
             hourStr = " nach " + (hour24).ToString();
+
+            additionalStr = " (" + minuteStr + " " + (hour24 + 1).ToString() + ")" ;
         }
         else if (m_Minute == 45)
         {
             minuteStr = "Viertel";
             hourStr = " vor " + (hour24 + 1).ToString();
+
+            additionalStr = " (" + "Dreiviertel" + " " + (hour24 + 1).ToString() + ")";
         }
         else if (m_Minute == 30)
         {
@@ -81,6 +89,6 @@ public static class ClockData
             hourStr = " nach " + (hour24).ToString();
         }
 
-        m_Label.text = minuteStr + " " + hourStr ;
+        m_Label.text = minuteStr + " " + hourStr + additionalStr ;
     }
 }

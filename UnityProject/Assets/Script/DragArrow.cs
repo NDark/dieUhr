@@ -4,6 +4,7 @@ using System.Collections;
 public class DragArrow : MonoBehaviour
 {
     public UILabel uiLabel = null;
+    public UILabel m_IntroductionLabel = null;
     public string key = "";
     bool m_IsPress = false;
     Vector3 centerVec = new Vector3(0.5f, 0.5f, 0);
@@ -74,5 +75,19 @@ public class DragArrow : MonoBehaviour
         {
             ClockData.DoCalculateString(this.key, (int)(m_Angle));
         }
+        else
+        {
+            HideIntroduction();
+        }
+    }
+
+    void HideIntroduction()
+    {
+        if( null != m_IntroductionLabel )
+        {
+            m_IntroductionLabel.enabled = false;
+            m_IntroductionLabel = null;
+        }
+        
     }
 }
