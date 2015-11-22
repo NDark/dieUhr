@@ -38,9 +38,9 @@ public static class ClockData
 
     public static void CalculateString()
     {
-        Debug.Log("m_Minute" + m_Minute);
-        Debug.Log("m_Hour"+ m_Hour);
-        Debug.Log("24 hour" + (m_Hour + m_AMPM) );
+        // Debug.Log("m_Minute" + m_Minute);
+        // Debug.Log("m_Hour"+ m_Hour);
+        // Debug.Log("24 hour" + (m_Hour + m_AMPM) );
         if (null == m_Label)
         {
             return;

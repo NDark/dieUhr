@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DragArrow : MonoBehaviour
 {
+    public DragArrow hourSprite = null;
+    public DragArrow minuteSprite = null;
     public UILabel uiLabel = null;
     public UILabel m_IntroductionLabel = null;
     public string key = "";
@@ -50,28 +53,103 @@ public class DragArrow : MonoBehaviour
         {
 
 
-            Debug.Log("Input.mousePosition=" + Input.mousePosition);
+            // Debug.Log("Input.mousePosition=" + Input.mousePosition);
             float x = (Input.mousePosition.x - halfScreenWidth) ;
             float y = (Input.mousePosition.y - halfScreenHeight) ;
             x = Mathf.Clamp(x, -1* halfClockWidth, halfClockWidth) / halfClockWidth;
             y = Mathf.Clamp(y, -1* halfClockWidth, halfClockWidth) / halfClockWidth;
-            Debug.Log("x=" + x);
-            Debug.Log("y=" + y);
+            // Debug.Log("x=" + x);
+            // Debug.Log("y=" + y);
 
             Vector3 viewPointPosition = new Vector3(x, y, 0);
             // Vector3 viewPointPosition = UICamera.ScreenToViewportPoint(Input.mousePosition);
-            Debug.Log("viewPointPosition=" + viewPointPosition);
+            // Debug.Log("viewPointPosition=" + viewPointPosition);
             viewPointPosition.Normalize();
             float angle = Vector3.Angle(Vector3.up, viewPointPosition);
-            Debug.Log("angle=" + angle);
-            
+            // Debug.Log("angle=" + angle);
+
             if (x < 0)
             {
                 angle = 360 - angle;
             }
             m_Angle = angle;
-            this.transform.localRotation = Quaternion.AngleAxis(angle, -Vector3.forward);
+            UpdateRotationByAngle(m_Angle);
+        }
+    }
 
+    Queue<float> lastUpdateMin = new Queue<float>();
+
+    public void UpdateRotationByMinuteAngle(float _Angle)
+    {
+
+        if (lastUpdateMin.Count > 5)
+        {
+            lastUpdateMin.Dequeue();
+        }
+        float avgLastValue = avgLastList();
+
+        // 360 -> 30 (360/12)
+        lastUpdateMin.Enqueue(_Angle);
+
+        int hourInt = (int)(m_Angle / 30.0f);
+        
+        int hourMod30 = (int)(m_Angle - hourInt * 30);
+        
+
+        Debug.Log("_Angle=" + _Angle);
+        Debug.Log("avgLastValue=" + avgLastValue);
+        if ( _Angle > 355 && avgLastValue > 0 && avgLastValue < 50)
+        {
+            Debug.LogWarning("avgLastValue=" + avgLastValue);
+            // counter clock wise
+            m_Angle = (hourInt - 1) * 30;
+            return;
+        }
+        else if ( _Angle < 5 && avgLastValue > 310 && avgLastValue < 360)
+        {
+            // clock wise
+            Debug.LogWarning("avgLastValue=" + avgLastValue);
+            m_Angle = (hourInt + 1) * 30;
+            return;
+        }
+        //*/
+        float minAngle = _Angle / 12.0f;
+        m_Angle = hourInt * 30.0f + minAngle;
+        DoUpdateRotationByAngle(m_Angle);
+    }
+
+    public float avgLastList()
+    {
+        float sum = 0;
+        if (lastUpdateMin.Count > 0)
+        {
+            foreach (float tmp in lastUpdateMin)
+            {
+                sum += tmp;
+            }
+            sum /= lastUpdateMin.Count;
+        }
+        return sum;
+    }
+    public void UpdateRotationByHourAngle(float _Angle)
+    {
+    }
+
+    void DoUpdateRotationByAngle(float _Angle)
+    {
+        this.transform.localRotation = Quaternion.AngleAxis(_Angle, -Vector3.forward);
+    }
+    void UpdateRotationByAngle( float _Angle )
+    {
+        DoUpdateRotationByAngle(_Angle);
+        if (this.hourSprite)
+        {
+            // minute to controll hour
+            hourSprite.UpdateRotationByMinuteAngle(_Angle);
+        }
+        else if (this.minuteSprite)
+        {
+            hourSprite.UpdateRotationByHourAngle(_Angle);
         }
     }
 
