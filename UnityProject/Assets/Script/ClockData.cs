@@ -73,6 +73,7 @@ public static class ClockData
             "Deutsch" == Localization.language)
         {
             // special case
+
             if (m_Minute == 0 && hour24 == 0)
             {
                 m_Label.text = Localization.Get("Mitternacht");
@@ -86,6 +87,11 @@ public static class ClockData
             {
                 if (Localization.language == "Deutsch")
                 {
+                    if (hour24 == 0)
+                    {
+                        hour24 = 12;
+                    }
+
                     // Viertel after (hour)
                     minuteStr = Localization.Get("Viertel");
                     hourStr = " " + Localization.Get("nach") + " " + (hour24).ToString();
@@ -133,6 +139,7 @@ public static class ClockData
             {
                 if (Localization.language == "Deutsch")
                 {
+
                     if (m_Minute >= 20 && m_Minute < 30)
                     {
                         minuteStr = (30 - m_Minute).ToString();
@@ -150,6 +157,11 @@ public static class ClockData
                     }
                     else if (m_Minute > 0 && m_Minute < 20)
                     {
+                        if (hour24 == 0)
+                        {
+                            hour24 = 12;
+                        }
+
                         minuteStr = (m_Minute).ToString();
                         hourStr = " nach " + (hour24).ToString();
                     }
