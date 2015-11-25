@@ -1,6 +1,6 @@
 ﻿KEY,Deutsch,English,TraditionalChinese
 IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,IntroductionContent,IntroductionContent,說明內容
+IntroductionContent,"Um die gewunschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen.\n\nDie richtige Uhrzeit in der herkommlichen Sprechweise wird dann oben angezeigt.\n\nHinweis: \n\nDiese app sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie unterstutzt dich dabei die traditionelle Deutsche Uhrzeit richtig zu uben.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.",請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
 nach,nach,past,之後
