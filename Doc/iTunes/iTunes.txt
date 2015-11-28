@@ -1,4 +1,4 @@
-﻿
+
 die Uhr
 
 description:
@@ -8,5 +8,7 @@ The user should rotate the clockhand carefully in order to let it show the desir
 
 keywords:
 
-german,deutsch,tutor,language,
-德語,德文,教學,
+german,deutsch,tutor,language,Ruhr,clock,education
+德語,德文,教學,時間,
+
+https://github.com/NDark/dieUhr/wiki
