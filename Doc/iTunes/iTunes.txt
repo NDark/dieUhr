@@ -1,0 +1,12 @@
+
+die Uhr
+
+description:
+使用這個軟體搭配德文課程學習傳統的時間念法。請調整指針，時間會顯示在上面。
+
+The user should rotate the clockhand carefully in order to let it show the desired time.The right traditional time description will be shown in the top. Advice: This app is best used as an addition in a real german class or tutoring. It provides you an assistance to properly practice the traditional german clock system.
+
+keywords:
+
+german,deutsch,tutor,language,
+德語,德文,教學,
