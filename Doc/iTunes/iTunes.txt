@@ -29,3 +29,34 @@ Please feel free to reply all comment.
 Feedback Email
 ndarkteng@gmail.com
 
+
+
+
+Dear friends:
+
+I am honored to show you the first version of “die Uhr” app. A app. for demonstrating traditional German clock time expresstion, it helps the German language students to under stand this kind of expression.
+
+We have completed the following features:
+# The title page
+# The main page of clock operation, information menu.
+
+Please feel free to reply all comment.
+
+
+The way to use "Test Flight" in order to test.
+
+In order to test this app. we need to invite each test user with the Apple acoount id(email), first name, and last name.
+
+After this information has been registered onto the developer console, the tester will receive a mail from Apple. Please read the mail with the device. It will lead the tester to install "Test Flight" app. (And attention!!! The os version of mobile device shall be above 8.1, in order to install "Test Flight".) 
+
+After test flight has been install on the device. The tester will again receive the mail (or just open the same mail again) which leads tester to install test app. into their device. After the installation is complete, this app can be opened as normal app.
+
+Test Flight service has been merge to part of Apple services, so don't worry about it.
+
+
+
+
+
+
+
+
