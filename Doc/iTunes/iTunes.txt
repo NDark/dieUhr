@@ -12,3 +12,20 @@ german,deutsch,tutor,language,Ruhr,clock,education
 德語,德文,教學,時間,
 
 https://github.com/NDark/dieUhr/wiki
+
+
+Test Flight
+
+App Description
+
+What to Test
+I am honoured to show you the first version of “die Uhr” app.
+We have completed the following feature
+# The title page
+# The main page of clock operation, information menu.
+
+Please feel free to reply all comment.
+
+Feedback Email
+ndarkteng@gmail.com
+
