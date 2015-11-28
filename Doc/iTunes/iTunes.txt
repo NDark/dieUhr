@@ -1,12 +1,12 @@
-
+ï»¿
 die Uhr
 
 description:
-¨Ï¥Î³o­Ó³nÅé·f°t¼w¤å½Òµ{¾Ç²ß¶Ç²Îªº®É¶¡©Àªk¡C½Ğ½Õ¾ã«ü°w¡A®É¶¡·|Åã¥Ü¦b¤W­±¡C
+ä½¿ç”¨é€™å€‹è»Ÿé«”æ­é…å¾·æ–‡èª²ç¨‹å­¸ç¿’å‚³çµ±çš„æ™‚é–“å¿µæ³•ã€‚è«‹èª¿æ•´æŒ‡é‡ï¼Œæ™‚é–“æœƒé¡¯ç¤ºåœ¨ä¸Šé¢ã€‚
 
 The user should rotate the clockhand carefully in order to let it show the desired time.The right traditional time description will be shown in the top. Advice: This app is best used as an addition in a real german class or tutoring. It provides you an assistance to properly practice the traditional german clock system.
 
 keywords:
 
 german,deutsch,tutor,language,
-¼w»y,¼w¤å,±Ğ¾Ç,
+å¾·èª,å¾·æ–‡,æ•™å­¸,
