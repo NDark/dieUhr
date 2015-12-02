@@ -23,16 +23,23 @@ public static class ClockData
     {
         m_Label = _Label;
     }
-    public static void DoCalculateString(string _Key, int value)
+
+    public static void DoSetValue(string _Key, int value)
     {
         if ("Minute" == _Key)
         {
-            m_Minute = value/6;
+            m_Minute = value / 6;
         }
         else if ("Hour" == _Key)
         {
-            m_Hour = value/30;
+            m_Hour = value / 30;
         }
+        
+    }
+
+    public static void DoCalculateString(string _Key, int value)
+    {
+        DoSetValue(_Key, value);
         CalculateString();
     }
 
@@ -92,11 +99,17 @@ public static class ClockData
                         hour24 = 12;
                     }
 
+                    int hour24Plus1 = hour24 + 1;
+                    if (hour24Plus1 > 12)
+                    {
+                        hour24Plus1 -= 12;
+                    }
+
                     // Viertel after (hour)
                     minuteStr = Localization.Get("Viertel");
                     hourStr = " " + Localization.Get("nach") + " " + (hour24).ToString();
 
-                    additionalStr = " (" + minuteStr + " " + Localization.Get("to") + " " + (hour24 + 1).ToString() + ")";
+                    additionalStr = " (" + minuteStr + " " + Localization.Get("to") + " " + hour24Plus1.ToString() + ")";
                 }
                 else if (Localization.language == "English")
                 {

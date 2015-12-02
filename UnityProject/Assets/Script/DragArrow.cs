@@ -110,6 +110,7 @@ public class DragArrow : MonoBehaviour
                 hourInt = 12;
             }
             m_Angle = (hourInt - 1) * 30;
+            ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
         }
         else if (_Angle >0 && _Angle < 90 && avgLastValue > 270 && avgLastValue < 360 )
@@ -117,6 +118,7 @@ public class DragArrow : MonoBehaviour
             // clock wise
             Debug.LogWarning("avgLastValue=" + avgLastValue);
             m_Angle = (hourInt + 1) * 30;
+            ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
         }
         //*/
