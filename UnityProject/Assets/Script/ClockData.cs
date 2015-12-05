@@ -115,7 +115,7 @@ public static class ClockData
         }
 
         // special case
-        if (m_Minute == 0)
+        if (_Minute == 0)
         {
             m_Label.text = hourStr + " " + Localization.Get("Uhr");
         }
@@ -190,17 +190,30 @@ public static class ClockData
         string minuteStr = "";
         string hourStr = "";
         // special case
-        
-        if (m_Minute == 0)
+
+        hourStr = WordFromDigital(_Hour);
+
+
+        if (_Minute < 10)
         {
-            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr");
-            m_Label.text = hourStr;
+            minuteStr = WordFromDigital_LowerCase(_Minute);
+        }
+        else if (_Minute < 20 || _Minute % 10 == 0)
+        {
+            minuteStr = WordFromDigital_LowerCase(_Minute);
         }
         else
         {
-            minuteStr = (m_Minute).ToString();
-            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr") ;
-            m_Label.text = hourStr + " " + minuteStr;
+            minuteStr = WordFromDigital_LowerCase(_Minute % 10) +"und"+ WordFromDigital_LowerCase(_Minute / 10 * 10) ;
+        }
+
+        if (_Minute == 0)
+        {
+            m_Label.text = hourStr + " " + Localization.Get("Uhr");
+        }
+        else
+        {
+            m_Label.text = hourStr + " " + Localization.Get("Uhr") + " "  + minuteStr;
         }
 
     }
@@ -333,5 +346,10 @@ public static class ClockData
     static string WordFromDigital(int _Digital)
     {
         return Localization.Get( _Digital.ToString() );
+    }
+
+    static string WordFromDigital_LowerCase(int _Digital)
+    {
+        return WordFromDigital(_Digital).ToLower(); 
     }
 }
