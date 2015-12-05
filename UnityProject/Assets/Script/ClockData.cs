@@ -53,6 +53,28 @@ public static class ClockData
         string minuteStr = "";
         string hourStr = "";
 
+        if (_Hour == 2)
+        {
+            hourStr = WordFromTwo_TraditionalChinese() + Localization.Get("Uhr");
+        }
+        else
+        {
+            hourStr = WordFromDigital(_Hour) + Localization.Get("Uhr") ;
+        }
+
+        if (_Minute <= 10)
+        {
+            minuteStr = WordFromDigital(_Minute);
+        }
+        else if (_Minute < 20)
+        {
+            minuteStr = WordFromDigital(10) + WordFromDigital(_Minute % 10);
+        }
+        else 
+        {
+            minuteStr = WordFromDigital(_Minute/10) + WordFromDigital(10) + WordFromDigital(_Minute%10);
+        }
+
         // special case
         if (_Minute == 0 && _Hour == 0)
         {
@@ -60,14 +82,14 @@ public static class ClockData
         }
         else if (_Minute == 0)
         {
-            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr") + "鐘";
+            
+            hourStr = hourStr + "鐘";
             m_Label.text = hourStr;
         }
         else
         {
-            hourStr = (_Hour).ToString();
-            minuteStr = (_Minute).ToString();
-            m_Label.text = hourStr + " " + Localization.Get("Uhr") + " " + minuteStr + " 分" ;
+            
+            m_Label.text = hourStr + minuteStr + "分" ;
         }
     }
 
@@ -287,5 +309,15 @@ public static class ClockData
             
         }
 
+    }
+
+    static string WordFromTwo_TraditionalChinese()
+    {
+        return Localization.Get( "h2" );
+    }
+
+    static string WordFromDigital(int _Digital)
+    {
+        return Localization.Get( _Digital.ToString() );
     }
 }
