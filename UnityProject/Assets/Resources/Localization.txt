@@ -15,7 +15,7 @@ PressContinue,Drücken Sie hier für mehr,Press and continue,請按繼續
 Reset,Zurücksetzen die Uhr,Reset the clock,重置時鐘
 0,null,zero,零
 1,ein,one,一
-2,zwei,twe,二
+2,zwei,two,二
 h2,,,兩
 3,drei,three,三
 4,vier,four,四
@@ -27,3 +27,14 @@ h2,,,兩
 10,zehn,ten,十
 11,elf,eleven,十一
 12,zwolf,twelve,十二
+13,,thirteen,
+14,,fourteen,
+15,,fifteen,
+16,,sixteen,
+17,,seventeen,
+18,,eighteen,
+19,,nineteen,
+20,,twenty,
+30,,thirty,
+40,,forty,
+50,,fifty,
