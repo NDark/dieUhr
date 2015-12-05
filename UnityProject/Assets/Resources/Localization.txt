@@ -38,3 +38,4 @@ h2,,,兩
 30,Dreißig,thirty,
 40,Vierzig,forty,
 50,Fünfzig,fifty,
+AcknowledgeMarcus,Acknowledge to Marcus Breit for Documentation.,Acknowledge to Marcus Breit for Documentation.,感謝Marcus Breit語言指導
