@@ -193,20 +193,8 @@ public static class ClockData
 
         hourStr = WordFromDigital(_Hour);
 
-
-        if (_Minute < 10)
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute);
-        }
-        else if (_Minute < 20 || _Minute % 10 == 0)
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute);
-        }
-        else
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute % 10) +"und"+ WordFromDigital_LowerCase(_Minute / 10 * 10) ;
-        }
-
+        minuteStr = DeutschMinuteFromDigital(_Minute).ToLower() ;
+        
         if (_Minute == 0)
         {
             m_Label.text = hourStr + " " + Localization.Get("Uhr");
