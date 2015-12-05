@@ -12,3 +12,4 @@ to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
 SubTitle,Die traditionelle Deutsche Uhrzeit,A traditional Clock System,傳統的德文時間系統
 PressContinue,Drücken Sie hier für mehr,Press and continue,請按繼續
+Reset,Zurücksetzen die Uhr,Reset the clock,重置時鐘
