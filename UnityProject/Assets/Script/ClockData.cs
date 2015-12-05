@@ -12,8 +12,12 @@ public static class ClockData
     static UILabel m_Label = null;
     static int m_Minute = 0;
     static int m_Hour = 0;
+    static bool m_IsDigital = false;
 
-    
+    public static void SetDigital(bool _Set)
+    {
+        m_IsDigital = _Set;
+    }
     public static void SetupLabel(UILabel _Label)
     {
         m_Label = _Label;
@@ -61,6 +65,32 @@ public static class ClockData
         }
     }
 
+
+    public static void CalculateString_English_DigitalMode(int _Hour, int _Minute)
+    {
+        string minuteStr = "";
+        string hourStr = "";
+        // special case
+        if (m_Minute == 0)
+        {
+            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr");
+            m_Label.text = hourStr;
+        }
+        else
+        {
+            hourStr = (_Hour).ToString();
+            if (m_Minute < 10)
+            {
+                minuteStr = "(o) " + (m_Minute).ToString();
+            }
+            else
+            {
+                minuteStr = (m_Minute).ToString();
+            }
+            m_Label.text = hourStr + " " + minuteStr;
+        }
+
+    }
 
     public static void CalculateString_English(int _Hour, int _Minute)
     {
@@ -112,6 +142,26 @@ public static class ClockData
 
     }
 
+
+    public static void CalculateString_Deutsch_DigitalMode(int _Hour, int _Minute)
+    {
+        string minuteStr = "";
+        string hourStr = "";
+        // special case
+        
+        if (m_Minute == 0)
+        {
+            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr");
+            m_Label.text = hourStr;
+        }
+        else
+        {
+            minuteStr = (m_Minute).ToString();
+            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr") ;
+            m_Label.text = hourStr + " " + minuteStr;
+        }
+
+    }
 
     public static void CalculateString_Deutsch(int _Hour, int _Minute)
     {
@@ -209,11 +259,26 @@ public static class ClockData
         }
         else if ("English" == Localization.language)
         {
-            CalculateString_English(m_Hour, m_Minute);
+            if (m_IsDigital)
+            {
+                CalculateString_English_DigitalMode(m_Hour, m_Minute);
+            }
+            else
+            {
+                CalculateString_English(m_Hour, m_Minute);
+            }
         }
         else if ("Deutsch" == Localization.language)
         {
-            CalculateString_Deutsch(m_Hour, m_Minute);
+            if (m_IsDigital)
+            {
+                CalculateString_Deutsch_DigitalMode(m_Hour, m_Minute);
+            }
+            else
+            {
+                CalculateString_Deutsch(m_Hour, m_Minute);
+            }
+            
         }
 
     }
