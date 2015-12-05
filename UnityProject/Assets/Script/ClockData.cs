@@ -12,13 +12,8 @@ public static class ClockData
     static UILabel m_Label = null;
     static int m_Minute = 0;
     static int m_Hour = 0;
-    static int m_AMPM = 0;
 
-    public static void SetupAMPM( bool _PM )
-    {
-        m_AMPM = (true == _PM) ? 12 : 0;
-        CalculateString();
-    }
+    
     public static void SetupLabel(UILabel _Label)
     {
         m_Label = _Label;
@@ -43,38 +38,44 @@ public static class ClockData
         CalculateString();
     }
 
+    public static void CalculateString_TraditionalChinese( int _Hour , int _Minute )
+    {
+        string minuteStr = "";
+        string hourStr = "";
+
+        // special case
+        if (_Minute == 0 && _Hour == 0)
+        {
+            m_Label.text = Localization.Get("Mitternacht");
+        }
+        else if (_Minute == 0)
+        {
+            hourStr = (_Hour).ToString() + " " + Localization.Get("Uhr") + "鐘";
+            m_Label.text = hourStr;
+        }
+        else
+        {
+            hourStr = (_Hour).ToString();
+            minuteStr = (_Minute).ToString();
+            m_Label.text = hourStr + " " + Localization.Get("Uhr") + " " + minuteStr + " 分" ;
+        }
+    }
     public static void CalculateString()
     {
         // Debug.Log("m_Minute" + m_Minute);
         // Debug.Log("m_Hour"+ m_Hour);
-        // Debug.Log("24 hour" + (m_Hour + m_AMPM) );
         if (null == m_Label)
         {
             return;
         }
-        int hour24 = (m_Hour + m_AMPM);
+        int hour24 = (m_Hour);
         string minuteStr = "";
         string hourStr = "";
         string additionalStr = "";
 
         if ("TraditionalChinese" == Localization.language)
         {
-            // special case
-            if (m_Minute == 0 && hour24 == 0)
-            {
-                m_Label.text = Localization.Get("Mitternacht");
-            }
-            else if (m_Minute == 0)
-            {
-                hourStr = (hour24).ToString() + " " + Localization.Get("Uhr") + "鐘";
-                m_Label.text = hourStr;
-            }
-            else
-            {
-                hourStr = (hour24).ToString();
-                minuteStr = (m_Minute).ToString();
-                m_Label.text = hourStr + " " + Localization.Get("Uhr") + " " + minuteStr + " 分" + additionalStr;
-            }
+            CalculateString_TraditionalChinese( m_Hour , m_Minute );
         }
         else if ("English" == Localization.language || 
             "Deutsch" == Localization.language)

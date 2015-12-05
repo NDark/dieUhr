@@ -26,18 +26,6 @@ public class DragArrow : MonoBehaviour
         }
     }
 
-
-
-    public void SetupAM()
-    {
-        ClockData.SetupAMPM(false);
-    }
-
-    public void SetupPM()
-    {
-        ClockData.SetupAMPM(true);
-    }
-
     public void DoUpdate()
     {
         ClockData.CalculateString();
