@@ -10,13 +10,11 @@ public class DragArrow : MonoBehaviour
     public UILabel m_IntroductionLabel = null;
     public string key = "";
     bool m_IsPress = false;
-    Vector3 centerVec = new Vector3(0.5f, 0.5f, 0);
     public float halfScreenWidth = 320;
     public float halfScreenHeight = 568;
     public float halfClockWidth = 320;
     public Camera UICamera = null;
     float m_Angle = 0;
-    UISprite m_Sprite = null;
     // Use this for initialization
     void Start ()
     {
@@ -26,7 +24,6 @@ public class DragArrow : MonoBehaviour
         {
             ClockData.SetupLabel(uiLabel);
         }
-        m_Sprite = this.GetComponent<UISprite>();
     }
 
 
@@ -93,7 +90,6 @@ public class DragArrow : MonoBehaviour
 
         int hourInt = (int)(m_Angle / 30.0f);
         
-        int hourMod30 = (int)(m_Angle - hourInt * 30);
         /*
         Debug.Log("m_Angle=" + m_Angle);
         Debug.Log("hourInt=" + hourInt);

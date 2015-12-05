@@ -29,7 +29,7 @@ public class RandomPlayTweenColor : MonoBehaviour
                 return;
             }
 
-            color.Play();
+            color.PlayForward();
             RandomNextPlay();
         }
 	
