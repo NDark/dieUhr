@@ -23,6 +23,12 @@ public static class ClockData
         m_Label = _Label;
     }
 
+    public static void ResetValue()
+    {
+        m_Minute = 0;
+        m_Hour = 0;
+    }
+
     public static void DoSetValue(string _Key, int value)
     {
         if ("Minute" == _Key)

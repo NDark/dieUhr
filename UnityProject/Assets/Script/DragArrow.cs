@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DragArrow : MonoBehaviour
 {
+    public GameObject resetButton = null;
     public DragArrow hourSprite = null;
     public DragArrow minuteSprite = null;
     public UILabel uiLabel = null;
@@ -151,6 +152,10 @@ public class DragArrow : MonoBehaviour
         m_IsPress = _Press;
         if (false == _Press)
         {
+            if (null != resetButton)
+            {
+                NGUITools.SetActive(resetButton, true);
+            }
             ClockData.DoCalculateString(this.key, (int)(m_Angle));
         }
         else

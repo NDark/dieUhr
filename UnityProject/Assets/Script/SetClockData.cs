@@ -15,6 +15,11 @@ public class SetClockData : MonoBehaviour
 
     }
 
+    public void ResetValue()
+    {
+        ClockData.ResetValue();
+        ClockData.CalculateString();
+    }
 
     public void DoUpdate()
     {
