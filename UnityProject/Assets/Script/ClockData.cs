@@ -2,6 +2,8 @@
 
 https://www.ego4u.com/en/cram-up/vocabulary/time
 
+@date 20151212 by NDark . add class method WordFromDigital_ConsiderOne()
+
 */
 using UnityEngine;
 using System.Collections;
@@ -193,7 +195,7 @@ public static class ClockData
 
         hourStr = WordFromDigital(_Hour);
 
-        minuteStr = DeutschMinuteFromDigital(_Minute).ToLower() ;
+        minuteStr = DeutschMinuteFromDigital(_Minute) ;
         
         if (_Minute == 0)
         {
@@ -222,7 +224,7 @@ public static class ClockData
             _HourPlus1 -= 12;
         }
         hourStr = WordFromDigital(_Hour);
-
+        string hourStrWiths = WordFromDigital_ConsiderOne(_Hour);
 
         if (_Minute < 10)
         {
@@ -253,24 +255,24 @@ public static class ClockData
             // Viertel after (hour)
             minuteStr = Localization.Get("Viertel");
 
-            m_Label.text = minuteStr + " " + Localization.Get("nach") + " " + hourStr.ToLower() ;
+            m_Label.text = minuteStr + " " + Localization.Get("nach") + " " + hourStrWiths;
         }
         else if (_Minute == 45)
         {
             
-            hourStr = WordFromDigital(_HourPlus1);
+            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
 
             minuteStr = Localization.Get("Viertel");
 
-            m_Label.text = minuteStr + " " + Localization.Get("vor") + " " + hourStr.ToLower();
+            m_Label.text = minuteStr + " " + Localization.Get("vor") + " " + hourStr;
         }
         else if (_Minute == 30)
         {
             
-            hourStr = WordFromDigital(_HourPlus1);
+            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
             minuteStr = Localization.Get("Halb") + " ";
             
-            m_Label.text = minuteStr + hourStr.ToLower();
+            m_Label.text = minuteStr + hourStr;
         }
         else
         {
@@ -280,22 +282,22 @@ public static class ClockData
             {
                 
                 minuteStr = WordFromDigital(30 - m_Minute);
-                hourStr = "vor halb " + WordFromDigital_LowerCase(_HourPlus1);
+                hourStr = "vor halb " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
             else if (_Minute > 30 && _Minute <= 40)
             {
                 minuteStr = WordFromDigital(m_Minute - 30);
-                hourStr = "nach halb " + WordFromDigital_LowerCase(_HourPlus1);
+                hourStr = "nach halb " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
             else if (_Minute > 40 && _Minute < 60)
             {
                 minuteStr = DeutschMinuteFromDigital(60 - _Minute) ;
-                hourStr = "vor " + WordFromDigital_LowerCase(_HourPlus1);
+                hourStr = "vor " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
             else if (_Minute > 0 && _Minute < 20)
             {
                 minuteStr = DeutschMinuteFromDigital(_Minute);
-                hourStr = "nach " + WordFromDigital_LowerCase(_Hour);
+                hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
             }
             m_Label.text = minuteStr + " " + hourStr;
         }
@@ -363,6 +365,20 @@ public static class ClockData
     static string WordFromTwo_TraditionalChinese()
     {
         return Localization.Get( "h2" );
+    }
+
+
+    static string WordFromDigital_ConsiderOne(int _Digital)
+    {
+        if (1 == _Digital)
+        {
+            return Localization.Get(_Digital.ToString()) + "s";
+        }
+        else
+        {
+            return Localization.Get(_Digital.ToString()) ;
+        }
+
     }
 
     static string WordFromDigital(int _Digital)
