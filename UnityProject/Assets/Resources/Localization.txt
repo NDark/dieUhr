@@ -1,6 +1,6 @@
-﻿KEY,Deutsch,English,TraditionalChinese
+KEY,Deutsch,English,TraditionalChinese
 IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,"Um die gewunschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen.\n\nDie richtige Uhrzeit in der herkommlichen Sprechweise wird dann oben angezeigt.\n\nHinweis: \n\nDiese app sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie unterstutzt dich dabei die traditionelle Deutsche Uhrzeit richtig zu uben.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
+IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese app sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie unterstützt dich dabei die traditionelle Deutsche Uhrzeit richtig zu üben.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
 nach,nach,past,之後
@@ -12,3 +12,30 @@ to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
 SubTitle,Die traditionelle Deutsche Uhrzeit,A traditional Clock System,傳統的德文時間系統
 PressContinue,Drücken Sie hier für mehr,Press and continue,請按繼續
+Reset,Zurücksetzen die Uhr,Reset the clock,重置時鐘
+0,Null,zero,零
+1,Ein,one,一
+2,Zwei,two,二
+h2,,,兩
+3,Drei,three,三
+4,Vier,four,四
+5,Fünf,five,五
+6,Sechs,six,六
+7,Sieben,seven,七
+8,Acht,eight,八
+9,Neun,nine,九
+10,Zehn,ten,十
+11,Elf,eleven,十一
+12,Zwölf,twelve,十二
+13,Dreizehn,thirteen,
+14,Vierzehn,fourteen,
+15,Fünfzehn,fifteen,
+16,Sechzehn,sixteen,
+17,Siebzehn,seventeen,
+18,Achtzehn,eighteen,
+19,Neunzehn,nineteen,
+20,Zwanzig,twenty,
+30,Dreißig,thirty,
+40,Vierzig,forty,
+50,Fünfzig,fifty,
+AcknowledgeMarcus,Acknowledge to Marcus Breit for Documentation.,Acknowledge to Marcus Breit for Documentation.,感謝Marcus Breit語言指導

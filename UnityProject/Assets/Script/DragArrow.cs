@@ -4,19 +4,18 @@ using System.Collections.Generic;
 
 public class DragArrow : MonoBehaviour
 {
+    public GameObject resetButton = null;
     public DragArrow hourSprite = null;
     public DragArrow minuteSprite = null;
     public UILabel uiLabel = null;
     public UILabel m_IntroductionLabel = null;
     public string key = "";
     bool m_IsPress = false;
-    Vector3 centerVec = new Vector3(0.5f, 0.5f, 0);
     public float halfScreenWidth = 320;
     public float halfScreenHeight = 568;
     public float halfClockWidth = 320;
     public Camera UICamera = null;
     float m_Angle = 0;
-    UISprite m_Sprite = null;
     // Use this for initialization
     void Start ()
     {
@@ -26,19 +25,6 @@ public class DragArrow : MonoBehaviour
         {
             ClockData.SetupLabel(uiLabel);
         }
-        m_Sprite = this.GetComponent<UISprite>();
-    }
-
-
-
-    public void SetupAM()
-    {
-        ClockData.SetupAMPM(false);
-    }
-
-    public void SetupPM()
-    {
-        ClockData.SetupAMPM(true);
     }
 
     public void DoUpdate()
@@ -93,7 +79,6 @@ public class DragArrow : MonoBehaviour
 
         int hourInt = (int)(m_Angle / 30.0f);
         
-        int hourMod30 = (int)(m_Angle - hourInt * 30);
         /*
         Debug.Log("m_Angle=" + m_Angle);
         Debug.Log("hourInt=" + hourInt);
@@ -110,6 +95,7 @@ public class DragArrow : MonoBehaviour
                 hourInt = 12;
             }
             m_Angle = (hourInt - 1) * 30;
+            ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
         }
         else if (_Angle >0 && _Angle < 90 && avgLastValue > 270 && avgLastValue < 360 )
@@ -117,6 +103,7 @@ public class DragArrow : MonoBehaviour
             // clock wise
             Debug.LogWarning("avgLastValue=" + avgLastValue);
             m_Angle = (hourInt + 1) * 30;
+            ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
         }
         //*/
@@ -165,6 +152,10 @@ public class DragArrow : MonoBehaviour
         m_IsPress = _Press;
         if (false == _Press)
         {
+            if (null != resetButton)
+            {
+                NGUITools.SetActive(resetButton, true);
+            }
             ClockData.DoCalculateString(this.key, (int)(m_Angle));
         }
         else
