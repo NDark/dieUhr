@@ -246,7 +246,12 @@ public static class ClockData
         }
         else if (_Minute == 0)
         {
-            m_Label.text = hourStr + " " + Localization.Get("Uhr");
+            string additionText = "";
+            if (1 == _Hour)
+            {
+                additionText = " ( " + hourStr + "s" + " )" ;
+            }
+            m_Label.text = hourStr + " " + Localization.Get("Uhr") + additionText ;
         }
         else if (_Minute == 15)
         {
