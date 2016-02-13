@@ -4,6 +4,11 @@ https://www.ego4u.com/en/cram-up/vocabulary/time
 
 @date 20151212 by NDark . add class method WordFromDigital_ConsiderOne()
 
+@date 20160213 by NDark 
+. add checking minute 1 at CalculateString_Deutsch_DigitalMode()
+. add checking minute 1 at CalculateString_Deutsch()
+
+
 */
 using UnityEngine;
 using System.Collections;
@@ -195,7 +200,14 @@ public static class ClockData
 
         hourStr = WordFromDigital(_Hour);
 
-        minuteStr = DeutschMinuteFromDigital(_Minute) ;
+		if( 1 == _Minute )
+		{
+			minuteStr = WordFromDigital_ConsiderOne(_Minute) ;
+		}
+		else
+		{
+        	minuteStr = DeutschMinuteFromDigital(_Minute) ;
+        }
         
         if (_Minute == 0)
         {
@@ -226,20 +238,6 @@ public static class ClockData
         hourStr = WordFromDigital(_Hour);
         string hourStrWiths = WordFromDigital_ConsiderOne(_Hour);
 
-        if (_Minute < 10)
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute);
-        }
-        else if (_Minute < 20 || _Minute % 10 == 0)
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute);
-        }
-        else
-        {
-            minuteStr = WordFromDigital_LowerCase(_Minute % 10) + "und" + WordFromDigital_LowerCase(_Minute / 10 * 10);
-        }
-
-
         if (_Minute == 0 && _Hour == 0)
         {
             m_Label.text = Localization.Get("Mitternacht");
@@ -253,6 +251,7 @@ public static class ClockData
             }
             m_Label.text = hourStr + " " + Localization.Get("Uhr") + additionText ;
         }
+		
         else if (_Minute == 15)
         {
 
@@ -299,7 +298,12 @@ public static class ClockData
                 minuteStr = DeutschMinuteFromDigital(60 - _Minute) ;
                 hourStr = "vor " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
-            else if (_Minute > 0 && _Minute < 20)
+			else if (_Minute == 1)
+			{
+				minuteStr = WordFromDigital_ConsiderOne(_Minute);
+				hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
+			}
+            else if (_Minute > 1 && _Minute < 20)
             {
                 minuteStr = DeutschMinuteFromDigital(_Minute);
                 hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
