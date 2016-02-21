@@ -81,6 +81,9 @@ public class LocationSystem : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		string [] locationKey = { 
+			"Bridge" 
+		} ;
 		m_TargetPositions[ 0 ] = new Vector3( 0 , -70 ) ;
 		m_Answers[ 0 ] = "Bridge" ;
 		m_TargetPositions[ 1 ] = new Vector3( 0 , 0 ) ;
