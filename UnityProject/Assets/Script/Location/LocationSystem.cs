@@ -7,7 +7,6 @@ public enum AnswerMode
 	AnswerMode_EnterCorrectAnswer ,
 	AnswerMode_WaitCorrectAnswer ,
 	AnswerMode_ToOptionMode ,
-	AnswerMode_RandomizeAOption ,
 	AnswerMode_WaitAnimation ,
 	AnswerMode_WaitPressOption ,
 }
@@ -33,7 +32,7 @@ public class LocationSystem : MonoBehaviour
 	public UILabel [] m_Options = new UILabel[2] ;
 	
 	
-	AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
+	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 	
 	public void TrySwitchToAnswerMode()
 	{
@@ -66,10 +65,8 @@ public class LocationSystem : MonoBehaviour
 			return ;
 		}
 		// actually we move reference up 70
-		m_TargetIndex = 0 ;
-		NGUITools.SetActive( answerLabel.gameObject , false ) ;
-		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
-		this.IsInAnimation = true ;
+		ChangeTargetAnimation( 0 ) ;
+
 	}
 	public void TryMoveDown()
 	{
@@ -77,10 +74,7 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
-		m_TargetIndex = 1 ;
-		NGUITools.SetActive( answerLabel.gameObject , false ) ;
-		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
-		this.IsInAnimation = true ;
+		ChangeTargetAnimation( 1 ) ;
 	}
 	
 
@@ -110,32 +104,47 @@ public class LocationSystem : MonoBehaviour
 			m_AnswerMode = AnswerMode.AnswerMode_WaitCorrectAnswer ;
 			break ;
 		case AnswerMode.AnswerMode_WaitCorrectAnswer :
+			if( true == this.IsInAnimation )
+			{
+				if( true == UpdateReference() )
+				{
+					NGUITools.SetActive( answerLabel.gameObject , true ) ;
+					NGUITools.SetActiveChildren( answerLabel.gameObject , true ) ;
+				}
+			}		
 			break ;
 		case AnswerMode.AnswerMode_ToOptionMode :
+			RandomizeTheOptions() ;
 			AnswerMode_ToOptionMode() ;
-			m_AnswerMode = AnswerMode.AnswerMode_WaitPressOption ;
-			break ;
-		case AnswerMode.AnswerMode_RandomizeAOption :
+			m_AnswerMode = AnswerMode.AnswerMode_WaitAnimation ;
 			break ;
 		case AnswerMode.AnswerMode_WaitAnimation :
+			if( true == this.IsInAnimation )
+			{
+				if( true == UpdateReference() )
+				{
+
+				}
+			}
+			else
+			{
+				m_AnswerMode = AnswerMode.AnswerMode_WaitPressOption ;
+			}
 			break ;
 		case AnswerMode.AnswerMode_WaitPressOption :
+
 			break ;
 			
 		}
 		
-		if( true == this.IsInAnimation )
-		{
-			UpdateReference() ;
-		}
 	
 	}
 	
-	private void UpdateReference()
+	private bool UpdateReference()
 	{
 		if( null == referenceObject || null == answerLabel )
 		{
-			return ;
+			return false ;
 		}
 		
 		Vector3 currentPos = referenceObject.transform.position ;
@@ -145,9 +154,8 @@ public class LocationSystem : MonoBehaviour
 		{
 			referenceObject.transform.position = targetPos ;
 			answerLabel.text = m_Answers[ m_TargetIndex ] ;
-			NGUITools.SetActive( answerLabel.gameObject , true ) ;
-			NGUITools.SetActiveChildren( answerLabel.gameObject , true ) ;
 			this.IsInAnimation = false ;
+			return true ;
 		}
 		else
 		{
@@ -155,6 +163,7 @@ public class LocationSystem : MonoBehaviour
 			                               , m_MovingSpeed ) ;
 			referenceObject.transform.position = nextPos;
 		}
+		return false ;
 	}
 	
 	private void RandomizeTheOptions()
@@ -191,6 +200,10 @@ public class LocationSystem : MonoBehaviour
 		{
 			grid.Reposition() ;
 		}
+		
+		int minSize = Mathf.Min( m_Answers.Length , this.m_Options.Length ) ;
+		int randomTarget = Random.Range( 0 , minSize ) ;
+		ChangeTargetAnimation( randomTarget ) ; // button index
 	}
 	
 	private void AnswerMode_EnterCorrectAnswer()
@@ -237,4 +250,11 @@ public class LocationSystem : MonoBehaviour
 		}
 	}
 	
+	private void ChangeTargetAnimation( int _Index )
+	{
+		m_TargetIndex = _Index ;
+		NGUITools.SetActive( answerLabel.gameObject , false ) ;
+		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
+		this.IsInAnimation = true ;
+	}
 }
