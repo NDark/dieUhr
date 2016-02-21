@@ -81,7 +81,23 @@ public class LocationSystem : MonoBehaviour
 	
 	public void TryPress( int _OptionIndex )
 	{
-		Debug.Log("TryPress" + _OptionIndex ) ;
+		// Debug.Log("TryPress" + _OptionIndex ) ;
+		
+		int pressAnserIndex = m_RemapTable[ _OptionIndex ] ;
+		if( m_TargetIndex == pressAnserIndex )
+		{
+			// turn option to green
+			m_AnswerMode = AnswerMode.AnswerMode_ToOptionMode ;
+		}
+		else
+		{
+			// turn option to red
+			TweenColor tween = m_Options[ _OptionIndex ].gameObject.GetComponent<TweenColor>() ;
+			if( null != tween )
+			{
+				tween.PlayForward() ;
+			}
+		}
 	}
 	
 	public void TryMoveUp()
@@ -211,7 +227,12 @@ public class LocationSystem : MonoBehaviour
 		
 		
 		int minSize = Mathf.Min( m_AnswerStrings.Length , this.m_Options.Length ) ;
-		int randomTarget = Random.Range( 0 , minSize ) ;
+		int randomTarget = m_TargetIndex ;
+		while( randomTarget == m_TargetIndex )
+		{
+			randomTarget = Random.Range( 0 , minSize ) ;
+		}
+		
 		ChangeTargetAnimation( randomTarget ) ; // button index
 	}
 	
@@ -231,8 +252,15 @@ public class LocationSystem : MonoBehaviour
 			
 			if( i < m_AnswerStrings.Length )
 			{
-				// Debug.Log("m_RemapTable[ i ]" + m_RemapTable[ i ]);
 				m_Options[ i ].text = m_AnswerStrings[ m_RemapTable[ i ] ] ;
+				TweenColor tween = m_Options[ i ].gameObject.GetComponent<TweenColor>() ;
+				if( null != tween )
+				{
+					tween.PlayReverse() ;
+				}				
+				// Debug.Log("button i=" + i);
+				// Debug.Log("m_RemapTable[ i ] =" + m_RemapTable[ i ]);
+				// Debug.Log("m_Options[ i ].text" + m_Options[ i ].text);
 			}
 			else
 			{
