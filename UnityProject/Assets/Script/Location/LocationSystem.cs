@@ -35,6 +35,14 @@ public class LocationSystem : MonoBehaviour
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 	
+	public void ResetDescribeString( string [] describeString )
+	{
+		for( int i = 0 ; i < describeString.Length ; ++i )
+		{
+			m_AnswerStrings[ i ] = describeString[ i ] ;	
+		}
+	}
+	
 	public void TrySwitchToAnswerMode()
 	{
 		if( m_AnswerMode != AnswerMode.AnswerMode_WaitPressOption )
@@ -292,22 +300,24 @@ public class LocationSystem : MonoBehaviour
 		} ;
 		string [] describeString = 
 		{ 
-			"<das Fussufer> entlang" 
-			, "über <die Brücke>" 
-			, "gegenüber <...>"
-			, "bis zur <Kreuzung>"
-			, "am <...> vorbei"
-			, "um <den Kreisverkehr> herum"
-			, "durch <das Zentrum> fahren"
+			Localization.Get( "LocationKey_AlongRiver" )
+			, Localization.Get( "LocationKey_Bridge" )
+			, Localization.Get( "LocationKey_CrossStreet" )
+			, Localization.Get( "LocationKey_Intersection" )
+			, Localization.Get( "LocationKey_Pass" )
+			, Localization.Get( "LocationKey_RoundAbout" )
+			, Localization.Get( "LocationKey_Through" )
 		} ;
+		
 		
 		m_Keys = new string[ locationKey.Length ] ;
 		m_TargetPositions = new Vector3[ locationKey.Length ] ;
-		m_AnswerStrings = new string[ locationKey.Length ] ;
+		m_AnswerStrings = new string[ describeString.Length ] ;
+		ResetDescribeString( describeString ) ;
+		
 		for( int i = 0 ; i < locationKey.Length ; ++i )
 		{
 			m_Keys[ i ] = locationKey[ i ] ;
-			m_AnswerStrings[ i ] = describeString[ i ] ;
 			m_TargetPositions[ i ] = new Vector3( 0 , -70 * i ) ;
 			GameObject addObj = GameObject.Instantiate( prefab) as GameObject ;
 			if( null != addObj )
