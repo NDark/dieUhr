@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum AnswerMode
+{
+	AnswerMode_Invalid = 0 ,
+	AnswerMode_EnterCorrectAnswer ,
+	AnswerMode_WaitCorrectAnswer ,
+	AnswerMode_ToOptionMode ,
+	AnswerMode_RandomizeAOption ,
+	AnswerMode_WaitAnimation ,
+	AnswerMode_WaitPressOption ,
+}
+
 public class LocationSystem : MonoBehaviour 
 {
 	public GameObject referenceObject = null ;
@@ -13,6 +24,14 @@ public class LocationSystem : MonoBehaviour
 	public bool IsInAnimation { get ; set ; }
 	
 	public float m_MovingSpeed = 0.1f ;
+	
+	public UILabel [] m_Options = new UILabel[2] ;
+	public UIGrid m_Grid = null ;
+	
+	public void TryPress( int _OptionIndex )
+	{
+		Debug.Log("TryPress" + _OptionIndex ) ;
+	}
 	
 	public void TryMoveUp()
 	{
@@ -47,6 +66,7 @@ public class LocationSystem : MonoBehaviour
 		m_TargetPositions[ 1 ] = new Vector3( 0 , 0 ) ;
 		m_Answers[ 1 ] = "Roundabout" ;
 		
+		RandomizeTheOptions() ;
 		IsInAnimation = false ;
 		
 	}
@@ -84,6 +104,42 @@ public class LocationSystem : MonoBehaviour
 			Vector3 nextPos = Vector3.Lerp( currentPos , targetPos 
 			                               , m_MovingSpeed ) ;
 			referenceObject.transform.position = nextPos;
+		}
+	}
+	
+	private void RandomizeTheOptions()
+	{
+		
+		int []remapTable = new int[ m_Answers.Length ] ;
+		for( int i = 0 ; i < remapTable.Length ; ++i )
+		{
+			remapTable[ i ] = i ;
+		}
+		for( int i = 0 ; i < 10 ; ++i )
+		{
+			int index0 = Random.Range( 0 , 2 ) ;
+			int index1 = Random.Range( 0 , 2 ) ;
+			int tmp = remapTable[ index0 ] ;
+			remapTable[ index0 ] = remapTable[ index1 ] ;
+			remapTable[ index1 ] = tmp ;
+		}
+		
+		
+		for( int i = 0 ; i < this.m_Options.Length ; ++i )
+		{
+			if( i < m_Answers.Length )
+			{
+				m_Options[ i ].text = m_Answers[ remapTable[ i ] ] ;
+			}
+			else
+			{
+				// hide the options
+			}
+		}
+		
+		if( null != m_Grid )
+		{
+			m_Grid.Reposition() ;
 		}
 	}
 }
