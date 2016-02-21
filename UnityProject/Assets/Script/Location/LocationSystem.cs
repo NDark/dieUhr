@@ -30,7 +30,7 @@ public class LocationSystem : MonoBehaviour
 	
 	public float m_MovingSpeed = 0.1f ;
 	
-	public UILabel [] m_Options = new UILabel[2] ;
+	public UILabel [] m_Options = null ;
 	
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
@@ -84,7 +84,7 @@ public class LocationSystem : MonoBehaviour
 	void Start () 
 	{
 		InitializeReferencePlanes() ;
-		
+		InitializeOptions() ;
 		
 		IsInAnimation = true ;
 		
@@ -173,10 +173,11 @@ public class LocationSystem : MonoBehaviour
 		{
 			remapTable[ i ] = i ;
 		}
+		
 		for( int i = 0 ; i < 10 ; ++i )
 		{
-			int index0 = Random.Range( 0 , 2 ) ;
-			int index1 = Random.Range( 0 , 2 ) ;
+			int index0 = Random.Range( 0 , m_AnswerStrings.Length ) ;
+			int index1 = Random.Range( 0 , m_AnswerStrings.Length ) ;
 			int tmp = remapTable[ index0 ] ;
 			remapTable[ index0 ] = remapTable[ index1 ] ;
 			remapTable[ index1 ] = tmp ;
@@ -187,11 +188,13 @@ public class LocationSystem : MonoBehaviour
 		{
 			if( i < m_AnswerStrings.Length )
 			{
+				// Debug.Log("remapTable[ i ]" + remapTable[ i ]);
 				m_Options[ i ].text = m_AnswerStrings[ remapTable[ i ] ] ;
 			}
 			else
 			{
 				// hide the options
+				NGUITools.SetActive( m_Options[ i ].gameObject , false ) ;
 			}
 		}
 		
@@ -255,7 +258,8 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
-		Debug.Log("ChangeTargetAnimation _Index" + _Index );
+		// Debug.Log("ChangeTargetAnimation _Index" + _Index );
+		
 		m_TargetIndex = _Index ;
 		NGUITools.SetActive( answerLabel.gameObject , false ) ;
 		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
@@ -326,6 +330,45 @@ public class LocationSystem : MonoBehaviour
 			}
 		}
 		
+		
+	}
+	
+	private void InitializeOptions()
+	{
+		
+		if( null == grid )
+		{
+			return ;
+		}	
+		
+		GameObject prefab = Resources.Load("Location/OptionPrefab") as GameObject;
+		if( null == prefab )
+		{
+			return ;
+		}
+		
+		m_Options = new UILabel[ m_Keys.Length ] ;
+		for( int i = 0 ; i < m_Keys.Length ; ++i )
+		{
+			GameObject addObj = NGUITools.AddChild( grid.gameObject , prefab ) ;
+			if( null != addObj )
+			{
+				addObj.name = i.ToString() ;
+				
+				PressOption po = addObj.AddComponent<PressOption>() ;
+				if( null != po )
+				{
+					po.m_LocationSystem = this ;
+					po.m_OptionIndex = i ;
+				}
+				m_Options[ i ] = addObj.GetComponent<UILabel>() ;
+			}
+		}
+		
+		if( null != grid )
+		{
+			grid.Reposition() ;
+		}
 		
 	}
 }
