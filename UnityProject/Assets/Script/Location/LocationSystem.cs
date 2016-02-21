@@ -292,13 +292,13 @@ public class LocationSystem : MonoBehaviour
 		} ;
 		string [] describeString = 
 		{ 
-			"das Fussufer entlang" 
-			, "Bridge" 
-			, "CrossStreet"
-			, "Intersection"
-			, "Pass"
-			, "RoundAbout"
-			, "Through"
+			"<das Fussufer> entlang" 
+			, "über <die Brücke>" 
+			, "gegenüber <...>"
+			, "bis zur <Kreuzung>"
+			, "am <...> vorbei"
+			, "um <den Kreisverkehr> herum"
+			, "durch <das Zentrum> fahren"
 		} ;
 		
 		m_Keys = new string[ locationKey.Length ] ;
