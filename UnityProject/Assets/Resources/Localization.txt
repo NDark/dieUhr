@@ -39,3 +39,4 @@ h2,,,兩
 40,Vierzig,forty,
 50,Fünfzig,fifty,
 AcknowledgeMarcus,Acknowledge to Marcus Breit for the consultation.,Acknowledge to Marcus Breit for the consultation.,感謝Marcus Breit語言指導
+LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent
