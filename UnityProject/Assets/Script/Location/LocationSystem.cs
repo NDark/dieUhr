@@ -16,6 +16,11 @@ public class LocationSystem : MonoBehaviour
 {
 	public GameObject referenceObject = null ;
 	public UILabel answerLabel = null ;
+	public GameObject arrowUpButton = null ;
+	public GameObject arrowDownButton = null ;
+	public GameObject answerModeButton = null ;
+	public GameObject optionModeModeButton = null ;
+	public UIGrid grid = null ;
 	
 	private int m_TargetIndex = 0 ;
 	private Vector3 [] m_TargetPositions = new Vector3[2] ;
@@ -26,7 +31,28 @@ public class LocationSystem : MonoBehaviour
 	public float m_MovingSpeed = 0.1f ;
 	
 	public UILabel [] m_Options = new UILabel[2] ;
-	public UIGrid m_Grid = null ;
+	
+	
+	AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
+	
+	public void TrySwitchToAnswerMode()
+	{
+		if( m_AnswerMode != AnswerMode.AnswerMode_WaitPressOption )
+		{
+			return ;
+		}
+		m_AnswerMode = AnswerMode.AnswerMode_EnterCorrectAnswer ;
+	}
+	
+	public void TrySwitchToOptionMode()
+	{
+		if( m_AnswerMode != AnswerMode.AnswerMode_WaitCorrectAnswer )
+		{
+			return ;
+		}
+		m_AnswerMode = AnswerMode.AnswerMode_ToOptionMode ;
+	}
+	
 	
 	public void TryPress( int _OptionIndex )
 	{
@@ -74,6 +100,30 @@ public class LocationSystem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		switch( m_AnswerMode )
+		{
+		case AnswerMode.AnswerMode_Invalid :
+			m_AnswerMode = AnswerMode.AnswerMode_EnterCorrectAnswer ;
+			break ;
+		case AnswerMode.AnswerMode_EnterCorrectAnswer :
+			AnswerMode_EnterCorrectAnswer() ;
+			m_AnswerMode = AnswerMode.AnswerMode_WaitCorrectAnswer ;
+			break ;
+		case AnswerMode.AnswerMode_WaitCorrectAnswer :
+			break ;
+		case AnswerMode.AnswerMode_ToOptionMode :
+			AnswerMode_ToOptionMode() ;
+			m_AnswerMode = AnswerMode.AnswerMode_WaitPressOption ;
+			break ;
+		case AnswerMode.AnswerMode_RandomizeAOption :
+			break ;
+		case AnswerMode.AnswerMode_WaitAnimation :
+			break ;
+		case AnswerMode.AnswerMode_WaitPressOption :
+			break ;
+			
+		}
+		
 		if( true == this.IsInAnimation )
 		{
 			UpdateReference() ;
@@ -137,9 +187,54 @@ public class LocationSystem : MonoBehaviour
 			}
 		}
 		
-		if( null != m_Grid )
+		if( null != grid )
 		{
-			m_Grid.Reposition() ;
+			grid.Reposition() ;
 		}
 	}
+	
+	private void AnswerMode_EnterCorrectAnswer()
+	{
+		SwitchModeGUI( true ) ;
+	}
+	
+	private void AnswerMode_ToOptionMode()
+	{
+		SwitchModeGUI( false ) ;
+	}
+	
+	private void SwitchModeGUI( bool _AnswerMode )
+	{
+		if( null != grid )
+		{
+			NGUITools.SetActive( grid.gameObject , !_AnswerMode );
+		}
+		
+		// hide AnswerMode button
+		// show OptionMode button
+		if( null != answerModeButton )
+		{
+			NGUITools.SetActive( answerModeButton , !_AnswerMode );
+		}
+		
+		if( null != optionModeModeButton )
+		{
+			NGUITools.SetActive( optionModeModeButton , _AnswerMode );
+		}
+		
+		if( null != arrowUpButton )
+		{
+			NGUITools.SetActive( arrowUpButton , _AnswerMode );
+		}
+		if( null != arrowDownButton )
+		{
+			NGUITools.SetActive( arrowDownButton , _AnswerMode );
+		}
+		
+		if( null != answerLabel )
+		{
+			NGUITools.SetActive( answerLabel.gameObject , _AnswerMode );
+		}
+	}
+	
 }
