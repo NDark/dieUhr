@@ -23,7 +23,8 @@ public class LocationSystem : MonoBehaviour
 	
 	private int m_TargetIndex = 0 ;
 	private Vector3 [] m_TargetPositions = new Vector3[2] ;
-	private string [] m_Answers = new string[2] ;
+	private string [] m_AnswerStrings = null ;
+	private string [] m_Keys = null ;
 	
 	public bool IsInAnimation { get ; set ; }
 	
@@ -64,8 +65,9 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
+		
 		// actually we move reference up 70
-		ChangeTargetAnimation( 0 ) ;
+		ChangeTargetAnimation( m_TargetIndex - 1 ) ;
 
 	}
 	public void TryMoveDown()
@@ -74,23 +76,17 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
-		ChangeTargetAnimation( 1 ) ;
+		ChangeTargetAnimation( m_TargetIndex + 1 ) ;
 	}
 	
 
 	// Use this for initialization
 	void Start () 
 	{
-		string [] locationKey = { 
-			"Bridge" 
-		} ;
-		m_TargetPositions[ 0 ] = new Vector3( 0 , -70 ) ;
-		m_Answers[ 0 ] = "Bridge" ;
-		m_TargetPositions[ 1 ] = new Vector3( 0 , 0 ) ;
-		m_Answers[ 1 ] = "Roundabout" ;
+		InitializeReferencePlanes() ;
 		
-		RandomizeTheOptions() ;
-		IsInAnimation = false ;
+		
+		IsInAnimation = true ;
 		
 	}
 	
@@ -149,14 +145,14 @@ public class LocationSystem : MonoBehaviour
 		{
 			return false ;
 		}
-		
+		// Debug.Log("m_TargetIndex=" + m_TargetIndex ) ;
 		Vector3 currentPos = referenceObject.transform.position ;
 		Vector3 targetPos = m_TargetPositions [ m_TargetIndex ] ;
 		float dist = Vector3.Distance( currentPos , targetPos ) ;
 		if( dist <= 0.5f )
 		{
 			referenceObject.transform.position = targetPos ;
-			answerLabel.text = m_Answers[ m_TargetIndex ] ;
+			answerLabel.text = m_AnswerStrings[ m_TargetIndex ] ;
 			this.IsInAnimation = false ;
 			return true ;
 		}
@@ -172,7 +168,7 @@ public class LocationSystem : MonoBehaviour
 	private void RandomizeTheOptions()
 	{
 		
-		int []remapTable = new int[ m_Answers.Length ] ;
+		int []remapTable = new int[ m_AnswerStrings.Length ] ;
 		for( int i = 0 ; i < remapTable.Length ; ++i )
 		{
 			remapTable[ i ] = i ;
@@ -189,9 +185,9 @@ public class LocationSystem : MonoBehaviour
 		
 		for( int i = 0 ; i < this.m_Options.Length ; ++i )
 		{
-			if( i < m_Answers.Length )
+			if( i < m_AnswerStrings.Length )
 			{
-				m_Options[ i ].text = m_Answers[ remapTable[ i ] ] ;
+				m_Options[ i ].text = m_AnswerStrings[ remapTable[ i ] ] ;
 			}
 			else
 			{
@@ -204,7 +200,7 @@ public class LocationSystem : MonoBehaviour
 			grid.Reposition() ;
 		}
 		
-		int minSize = Mathf.Min( m_Answers.Length , this.m_Options.Length ) ;
+		int minSize = Mathf.Min( m_AnswerStrings.Length , this.m_Options.Length ) ;
 		int randomTarget = Random.Range( 0 , minSize ) ;
 		ChangeTargetAnimation( randomTarget ) ; // button index
 	}
@@ -255,9 +251,81 @@ public class LocationSystem : MonoBehaviour
 	
 	private void ChangeTargetAnimation( int _Index )
 	{
+		if( _Index < 0 || _Index >= m_Keys.Length )
+		{
+			return ;
+		}
+		Debug.Log("ChangeTargetAnimation _Index" + _Index );
 		m_TargetIndex = _Index ;
 		NGUITools.SetActive( answerLabel.gameObject , false ) ;
 		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
 		this.IsInAnimation = true ;
+	}
+	
+	private void InitializeReferencePlanes()
+	{
+		
+		if( null == referenceObject )
+		{
+			return ;
+		}	
+		
+		Object prefab = Resources.Load("Location/PlanePrefab");
+		if( null == prefab )
+		{
+			return ;
+		}
+		
+		string [] locationKey = 
+		{ 
+			"AlongRiver" 
+			, "Bridge" 
+			, "CrossStreet"
+			, "Intersection"
+			, "Pass"
+			, "RoundAbout"
+			, "Through"
+		} ;
+		string [] describeString = 
+		{ 
+			"das Fussufer entlang" 
+			, "Bridge" 
+			, "CrossStreet"
+			, "Intersection"
+			, "Pass"
+			, "RoundAbout"
+			, "Through"
+		} ;
+		
+		m_Keys = new string[ locationKey.Length ] ;
+		m_TargetPositions = new Vector3[ locationKey.Length ] ;
+		m_AnswerStrings = new string[ locationKey.Length ] ;
+		for( int i = 0 ; i < locationKey.Length ; ++i )
+		{
+			m_Keys[ i ] = locationKey[ i ] ;
+			m_AnswerStrings[ i ] = describeString[ i ] ;
+			m_TargetPositions[ i ] = new Vector3( 0 , -70 * i ) ;
+			GameObject addObj = GameObject.Instantiate( prefab) as GameObject ;
+			if( null != addObj )
+			{
+				addObj.transform.parent = referenceObject.transform ;
+				
+				addObj.name = i.ToString() ;
+				addObj.transform.position = new Vector3( 0 , 70 * i , 0 ) ;
+				addObj.transform.localRotation = Quaternion.Euler( 90 , 0 , 0 ) ;
+				addObj.transform.localScale = new Vector3( 1 , 1 , 1 ) ;
+				
+				SpriteRenderer sr = addObj.GetComponent<SpriteRenderer>();
+				if( null != sr )
+				{
+					string spriteName = "Location/" + m_Keys[i] ;
+					// Debug.Log("spriteName=" + spriteName );
+					sr.sprite = Resources.Load<Sprite>( spriteName );
+				}
+				
+			}
+		}
+		
+		
 	}
 }
