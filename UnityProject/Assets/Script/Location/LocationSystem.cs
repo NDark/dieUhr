@@ -35,12 +35,29 @@ public class LocationSystem : MonoBehaviour
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 	
-	public void ResetDescribeString( string [] describeString )
+	string [] m_DescribeKey = 
+	{ 
+		"LocationKey_AlongRiver"
+		, "LocationKey_Bridge"
+		, "LocationKey_CrossStreet"
+		, "LocationKey_Intersection"
+		, "LocationKey_Pass"
+		, "LocationKey_RoundAbout"
+		, "LocationKey_Through"
+	} ;
+	
+	int [] m_RemapTable = null ;
+	
+	public void ResetDescribeString()
 	{
-		for( int i = 0 ; i < describeString.Length ; ++i )
+		for( int i = 0 ; i < m_DescribeKey.Length ; ++i )
 		{
-			m_AnswerStrings[ i ] = describeString[ i ] ;	
+			m_AnswerStrings[ i ] = Localization.Get( m_DescribeKey[ i ] ) ;	
 		}
+		
+		ResetOptionsText() ;
+		
+		answerLabel.text = m_AnswerStrings[ m_TargetIndex ] ;
 	}
 	
 	public void TrySwitchToAnswerMode()
@@ -93,7 +110,7 @@ public class LocationSystem : MonoBehaviour
 	{
 		InitializeReferencePlanes() ;
 		InitializeOptions() ;
-		
+		CheckIndexGUI( m_TargetIndex ) ;
 		IsInAnimation = true ;
 		
 	}
@@ -175,29 +192,47 @@ public class LocationSystem : MonoBehaviour
 	
 	private void RandomizeTheOptions()
 	{
-		
-		int []remapTable = new int[ m_AnswerStrings.Length ] ;
-		for( int i = 0 ; i < remapTable.Length ; ++i )
+		if( null == m_RemapTable )
 		{
-			remapTable[ i ] = i ;
+			return ;
 		}
 		
 		for( int i = 0 ; i < 10 ; ++i )
 		{
-			int index0 = Random.Range( 0 , m_AnswerStrings.Length ) ;
-			int index1 = Random.Range( 0 , m_AnswerStrings.Length ) ;
-			int tmp = remapTable[ index0 ] ;
-			remapTable[ index0 ] = remapTable[ index1 ] ;
-			remapTable[ index1 ] = tmp ;
+			int index0 = Random.Range( 0 , m_RemapTable.Length ) ;
+			int index1 = Random.Range( 0 , m_RemapTable.Length ) ;
+			int tmp = m_RemapTable[ index0 ] ;
+			m_RemapTable[ index0 ] = m_RemapTable[ index1 ] ;
+			m_RemapTable[ index1 ] = tmp ;
 		}
 		
 		
+		ResetOptionsText() ;
+		
+		
+		int minSize = Mathf.Min( m_AnswerStrings.Length , this.m_Options.Length ) ;
+		int randomTarget = Random.Range( 0 , minSize ) ;
+		ChangeTargetAnimation( randomTarget ) ; // button index
+	}
+	
+	private void ResetOptionsText()	
+	{
+		if( null == this.m_Options )
+		{
+			return ;
+		}
+		
 		for( int i = 0 ; i < this.m_Options.Length ; ++i )
 		{
+			if( null == m_Options[ i ] )
+			{
+				return ;
+			}
+			
 			if( i < m_AnswerStrings.Length )
 			{
-				// Debug.Log("remapTable[ i ]" + remapTable[ i ]);
-				m_Options[ i ].text = m_AnswerStrings[ remapTable[ i ] ] ;
+				// Debug.Log("m_RemapTable[ i ]" + m_RemapTable[ i ]);
+				m_Options[ i ].text = m_AnswerStrings[ m_RemapTable[ i ] ] ;
 			}
 			else
 			{
@@ -206,14 +241,12 @@ public class LocationSystem : MonoBehaviour
 			}
 		}
 		
+		
 		if( null != grid )
 		{
 			grid.Reposition() ;
 		}
 		
-		int minSize = Mathf.Min( m_AnswerStrings.Length , this.m_Options.Length ) ;
-		int randomTarget = Random.Range( 0 , minSize ) ;
-		ChangeTargetAnimation( randomTarget ) ; // button index
 	}
 	
 	private void AnswerMode_EnterCorrectAnswer()
@@ -247,11 +280,11 @@ public class LocationSystem : MonoBehaviour
 		
 		if( null != arrowUpButton )
 		{
-			NGUITools.SetActive( arrowUpButton , _AnswerMode );
+			NGUITools.SetActive( arrowUpButton , _AnswerMode && m_TargetIndex > 0 );
 		}
 		if( null != arrowDownButton )
 		{
-			NGUITools.SetActive( arrowDownButton , _AnswerMode );
+			NGUITools.SetActive( arrowDownButton , _AnswerMode && m_TargetIndex < m_Keys.Length - 1 );
 		}
 		
 		if( null != answerLabel )
@@ -260,9 +293,21 @@ public class LocationSystem : MonoBehaviour
 		}
 	}
 	
+	private void CheckIndexGUI( int _Index )
+	{
+		NGUITools.SetActive( arrowUpButton , _Index > 0  ) ;
+		NGUITools.SetActive( arrowDownButton , _Index < m_Keys.Length - 1 ) ;
+	}
+	
 	private void ChangeTargetAnimation( int _Index )
 	{
-		if( _Index < 0 || _Index >= m_Keys.Length )
+		CheckIndexGUI( _Index ) ;
+		if( _Index < 0 )
+		{
+			return ;
+		}
+		
+		if( _Index >= m_Keys.Length )
 		{
 			return ;
 		}
@@ -298,22 +343,19 @@ public class LocationSystem : MonoBehaviour
 			, "RoundAbout"
 			, "Through"
 		} ;
-		string [] describeString = 
-		{ 
-			Localization.Get( "LocationKey_AlongRiver" )
-			, Localization.Get( "LocationKey_Bridge" )
-			, Localization.Get( "LocationKey_CrossStreet" )
-			, Localization.Get( "LocationKey_Intersection" )
-			, Localization.Get( "LocationKey_Pass" )
-			, Localization.Get( "LocationKey_RoundAbout" )
-			, Localization.Get( "LocationKey_Through" )
-		} ;
 		
 		
 		m_Keys = new string[ locationKey.Length ] ;
 		m_TargetPositions = new Vector3[ locationKey.Length ] ;
-		m_AnswerStrings = new string[ describeString.Length ] ;
-		ResetDescribeString( describeString ) ;
+		m_AnswerStrings = new string[ m_DescribeKey.Length ] ;
+		
+		m_RemapTable = new int[ m_AnswerStrings.Length ] ;
+		for( int i = 0 ; i < m_RemapTable.Length ; ++i )
+		{
+			m_RemapTable[ i ] = i ;
+		}
+				
+		ResetDescribeString() ;
 		
 		for( int i = 0 ; i < locationKey.Length ; ++i )
 		{
@@ -350,6 +392,7 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}	
+		
 		
 		GameObject prefab = Resources.Load("Location/OptionPrefab") as GameObject;
 		if( null == prefab )
