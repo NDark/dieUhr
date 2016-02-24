@@ -40,10 +40,10 @@ h2,,,兩
 50,Fünfzig,fifty,
 AcknowledgeMarcus,Acknowledge to Marcus Breit for the consultation.,Acknowledge to Marcus Breit for the consultation.,感謝Marcus Breit語言指導
 LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent
-LocationKey_AlongRiver,<das Fussufer> entlang,along <the river>,沿著<河流>
-LocationKey_Bridge,uber <die Brucke>,uber <die Brucke>,uber <die Brucke>
-LocationKey_CrossStreet,gegenuber <...>,gegenuber <...>,gegenuber <...>
-LocationKey_Intersection,bis zur <Kreuzung>,bis zur <Kreuzung>,bis zur <Kreuzung>
-LocationKey_Pass,am <...> vorbei,am <...> vorbei,am <...> vorbei
-LocationKey_RoundAbout,um <den Kreisverkehr> herum,um <den Kreisverkehr> herum,um <den Kreisverkehr> herum
-LocationKey_Through,durch <das Zentrum> fahren,durch <das Zentrum> fahren,durch <das Zentrum> fahren
+LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
+LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
+LocationKey_CrossStreet,gegenüber <...>,on the opposite side of <...>,"在 <...> 對面"
+LocationKey_Intersection,bis zur <Kreuzung>,until <Intersection>,到 <十字路口>
+LocationKey_Pass,am <...> vorbei,pass <...> ,經過 <...> 
+LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
+LocationKey_Through,durch <das Zentrum> fahren,through <the center>,穿越 <廣場> 
