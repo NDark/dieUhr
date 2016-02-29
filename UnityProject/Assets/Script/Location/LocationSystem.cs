@@ -4,11 +4,12 @@ using System.Collections;
 public enum AnswerMode
 {
 	AnswerMode_Invalid = 0 ,
-	AnswerMode_EnterCorrectAnswer ,
-	AnswerMode_WaitCorrectAnswer ,
-	AnswerMode_ToOptionMode ,
+	AnswerMode_ChangeToAnswerMode ,
+	AnswerMode_WaitAtAnswerMode ,
+	AnswerMode_ChangeToOptionMode ,
 	AnswerMode_WaitAnimation ,
 	AnswerMode_WaitPressOption ,
+	AnswerMode_WaitCorrectAnimation ,
 }
 
 public class LocationSystem : MonoBehaviour 
@@ -23,6 +24,7 @@ public class LocationSystem : MonoBehaviour
 	public GameObject exampleButton = null ;
 	public GameObject instructionText = null ;
 	public UILabel exampleContent = null ;
+	public TweenAlpha correctAlpha = null ;
 	
 	private int m_TargetIndex = 0 ;
 	private Vector3 [] m_TargetPositions = new Vector3[2] ;
@@ -35,8 +37,10 @@ public class LocationSystem : MonoBehaviour
 	
 	public UILabel [] m_Options = null ;
 	
-	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
+	
+	public float m_CorrectAnswerWaitSec = 0.5f ;
+	public float m_CorrectAnswerWaitTime = 0.0f ;
 	
 	private string GetDescribKey( int _Index )
 	{
@@ -90,16 +94,16 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
-		m_AnswerMode = AnswerMode.AnswerMode_EnterCorrectAnswer ;
+		m_AnswerMode = AnswerMode.AnswerMode_ChangeToAnswerMode ;
 	}
 	
 	public void TrySwitchToOptionMode()
 	{
-		if( m_AnswerMode != AnswerMode.AnswerMode_WaitCorrectAnswer )
+		if( m_AnswerMode != AnswerMode.AnswerMode_WaitAtAnswerMode )
 		{
 			return ;
 		}
-		m_AnswerMode = AnswerMode.AnswerMode_ToOptionMode ;
+		m_AnswerMode = AnswerMode.AnswerMode_ChangeToOptionMode ;
 	}
 	
 	
@@ -111,7 +115,9 @@ public class LocationSystem : MonoBehaviour
 		if( m_TargetIndex == pressAnserIndex )
 		{
 			// turn option to green
-			m_AnswerMode = AnswerMode.AnswerMode_ToOptionMode ;
+			PlayCorrectAnimation( true ) ;
+			m_CorrectAnswerWaitTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec ;
+			m_AnswerMode = AnswerMode.AnswerMode_WaitCorrectAnimation ;
 		}
 		else
 		{
@@ -167,13 +173,13 @@ public class LocationSystem : MonoBehaviour
 		switch( m_AnswerMode )
 		{
 		case AnswerMode.AnswerMode_Invalid :
-			m_AnswerMode = AnswerMode.AnswerMode_EnterCorrectAnswer ;
+			m_AnswerMode = AnswerMode.AnswerMode_ChangeToAnswerMode ;
 			break ;
-		case AnswerMode.AnswerMode_EnterCorrectAnswer :
-			AnswerMode_EnterCorrectAnswer() ;
-			m_AnswerMode = AnswerMode.AnswerMode_WaitCorrectAnswer ;
+		case AnswerMode.AnswerMode_ChangeToAnswerMode :
+			AnswerMode_ChangeToAnswerMode() ;
+			m_AnswerMode = AnswerMode.AnswerMode_WaitAtAnswerMode ;
 			break ;
-		case AnswerMode.AnswerMode_WaitCorrectAnswer :
+		case AnswerMode.AnswerMode_WaitAtAnswerMode :
 			if( true == this.IsInAnimation )
 			{
 				if( true == UpdateReference() )
@@ -188,9 +194,9 @@ public class LocationSystem : MonoBehaviour
 				CheckExampleTimer() ;
 			}
 			break ;
-		case AnswerMode.AnswerMode_ToOptionMode :
+		case AnswerMode.AnswerMode_ChangeToOptionMode :
 			RandomizeTheOptions() ;
-			AnswerMode_ToOptionMode() ;
+			AnswerMode_ChangeToOptionMode() ;
 			m_AnswerMode = AnswerMode.AnswerMode_WaitAnimation ;
 			break ;
 		case AnswerMode.AnswerMode_WaitAnimation :
@@ -209,6 +215,9 @@ public class LocationSystem : MonoBehaviour
 		case AnswerMode.AnswerMode_WaitPressOption :
 
 			break ;
+		case AnswerMode.AnswerMode_WaitCorrectAnimation :
+			AnswerMode_WaitCorrectAnimation() ;
+			break ;			
 			
 		}
 		
@@ -316,12 +325,12 @@ public class LocationSystem : MonoBehaviour
 		
 	}
 	
-	private void AnswerMode_EnterCorrectAnswer()
+	private void AnswerMode_ChangeToAnswerMode()
 	{
 		SwitchModeGUI( true ) ;
 	}
 	
-	private void AnswerMode_ToOptionMode()
+	private void AnswerMode_ChangeToOptionMode()
 	{
 		SwitchModeGUI( false ) ;
 	}
@@ -528,5 +537,32 @@ public class LocationSystem : MonoBehaviour
 		{
 			ShowExampleButton( true ) ;
 		}
+	}
+	
+	private void PlayCorrectAnimation( bool _Forward )
+	{
+		if( null == correctAlpha )
+		{
+			return ;
+		}
+		
+		if( true == _Forward )
+		{
+			correctAlpha.PlayForward() ;
+		}
+		else
+		{
+			correctAlpha.PlayReverse() ;
+		}
+	}
+	
+	private void AnswerMode_WaitCorrectAnimation()
+	{
+		if( Time.timeSinceLevelLoad > m_CorrectAnswerWaitTime )
+		{
+			m_AnswerMode = AnswerMode.AnswerMode_ChangeToOptionMode ;		
+			PlayCorrectAnimation( false ) ;
+		}
+		
 	}
 }
