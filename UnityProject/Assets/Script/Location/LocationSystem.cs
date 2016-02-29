@@ -396,7 +396,6 @@ public class LocationSystem : MonoBehaviour
 				
 				addObj.name = i.ToString() ;
 				addObj.transform.position = new Vector3( 0 , 70 * i , 0 ) ;
-				addObj.transform.localRotation = Quaternion.Euler( 90 , 0 , 0 ) ;
 				addObj.transform.localScale = new Vector3( 1 , 1 , 1 ) ;
 				
 				SpriteRenderer sr = addObj.GetComponent<SpriteRenderer>();
