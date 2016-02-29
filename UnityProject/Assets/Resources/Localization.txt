@@ -42,11 +42,11 @@ AcknowledgeMarcus,Acknowledge to Marcus Breit for the consultation.,Acknowledge 
 LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
-LocationKey_CrossStreet,gegenüber <...>,on the opposite side of <...>,"在 <...> 對面"
+LocationKey_CrossStreet,gegenüber <die Kirche>,the opposite side of <the church>,在 <教堂> 對面
 LocationKey_Intersection,bis zur <Kreuzung>,until <intersection>,到 <十字路口>
 LocationKey_Pass,am <...> vorbei,pass <...> ,經過 <...> 
 LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
-LocationKey_Through,durch <den Park> fahren,through <the park>,穿越 <廣場> 
+LocationKey_Through,durch <den Park> gehen,walk through <the park>,穿越 <公園> 
 LocationKey_TurnLeft,links ab-biegen,turn left,左轉
 LocationKey_TurnRight,rechts ab-biegen,turn right,右轉
-LocationKey_ThroughInterception,durch <den Kreuzung> fahren,through <the intersection>,穿越 <十字路口>
+LocationKey_ThroughInterception,durch <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
