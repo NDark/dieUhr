@@ -50,3 +50,5 @@ LocationKey_Through,durch <den Park> gehen,walk through <the park>,穿越 <公�
 LocationKey_TurnLeft,links ab-biegen,turn left,左轉
 LocationKey_TurnRight,rechts ab-biegen,turn right,右轉
 LocationKey_ThroughInterception,durch <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
+ExampleShort,z.B.,ex.,例
+ExampleLong,zum Beispiel,Example,例句
