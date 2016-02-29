@@ -25,6 +25,7 @@ public class LocationSystem : MonoBehaviour
 	public GameObject instructionText = null ;
 	public UILabel exampleContent = null ;
 	public TweenAlpha correctAlpha = null ;
+	public AudioSource correctAudio = null ;
 	
 	private int m_TargetIndex = 0 ;
 	private Vector3 [] m_TargetPositions = new Vector3[2] ;
@@ -549,6 +550,7 @@ public class LocationSystem : MonoBehaviour
 		if( true == _Forward )
 		{
 			correctAlpha.PlayForward() ;
+			correctAudio.Play() ;
 		}
 		else
 		{
