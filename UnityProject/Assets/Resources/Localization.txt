@@ -62,3 +62,7 @@ ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe
 ExampleSentence_TurnLeft,Biegen Sie dort rechts ab.\nBis zur Kreuzung hat er rechts abgebogen.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
 ExampleSentence_TurnRight,in Straße biegst du links ab.\nEr hat links bis zur Ampel abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
 ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口
+ClockExampleKey_0,Ich fahre ins Büro um <time>.,I drive to office at <time>.,我在<time>到辦公室。
+ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
+ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。
+ClockExampleKey_3,Sie gehen ins Kino um <time>,They will watch movie at <time>.,他們在<time>要去看電影

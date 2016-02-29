@@ -8,7 +8,14 @@ public class DragArrow : MonoBehaviour
     public DragArrow hourSprite = null;
     public DragArrow minuteSprite = null;
     public UILabel uiLabel = null;
+	public GameObject exampleButton = null ;
+	public UILabel exampleContent = null ;
+	
+	
     public UILabel m_IntroductionLabel = null;
+    
+    
+    
     public string key = "";
     bool m_IsPress = false;
     public float halfScreenWidth = 320;
@@ -25,6 +32,11 @@ public class DragArrow : MonoBehaviour
         {
             ClockData.SetupLabel(uiLabel);
         }
+        
+		if( null != exampleButton && null != exampleContent )
+		{
+			ClockData.SetupExampleButton( exampleButton , exampleContent ) ;
+		}
     }
 
     public void DoUpdate()
@@ -173,4 +185,5 @@ public class DragArrow : MonoBehaviour
         }
         
     }
+    
 }

@@ -8,6 +8,14 @@ https://www.ego4u.com/en/cram-up/vocabulary/time
 . add checking minute 1 at CalculateString_Deutsch_DigitalMode()
 . add checking minute 1 at CalculateString_Deutsch()
 
+@date 20160229 by NDark
+. add class member m_ExampleButton
+. add class member m_ExampleContent
+. add class method SetupExampleButton()
+
+
+. add class method ShowNGUIObj()
+. add class method UpdateNGUILabel()
 
 */
 using UnityEngine;
@@ -17,6 +25,9 @@ public static class ClockData
 {
 
     static UILabel m_Label = null;
+    static GameObject m_ExampleButton = null ;
+	static UILabel m_ExampleContent = null ;
+    
     static int m_Minute = 0;
     static int m_Hour = 0;
     static bool m_IsDigital = false;
@@ -29,7 +40,13 @@ public static class ClockData
     {
         m_Label = _Label;
     }
-
+    
+	public static void SetupExampleButton(GameObject _Obj , UILabel _Content )
+	{
+		m_ExampleButton = _Obj;
+		m_ExampleContent = _Content ;
+	}
+	
     public static void ResetValue()
     {
         m_Minute = 0;
@@ -53,6 +70,17 @@ public static class ClockData
     {
         DoSetValue(_Key, value);
         CalculateString();
+        
+        // update content
+        int randomIndex = Random.Range( 0 , 4 ) ;
+		string key = "ClockExampleKey_" + randomIndex ;
+		string exampleSentence = Localization.Get( key ) ;
+		string replaceTimeKey = "<time>" ;
+		exampleSentence = exampleSentence.Replace( replaceTimeKey , m_Label.text ) ;
+		UpdateNGUILabel( m_ExampleContent , exampleSentence ) ;
+		
+        // show button
+		ShowNGUIObj( m_ExampleButton , true ) ;
     }
 
     public static void CalculateString_TraditionalChinese( int _Hour , int _Minute )
@@ -399,4 +427,27 @@ public static class ClockData
     {
         return WordFromDigital(_Digital).ToLower(); 
     }
+    
+	
+	
+	static void ShowNGUIObj( GameObject _Obj , bool _Show )
+	{
+		if( null == _Obj )
+		{
+			return ;
+		}
+		
+		NGUITools.SetActive( _Obj , _Show ) ;
+	}
+	
+	static void UpdateNGUILabel( UILabel _Label ,  string _Content )
+	{
+		if( null == _Label )
+		{
+			return ;
+		}
+		
+		_Label.text = _Content ; 
+	}
+	
 }
