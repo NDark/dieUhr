@@ -20,6 +20,9 @@ public class LocationSystem : MonoBehaviour
 	public GameObject answerModeButton = null ;
 	public GameObject optionModeModeButton = null ;
 	public UIGrid grid = null ;
+	public GameObject exampleButton = null ;
+	public GameObject instructionText = null ;
+	public UILabel exampleContent = null ;
 	
 	private int m_TargetIndex = 0 ;
 	private Vector3 [] m_TargetPositions = new Vector3[2] ;
@@ -35,22 +38,15 @@ public class LocationSystem : MonoBehaviour
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 	
-	string [] m_DescribeKey = 
-	{ 
-		"LocationKey_AlongRiver"
-		, "LocationKey_Bridge"
-		, "LocationKey_CrossStreet"
-		
-		, "LocationKey_Pass"
-		, "LocationKey_RoundAbout"
-		
-		, "LocationKey_Intersection"
-		, "LocationKey_TurnLeft"
-		, "LocationKey_TurnRight"
-		, "LocationKey_ThroughInterception"		
-		, "LocationKey_Through"
-	} ;
+	private string GetDescribKey( int _Index )
+	{
+		return "LocationKey_" + m_Keys[ _Index ] ;
+	}
 	
+	private string GetExampleKey( int _Index )
+	{
+		return "ExampleSentence_" + m_Keys[ _Index ] ;
+	}
 	
 	string [] m_DefaultLocationKey = 
 	{ 
@@ -70,11 +66,16 @@ public class LocationSystem : MonoBehaviour
 	
 	int [] m_RemapTable = null ;
 	
+	float m_ShowExampleWaitTime = 10.0f ;
+	float m_ShowExampleSet = 0.0f ;
+	
 	public void ResetDescribeString()
 	{
-		for( int i = 0 ; i < m_DescribeKey.Length ; ++i )
+		string describKey = "" ;
+		for( int i = 0 ; i < m_Keys.Length ; ++i )
 		{
-			m_AnswerStrings[ i ] = Localization.Get( m_DescribeKey[ i ] ) ;	
+			describKey = GetDescribKey( i ) ;
+			m_AnswerStrings[ i ] = Localization.Get( describKey ) ;	
 		}
 		
 		ResetOptionsText() ;
@@ -131,6 +132,8 @@ public class LocationSystem : MonoBehaviour
 		
 		// actually we move reference up 70
 		ChangeTargetAnimation( m_TargetIndex - 1 ) ;
+		
+		HideInstructionText() ;
 
 	}
 	public void TryMoveDown()
@@ -139,7 +142,10 @@ public class LocationSystem : MonoBehaviour
 		{
 			return ;
 		}
+		
 		ChangeTargetAnimation( m_TargetIndex + 1 ) ;
+		
+		HideInstructionText() ;
 	}
 	
 
@@ -150,6 +156,7 @@ public class LocationSystem : MonoBehaviour
 		InitializeOptions() ;
 		CheckIndexGUI( m_TargetIndex ) ;
 		IsInAnimation = true ;
+		
 		
 	}
 	
@@ -172,8 +179,13 @@ public class LocationSystem : MonoBehaviour
 				{
 					NGUITools.SetActive( answerLabel.gameObject , true ) ;
 					NGUITools.SetActiveChildren( answerLabel.gameObject , true ) ;
+					ResetExampleTimer() ;
 				}
-			}		
+			}
+			else
+			{
+				CheckExampleTimer() ;
+			}
 			break ;
 		case AnswerMode.AnswerMode_ToOptionMode :
 			RandomizeTheOptions() ;
@@ -216,6 +228,10 @@ public class LocationSystem : MonoBehaviour
 		{
 			referenceObject.transform.position = targetPos ;
 			answerLabel.text = m_AnswerStrings[ m_TargetIndex ] ;
+			string exampleKey = GetExampleKey( m_TargetIndex ) ;
+			string exampleSentence = Localization.Get( exampleKey );
+			Debug.Log("exampleSentence" + exampleSentence);
+			UpdateExampleContent( exampleSentence ) ;
 			this.IsInAnimation = false ;
 			return true ;
 		}
@@ -366,6 +382,7 @@ public class LocationSystem : MonoBehaviour
 		m_TargetIndex = _Index ;
 		NGUITools.SetActive( answerLabel.gameObject , false ) ;
 		NGUITools.SetActiveChildren( answerLabel.gameObject , false ) ;
+		ShowExampleButton( false ) ;
 		this.IsInAnimation = true ;
 	}
 	
@@ -385,20 +402,25 @@ public class LocationSystem : MonoBehaviour
 		
 		
 		m_Keys = new string[ m_DefaultLocationKey.Length ] ;
+		for( int i = 0 ; i < m_DefaultLocationKey.Length ; ++i )
+		{
+			m_Keys[ i ] = m_DefaultLocationKey[ i ] ;
+		}				
+
+				
 		m_TargetPositions = new Vector3[ m_DefaultLocationKey.Length ] ;
-		m_AnswerStrings = new string[ m_DescribeKey.Length ] ;
+		m_AnswerStrings = new string[ m_Keys.Length ] ;
 		
-		m_RemapTable = new int[ m_AnswerStrings.Length ] ;
+		m_RemapTable = new int[ m_Keys.Length ] ;
 		for( int i = 0 ; i < m_RemapTable.Length ; ++i )
 		{
 			m_RemapTable[ i ] = i ;
 		}
-				
+		
 		ResetDescribeString() ;
 		
-		for( int i = 0 ; i < m_DefaultLocationKey.Length ; ++i )
+		for( int i = 0 ; i < m_Keys.Length ; ++i )
 		{
-			m_Keys[ i ] = m_DefaultLocationKey[ i ] ;
 			m_TargetPositions[ i ] = new Vector3( 0 , -70 * i ) ;
 			GameObject addObj = GameObject.Instantiate( prefab) as GameObject ;
 			if( null != addObj )
@@ -461,5 +483,49 @@ public class LocationSystem : MonoBehaviour
 			grid.Reposition() ;
 		}
 		
+	}
+	
+	private void ShowExampleButton( bool _Show )
+	{
+		if( null == exampleButton )
+		{
+			return ;
+		}
+		
+		NGUITools.SetActive( exampleButton , _Show ) ;
+	}
+	
+	private void HideInstructionText()
+	{
+		if( null == instructionText )
+		{
+			return ;
+		}
+		
+		NGUITools.SetActive( instructionText , false ) ;	
+	}
+	
+	private void UpdateExampleContent( string _Content )
+	{
+		if( null == exampleContent )
+		{
+			return ;
+		}
+		
+		exampleContent.text = _Content ; 
+	}
+	
+	private void ResetExampleTimer()
+	{
+		float waitTime = Random.Range( m_ShowExampleWaitTime/2.0f , m_ShowExampleWaitTime ) ;
+		m_ShowExampleSet = Time.timeSinceLevelLoad + waitTime ;
+	}
+	
+	private void CheckExampleTimer()
+	{
+		if( Time.timeSinceLevelLoad > m_ShowExampleSet )
+		{
+			ShowExampleButton( true ) ;
+		}
 	}
 }
