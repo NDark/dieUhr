@@ -43,7 +43,10 @@ LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionCont
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
 LocationKey_CrossStreet,gegenüber <...>,on the opposite side of <...>,"在 <...> 對面"
-LocationKey_Intersection,bis zur <Kreuzung>,until <Intersection>,到 <十字路口>
+LocationKey_Intersection,bis zur <Kreuzung>,until <intersection>,到 <十字路口>
 LocationKey_Pass,am <...> vorbei,pass <...> ,經過 <...> 
 LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
-LocationKey_Through,durch <das Zentrum> fahren,through <the center>,穿越 <廣場> 
+LocationKey_Through,durch <den Park> fahren,through <the park>,穿越 <廣場> 
+LocationKey_TurnLeft,links ab-biegen,turn left,左轉
+LocationKey_TurnRight,rechts ab-biegen,turn right,右轉
+LocationKey_ThroughInterception,durch <den Kreuzung> fahren,through <the intersection>,穿越 <十字路口>

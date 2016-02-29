@@ -40,11 +40,33 @@ public class LocationSystem : MonoBehaviour
 		"LocationKey_AlongRiver"
 		, "LocationKey_Bridge"
 		, "LocationKey_CrossStreet"
-		, "LocationKey_Intersection"
+		
 		, "LocationKey_Pass"
 		, "LocationKey_RoundAbout"
+		
+		, "LocationKey_Intersection"
+		, "LocationKey_TurnLeft"
+		, "LocationKey_TurnRight"
+		, "LocationKey_ThroughInterception"		
 		, "LocationKey_Through"
 	} ;
+	
+	
+	string [] m_DefaultLocationKey = 
+	{ 
+		"AlongRiver" 
+		, "Bridge" 
+		, "CrossStreet"
+		, "Pass"
+		, "RoundAbout"
+		, "Intersection"
+		, "TurnLeft"
+		, "TurnRight"
+		, "ThroughInterception"
+		, "Through"
+		
+	} ;
+	
 	
 	int [] m_RemapTable = null ;
 	
@@ -361,20 +383,9 @@ public class LocationSystem : MonoBehaviour
 			return ;
 		}
 		
-		string [] locationKey = 
-		{ 
-			"AlongRiver" 
-			, "Bridge" 
-			, "CrossStreet"
-			, "Intersection"
-			, "Pass"
-			, "RoundAbout"
-			, "Through"
-		} ;
 		
-		
-		m_Keys = new string[ locationKey.Length ] ;
-		m_TargetPositions = new Vector3[ locationKey.Length ] ;
+		m_Keys = new string[ m_DefaultLocationKey.Length ] ;
+		m_TargetPositions = new Vector3[ m_DefaultLocationKey.Length ] ;
 		m_AnswerStrings = new string[ m_DescribeKey.Length ] ;
 		
 		m_RemapTable = new int[ m_AnswerStrings.Length ] ;
@@ -385,9 +396,9 @@ public class LocationSystem : MonoBehaviour
 				
 		ResetDescribeString() ;
 		
-		for( int i = 0 ; i < locationKey.Length ; ++i )
+		for( int i = 0 ; i < m_DefaultLocationKey.Length ; ++i )
 		{
-			m_Keys[ i ] = locationKey[ i ] ;
+			m_Keys[ i ] = m_DefaultLocationKey[ i ] ;
 			m_TargetPositions[ i ] = new Vector3( 0 , -70 * i ) ;
 			GameObject addObj = GameObject.Instantiate( prefab) as GameObject ;
 			if( null != addObj )
