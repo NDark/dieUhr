@@ -50,7 +50,8 @@ public class LocationSystem : MonoBehaviour
 	
 	string [] m_DefaultLocationKey = 
 	{ 
-		"AlongRiver" 
+		"Straight"
+		, "AlongRiver" 
 		, "Bridge" 
 		, "CrossStreet"
 		, "Pass"
