@@ -8,10 +8,15 @@ public class PressOption : MonoBehaviour
 	
 	public void OnPress( bool _Down )
 	{
-		if( true == _Down )
+		if( false == _Down )
 		{
-			m_LocationSystem.TryPress( m_OptionIndex) ;
+			// m_LocationSystem.TryPress( m_OptionIndex) ;
 		}
+	}
+	
+	public void OnClick()
+	{
+		m_LocationSystem.TryPress( m_OptionIndex) ;
 	}
 
 	// Use this for initialization
