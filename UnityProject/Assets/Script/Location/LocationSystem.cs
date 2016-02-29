@@ -39,9 +39,7 @@ public class LocationSystem : MonoBehaviour
 	public UILabel [] m_Options = null ;
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
-	
-	public float m_CorrectAnswerWaitSec = 0.5f ;
-	public float m_CorrectAnswerWaitTime = 0.0f ;
+
 	
 	private string GetDescribKey( int _Index )
 	{
@@ -567,4 +565,7 @@ public class LocationSystem : MonoBehaviour
 		}
 		
 	}
+	
+	private float m_CorrectAnswerWaitSec = 1.0f ;
+	private float m_CorrectAnswerWaitTime = 0.0f ;	
 }
