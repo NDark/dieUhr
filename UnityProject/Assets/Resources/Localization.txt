@@ -10,8 +10,8 @@ halb,halb,half,半
 Uhr,Uhr,o'clock,點
 to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
-SubTitle,Die traditionelle Deutsche Uhrzeit,A traditional Clock System,傳統的德文時間系統
-PressContinue,Drücken Sie hier für mehr,Press and continue,請按繼續
+SubTitle,Ein App für den Deutschunterricht,A German tutoring App.,德文學習App.
+PressContinue,Wählen Sie das Thema,Choose the topic,請選擇主題
 Reset,Uhr Zurücksetzen,Reset the clock,重置時鐘
 0,Null,zero,零
 1,Ein,one,一
