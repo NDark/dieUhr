@@ -42,6 +42,7 @@ public class DragArrow : MonoBehaviour
     public void DoUpdate()
     {
         ClockData.CalculateString();
+		ClockData.UpdateExampleSentence();
     }
 
     // Update is called once per frame
