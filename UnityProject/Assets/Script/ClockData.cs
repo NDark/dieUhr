@@ -32,6 +32,8 @@ public static class ClockData
     static int m_Hour = 0;
     static bool m_IsDigital = false;
 
+	static int m_RandomIndex = 0 ;
+	
     public static void SetDigital(bool _Set)
     {
         m_IsDigital = _Set;
@@ -72,16 +74,23 @@ public static class ClockData
         CalculateString();
         
         // update content
-        int randomIndex = Random.Range( 0 , 4 ) ;
-		string key = "ClockExampleKey_" + randomIndex ;
+        
+		m_RandomIndex = Random.Range( 0 , 10 ) ;
+		UpdateExampleSentence() ;
+
+    }
+    
+	public static void UpdateExampleSentence()
+	{
+		string key = "ClockExampleKey_" + m_RandomIndex ;
 		string exampleSentence = Localization.Get( key ) ;
 		string replaceTimeKey = "<time>" ;
 		exampleSentence = exampleSentence.Replace( replaceTimeKey , m_Label.text ) ;
 		UpdateNGUILabel( m_ExampleContent , exampleSentence ) ;
 		
-        // show button
-		ShowNGUIObj( m_ExampleButton , true ) ;
-    }
+		// show button
+		ShowNGUIObj( m_ExampleButton , true ) ;	
+	}	
 
     public static void CalculateString_TraditionalChinese( int _Hour , int _Minute )
     {
@@ -449,5 +458,6 @@ public static class ClockData
 		
 		_Label.text = _Content ; 
 	}
-	
+
+
 }
