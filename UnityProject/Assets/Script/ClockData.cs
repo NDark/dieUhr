@@ -75,7 +75,7 @@ public static class ClockData
         
         // update content
         
-		m_RandomIndex = Random.Range( 0 , 4 ) ;
+		m_RandomIndex = Random.Range( 0 , 10 ) ;
 		UpdateExampleSentence() ;
 
     }

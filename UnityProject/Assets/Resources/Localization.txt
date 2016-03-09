@@ -12,7 +12,7 @@ to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
 SubTitle,Ein App für den Deutschunterricht,A German tutoring App.,德文學習App.
 PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入
-Reset,Uhr Zurücksetzen,Reset the clock,重置時鐘
+Reset,Uhr zurücksetzen,Reset the clock,重置時鐘
 0,Null,zero,零
 1,Ein,one,一
 2,Zwei,two,二
@@ -38,7 +38,7 @@ h2,,,兩
 30,Dreißig,thirty,
 40,Vierzig,forty,
 50,Fünfzig,fifty,
-AcknowledgeMarcus,Acknowledge to Marcus Breit for the consultation.,Acknowledge to Marcus Breit for the consultation.,感謝Marcus Breit語言指導
+AcknowledgeMarcus,Viele Danke an Marcus Breit für die Beratung.,Acknowledge to Marcus Breit for the consultation.,感謝Marcus Breit語言指導
 LocationIntroductionContent,LocationIntroductionContent,"The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
@@ -64,7 +64,14 @@ ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe
 ExampleSentence_TurnLeft,Biegen Sie dort rechts ab.\nBis zur Kreuzung hat er rechts abgebogen.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
 ExampleSentence_TurnRight,in Straße biegst du links ab.\nEr hat links bis zur Ampel abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
 ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口
-ClockExampleKey_0,Ich fahre ins Büro um <time>.,I drive to office at <time>.,我在<time>到辦公室。
+ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。
 ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
 ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。
-ClockExampleKey_3,Sie gehen ins Kino um <time>,They will watch movie at <time>.,他們在<time>要去看電影
+ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。
+ClockExampleKey_4,Ich gehe um <time> zum Sport.,"I go sport at <time>.
+",我在<time>去運動。
+ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。
+ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。
+ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
+ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？
+ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
