@@ -78,10 +78,16 @@ public class DragArrow : MonoBehaviour
 
     Queue<float> lastUpdateMin = new Queue<float>();
 
+	public void ClearLastUpdateQueue()
+	{
+		m_Angle = 0 ;
+	 	this.lastUpdateMin.Clear() ;
+	}
+  
     public void UpdateRotationByMinuteAngle(float _Angle)
     {
 
-        if (lastUpdateMin.Count > 3)
+        if (lastUpdateMin.Count > 1)
         {
             lastUpdateMin.Dequeue();
         }
@@ -92,16 +98,18 @@ public class DragArrow : MonoBehaviour
 
         int hourInt = (int)(m_Angle / 30.0f);
         
-        /*
+
         Debug.Log("m_Angle=" + m_Angle);
         Debug.Log("hourInt=" + hourInt);
-        Debug.Log("hourMod30=" + hourMod30);
         Debug.Log("_Angle=" + _Angle);
         Debug.Log("avgLastValue=" + avgLastValue);
-        */
-        if ( _Angle < 360 && _Angle > 270 && avgLastValue >= 0 && avgLastValue < 90)
+        //*/
+        if ( _Angle < 360 
+        && _Angle > 270 
+        && avgLastValue >= 0 
+        && avgLastValue < 90)
         {
-            Debug.LogWarning("avgLastValue=" + avgLastValue);
+			Debug.LogWarning("go back _Angle=" + _Angle + " avg="+ avgLastValue);
             // counter clock wise
             if (0 == hourInt)
             {
@@ -111,10 +119,13 @@ public class DragArrow : MonoBehaviour
             ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
         }
-        else if (_Angle >0 && _Angle < 90 && avgLastValue > 270 && avgLastValue < 360 )
+        else if (_Angle >= 0 
+        	&& _Angle < 90 
+        	&& avgLastValue > 270 
+        	&& avgLastValue < 360 )
         {
             // clock wise
-            Debug.LogWarning("avgLastValue=" + avgLastValue);
+			Debug.LogWarning("go next _Angle=" + _Angle + " avg="+ avgLastValue);
             m_Angle = (hourInt + 1) * 30;
             ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;
