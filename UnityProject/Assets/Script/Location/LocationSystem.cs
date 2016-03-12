@@ -98,6 +98,7 @@ public class LocationSystem : MonoBehaviour
 	{
 		if( m_AnswerMode != AnswerMode.AnswerMode_WaitPressOption )
 		{
+			Debug.LogWarning("m_AnswerMode=" +m_AnswerMode);
 			return ;
 		}
 		m_AnswerMode = AnswerMode.AnswerMode_ChangeToAnswerMode ;
