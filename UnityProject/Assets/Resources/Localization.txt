@@ -50,7 +50,7 @@ LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞�
 LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> 
 LocationKey_TurnLeft,links ab-biegen,turn left,左轉
 LocationKey_TurnRight,rechts ab-biegen,turn right,右轉
-LocationKey_ThroughInterception,durch <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
+LocationKey_ThroughInterception,über <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
 ExampleShort,z.B.,ex.,例
 ExampleLong,zum Beispiel,Example,例句
 ExampleSentence_Straight,Er muss immer geradeaus gehen.,He must go straight.,他必須直走。
