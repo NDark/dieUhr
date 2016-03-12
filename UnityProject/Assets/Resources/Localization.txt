@@ -43,7 +43,7 @@ LocationIntroductionContent,LocationIntroductionContent,"The user may slide and 
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
-LocationKey_CrossStreet,gegenüber <die Kirche>,the opposite side of <the church>,在 <教堂> 對面
+LocationKey_CrossStreet,gegenüber <der Kirche>,the opposite side of <the church>,在 <教堂> 對面
 LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>
 LocationKey_Pass,am <...> vorbei,pass <...> ,經過 <...> 
 LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
