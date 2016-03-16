@@ -101,11 +101,15 @@ public static class ClockData
         {
             hourStr = WordFromTwo_TraditionalChinese() + Localization.Get("Uhr");
         }
-        else
+        else 
         {
+			if( _Hour > 12 )
+			{
+				_Hour -= 12 ;
+			}
             hourStr = WordFromDigital(_Hour) + Localization.Get("Uhr") ;
         }
-
+        
         if (_Minute <= 10)
         {
             minuteStr = WordFromDigital(_Minute);
