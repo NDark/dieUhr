@@ -108,6 +108,8 @@ public static class ClockData
 				_Hour -= 12 ;
 			}
             hourStr = WordFromDigital(_Hour) + Localization.Get("Uhr") ;
+			// Debug.Log("_Hour=" + _Hour);
+			// Debug.Log("hourStr=" + hourStr);
         }
         
         if (_Minute <= 10)
