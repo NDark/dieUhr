@@ -114,6 +114,10 @@ public static class ClockData
         {
             minuteStr = WordFromDigital(10) + WordFromDigital(_Minute % 10);
         }
+		else if( 0 == _Minute%10 )
+		{
+			minuteStr = WordFromDigital(_Minute/10) + WordFromDigital(10) ;
+		}
         else 
         {
             minuteStr = WordFromDigital(_Minute/10) + WordFromDigital(10) + WordFromDigital(_Minute%10);
