@@ -24,6 +24,7 @@ public class SetClockData : MonoBehaviour
     public void DoUpdate()
     {
         ClockData.CalculateString();
+		ClockData.UpdateExampleSentence();
     }
 
 
