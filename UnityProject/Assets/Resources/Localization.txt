@@ -1,6 +1,6 @@
 KEY,Deutsch,English,TraditionalChinese
 IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese app sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie unterstützt dich dabei die traditionelle Deutsche Uhrzeit richtig zu üben.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
+IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die traditionelle die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
 nach,nach,past,之後
@@ -10,8 +10,8 @@ halb,halb,half,半
 Uhr,Uhr,o'clock,點
 to,,to,差
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
-SubTitle,Die traditionelle Deutsche Uhrzeit,A traditional Clock System,傳統的德文時間系統
-PressContinue,Drücken Sie hier für mehr,Press and continue,請按繼續
+SubTitle,Ein App für den Deutschunterricht,A German tutoring App.,德文學習App.
+PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入
 Reset,Uhr zurücksetzen,Reset the clock,重置時鐘
 0,Null,zero,零
 1,Ein,one,一
@@ -27,30 +27,30 @@ h2,,,兩
 10,Zehn,ten,十
 11,Elf,eleven,十一
 12,Zwölf,twelve,十二
-13,Dreizehn,thirteen,
-14,Vierzehn,fourteen,
-15,Fünfzehn,fifteen,
-16,Sechzehn,sixteen,
-17,Siebzehn,seventeen,
-18,Achtzehn,eighteen,
-19,Neunzehn,nineteen,
-20,Zwanzig,twenty,
-30,Dreißig,thirty,
-40,Vierzig,forty,
-50,Fünfzig,fifty,
-AcknowledgeMarcus,Viele Danke an Marcus Breit für die Beratung.,Acknowledge to Marcus Breit for the consultation.,感謝Marcus Breit語言指導
-LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent,LocationIntroductionContent
+13,Dreizehn,thirteen,十三
+14,Vierzehn,fourteen,十四
+15,Fünfzehn,fifteen,十五
+16,Sechzehn,sixteen,十六
+17,Siebzehn,seventeen,十七
+18,Achtzehn,eighteen,十八
+19,Neunzehn,nineteen,十九
+20,Zwanzig,twenty,二十
+30,Dreißig,thirty,三十
+40,Vierzig,forty,四十
+50,Fünfzig,fifty,五十
+AcknowledgeMarcus,Viele Danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
+LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch auf und abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
-LocationKey_CrossStreet,gegenüber <die Kirche>,the opposite side of <the church>,在 <教堂> 對面
+LocationKey_CrossStreet,gegenüber <der Kirche>,the opposite side of <the church>,在 <教堂> 對面
 LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>
 LocationKey_Pass,am <...> vorbei,pass <...> ,經過 <...> 
 LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
 LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> 
-LocationKey_TurnLeft,links ab-biegen,turn left,左轉
-LocationKey_TurnRight,rechts ab-biegen,turn right,右轉
-LocationKey_ThroughInterception,durch <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
+LocationKey_TurnLeft,links abbiegen,turn left,左轉
+LocationKey_TurnRight,rechts abbiegen,turn right,右轉
+LocationKey_ThroughInterception,über <den Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
 ExampleShort,z.B.,ex.,例
 ExampleLong,zum Beispiel,Example,例句
 ExampleSentence_Straight,Er muss immer geradeaus gehen.,He must go straight.,他必須直走。

@@ -101,11 +101,17 @@ public static class ClockData
         {
             hourStr = WordFromTwo_TraditionalChinese() + Localization.Get("Uhr");
         }
-        else
+        else 
         {
+			if( _Hour > 12 )
+			{
+				_Hour -= 12 ;
+			}
             hourStr = WordFromDigital(_Hour) + Localization.Get("Uhr") ;
+			// Debug.Log("_Hour=" + _Hour);
+			// Debug.Log("hourStr=" + hourStr);
         }
-
+        
         if (_Minute <= 10)
         {
             minuteStr = WordFromDigital(_Minute);
@@ -114,6 +120,10 @@ public static class ClockData
         {
             minuteStr = WordFromDigital(10) + WordFromDigital(_Minute % 10);
         }
+		else if( 0 == _Minute%10 )
+		{
+			minuteStr = WordFromDigital(_Minute/10) + WordFromDigital(10) ;
+		}
         else 
         {
             minuteStr = WordFromDigital(_Minute/10) + WordFromDigital(10) + WordFromDigital(_Minute%10);

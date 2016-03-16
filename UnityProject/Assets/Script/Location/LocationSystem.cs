@@ -68,6 +68,13 @@ public class LocationSystem : MonoBehaviour
 	} ;
 	
 	
+	public void ResetExampleContent()
+	{
+		string exampleKey = GetExampleKey( m_TargetIndex ) ;
+		string exampleSentence = Localization.Get( exampleKey );
+		UpdateExampleContent( exampleSentence ) ;
+	}
+	
 	int [] m_RemapTable = null ;
 	
 	float m_ShowExampleWaitTime = 10.0f ;
@@ -91,6 +98,7 @@ public class LocationSystem : MonoBehaviour
 	{
 		if( m_AnswerMode != AnswerMode.AnswerMode_WaitPressOption )
 		{
+			Debug.LogWarning("m_AnswerMode=" +m_AnswerMode);
 			return ;
 		}
 		m_AnswerMode = AnswerMode.AnswerMode_ChangeToAnswerMode ;

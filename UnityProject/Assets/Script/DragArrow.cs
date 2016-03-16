@@ -98,7 +98,7 @@ public class DragArrow : MonoBehaviour
 
         int hourInt = (int)(m_Angle / 30.0f);
         
-
+		/*
         Debug.Log("m_Angle=" + m_Angle);
         Debug.Log("hourInt=" + hourInt);
         Debug.Log("_Angle=" + _Angle);
