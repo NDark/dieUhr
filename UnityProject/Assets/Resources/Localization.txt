@@ -39,7 +39,7 @@ h2,,,兩
 40,Vierzig,forty,四十
 50,Fünfzig,fifty,五十
 AcknowledgeMarcus,Viele Danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
-LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch auf und abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
+LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
@@ -68,8 +68,7 @@ ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,�
 ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
 ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。
 ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。
-ClockExampleKey_4,Ich gehe um <time> zum Sport.,"I go sport at <time>.
-",我在<time>去運動。
+ClockExampleKey_4,Ich gehe um <time> zum Sport.,"I go sport at <time>.",我在<time>去運動。
 ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。
 ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。
 ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
