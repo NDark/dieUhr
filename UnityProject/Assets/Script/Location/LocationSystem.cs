@@ -327,11 +327,29 @@ public class LocationSystem : MonoBehaviour
 	private void AnswerMode_ChangeToAnswerMode()
 	{
 		SwitchModeGUI( true ) ;
+		
+		Vector3 vec3 = Camera.main.transform.position ;
+		vec3.x = 0 ;
+		Camera.main.transform.position = vec3 ;
+		Camera.main.fieldOfView = 60 ;
+		
+		vec3 = this.transform.localScale ;
+		vec3.x = 40 ;
+		this.transform.localScale = vec3 ;
 	}
 	
 	private void AnswerMode_ChangeToOptionMode()
 	{
 		SwitchModeGUI( false ) ;
+		
+		Vector3 vec3 = Camera.main.transform.position ;
+		vec3.x = 12 ;
+		Camera.main.transform.position = vec3 ;
+		Camera.main.fieldOfView = 45 ;
+		
+		vec3 = this.transform.localScale ;
+		vec3.x = 20 ;
+		this.transform.localScale = vec3 ;
 	}
 	
 	private void SwitchModeGUI( bool _AnswerMode )
