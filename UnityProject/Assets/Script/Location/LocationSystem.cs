@@ -77,7 +77,7 @@ public class LocationSystem : MonoBehaviour
 	
 	int [] m_RemapTable = null ;
 	
-	float m_ShowExampleWaitTime = 10.0f ;
+	float m_ShowExampleWaitTime = 3.0f ;
 	float m_ShowExampleSet = 0.0f ;
 	
 	public void ResetDescribeString()
