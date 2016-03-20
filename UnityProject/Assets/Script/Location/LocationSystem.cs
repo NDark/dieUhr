@@ -139,11 +139,6 @@ public class LocationSystem : MonoBehaviour
 	
 	public void TryMoveUp()
 	{
-		if( true == this.IsInAnimation )
-		{
-			return ;
-		}
-		
 		// actually we move reference up 70
 		ChangeTargetAnimation( m_TargetIndex - 1 ) ;
 		
@@ -152,10 +147,6 @@ public class LocationSystem : MonoBehaviour
 	}
 	public void TryMoveDown()
 	{
-		if( true == this.IsInAnimation )
-		{
-			return ;
-		}
 		
 		ChangeTargetAnimation( m_TargetIndex + 1 ) ;
 		
