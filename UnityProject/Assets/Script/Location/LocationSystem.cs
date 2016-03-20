@@ -34,7 +34,7 @@ public class LocationSystem : MonoBehaviour
 	
 	public bool IsInAnimation { get ; set ; }
 	
-	public float m_MovingSpeed = 0.1f ;
+	public float m_MovingSpeed = 10.0f ;
 	
 	public UILabel [] m_Options = null ;
 	
@@ -254,8 +254,9 @@ public class LocationSystem : MonoBehaviour
 		}
 		else
 		{
-			Vector3 nextPos = Vector3.Lerp( currentPos , targetPos 
-			                               , m_MovingSpeed ) ;
+			
+			Vector3 nextPos = Vector3.Slerp( currentPos , targetPos 
+			                               , m_MovingSpeed * Time.deltaTime) ;
 			referenceObject.transform.position = nextPos;
 		}
 		return false ;
