@@ -364,11 +364,13 @@ public class LocationSystem : MonoBehaviour
 		
 		if( null != arrowUpButton )
 		{
-			NGUITools.SetActive( arrowUpButton , _AnswerMode && m_TargetIndex > 0 );
+			NGUITools.SetActive( arrowUpButton , _AnswerMode 
+			                    && m_TargetIndex < m_Keys.Length - 1 );
 		}
 		if( null != arrowDownButton )
 		{
-			NGUITools.SetActive( arrowDownButton , _AnswerMode && m_TargetIndex < m_Keys.Length - 1 );
+			NGUITools.SetActive( arrowDownButton , _AnswerMode 
+			                    && m_TargetIndex > 0 );
 		}
 		
 		if( null != answerLabel )
@@ -379,8 +381,8 @@ public class LocationSystem : MonoBehaviour
 	
 	private void CheckIndexGUI( int _Index )
 	{
-		NGUITools.SetActive( arrowUpButton , _Index > 0  ) ;
-		NGUITools.SetActive( arrowDownButton , _Index < m_Keys.Length - 1 ) ;
+		NGUITools.SetActive( arrowDownButton , _Index > 0  ) ;
+		NGUITools.SetActive( arrowUpButton , _Index < m_Keys.Length - 1 ) ;
 	}
 	
 	private void ChangeTargetAnimation( int _Index )
