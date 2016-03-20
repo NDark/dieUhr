@@ -40,6 +40,8 @@ public class LocationSystem : MonoBehaviour
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 
+	public UIScrollBar m_ScrollBarParent = null ;
+	public GameObject m_AnswerModeScrollRegion = null ;
 	
 	private string GetDescribKey( int _Index )
 	{
@@ -328,30 +330,31 @@ public class LocationSystem : MonoBehaviour
 	{
 		SwitchModeGUI( true ) ;
 		
-		Vector3 vec3 = Camera.main.transform.position ;
-		vec3.x = 0 ;
-		Camera.main.transform.position = vec3 ;
-		Camera.main.fieldOfView = 60 ;
-		
-		vec3 = this.transform.localScale ;
-		vec3.x = 40 ;
-		this.transform.localScale = vec3 ;
+		SwitchCamera( 0 , 60 , 40 ) ;
 	}
 	
 	private void AnswerMode_ChangeToOptionMode()
 	{
 		SwitchModeGUI( false ) ;
 		
-		Vector3 vec3 = Camera.main.transform.position ;
-		vec3.x = 12 ;
-		Camera.main.transform.position = vec3 ;
-		Camera.main.fieldOfView = 45 ;
+		SwitchCamera( 12 , 45 , 20 ) ;
 		
-		vec3 = this.transform.localScale ;
-		vec3.x = 20 ;
-		this.transform.localScale = vec3 ;
+
 	}
 	
+	private void SwitchCamera( float _PosX , float _FieldOfView , float _ScaleX )
+	{
+		Vector3 vec3 = Camera.main.transform.position ;
+		vec3.x = _PosX ;
+		Camera.main.transform.position = vec3 ;
+		
+		Camera.main.fieldOfView = _FieldOfView ;
+		
+		vec3 = this.transform.localScale ;
+		vec3.x = _ScaleX ;
+		this.transform.localScale = vec3 ;
+		
+	}
 	private void SwitchModeGUI( bool _AnswerMode )
 	{
 		if( null != grid )
@@ -386,6 +389,19 @@ public class LocationSystem : MonoBehaviour
 		{
 			NGUITools.SetActive( answerLabel.gameObject , _AnswerMode );
 		}
+		
+		
+		if( null != m_ScrollBarParent )
+		{
+			NGUITools.SetActive( m_ScrollBarParent.gameObject , !_AnswerMode );
+		}
+		
+		
+		if( null != m_AnswerModeScrollRegion )
+		{
+			NGUITools.SetActive( m_AnswerModeScrollRegion.gameObject , _AnswerMode );
+		}
+		
 	}
 	
 	private void CheckIndexGUI( int _Index )
