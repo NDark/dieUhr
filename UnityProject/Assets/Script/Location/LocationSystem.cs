@@ -34,12 +34,14 @@ public class LocationSystem : MonoBehaviour
 	
 	public bool IsInAnimation { get ; set ; }
 	
-	public float m_MovingSpeed = 0.1f ;
+	public float m_MovingSpeed = 10.0f ;
 	
 	public UILabel [] m_Options = null ;
 	
 	public AnswerMode m_AnswerMode = AnswerMode.AnswerMode_Invalid ;
 
+	public UIScrollBar m_ScrollBarParent = null ;
+	public GameObject m_AnswerModeScrollRegion = null ;
 	
 	private string GetDescribKey( int _Index )
 	{
@@ -77,7 +79,7 @@ public class LocationSystem : MonoBehaviour
 	
 	int [] m_RemapTable = null ;
 	
-	float m_ShowExampleWaitTime = 10.0f ;
+	float m_ShowExampleWaitTime = 3.0f ;
 	float m_ShowExampleSet = 0.0f ;
 	
 	public void ResetDescribeString()
@@ -139,11 +141,6 @@ public class LocationSystem : MonoBehaviour
 	
 	public void TryMoveUp()
 	{
-		if( true == this.IsInAnimation )
-		{
-			return ;
-		}
-		
 		// actually we move reference up 70
 		ChangeTargetAnimation( m_TargetIndex - 1 ) ;
 		
@@ -152,10 +149,6 @@ public class LocationSystem : MonoBehaviour
 	}
 	public void TryMoveDown()
 	{
-		if( true == this.IsInAnimation )
-		{
-			return ;
-		}
 		
 		ChangeTargetAnimation( m_TargetIndex + 1 ) ;
 		
@@ -254,8 +247,9 @@ public class LocationSystem : MonoBehaviour
 		}
 		else
 		{
-			Vector3 nextPos = Vector3.Lerp( currentPos , targetPos 
-			                               , m_MovingSpeed ) ;
+			
+			Vector3 nextPos = Vector3.Slerp( currentPos , targetPos 
+			                               , m_MovingSpeed * Time.deltaTime) ;
 			referenceObject.transform.position = nextPos;
 		}
 		return false ;
@@ -335,13 +329,32 @@ public class LocationSystem : MonoBehaviour
 	private void AnswerMode_ChangeToAnswerMode()
 	{
 		SwitchModeGUI( true ) ;
+		
+		SwitchCamera( 0 , 60 , 40 ) ;
 	}
 	
 	private void AnswerMode_ChangeToOptionMode()
 	{
 		SwitchModeGUI( false ) ;
+		
+		SwitchCamera( 12 , 45 , 20 ) ;
+		
+
 	}
 	
+	private void SwitchCamera( float _PosX , float _FieldOfView , float _ScaleX )
+	{
+		Vector3 vec3 = Camera.main.transform.position ;
+		vec3.x = _PosX ;
+		Camera.main.transform.position = vec3 ;
+		
+		Camera.main.fieldOfView = _FieldOfView ;
+		
+		vec3 = this.transform.localScale ;
+		vec3.x = _ScaleX ;
+		this.transform.localScale = vec3 ;
+		
+	}
 	private void SwitchModeGUI( bool _AnswerMode )
 	{
 		if( null != grid )
@@ -363,23 +376,38 @@ public class LocationSystem : MonoBehaviour
 		
 		if( null != arrowUpButton )
 		{
-			NGUITools.SetActive( arrowUpButton , _AnswerMode && m_TargetIndex > 0 );
+			NGUITools.SetActive( arrowUpButton , _AnswerMode 
+			                    && m_TargetIndex < m_Keys.Length - 1 );
 		}
 		if( null != arrowDownButton )
 		{
-			NGUITools.SetActive( arrowDownButton , _AnswerMode && m_TargetIndex < m_Keys.Length - 1 );
+			NGUITools.SetActive( arrowDownButton , _AnswerMode 
+			                    && m_TargetIndex > 0 );
 		}
 		
 		if( null != answerLabel )
 		{
 			NGUITools.SetActive( answerLabel.gameObject , _AnswerMode );
 		}
+		
+		
+		if( null != m_ScrollBarParent )
+		{
+			NGUITools.SetActive( m_ScrollBarParent.gameObject , !_AnswerMode );
+		}
+		
+		
+		if( null != m_AnswerModeScrollRegion )
+		{
+			NGUITools.SetActive( m_AnswerModeScrollRegion.gameObject , _AnswerMode );
+		}
+		
 	}
 	
 	private void CheckIndexGUI( int _Index )
 	{
-		NGUITools.SetActive( arrowUpButton , _Index > 0  ) ;
-		NGUITools.SetActive( arrowDownButton , _Index < m_Keys.Length - 1 ) ;
+		NGUITools.SetActive( arrowDownButton , _Index > 0  ) ;
+		NGUITools.SetActive( arrowUpButton , _Index < m_Keys.Length - 1 ) ;
 	}
 	
 	private void ChangeTargetAnimation( int _Index )
