@@ -1,6 +1,6 @@
 KEY,Deutsch,English,TraditionalChinese
 IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die traditionelle die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
+IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
 nach,nach,past,之後
@@ -38,7 +38,7 @@ h2,,,兩
 30,Dreißig,thirty,三十
 40,Vierzig,forty,四十
 50,Fünfzig,fifty,五十
-AcknowledgeMarcus,Vielen Danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
+AcknowledgeMarcus,Vielen danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
