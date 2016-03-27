@@ -7,18 +7,18 @@ Hello visitors,
 
 I'm NDark, a programmer, meanwhile a German learner.
 
-Along with my learning path, The app. "die Uhr" has new update since 2015 Nov. finally. Beside of traditional German time expression, we have direction and location description.
+Along with my learning path, This app. "die Uhr" has new update since 2015 Nov. finally. Beside of traditional German time expression, we have direction and location now.
 
-Acknowledge to my tutors Marcus ( #1LI0ajSM ) and Paula ( #1MKoVAb1 ) who provided me contents, and helped debug this App. continuously.
+Acknowledge to my tutors Marcus ( #1LI0ajSM ) and Paula ( #1MKoVAb1 ) who provided me contents, and helped debuging this App. continuously.
 
-Target audience of it are German tutors and students, to assist the teaching in the course.
+The target audience of it are German tutors and students, to assist the teaching in the course.
 
 ---
 
 各位好，我是NDark，遊戲程式，同時也是德語學習者。
 
 德語學習永不止息，die Uhr 這款 App. 自從2015年11月以來也終於有重大改版。
-除了原先的"傳統時間念法"之外，在2.0加上了關於"交通方向"的主題。
+除了原先的"傳統時間念法"之外，在2.0加上了關於"交通方向"的主題：如何描述要怎麼走的情境。
 
 感謝家教老師 Marcus ( #1LI0ajSM ) 及 Paula ( #1MKoVAb1 ) 提供文本，及協助勘誤。
 
