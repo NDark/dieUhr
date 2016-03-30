@@ -1,13 +1,13 @@
 # Introduction to the die Uhr 
 
-( as an order of English, ÁcÅé¤¤¤å, Deutsch )
+( as an order of English, ç¹é«”ä¸­æ–‡, Deutsch )
 
 
 Hello visitors,
 
 I'm NDark, a programmer, meanwhile a German learner.
 
-Along with my learning path, This app. "die Uhr" has new update since 2015 Nov. finally. Beside of traditional German time expression, we have direction and location now.
+Along with my learning path, This app. "die Uhr" has new update since 2015 Nov. finally. Beside of traditional German time expression, we have direction and location now. (ex. Turn left at street. )
 
 Acknowledge to my tutors Marcus ( #1LI0ajSM ) and Paula ( #1MKoVAb1 ) who provided me contents, and helped debuging this App. continuously.
 
@@ -15,30 +15,30 @@ The target audience of it are German tutors and students, to assist the teaching
 
 ---
 
-¦U¦ì¦n¡A§Ú¬ONDark¡A¹CÀ¸µ{¦¡¡A¦P®É¤]¬O¼w»y¾Ç²ßªÌ¡C
+å„ä½å¥½ï¼Œæˆ‘æ˜¯NDarkï¼ŒéŠæˆ²ç¨‹å¼ï¼ŒåŒæ™‚ä¹Ÿæ˜¯å¾·èªå­¸ç¿’è€…ã€‚
 
-¼w»y¾Ç²ß¥Ã¤£¤î®§¡Adie Uhr ³o´Ú App. ¦Û±q2015¦~11¤ë¥H¨Ó¤]²×©ó¦³­«¤j§ïª©¡C
-°£¤F­ì¥ıªº"¶Ç²Î®É¶¡©Àªk"¤§¥~¡A¦b2.0¥[¤W¤FÃö©ó"¥æ³q¤è¦V"ªº¥DÃD¡G¦p¦ó´y­z­n«ç»ò¨«ªº±¡¹Ò¡C
+å¾·èªå­¸ç¿’æ°¸ä¸æ­¢æ¯ï¼Œdie Uhr é€™æ¬¾ App. è‡ªå¾2015å¹´11æœˆä»¥ä¾†ä¹Ÿçµ‚æ–¼æœ‰é‡å¤§æ”¹ç‰ˆã€‚
+é™¤äº†åŸå…ˆçš„"å‚³çµ±æ™‚é–“å¿µæ³•"ä¹‹å¤–ï¼Œåœ¨2.0åŠ ä¸Šäº†é—œæ–¼"äº¤é€šæ–¹å‘"çš„ä¸»é¡Œï¼šå¦‚ä½•æè¿°è¦æ€éº¼èµ°çš„æƒ…å¢ƒã€‚(ä¾‹å¦‚ï¼šè·¯å£è«‹å³è½‰)
 
-·PÁÂ®a±Ğ¦Ñ®v Marcus ( #1LI0ajSM ) ¤Î Paula ( #1MKoVAb1 ) ´£¨Ñ¤å¥»¡A¤Î¨ó§U°É»~¡C
+æ„Ÿè¬å®¶æ•™è€å¸« Marcus ( #1LI0ajSM ) åŠ Paula ( #1MKoVAb1 ) æä¾›æ–‡æœ¬ï¼ŒåŠå”åŠ©å‹˜èª¤ã€‚
 
-³Æµù¡G³o­ÓÀ³¥Îµ{¦¡¥D­n¾A¥Î¹ï¶H¬O¼w»y®a±Ğ¦Ñ®v¡A¤Î¼w»y¾Ç²ßªÌ¡A¥Î¨Ó¨ó§U½Ò°ó¤WªºÁ¿¸Ñ¡C
+å‚™è¨»ï¼šé€™å€‹æ‡‰ç”¨ç¨‹å¼ä¸»è¦é©ç”¨å°è±¡æ˜¯å¾·èªå®¶æ•™è€å¸«ï¼ŒåŠå¾·èªå­¸ç¿’è€…ï¼Œç”¨ä¾†å”åŠ©èª²å ‚ä¸Šçš„è¬›è§£ã€‚
 
 ---
 
 Hallo, 
 
-Ich heise NDark, ein programierer und ein Deutsch lerner.
+Ich heiÃŸe NDark, ein programierer und ein Deutsch lerner.
 
-Meine erste App. ,`die Uhr` hat upgedatet. Jetzt hat sie beide die Uhrzeiten und Richtungsangaben auf Deutsch.
+Meine erste App. ,`die Uhr` hat upgedatet. Jetzt hat sie beide die Uhrzeiten und Richtungsangaben auf Deutsch. ( z.B. In StraÃŸe biegst du links ab. )
 
-Vielen danke an meine lehrer Marcus ( #1LI0ajSM ) und Paula ( #1MKoVAb1 ) fur die Beratung.
+Vielen danke an meine lehrer Marcus ( #1LI0ajSM ) und Paula ( #1MKoVAb1 ) fÃ¼r die Beratung.
 
-Hinweis: `die Uhr` ist fur Deutsch lehrer und lerner in Deutschunterrichtes.
+Hinweis: `die Uhr` ist fÃ¼r Deutsch lehrer und lerner in Deutschunterrichtes.
 
 Kommentieren Sie bitte.
 
-# Download link (¤U¸ü³sµ²)
+# Download link (ä¸‹è¼‰é€£çµ)
 
 1. Google Play Market:  https://play.google.com/store/apps/details?id=org.ndark.dieuhr
 1. iOS App Store: https://itunes.apple.com/app/id1063018346
@@ -51,20 +51,21 @@ Kommentieren Sie bitte.
 ![Imgur](http://i.imgur.com/XmjnL4c.jpg)
 
 
-# The major update since v1.0 ¦Û±q²Ä¤@ª©«áªº­«¤j§ó·s
+# The major update since v1.0 è‡ªå¾ç¬¬ä¸€ç‰ˆå¾Œçš„é‡å¤§æ›´æ–°
 
-1. Add an acknowledge page. ·s¼W·PÁÂ­¶­±¡C
-1. Add a Location scenario. ·s¼W¥æ³q¤è¦Vªº¥DÃD¡C
+1. Add an acknowledge page. æ–°å¢æ„Ÿè¬é é¢ã€‚
+1. Add a Location scenario. æ–°å¢äº¤é€šæ–¹å‘çš„ä¸»é¡Œã€‚
 
-## Clock ®É¶¡´y­z¥DÃD
+## Clock æ™‚é–“æè¿°ä¸»é¡Œ
 
-1. Add a reset button. ·s¼WÁÙ­ì«ö¶s¡C
-1. Add a digital mode. ·s¼W¼Æ¦ì©Àªk¡C
-1. Add example sentences. ·s¼W½d¨Ò¥y¡C
-1. Fix an error that the clock will glitch when move crossing 0:00. ­×¥¿¸ó¶V¹s¤À·|¾É­P¤p®É¸õ°Êªº¿ù»~¡C
-1. Fix an error that when 12:45, 13 shall not be showed. ­×¥¿¤Q¤GÂI¥|¤Q¤­¤ÀªºÅã¥Ü¿ù»~¡C
-1. Fix an error for lower case in hour. ­×¥¿¤p®Éªº¤j¤p¼g°İÃD¡C
-1. Fix an error for correct eins and ein Uhr, minute ein. ­×¥¿¤@ÂI¤Î¤@¤Àªº¤åªk¿ù»~¡C¡]·PÁÂdwkm¨ó§U°É»~¡^
-1. Fix an error that traditional Chinese didn't handle hour over 12. ­×¥¿ÁcÅé¤¤¤å¨S¦³¦Ò¼{¨ì¶W¹L¤Q¤GÂIªº¿ù»~¡C
-1. Fix an error of redundent 0 when 20 30 40 50 at traditional Chinese language. ­×¥¿ÁcÅé¤¤¤å¦b¤G¤Q¤Àµ¥ªºÂØ¦r¡C
-1. Fix several grammar errors. ­×¥¿¼Æ­Ó¤åªk¿ù»~¡C
+1. Add a reset button. æ–°å¢é‚„åŸæŒ‰éˆ•ã€‚
+1. Add a digital mode. æ–°å¢æ•¸ä½å¿µæ³•ã€‚
+1. Add example sentences. æ–°å¢ç¯„ä¾‹å¥ã€‚
+1. Fix an error that the clock will glitch when move crossing 0:00. ä¿®æ­£è·¨è¶Šé›¶åˆ†æœƒå°è‡´å°æ™‚è·³å‹•çš„éŒ¯èª¤ã€‚
+1. Fix an error that when 12:45, 13 shall not be showed. ä¿®æ­£åäºŒé»å››åäº”åˆ†çš„é¡¯ç¤ºéŒ¯èª¤ã€‚
+1. Fix an error for lower case in hour. ä¿®æ­£å°æ™‚çš„å¤§å°å¯«å•é¡Œã€‚
+1. Fix an error for correct eins and ein Uhr, minute ein. ä¿®æ­£ä¸€é»åŠä¸€åˆ†çš„æ–‡æ³•éŒ¯èª¤ã€‚ï¼ˆæ„Ÿè¬dwkmå”åŠ©å‹˜èª¤ï¼‰
+1. Fix an error that traditional Chinese didn't handle hour over 12. ä¿®æ­£ç¹é«”ä¸­æ–‡æ²’æœ‰è€ƒæ…®åˆ°è¶…éåäºŒé»çš„éŒ¯èª¤ã€‚
+1. Fix an error of redundent 0 when 20 30 40 50 at traditional Chinese language. ä¿®æ­£ç¹é«”ä¸­æ–‡åœ¨äºŒååˆ†ç­‰çš„è´…å­—ã€‚
+1. Fix several grammar errors. ä¿®æ­£æ•¸å€‹æ–‡æ³•éŒ¯èª¤ã€‚
+
