@@ -42,8 +42,14 @@ public class WhereSystem : MonoBehaviour
 	private string [] m_WhereKey = 
 	{
 		"Uber" ,
+		"Auf" ,
+		"Unter" ,
 		"Vor" ,
+		"Hinter" ,
+		"Neben" ,
+		"An" ,
 		"In" ,
+		"Zwischen" ,
 	} ;
 	
 	Dictionary<string , GameObject> m_Scenes = new Dictionary<string, GameObject>() ;
