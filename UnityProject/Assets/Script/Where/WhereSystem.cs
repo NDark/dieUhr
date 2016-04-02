@@ -244,6 +244,20 @@ public class WhereSystem : MonoBehaviour
 		this.m_IsAbleCollect = true ;
 	}
 	
+	public void ResetAnswerContent()
+	{
+		if( m_State == WhereState.WhereState_WaitInAnswerMode 
+		   || m_State == WhereState.WhereState_EnterAnswerMode )
+		{
+			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+		}
+		else if( m_State == WhereState.WhereState_WaitInMoveMode 
+		        || m_State == WhereState.WhereState_EnterMoveMode )
+		{
+			m_AnswerLabel.text = CreateInstruction( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+		}
+		
+	}
 	
 	public void ResetExampleContent()
 	{
@@ -277,7 +291,7 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeScene() ;
 			RandonmizeWhere( m_CurrentScene ) ;
 			
-			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+			ResetAnswerContent() ;
 			
 			SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
 			m_State = WhereState.WhereState_WaitInAnswerMode ;
@@ -291,6 +305,8 @@ public class WhereSystem : MonoBehaviour
 		
 			RandonmizeScene() ;
 			RandonmizeWhere( m_CurrentScene ) ;
+			
+			ResetAnswerContent() ;
 			
 			SetPresentScene( m_CurrentScene , null , string.Empty ) ;
 			
@@ -502,6 +518,25 @@ public class WhereSystem : MonoBehaviour
 		Debug.Log("CreateAnswer()" + _WhereKey );
 		
 		string localizationWhereKey = "WhereKey_" + _WhereKey ;
+		string localWhereString = Localization.Get( localizationWhereKey ) ;
+		
+		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
+		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		
+		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
+		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		return localWhereString ;
+	}	
+	
+	public string CreateInstruction( string _TargetKey 
+	                           , string _SceneKey 
+	                           , string _WhereKey )
+	{
+		Debug.Log("CreateInstruction()" + _TargetKey );
+		Debug.Log("CreateInstruction()" + _SceneKey );
+		Debug.Log("CreateInstruction()" + _WhereKey );
+		
+		string localizationWhereKey = "WhereInstruction_" + _WhereKey ;
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
