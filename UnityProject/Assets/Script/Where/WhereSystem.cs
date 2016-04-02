@@ -23,8 +23,9 @@ public class WhereSystem : MonoBehaviour
 	
 	// 2D
 	public UILabel m_AnswerLabel = null ;
-	public GameObject m_ArrowUpButton = null ;
-	public GameObject m_ArrowDownButton = null ;
+	public GameObject m_ShuffleNextButton = null ;
+	public GameObject m_RotateLeftButton = null ;
+	public GameObject m_RotateRightButton = null ;
 	public GameObject m_AnswerModeButton = null ;
 	public GameObject m_MoveModeButton = null ;
 	public GameObject m_ExampleButton = null ;
@@ -70,6 +71,27 @@ public class WhereSystem : MonoBehaviour
 		ReleaveScene( m_CurrentScene , m_Fussball ) ;
 		
 		m_State = WhereState.WhereState_EnterAnswerMode ;
+	}
+	
+	public void TryRotateLeft()
+	{
+	
+	}
+	
+	public void TryRotateRight()
+	{
+		
+	}
+	
+	
+	public void TrySwitchToMoveMode()
+	{
+		SwitchGUI( false ) ;
+	}
+
+	public void TrySwitchToAnswerMode()
+	{
+		SwitchGUI( true ) ;
 	}
 	
 	// Use this for initialization
@@ -208,6 +230,16 @@ public class WhereSystem : MonoBehaviour
 		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
 		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
 		Debug.LogWarning ("RandonmizeScene() m_CurrentWhereKey=" + m_CurrentWhereKey);
+	}
+	
+	void SwitchGUI( bool _AnswerMode )
+	{
+		NGUITools.SetActive( m_RotateLeftButton , !_AnswerMode ) ;
+		NGUITools.SetActive( m_RotateRightButton , !_AnswerMode ) ;
+		NGUITools.SetActive( m_ShuffleNextButton , _AnswerMode ) ;
+		
+		NGUITools.SetActive( m_MoveModeButton , _AnswerMode ) ;
+		NGUITools.SetActive( m_AnswerModeButton , !_AnswerMode ) ;
 	}
 }
 
