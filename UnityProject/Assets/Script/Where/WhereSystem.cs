@@ -41,6 +41,7 @@ public class WhereSystem : MonoBehaviour
 	public TweenAlpha m_CorrectAlpha = null ;
 	public AudioSource m_CorrectAudio = null ;
 	public Camera m_2DCamera = null ;
+	public GameObject m_MoveModeTouchRegion = null ;
 	
 	private string [] m_SceneKey = 
 	{
@@ -69,7 +70,6 @@ public class WhereSystem : MonoBehaviour
 	public float m_3DSceneRotateValue = 0 ;
 	
 	public WhereState m_State = WhereState.WhereState_None ;
-	public GameObject m_AnswerModeScrollRegion = null ;
 	
 	List<ScreenCollectData> m_WhereScreenVecs = new List<ScreenCollectData>() ;
 	
@@ -184,7 +184,7 @@ public class WhereSystem : MonoBehaviour
 			
 			screenPos = Camera.main.WorldToScreenPoint( screenPos ) ;
 			screenPos.z = 0 ;
-			Debug.Log("screenPos=" + screenPos );
+			// Debug.Log("screenPos=" + screenPos );
 						
 			float tmpDis = Vector3.Distance( _MousePosition , screenPos ) ;
 			if( tmpDis < minDistance )
@@ -196,8 +196,9 @@ public class WhereSystem : MonoBehaviour
 
 		if( -1 != minIndex && minIndex < m_WhereScreenVecs.Count )
 		{
-			Debug.Log("minIndex=" + m_WhereScreenVecs[ minIndex ].Key );
+			Debug.LogWarning("minIndex=" + m_WhereScreenVecs[ minIndex ].Key );
 			m_Fussball.transform.position = m_WhereScreenVecs[ minIndex ].DummyObj.transform.position ;
+			Debug.LogWarning("m_CurrentWhereKey=" + m_CurrentWhereKey );
 		}
 		
 		
@@ -381,6 +382,8 @@ public class WhereSystem : MonoBehaviour
 		
 		NGUITools.SetActive( m_MoveModeButton , _AnswerMode ) ;
 		NGUITools.SetActive( m_AnswerModeButton , !_AnswerMode ) ;
+		
+		NGUITools.SetActive( m_MoveModeTouchRegion , !_AnswerMode ) ;
 	}
 
 	void CollectWhereOnScreen()
