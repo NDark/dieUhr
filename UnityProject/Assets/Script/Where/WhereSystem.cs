@@ -12,6 +12,13 @@ public enum WhereState
 	WhereState_WaitCorrectAnimation ,
 }
 
+public class ScreenCollectData
+{
+	public string Key { get; set; }
+	public GameObject DummyObj { get; set; }
+	
+}
+
 public class WhereSystem : MonoBehaviour 
 {
 	public GameObject m_Fussball = null ;
@@ -33,6 +40,7 @@ public class WhereSystem : MonoBehaviour
 	public GameObject m_InstructionText = null ;
 	public TweenAlpha m_CorrectAlpha = null ;
 	public AudioSource m_CorrectAudio = null ;
+	public Camera m_2DCamera = null ;
 	
 	private string [] m_SceneKey = 
 	{
@@ -62,6 +70,11 @@ public class WhereSystem : MonoBehaviour
 	
 	public WhereState m_State = WhereState.WhereState_None ;
 	public GameObject m_AnswerModeScrollRegion = null ;
+	
+	List<ScreenCollectData> m_WhereScreenVecs = new List<ScreenCollectData>() ;
+	
+	public bool m_IsAbleCollect = false ;
+	public bool m_IsCollected = false ;
 	
 	public void TryNextInAnswerMode()
 	{
@@ -111,6 +124,8 @@ public class WhereSystem : MonoBehaviour
 			return ;
 		}
 		
+		ReleaveScene( m_CurrentScene , m_Fussball ) ;
+		
 		SwitchGUI( false ) ;
 		
 		m_State = WhereState.WhereState_EnterMoveMode ;
@@ -124,10 +139,75 @@ public class WhereSystem : MonoBehaviour
 			return ;
 		}
 		
+		
+		ReleaveScene( m_CurrentScene , m_Fussball ) ;
+		
+		
 		this.transform.rotation = Quaternion.identity ;
 		SwitchGUI( true ) ;
 		
 		m_State = WhereState.WhereState_EnterAnswerMode ;
+	}
+	
+	public void DetectUserMouse( Vector3 _MousePosition )
+	{
+		if( false == m_IsAbleCollect )
+		{
+			Debug.LogWarning( "DetectUserMouse() false == m_IsAbleCollect." ) ;
+			return ;
+		}
+		
+	
+		if( WhereState.WhereState_WaitInMoveMode != m_State )
+		{
+			Debug.LogWarning( "DetectUserMouse() invalid state." ) ;
+			return ;
+		}
+		
+		if( false == m_IsCollected )
+		{
+			CollectWhereOnScreen() ;
+		}
+		
+		if( m_WhereScreenVecs.Count <= 0 )
+		{
+			Debug.LogWarning( "DetectUserMouse() m_WhereScreenVecs is empty." ) ;
+			return ;
+		}
+
+		int minIndex = -1 ;		
+		float minDistance = 999.99f ;
+		Debug.Log("_MousePosition" + _MousePosition );
+		for( int i = 0 ; i < m_WhereScreenVecs.Count ; ++i )
+		{
+			Vector3 screenPos = m_WhereScreenVecs[ i ].DummyObj.transform.position ;
+			
+			screenPos = Camera.main.WorldToScreenPoint( screenPos ) ;
+			screenPos.z = 0 ;
+			Debug.Log("screenPos=" + screenPos );
+						
+			float tmpDis = Vector3.Distance( _MousePosition , screenPos ) ;
+			if( tmpDis < minDistance )
+			{
+				minDistance = tmpDis ;
+				minIndex = i ;
+			}
+		}
+
+		if( -1 != minIndex && minIndex < m_WhereScreenVecs.Count )
+		{
+			Debug.Log("minIndex=" + m_WhereScreenVecs[ minIndex ].Key );
+			m_Fussball.transform.position = m_WhereScreenVecs[ minIndex ].DummyObj.transform.position ;
+		}
+		
+		
+	}
+	
+	
+	
+	public void SetAbleCollectWhereOnScreen()
+	{
+		this.m_IsAbleCollect = true ;
 	}
 	
 	// Use this for initialization
@@ -161,9 +241,21 @@ public class WhereSystem : MonoBehaviour
 		case WhereState.WhereState_WaitInAnswerMode :
 			break ;
 		case WhereState.WhereState_EnterMoveMode :
+		
+			RandonmizeScene() ;
+			RandonmizeWhere( m_CurrentScene ) ;
+			
+			SetPresentScene( m_CurrentScene , null , string.Empty ) ;
+			
+			m_WhereScreenVecs.Clear() ;
+						
+			m_IsAbleCollect = false ;
+			m_IsCollected = false ;
+			
 			m_State = WhereState.WhereState_WaitInMoveMode ;
 			break ;
 		case WhereState.WhereState_WaitInMoveMode :
+			
 			break ;
 		case WhereState.WhereState_WaitCorrectAnimation :
 			break ;
@@ -172,11 +264,6 @@ public class WhereSystem : MonoBehaviour
 	
 	public void SetPresentScene( GameObject _SceneObj , GameObject _TargetObject , string _WhereKey )
 	{
-		if( null == _TargetObject )
-		{
-			Debug.LogError("null == _TargetObject");
-			return ;
-		}
 		if( null == _SceneObj )
 		{
 			Debug.LogError("null == _SceneObj");
@@ -190,28 +277,41 @@ public class WhereSystem : MonoBehaviour
 		{
 			r.isKinematic = false ;
 		}
-		Transform dummy = _SceneObj.transform.FindChild("Dummy_" + _WhereKey);
-		if( null != dummy )
-		{
-			_TargetObject.transform.parent = dummy.transform ;
-			_TargetObject.transform.localPosition = Vector3.zero ;
-		}
 		
+		if( string.Empty != _WhereKey )
+		{
+			Transform dummy = _SceneObj.transform.FindChild("Dummy_" + _WhereKey);
+			if( null != _TargetObject && null != dummy )
+			{
+				_TargetObject.transform.parent = dummy.transform ;
+				_TargetObject.transform.localPosition = Vector3.zero ;
+			}
+		}
 	}
 	
 	public void ReleaveScene( GameObject _SceneObj , GameObject _TargetObject )
 	{
-		if( null != _TargetObject && null != _SceneObj )
+		Debug.Log("ReleaveScene");
+		if( null == _SceneObj )
 		{
-			_SceneObj.transform.localPosition = m_ScenesStandbyPos.position ;
-			_SceneObj.transform.localRotation = m_ScenesStandbyPos.rotation ;			
-			Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
-			if( null != r )
-			{
-				r.isKinematic = true ;
-			}
-			_TargetObject.transform.parent = this.transform ;
+			Debug.LogError("null == _SceneObj");
+			return ;
 		}
+		if( null == _TargetObject )
+		{
+			Debug.LogError("null == _TargetObject");
+			return ;
+		}
+		
+
+		_SceneObj.transform.localPosition = m_ScenesStandbyPos.position ;
+		_SceneObj.transform.localRotation = m_ScenesStandbyPos.rotation ;			
+		Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
+		if( null != r )
+		{
+			r.isKinematic = true ;
+		}
+		_TargetObject.transform.parent = this.transform ;
 	}
 	
 	private void DoWhereState_Initialize()
@@ -258,7 +358,7 @@ public class WhereSystem : MonoBehaviour
 		List<string> validWhereKey = new List<string>() ;
 		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
 		{
-			Debug.Log ("RandonmizeScene() validWhereKey.Add=" + m_WhereKey[ i ] );
+			// Debug.Log ("RandonmizeScene() validWhereKey.Add=" + m_WhereKey[ i ] );
 			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
@@ -282,5 +382,27 @@ public class WhereSystem : MonoBehaviour
 		NGUITools.SetActive( m_MoveModeButton , _AnswerMode ) ;
 		NGUITools.SetActive( m_AnswerModeButton , !_AnswerMode ) ;
 	}
+
+	void CollectWhereOnScreen()
+	{
+		
+		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
+		{
+			Transform dummy = m_CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
+			if( null != dummy )
+			{
+				ScreenCollectData data = new ScreenCollectData() ;
+				data.Key = m_WhereKey[ i ] ;
+				data.DummyObj = dummy.gameObject ;
+				
+				this.m_WhereScreenVecs.Add( data ) ;
+			}					
+		}
+		
+		
+		m_IsCollected = true ;
+	}
+	
+	
 }
 
