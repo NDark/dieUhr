@@ -327,32 +327,25 @@ public static class ClockData
         }
         else
         {
-            
 
             if (_Minute >= 20 && _Minute < 30)
             {
-                
-                minuteStr = WordFromDigital(30 - m_Minute);
+				minuteStr = WordFromDigital_ConsiderOne(30 - m_Minute);
                 hourStr = "vor halb " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
             else if (_Minute > 30 && _Minute <= 40)
             {
-                minuteStr = WordFromDigital(m_Minute - 30);
+				minuteStr = WordFromDigital_ConsiderOne(m_Minute - 30);
                 hourStr = "nach halb " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
             else if (_Minute > 40 && _Minute < 60)
             {
-                minuteStr = DeutschMinuteFromDigital(60 - _Minute) ;
+				minuteStr = WordFromDigital_ConsiderOne(60 - _Minute) ;
                 hourStr = "vor " + WordFromDigital_ConsiderOne(_HourPlus1);
             }
-			else if (_Minute == 1)
-			{
-				minuteStr = WordFromDigital_ConsiderOne(_Minute);
-				hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
-			}
-            else if (_Minute > 1 && _Minute < 20)
+            else if (_Minute >= 1 && _Minute < 20)
             {
-                minuteStr = DeutschMinuteFromDigital(_Minute);
+				minuteStr = WordFromDigital_ConsiderOne(_Minute);
                 hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
             }
             m_Label.text = minuteStr + " " + hourStr;
