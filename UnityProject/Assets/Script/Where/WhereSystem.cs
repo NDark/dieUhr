@@ -65,7 +65,7 @@ public class WhereSystem : MonoBehaviour
 	
 	public void TryNextInAnswerMode()
 	{
-		if( WhereState.WhereState_WaitInAnswerMode == m_State )
+		if( WhereState.WhereState_WaitInAnswerMode != m_State )
 		{
 			Debug.LogWarning( "TryNextInAnswerMode() invalid state." ) ;
 			return ;
