@@ -15,10 +15,11 @@ public enum WhereState
 public class WhereSystem : MonoBehaviour 
 {
 	public GameObject m_Fussball = null ;
-	public GameObject m_DeskObj = null ;
+	public GameObject m_CurrentScene = null ;
 	public Transform m_ScenesStandbyPos = null ;
 	public Transform m_ScenesDropPos = null ;
 	public GameObject m_ReferenceObject = null ;
+	public GameObject m_SceneParent = null ;
 	
 	// 2D
 	public UILabel m_AnswerLabel = null ;
@@ -32,20 +33,23 @@ public class WhereSystem : MonoBehaviour
 	public TweenAlpha m_CorrectAlpha = null ;
 	public AudioSource m_CorrectAudio = null ;
 	
-	public string [] m_SceneKey = 
+	private string [] m_SceneKey = 
 	{
 	"Desk" ,
+		"Shelf" ,
 	} ;
 	
-	public string [] m_WhereKey = 
+	private string [] m_WhereKey = 
 	{
 		"Uber" ,
+		"Vor" ,
+		"In" ,
 	} ;
 	
 	Dictionary<string , GameObject> m_Scenes = new Dictionary<string, GameObject>() ;
 	
-	int m_CurrentWhereIndex = 0 ;
-	int m_CurrentSceneIndex = 0 ;
+	string m_CurrentWhereKey = string.Empty ;
+	string m_CurrentSceneKey = string.Empty ;
 	
 	public WhereState m_State = WhereState.WhereState_None ;
 	public GameObject m_AnswerModeScrollRegion = null ;
@@ -57,7 +61,8 @@ public class WhereSystem : MonoBehaviour
 		
 		}
 		
-		ReleaveScene( m_DeskObj , m_Fussball ) ;
+		ReleaveScene( m_CurrentScene , m_Fussball ) ;
+		
 		m_State = WhereState.WhereState_EnterAnswerMode ;
 	}
 	
@@ -81,7 +86,11 @@ public class WhereSystem : MonoBehaviour
 			m_State = WhereState.WhereState_EnterAnswerMode;
 			break ;
 		case WhereState.WhereState_EnterAnswerMode :
-			SetPresentScene( m_DeskObj , m_Fussball ) ;
+			
+			RandonmizeScene() ;
+			RandonmizeWhere( m_CurrentScene ) ;
+			
+			SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
 			m_State = WhereState.WhereState_WaitInAnswerMode ;
 			break ;
 		case WhereState.WhereState_WaitInAnswerMode :
@@ -95,23 +104,31 @@ public class WhereSystem : MonoBehaviour
 		}
 	}
 	
-	public void SetPresentScene( GameObject _SceneObj , GameObject _TargetObject )
+	public void SetPresentScene( GameObject _SceneObj , GameObject _TargetObject , string _WhereKey )
 	{
-		if( null != _TargetObject && null != _SceneObj )
+		if( null == _TargetObject )
 		{
-			_SceneObj.transform.localPosition = m_ScenesDropPos.position ;
-			_SceneObj.transform.localRotation = m_ScenesDropPos.rotation ;
-			Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
-			if( null != r )
-			{
-				r.isKinematic = false ;
-			}
-			Transform dummy = _SceneObj.transform.FindChild("Dummy_Uber");
-			if( null != dummy )
-			{
-				_TargetObject.transform.parent = dummy.transform ;
-				_TargetObject.transform.localPosition = Vector3.zero ;
-			}
+			Debug.LogError("null == _TargetObject");
+			return ;
+		}
+		if( null == _SceneObj )
+		{
+			Debug.LogError("null == _SceneObj");
+			return ;
+		}
+		
+		_SceneObj.transform.localPosition = m_ScenesDropPos.position ;
+		_SceneObj.transform.localRotation = m_ScenesDropPos.rotation ;
+		Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
+		if( null != r )
+		{
+			r.isKinematic = false ;
+		}
+		Transform dummy = _SceneObj.transform.FindChild("Dummy_" + _WhereKey);
+		if( null != dummy )
+		{
+			_TargetObject.transform.parent = dummy.transform ;
+			_TargetObject.transform.localPosition = Vector3.zero ;
 		}
 		
 	}
@@ -131,10 +148,60 @@ public class WhereSystem : MonoBehaviour
 		}
 	}
 	
-	public void DoWhereState_Initialize()
+	private void DoWhereState_Initialize()
 	{
-	
+		if( null == m_SceneParent )
+		{
+			Debug.LogError("DoWhereState_Initialize() null == m_SceneParent") ;
+			return ;
+		}
+		
+		for( int i = 0 ; i < m_SceneKey.Length ; ++i )
+		{
+			Transform trans = m_SceneParent.transform.FindChild( m_SceneKey[i] + "Prefab" ) ;
+			if( null != trans )
+			{
+				m_Scenes.Add( m_SceneKey[ i ] , trans.gameObject ) ;
+			}
+		}
+	}
+
+	private void RandonmizeScene()
+	{
+		int count = 0 ;
+		int randomIndex = Random.Range( 0 , m_Scenes.Count ) ;
+		var sceneEnum = m_Scenes.GetEnumerator() ;
+		while( sceneEnum.MoveNext() )
+		{
+			if( count == randomIndex )
+			{
+				m_CurrentSceneKey = sceneEnum.Current.Key ;
+				m_CurrentScene = sceneEnum.Current.Value ;
+				Debug.LogWarning ("RandonmizeScene() m_CurrentSceneKey=" + m_CurrentSceneKey);
+				break ;
+			}
+			++count ;
+		}
 	}
 	
+	private void RandonmizeWhere( GameObject _CurrentScene ) 
+	{
+		List<string> validWhereKey = new List<string>() ;
+		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
+		{
+			Debug.Log ("RandonmizeScene() validWhereKey.Add=" + m_WhereKey[ i ] );
+			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
+			if( null != dummy )
+			{
+				
+				validWhereKey.Add( m_WhereKey[ i ] ) ;
+			}					
+		}
+		
+		
+		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
+		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
+		Debug.LogWarning ("RandonmizeScene() m_CurrentWhereKey=" + m_CurrentWhereKey);
+	}
 }
 
