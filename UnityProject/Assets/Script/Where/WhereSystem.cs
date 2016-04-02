@@ -43,6 +43,12 @@ public class WhereSystem : MonoBehaviour
 	public Camera m_2DCamera = null ;
 	public GameObject m_MoveModeTouchRegion = null ;
 	
+	
+	private string [] m_TargetKey = 
+	{
+		"Fussball" ,
+	} ;
+	
 	private string [] m_SceneKey = 
 	{
 	"Desk" ,
@@ -75,6 +81,9 @@ public class WhereSystem : MonoBehaviour
 	
 	public bool m_IsAbleCollect = false ;
 	public bool m_IsCollected = false ;
+	
+	float m_ShowExampleWaitTime = 3.0f ;
+	float m_ShowExampleSet = 0.0f ;
 	
 	public void TryNextInAnswerMode()
 	{
@@ -211,6 +220,14 @@ public class WhereSystem : MonoBehaviour
 		this.m_IsAbleCollect = true ;
 	}
 	
+	
+	public void ResetExampleContent()
+	{
+		// string exampleKey = GetExampleKey( m_TargetIndex ) ;
+		// string exampleSentence = Localization.Get( exampleKey );
+		// UpdateExampleContent( exampleSentence ) ;
+	}
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -236,10 +253,15 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeScene() ;
 			RandonmizeWhere( m_CurrentScene ) ;
 			
+			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+			
 			SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
 			m_State = WhereState.WhereState_WaitInAnswerMode ;
 			break ;
 		case WhereState.WhereState_WaitInAnswerMode :
+		
+			CheckExampleTimer() ;
+			
 			break ;
 		case WhereState.WhereState_EnterMoveMode :
 		
@@ -256,7 +278,7 @@ public class WhereSystem : MonoBehaviour
 			m_State = WhereState.WhereState_WaitInMoveMode ;
 			break ;
 		case WhereState.WhereState_WaitInMoveMode :
-			
+			CheckExampleTimer() ;
 			break ;
 		case WhereState.WhereState_WaitCorrectAnimation :
 			break ;
@@ -288,6 +310,8 @@ public class WhereSystem : MonoBehaviour
 				_TargetObject.transform.localPosition = Vector3.zero ;
 			}
 		}
+		
+		ResetExampleTimer() ;
 	}
 	
 	public void ReleaveScene( GameObject _SceneObj , GameObject _TargetObject )
@@ -372,6 +396,8 @@ public class WhereSystem : MonoBehaviour
 		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
 		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
 		Debug.LogWarning ("RandonmizeScene() m_CurrentWhereKey=" + m_CurrentWhereKey);
+		
+		ShowExampleButton( false ) ;
 	}
 	
 	void SwitchGUI( bool _AnswerMode )
@@ -406,6 +432,57 @@ public class WhereSystem : MonoBehaviour
 		m_IsCollected = true ;
 	}
 	
+	private void ResetExampleTimer()
+	{
+		float waitTime = Random.Range( m_ShowExampleWaitTime/2.0f , m_ShowExampleWaitTime ) ;
+		m_ShowExampleSet = Time.timeSinceLevelLoad + waitTime ;
+	}
 	
+	private void CheckExampleTimer()
+	{
+		if( Time.timeSinceLevelLoad > m_ShowExampleSet )
+		{
+			ShowExampleButton( true ) ;
+		}
+	}
+	
+	private void ShowExampleButton( bool _Show )
+	{
+		if( null == this.m_ExampleButton )
+		{
+			return ;
+		}
+		
+		NGUITools.SetActive( m_ExampleButton , _Show ) ;
+	}
+	
+	private void UpdateExampleContent( string _Content )
+	{
+		if( null == m_ExampleContent )
+		{
+			return ;
+		}
+		
+		m_ExampleContent.text = _Content ; 
+	}
+
+	public string CreateAnswer( string _TargetKey 
+	, string _SceneKey 
+	, string _WhereKey )
+	{
+		Debug.Log("CreateAnswer()" + _TargetKey );
+		Debug.Log("CreateAnswer()" + _SceneKey );
+		Debug.Log("CreateAnswer()" + _WhereKey );
+		
+		string localizationWhereKey = "WhereKey_" + _WhereKey ;
+		string localWhereString = Localization.Get( localizationWhereKey ) ;
+		
+		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
+		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		
+		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
+		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		return localWhereString ;
+	}	
 }
 
