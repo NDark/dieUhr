@@ -58,6 +58,8 @@ public class WhereSystem : MonoBehaviour
 	string m_CurrentWhereKey = string.Empty ;
 	string m_CurrentSceneKey = string.Empty ;
 	
+	public float m_3DSceneRotateValue = 0 ;
+	
 	public WhereState m_State = WhereState.WhereState_None ;
 	public GameObject m_AnswerModeScrollRegion = null ;
 	
@@ -65,7 +67,8 @@ public class WhereSystem : MonoBehaviour
 	{
 		if( WhereState.WhereState_WaitInAnswerMode == m_State )
 		{
-		
+			Debug.LogWarning( "TryNextInAnswerMode() invalid state." ) ;
+			return ;
 		}
 		
 		ReleaveScene( m_CurrentScene , m_Fussball ) ;
@@ -75,23 +78,56 @@ public class WhereSystem : MonoBehaviour
 	
 	public void TryRotateLeft()
 	{
-	
+		float nextAngle = m_3DSceneRotateValue - 20 ; 
+		if( nextAngle < -80 )
+		{
+			return ;
+		}
+		
+		m_3DSceneRotateValue = nextAngle ;
+		
+		this.transform.rotation = Quaternion.AngleAxis( m_3DSceneRotateValue , Vector3.up ) ;
 	}
 	
 	public void TryRotateRight()
 	{
+		float nextAngle = m_3DSceneRotateValue + 20 ; 
+		if( nextAngle > 60 )
+		{
+			return ;
+		}
 		
+		m_3DSceneRotateValue = nextAngle ;
+		
+		this.transform.rotation = Quaternion.AngleAxis( m_3DSceneRotateValue , Vector3.up ) ;
 	}
 	
 	
 	public void TrySwitchToMoveMode()
 	{
+		if( WhereState.WhereState_WaitInAnswerMode != m_State )
+		{
+			Debug.LogWarning( "TrySwitchToMoveMode() invalid state." ) ;
+			return ;
+		}
+		
 		SwitchGUI( false ) ;
+		
+		m_State = WhereState.WhereState_EnterMoveMode ;
 	}
 
 	public void TrySwitchToAnswerMode()
 	{
+		if( WhereState.WhereState_WaitInMoveMode != m_State )
+		{
+			Debug.LogWarning( "TrySwitchToAnswerMode() invalid state." ) ;
+			return ;
+		}
+		
+		this.transform.rotation = Quaternion.identity ;
 		SwitchGUI( true ) ;
+		
+		m_State = WhereState.WhereState_EnterAnswerMode ;
 	}
 	
 	// Use this for initialization
@@ -111,6 +147,7 @@ public class WhereSystem : MonoBehaviour
 			break ;
 		case WhereState.WhereState_Initialize :
 			DoWhereState_Initialize() ;
+			
 			m_State = WhereState.WhereState_EnterAnswerMode;
 			break ;
 		case WhereState.WhereState_EnterAnswerMode :
@@ -124,6 +161,7 @@ public class WhereSystem : MonoBehaviour
 		case WhereState.WhereState_WaitInAnswerMode :
 			break ;
 		case WhereState.WhereState_EnterMoveMode :
+			m_State = WhereState.WhereState_WaitInMoveMode ;
 			break ;
 		case WhereState.WhereState_WaitInMoveMode :
 			break ;
@@ -192,6 +230,9 @@ public class WhereSystem : MonoBehaviour
 				m_Scenes.Add( m_SceneKey[ i ] , trans.gameObject ) ;
 			}
 		}
+		
+		this.transform.rotation = Quaternion.identity ;
+		SwitchGUI( true ) ;
 	}
 
 	private void RandonmizeScene()
