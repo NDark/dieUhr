@@ -72,6 +72,7 @@ public class WhereSystem : MonoBehaviour
 	
 	string m_CurrentWhereKey = string.Empty ;
 	string m_CurrentSceneKey = string.Empty ;
+	string m_CurrentSelectKey = string.Empty ;
 	
 	public float m_3DSceneRotateValue = 0 ;
 	
@@ -160,6 +161,12 @@ public class WhereSystem : MonoBehaviour
 	
 	public void DetectUserMouse( Vector3 _MousePosition )
 	{
+		if( m_State != WhereState.WhereState_WaitInMoveMode )
+		{
+			Debug.LogError("DetectUserMouse() invalid state.");
+			return ;
+		}
+		
 		if( false == m_IsAbleCollect )
 		{
 			Debug.LogWarning( "DetectUserMouse() false == m_IsAbleCollect." ) ;
@@ -208,11 +215,28 @@ public class WhereSystem : MonoBehaviour
 			Debug.LogWarning("minIndex=" + m_WhereScreenVecs[ minIndex ].Key );
 			m_Fussball.transform.position = m_WhereScreenVecs[ minIndex ].DummyObj.transform.position ;
 			Debug.LogWarning("m_CurrentWhereKey=" + m_CurrentWhereKey );
+			m_CurrentSelectKey = m_WhereScreenVecs[ minIndex ].Key ;
+			
 		}
 		
 		
 	}
 	
+	public void DecideUserChoice()
+	{
+		if( m_State != WhereState.WhereState_WaitInMoveMode )
+		{
+			Debug.LogError("DetectUserMouse() invalid state.");
+			return ;
+		}
+		
+		if( m_CurrentWhereKey == m_CurrentSelectKey )
+		{
+			PlayCorrectAnimation( true ) ;
+			m_CorrectAnswerWaitTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec ;
+			m_State = WhereState.WhereState_WaitCorrectAnimation ;
+		}
+	}
 	
 	
 	public void SetAbleCollectWhereOnScreen()
@@ -281,6 +305,7 @@ public class WhereSystem : MonoBehaviour
 			CheckExampleTimer() ;
 			break ;
 		case WhereState.WhereState_WaitCorrectAnimation :
+			DoWhereState_WaitCorrectAnimation() ;
 			break ;
 		}
 	}
@@ -330,13 +355,15 @@ public class WhereSystem : MonoBehaviour
 		
 
 		_SceneObj.transform.localPosition = m_ScenesStandbyPos.position ;
-		_SceneObj.transform.localRotation = m_ScenesStandbyPos.rotation ;			
+		_SceneObj.transform.localRotation = m_ScenesStandbyPos.rotation ;
 		Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
 		if( null != r )
 		{
 			r.isKinematic = true ;
 		}
 		_TargetObject.transform.parent = this.transform ;
+		_TargetObject.transform.position = m_ScenesStandbyPos.position ;
+		
 	}
 	
 	private void DoWhereState_Initialize()
@@ -484,5 +511,36 @@ public class WhereSystem : MonoBehaviour
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
 		return localWhereString ;
 	}	
+	
+	private void PlayCorrectAnimation( bool _Forward )
+	{
+		if( null == m_CorrectAlpha )
+		{
+			return ;
+		}
+		
+		if( true == _Forward )
+		{
+			m_CorrectAlpha.PlayForward() ;
+			m_CorrectAudio.Play() ;
+		}
+		else
+		{
+			m_CorrectAlpha.PlayReverse() ;
+		}
+	}
+
+	private void DoWhereState_WaitCorrectAnimation()
+	{
+		if( Time.timeSinceLevelLoad > m_CorrectAnswerWaitTime )
+		{
+			ReleaveScene( m_CurrentScene , m_Fussball ) ;			
+			PlayCorrectAnimation( false ) ;
+			m_State = WhereState.WhereState_EnterMoveMode ;
+		}
+	}	
+	
+	private float m_CorrectAnswerWaitSec = 1.0f ;
+	private float m_CorrectAnswerWaitTime = 0.0f ;		
 }
 

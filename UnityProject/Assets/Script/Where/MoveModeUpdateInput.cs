@@ -25,7 +25,12 @@ public class MoveModeUpdateInput : MonoBehaviour
 	void OnPress( bool _Down ) 
 	{
 		Debug.Log("OnPress()" + _Down);
+		if( false == _Down && true == m_IsPressed )
+		{
+			m_System.DecideUserChoice() ;
+		}
 		m_IsPressed = _Down ;
+		
 	}
 
 	private Vector3 m_PressedPoint = Vector3.zero ;	
