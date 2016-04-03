@@ -426,6 +426,11 @@ public class WhereSystem : MonoBehaviour
 		List<string> validWhereKey = new List<string>() ;
 		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
 		{
+			if( m_CurrentWhereKey == m_WhereKey[ i ] )
+			{
+				continue ;
+			}
+			
 			// Debug.Log ("RandonmizeScene() validWhereKey.Add=" + m_WhereKey[ i ] );
 			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
