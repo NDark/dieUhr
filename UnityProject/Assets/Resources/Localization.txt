@@ -73,12 +73,13 @@ ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>�
 ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。
 ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
 ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？
-ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
+ClockExampleKey_9Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
 WhereIntroductionContent,WhereIntroductionContent,WhereIntroductionContent,WhereIntroductionContent
-WhereNextButton,WhereNextButton,Next,下一個
+WhereNextButton,Nächste,Next,下一個
 WhereTarget_Fussball,das Fußball,the Soccor,足球
 WhereScene_Desk,dem Tisch,the desk,桌子
 WhereScene_Shelf,dem Regal,the shelf,架子
+ReferenceScene_Cabinet,dem Schrank,the cabinet,櫃子
 WhereKey_Uber,<target> ist über <scene>.,<target> is on <scene>.,<target>在<scene>上面。
 WhereKey_Auf,<target> ist auf <scene>.,<target> is above <scene>.,<target>在<scene>上方。
 WhereKey_Unter,<target> ist unter <scene>.,<target> is below <scene>.,<target>在<scene>下方。
