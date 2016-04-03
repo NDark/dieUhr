@@ -530,6 +530,8 @@ public class WhereSystem : MonoBehaviour
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		localWhereString = ReplaceDativShort( localWhereString ) ;
+		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
 	}	
 	
@@ -549,8 +551,26 @@ public class WhereSystem : MonoBehaviour
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		localWhereString = ReplaceDativShort( localWhereString ) ;
+		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
 	}	
+	
+	private string ReplaceDativShort( string _Src )
+	{
+		string ret = _Src ;
+		ret = ret.Replace("in dem" , "im" ) ;
+		ret = ret.Replace("an dem" , "am" ) ;
+		return ret ;
+	}
+	private string ReplaceFirstUpperCase( string _Src )
+	{
+		string ret = string.Empty ;
+		string p1 = _Src.Substring( 0 , 1 ) ;
+		string p2 = _Src.Substring( 1 ) ;
+		ret = p1.ToUpper() + p2 ;
+		return ret ;
+	}
 	
 	private void PlayCorrectAnimation( bool _Forward )
 	{
