@@ -334,8 +334,8 @@ public class WhereSystem : MonoBehaviour
 			return ;
 		}
 		
-		_SceneObj.transform.localPosition = m_ScenesDropPos.position ;
-		_SceneObj.transform.localRotation = m_ScenesDropPos.rotation ;
+		_SceneObj.transform.position = m_ScenesDropPos.position ;
+		_SceneObj.transform.rotation = m_ScenesDropPos.rotation ;
 		Rigidbody r = _SceneObj.GetComponent<Rigidbody>() ;
 		if( null != r )
 		{
