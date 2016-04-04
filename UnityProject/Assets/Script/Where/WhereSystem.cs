@@ -59,14 +59,14 @@ public class WhereSystem : MonoBehaviour
 	
 	private string [] m_WhereKey = 
 	{
-/*		"Uber" ,
+		"Uber" ,
 		"Auf" ,
 		"Unter" ,
 		"Vor" ,
 		"Hinter" ,
 		"Neben" ,
 		"An" ,
-		"In" ,*/
+		"In" ,
 		"Zwischen" ,
 	} ;
 	
@@ -384,6 +384,19 @@ public class WhereSystem : MonoBehaviour
 		_TargetObject.transform.parent = this.transform ;
 		_TargetObject.transform.position = m_ScenesStandbyPos.position ;
 		
+		Transform referenceDummy = _SceneObj.transform.FindChild("Dummy_Reference" );
+		if( null != referenceDummy )
+		{
+			for( int j = 0 ; j < referenceDummy.childCount ; ++j )
+			{
+				Transform existChild = referenceDummy.GetChild( j ) ;
+				if( null != existChild )
+				{
+					existChild.transform.parent = this.transform ;
+					existChild.transform.position = m_ScenesStandbyPos.position ;
+				}
+			}
+		}
 	}
 	
 	private void DoWhereState_Initialize()
@@ -452,7 +465,7 @@ public class WhereSystem : MonoBehaviour
 		
 		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
 		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
-		Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
+		// Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
 		
 		if( "Zwischen" == m_CurrentWhereKey )
 		{
@@ -462,19 +475,10 @@ public class WhereSystem : MonoBehaviour
 			Transform referenceDummy = _CurrentScene.transform.FindChild("Dummy_Reference" );
 			if( null != referenceDummy )
 			{
-				for( int j = 0 ; j < referenceDummy.childCount ; ++j )
-				{
-					Transform existChild = referenceDummy.GetChild( j ) ;
-					if( null != existChild )
-					{
-						existChild.transform.parent = this.transform ;
-						existChild.transform.position = m_ScenesStandbyPos.position ;
-					}
-				}
-				
 				referenceObj.transform.parent = referenceDummy.transform ;
 				referenceObj.transform.localPosition = Vector3.zero ;
-				Debug.LogWarning ("RandonmizeWhere() referenceObj=" + referenceObj.name );	
+				referenceObj.transform.localRotation = Quaternion.identity ;
+				// Debug.LogWarning ("RandonmizeWhere() referenceObj=" + referenceObj.name );	
 			}	
 		}
 		
