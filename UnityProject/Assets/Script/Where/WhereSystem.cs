@@ -448,7 +448,7 @@ public class WhereSystem : MonoBehaviour
 				continue ;
 			}
 			
-			Debug.Log ("RandonmizeWhere() validWhereKey.Add=" + m_WhereKey[ i ] );
+			// Debug.Log ("RandonmizeWhere() validWhereKey.Add=" + m_WhereKey[ i ] );
 			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
@@ -519,6 +519,12 @@ public class WhereSystem : MonoBehaviour
 		
 		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
 		{
+			if( "Zwischen" != m_CurrentWhereKey 
+			   && "Zwischen" == m_WhereKey[ i ] )
+			{
+				continue ;
+			}
+			
 			Transform dummy = m_CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
@@ -573,16 +579,20 @@ public class WhereSystem : MonoBehaviour
 	                           , string _WhereKey 
 	                           , string _ReferenceKey )
 	{
-		Debug.Log("CreateAnswer()" + _TargetKey );
-		Debug.Log("CreateAnswer()" + _SceneKey );
-		Debug.Log("CreateAnswer()" + _WhereKey );
-		
+//		Debug.Log("CreateAnswer()" + _TargetKey );
+//		Debug.Log("CreateAnswer()" + _SceneKey );
+//		Debug.Log("CreateAnswer()" + _WhereKey );
+//		
 		string localizationWhereKey = "WhereKey_" + _WhereKey ;
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
-		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
+		string referenceString = string.Empty;
+		if( string.Empty != _ReferenceKey )
+		{
+			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
+		}
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
@@ -597,10 +607,10 @@ public class WhereSystem : MonoBehaviour
 	                           , string _WhereKey 
 	                           , string _ReferenceKey )
 	{
-		Debug.Log("CreateInstruction()" + _TargetKey );
-		Debug.Log("CreateInstruction()" + _SceneKey );
-		Debug.Log("CreateInstruction()" + _WhereKey );
-		
+//		Debug.Log("CreateInstruction()" + _TargetKey );
+//		Debug.Log("CreateInstruction()" + _SceneKey );
+//		Debug.Log("CreateInstruction()" + _WhereKey );
+//		
 		string localizationWhereKey = "WhereInstruction_" + _WhereKey ;
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
