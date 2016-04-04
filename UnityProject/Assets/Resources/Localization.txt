@@ -79,7 +79,8 @@ WhereNextButton,Nächste,Next,下一個
 WhereTarget_Fussball,das Fußball,the soccor,足球
 WhereScene_Desk,dem Tisch,the desk,桌子
 WhereScene_Shelf,dem Regal,the shelf,架子
-ReferenceScene_Cabinet,dem Schrank,the cabinet,櫃子
+WhereScene_Cabinet,dem Schrank,the cabinet,櫃子
+WhereScene_Television,dem Fernsehen,the TV,電視
 WhereKey_Uber,<target> ist über <scene>.,<target> is on <scene>.,<target>在<scene>上面。
 WhereKey_Auf,<target> ist auf <scene>.,<target> is above <scene>.,<target>在<scene>上方。
 WhereKey_Unter,<target> ist unter <scene>.,<target> is below <scene>.,<target>在<scene>下方。

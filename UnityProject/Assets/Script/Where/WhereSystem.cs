@@ -51,28 +51,32 @@ public class WhereSystem : MonoBehaviour
 	
 	private string [] m_SceneKey = 
 	{
-	"Desk" ,
+		"Desk" ,
 		"Shelf" ,
+		"Cabinet" ,
+		"Television" ,		
 	} ;
 	
 	private string [] m_WhereKey = 
 	{
-		"Uber" ,
+/*		"Uber" ,
 		"Auf" ,
 		"Unter" ,
 		"Vor" ,
 		"Hinter" ,
 		"Neben" ,
 		"An" ,
-		"In" ,
+		"In" ,*/
 		"Zwischen" ,
 	} ;
+	
 	
 	Dictionary<string , GameObject> m_Scenes = new Dictionary<string, GameObject>() ;
 	
 	string m_CurrentWhereKey = string.Empty ;
 	string m_CurrentSceneKey = string.Empty ;
 	string m_CurrentSelectKey = string.Empty ;
+	string m_CurrentReferenceKey = string.Empty ;
 	
 	public float m_3DSceneRotateValue = 0 ;
 	
@@ -249,12 +253,12 @@ public class WhereSystem : MonoBehaviour
 		if( m_State == WhereState.WhereState_WaitInAnswerMode 
 		   || m_State == WhereState.WhereState_EnterAnswerMode )
 		{
-			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey , this.m_CurrentReferenceKey ) ;
 		}
 		else if( m_State == WhereState.WhereState_WaitInMoveMode 
 		        || m_State == WhereState.WhereState_EnterMoveMode )
 		{
-			m_AnswerLabel.text = CreateInstruction( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey ) ;
+			m_AnswerLabel.text = CreateInstruction( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey , this.m_CurrentReferenceKey  ) ;
 		}
 		
 	}
@@ -431,7 +435,7 @@ public class WhereSystem : MonoBehaviour
 				continue ;
 			}
 			
-			// Debug.Log ("RandonmizeScene() validWhereKey.Add=" + m_WhereKey[ i ] );
+			Debug.Log ("RandonmizeWhere() validWhereKey.Add=" + m_WhereKey[ i ] );
 			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
@@ -440,12 +444,58 @@ public class WhereSystem : MonoBehaviour
 			}					
 		}
 		
+		if( 0 == validWhereKey.Count )
+		{
+			Debug.LogError("0 == validWhereKey");
+			return ;
+		}
 		
 		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
 		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
-		Debug.LogWarning ("RandonmizeScene() m_CurrentWhereKey=" + m_CurrentWhereKey);
+		Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
+		
+		if( "Zwischen" == m_CurrentWhereKey )
+		{
+			// randomize a reference object from scene
+			GameObject referenceObj = RandomizeAnotherScene( m_CurrentSceneKey ) ;
+			
+			Transform referenceDummy = _CurrentScene.transform.FindChild("Dummy_Reference" );
+			if( null != referenceDummy )
+			{
+				for( int j = 0 ; j < referenceDummy.childCount ; ++j )
+				{
+					Transform existChild = referenceDummy.GetChild( j ) ;
+					if( null != existChild )
+					{
+						existChild.transform.parent = this.transform ;
+						existChild.transform.position = m_ScenesStandbyPos.position ;
+					}
+				}
+				
+				referenceObj.transform.parent = referenceDummy.transform ;
+				referenceObj.transform.localPosition = Vector3.zero ;
+				Debug.LogWarning ("RandonmizeWhere() referenceObj=" + referenceObj.name );	
+			}	
+		}
 		
 		ShowExampleButton( false ) ;
+	}
+	
+	GameObject RandomizeAnotherScene( string _ExclusiveScene )
+	{
+		List<string> validVec = new List<string>() ;
+		var sceneEnum = m_Scenes.GetEnumerator() ;
+		while( sceneEnum.MoveNext() )
+		{
+			if( sceneEnum.Current.Key != _ExclusiveScene )
+			{
+				validVec.Add( sceneEnum.Current.Key ) ;
+			}
+		}	
+		
+		int randomIndex = Random.Range( 0 , validVec.Count ) ;
+		m_CurrentReferenceKey = validVec[ randomIndex ] ;
+		return m_Scenes[ m_CurrentReferenceKey ] ;
 	}
 	
 	void SwitchGUI( bool _AnswerMode )
@@ -516,7 +566,8 @@ public class WhereSystem : MonoBehaviour
 
 	public string CreateAnswer( string _TargetKey 
 	, string _SceneKey 
-	, string _WhereKey )
+	                           , string _WhereKey 
+	                           , string _ReferenceKey )
 	{
 		Debug.Log("CreateAnswer()" + _TargetKey );
 		Debug.Log("CreateAnswer()" + _SceneKey );
@@ -527,9 +578,11 @@ public class WhereSystem : MonoBehaviour
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
@@ -537,7 +590,8 @@ public class WhereSystem : MonoBehaviour
 	
 	public string CreateInstruction( string _TargetKey 
 	                           , string _SceneKey 
-	                           , string _WhereKey )
+	                           , string _WhereKey 
+	                           , string _ReferenceKey )
 	{
 		Debug.Log("CreateInstruction()" + _TargetKey );
 		Debug.Log("CreateInstruction()" + _SceneKey );
@@ -548,9 +602,11 @@ public class WhereSystem : MonoBehaviour
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
+		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
