@@ -1,6 +1,6 @@
 KEY,Deutsch,English,TraditionalChinese
 IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die traditionelle die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
+IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
 Dreiviertel,Dreiviertel,A quarter to,四十五分
 Viertel,Viertel,A quarter,十五分
 nach,nach,past,之後
@@ -38,7 +38,7 @@ h2,,,兩
 30,Dreißig,thirty,三十
 40,Vierzig,forty,四十
 50,Fünfzig,fifty,五十
-AcknowledgeMarcus,Vielen Danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
+AcknowledgeMarcus,Vielen danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
@@ -74,3 +74,28 @@ ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今�
 ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
 ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
+WhereIntroductionContent,WhereIntroductionContent,"The user may see the correct expression of ' ... is at ...' in answer mode, and then in touch mode, try move target to correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。"
+WhereNextButton,Nächste,Next,下一個
+WhereTarget_Fussball,das Fußball,the soccor,足球
+WhereScene_Desk,dem Tisch,the desk,桌子
+WhereScene_Shelf,dem Regal,the shelf,架子
+WhereScene_Cabinet,dem Schrank,the cabinet,櫃子
+WhereScene_Television,dem Fernsehen,the TV,電視
+WhereKey_Uber,<target> ist über <scene>.,<target> is on <scene>.,<target>在<scene>上面。
+WhereKey_Auf,<target> ist auf <scene>.,<target> is above <scene>.,<target>在<scene>上方。
+WhereKey_Unter,<target> ist unter <scene>.,<target> is below <scene>.,<target>在<scene>下方。
+WhereKey_Vor,<target> ist vor <scene>.,<target> is in front of <scene>.,<target>在<scene>前面。
+WhereKey_Hinter,<target> ist hinter <scene>.,<target> is behind <scene>.,<target>在<scene>後面。
+WhereKey_Neben,<target> ist neben <scene>.,<target> is next to <scene>.,<target>在<scene>旁邊。
+WhereKey_An,<target> ist an <scene>.,<target> is at side of <scene>.,<target>靠在<scene>旁邊。
+WhereKey_In,<target> ist in <scene>.,<target> is in <scene>.,<target>在<scene>裡面。
+WhereKey_Zwischen,<target> ist zwischen <scene> und <refernce>.,<target> is between <scene> and <reference>.,<target>在<scene>與<refernce>之間。
+WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.,Please put <target> on <scene>.,請把<target>放在<scene>上面。
+WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.,Please put <target> above <scene>.,請把<target>放在<scene>上方。
+WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.,Please put <target> below <scene>.,請把<target>放在<scene>下方。
+WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.,Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
+WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.,Please put <target> behind <scene>.,請把<target>放在<scene>後面。
+WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.,Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_An,Legen Sie <target> an <scene> bitte.,Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
+WhereInstruction_In,Legen Sie <target> in <scene> bitte.,Please put <target> in <scene>.,請把<target>放在<scene>裡面。
+WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <refernce> bitte.,Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<refernce>之間。
