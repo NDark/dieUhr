@@ -7,7 +7,6 @@ public class TweemPingPongAfterSec : MonoBehaviour
 	float waitingSec = 4.0f ;
 	float waitingTime = 0.0f ;
 	bool isForward = true ;
-	bool isWait = false ;
 	
 	public void OnFinished()
 	{
