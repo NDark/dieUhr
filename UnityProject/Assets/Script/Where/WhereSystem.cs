@@ -100,6 +100,8 @@ public class WhereSystem : MonoBehaviour
 		
 		ReleaveScene( m_CurrentScene , m_Fussball ) ;
 		
+		NGUITools.SetActive( this.m_InstructionText , false ) ;
+		
 		m_State = WhereState.WhereState_EnterAnswerMode ;
 	}
 	
@@ -194,7 +196,9 @@ public class WhereSystem : MonoBehaviour
 			Debug.LogWarning( "DetectUserMouse() m_WhereScreenVecs is empty." ) ;
 			return ;
 		}
-
+		
+		NGUITools.SetActive( this.m_InstructionText , false ) ;
+		
 		int minIndex = -1 ;		
 		float minDistance = 999.99f ;
 		Debug.Log("_MousePosition" + _MousePosition );
