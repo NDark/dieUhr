@@ -600,7 +600,7 @@ public class WhereSystem : MonoBehaviour
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
-		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
+		localWhereString = localWhereString.Replace( "<reference>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
@@ -624,7 +624,7 @@ public class WhereSystem : MonoBehaviour
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
-		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
+		localWhereString = localWhereString.Replace( "<reference>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;

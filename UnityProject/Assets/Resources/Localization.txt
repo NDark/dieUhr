@@ -89,7 +89,7 @@ WhereKey_Hinter,<target> ist hinter <scene>.,<target> is behind <scene>.,<target
 WhereKey_Neben,<target> ist neben <scene>.,<target> is next to <scene>.,<target>在<scene>旁邊。
 WhereKey_An,<target> ist an <scene>.,<target> is at side of <scene>.,<target>靠在<scene>旁邊。
 WhereKey_In,<target> ist in <scene>.,<target> is in <scene>.,<target>在<scene>裡面。
-WhereKey_Zwischen,<target> ist zwischen <scene> und <refernce>.,<target> is between <scene> and <reference>.,<target>在<scene>與<refernce>之間。
+WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.,<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
 WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.,Please put <target> on <scene>.,請把<target>放在<scene>上面。
 WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.,Please put <target> above <scene>.,請把<target>放在<scene>上方。
 WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.,Please put <target> below <scene>.,請把<target>放在<scene>下方。
@@ -98,4 +98,4 @@ WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.,Please put <tar
 WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.,Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
 WhereInstruction_An,Legen Sie <target> an <scene> bitte.,Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
 WhereInstruction_In,Legen Sie <target> in <scene> bitte.,Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <refernce> bitte.,Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<refernce>之間。
+WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.,Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
