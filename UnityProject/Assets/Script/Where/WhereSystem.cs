@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+public enum GenderOfNoun
+{
+	Male , 
+	Female ,
+	Neutral ,
+	Plural
+}
+
 public enum WhereState
 {
 	WhereState_None = 0 ,
@@ -591,7 +599,10 @@ public class WhereSystem : MonoBehaviour
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
+		
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		sceneString = DativTheNoun( sceneString ) ;
+		
 		string referenceString = string.Empty;
 		if( string.Empty != _ReferenceKey )
 		{
@@ -620,6 +631,8 @@ public class WhereSystem : MonoBehaviour
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		sceneString = AkkusativTheNoun( sceneString ) ;
+		
 		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
@@ -673,6 +686,64 @@ public class WhereSystem : MonoBehaviour
 			m_State = WhereState.WhereState_EnterMoveMode ;
 		}
 	}	
+	
+	private GenderOfNoun GetGender( string _Input )
+	{
+		string lowerString = _Input.ToLower() ;
+		if( -1 != lowerString.IndexOf( "der" ) )
+		{
+			return GenderOfNoun.Male ;
+		}
+		else if( -1 != lowerString.IndexOf( "die" ) 
+		        && lowerString.Length - 1 == lowerString.LastIndexOf( "n" ) )
+		{
+			return GenderOfNoun.Plural ;
+		}
+		else if( -1 != lowerString.IndexOf( "das" ) )
+		{
+			return GenderOfNoun.Neutral ;
+		}
+		else // if( -1 != lowerString.IndexOf( "die" ) )
+		{
+			return GenderOfNoun.Female ;
+		}
+
+	}
+	
+	private string AkkusativTheNoun( string _Input )
+	{
+		string ret = _Input ;
+		GenderOfNoun gender = GetGender( _Input ) ;
+		switch( gender )
+		{
+		case GenderOfNoun.Male :
+			ret = ret.Replace( "der" , "den" ) ;
+			break ;
+		}
+		return ret ;
+	}
+	
+	private string DativTheNoun( string _Input )
+	{
+		string ret = _Input ;
+		GenderOfNoun gender = GetGender( _Input ) ;
+		switch( gender )
+		{
+		case GenderOfNoun.Male :
+			ret = ret.Replace( "der" , "dem" ) ;
+			break ;
+		case GenderOfNoun.Female :
+			ret = ret.Replace( "die" , "der" ) ;
+			break ;
+		case GenderOfNoun.Neutral :
+			ret = ret.Replace( "das" , "dem" ) ;
+			break ;
+		case GenderOfNoun.Plural :
+			ret = ret.Replace( "die" , "den" ) ;
+			break ;
+		}
+		return ret ;
+	}
 	
 	private float m_CorrectAnswerWaitSec = 1.0f ;
 	private float m_CorrectAnswerWaitTime = 0.0f ;		
