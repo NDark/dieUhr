@@ -76,7 +76,7 @@ ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
 WhereIntroductionContent,WhereIntroductionContent,"The user may see the correct expression of ' ... is at ...' in answer mode, and then in touch mode, try move target to correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。"
 WhereNextButton,Nächste,Next,下一個
-WhereTarget_Fussball,das Fußball,the soccer,足球
+WhereTarget_Fussball,der Fußball,the soccer,足球
 WhereScene_Desk,dem Tisch,the desk,桌子
 WhereScene_Shelf,dem Regal,the shelf,架子
 WhereScene_Cabinet,dem Schrank,the cabinet,櫃子
