@@ -95,7 +95,7 @@ WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.(Akkusativ),Please put
 WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
 WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
 WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_Neben,Legen Sie <target> rechts neben <scene> bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
 WhereInstruction_An,Legen Sie <target> an <scene> bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
 WhereInstruction_In,Legen Sie <target> in <scene> bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
 WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
