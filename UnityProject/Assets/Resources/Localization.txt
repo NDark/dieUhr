@@ -61,8 +61,8 @@ ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersectio
 ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。
 ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。
 ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。
-ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist links an der Ampel abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
-ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
+ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
+ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
 ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口
 ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。
 ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
@@ -81,21 +81,21 @@ WhereScene_Desk,der Tisch,the desk,桌子
 WhereScene_Shelf,das Regal,the shelf,架子
 WhereScene_Cabinet,der Schrank,the cabinet,櫃子
 WhereScene_Television,der Fernseher,the TV,電視
-WhereKey_Uber,<target> ist über <scene>.,<target> is on <scene>.,<target>在<scene>上面。
-WhereKey_Auf,<target> ist auf <scene>.,<target> is above <scene>.,<target>在<scene>上方。
-WhereKey_Unter,<target> ist unter <scene>.,<target> is below <scene>.,<target>在<scene>下方。
-WhereKey_Vor,<target> ist vor <scene>.,<target> is in front of <scene>.,<target>在<scene>前面。
-WhereKey_Hinter,<target> ist hinter <scene>.,<target> is behind <scene>.,<target>在<scene>後面。
-WhereKey_Neben,<target> ist neben <scene>.,<target> is next to <scene>.,<target>在<scene>旁邊。
-WhereKey_An,<target> ist an <scene>.,<target> is at side of <scene>.,<target>靠在<scene>旁邊。
-WhereKey_In,<target> ist in <scene>.,<target> is in <scene>.,<target>在<scene>裡面。
-WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.,<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
-WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.,Please put <target> on <scene>.,請把<target>放在<scene>上面。
-WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.,Please put <target> above <scene>.,請把<target>放在<scene>上方。
-WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.,Please put <target> below <scene>.,請把<target>放在<scene>下方。
-WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.,Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
-WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.,Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.,Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
-WhereInstruction_An,Legen Sie <target> an <scene> bitte.,Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
-WhereInstruction_In,Legen Sie <target> in <scene> bitte.,Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.,Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
+WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。
+WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。
+WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。
+WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。
+WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。
+WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<target>在<scene>旁邊。
+WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。
+WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。
+WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
+WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
+WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
+WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
+WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
+WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
+WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_An,Legen Sie <target> an <scene> bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
+WhereInstruction_In,Legen Sie <target> in <scene> bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
+WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
