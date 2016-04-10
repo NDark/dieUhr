@@ -50,7 +50,7 @@ public class WhereSystem : MonoBehaviour
 	public AudioSource m_CorrectAudio = null ;
 	public Camera m_2DCamera = null ;
 	public GameObject m_MoveModeTouchRegion = null ;
-	
+	public Transform m_MoveModeFussballStandbyPos = null ;
 	
 	private string [] m_TargetKey = 
 	{
@@ -197,6 +197,7 @@ public class WhereSystem : MonoBehaviour
 		if( false == m_IsCollected )
 		{
 			CollectWhereOnScreen() ;
+			
 		}
 		
 		if( m_WhereScreenVecs.Count <= 0 )
@@ -258,6 +259,15 @@ public class WhereSystem : MonoBehaviour
 	public void SetAbleCollectWhereOnScreen()
 	{
 		this.m_IsAbleCollect = true ;
+		
+		
+		
+		if( WhereState.WhereState_WaitInMoveMode == m_State )
+		{
+			// set fuss ball to specified standby positon
+			m_Fussball.transform.position = m_MoveModeFussballStandbyPos.position ;
+		}
+		
 	}
 	
 	public void ResetAnswerContent()
@@ -280,12 +290,6 @@ public class WhereSystem : MonoBehaviour
 		// string exampleKey = GetExampleKey( m_TargetIndex ) ;
 		// string exampleSentence = Localization.Get( exampleKey );
 		// UpdateExampleContent( exampleSentence ) ;
-	}
-	
-	// Use this for initialization
-	void Start () 
-	{
-		
 	}
 	
 	// Update is called once per frame
