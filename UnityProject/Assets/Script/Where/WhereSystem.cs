@@ -287,9 +287,9 @@ public class WhereSystem : MonoBehaviour
 	
 	public void ResetExampleContent()
 	{
-		// string exampleKey = GetExampleKey( m_TargetIndex ) ;
-		// string exampleSentence = Localization.Get( exampleKey );
-		// UpdateExampleContent( exampleSentence ) ;
+		string exampleKey = GetExampleKey( m_CurrentWhereKey ) ;
+		string exampleSentence = Localization.Get( exampleKey );
+		UpdateExampleContent( exampleSentence ) ;
 	}
 	
 	// Update is called once per frame
@@ -312,6 +312,7 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeWhere( m_CurrentScene ) ;
 			
 			ResetAnswerContent() ;
+			ResetExampleContent() ;
 			
 			SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
 			m_State = WhereState.WhereState_WaitInAnswerMode ;
@@ -327,6 +328,7 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeWhere( m_CurrentScene ) ;
 			
 			ResetAnswerContent() ;
+			ResetExampleContent() ;
 			
 			SetPresentScene( m_CurrentScene , null , string.Empty ) ;
 			
@@ -747,6 +749,11 @@ public class WhereSystem : MonoBehaviour
 			break ;
 		}
 		return ret ;
+	}
+	
+	private string GetExampleKey( string _WhereKey )
+	{
+		return "WhereExample_" + _WhereKey ;
 	}
 	
 	private float m_CorrectAnswerWaitSec = 1.0f ;
