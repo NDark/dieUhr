@@ -18,6 +18,9 @@ public enum WhereState
 	WhereState_EnterMoveMode ,
 	WhereState_WaitInMoveMode ,
 	WhereState_WaitCorrectAnimation ,
+	
+	WhereState_EnterTeacherMode ,
+	WhereState_WaitInTeacherMode ,
 }
 
 public class ScreenCollectData
@@ -51,6 +54,9 @@ public class WhereSystem : MonoBehaviour
 	public Camera m_2DCamera = null ;
 	public GameObject m_MoveModeTouchRegion = null ;
 	public Transform m_MoveModeFussballStandbyPos = null ;
+	
+	public TweenAlpha m_TeacherMenuAlpha = null ;
+	public GameObject m_TeacherModeButton = null ;
 	
 	private string [] m_TargetKey = 
 	{
@@ -98,6 +104,57 @@ public class WhereSystem : MonoBehaviour
 	float m_ShowExampleWaitTime = 3.0f ;
 	float m_ShowExampleSet = 0.0f ;
 	
+	public void TryEnterTeacherMode()
+	{
+		if( WhereState.WhereState_WaitInAnswerMode != m_State 
+		   && WhereState.WhereState_WaitInMoveMode != m_State )
+		{
+			Debug.LogWarning( "TryEnterTeacherMode() invalid state=" + m_State ) ;
+			return ;
+		}
+		
+		if( null == m_TeacherMenuAlpha )
+		{
+			Debug.LogError( "TryEnterTeacherMode() null == m_TeacherMenuAlpha" ) ;		
+			return ;
+		}
+		
+		m_TeacherMenuAlpha.PlayForward() ;
+		
+		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
+		NGUITools.SetActive( m_RotateLeftButton , false ) ;
+		NGUITools.SetActive( m_RotateRightButton , false ) ;
+		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
+		NGUITools.SetActive( m_MoveModeTouchRegion , false ) ;
+		
+		NGUITools.SetActive( m_MoveModeButton , true ) ;
+		NGUITools.SetActive( m_AnswerModeButton , true ) ;
+		NGUITools.SetActive( m_TeacherModeButton , false ) ;
+		
+		
+		
+		m_State = WhereState.WhereState_EnterTeacherMode ;
+	}
+	
+	public void TryWaitInTeacherMode()
+	{
+		if( WhereState.WhereState_EnterTeacherMode != m_State )
+		{
+			Debug.LogWarning( "TryWaitInTeacherMode() invalid state=" + m_State ) ;
+			return ;
+		}
+		
+		if( null == m_TeacherMenuAlpha )
+		{
+			Debug.LogError( "TryEnterTeacherMode() null == m_TeacherMenuAlpha" ) ;		
+			return ;
+		}
+		
+		m_TeacherMenuAlpha.PlayReverse() ;
+		
+		m_State = WhereState.WhereState_WaitInTeacherMode ;
+	}
+	
 	public void TryNextInAnswerMode()
 	{
 		if( WhereState.WhereState_WaitInAnswerMode != m_State )
@@ -142,7 +199,8 @@ public class WhereSystem : MonoBehaviour
 	
 	public void TrySwitchToMoveMode()
 	{
-		if( WhereState.WhereState_WaitInAnswerMode != m_State )
+		if( WhereState.WhereState_WaitInAnswerMode != m_State 
+		   && WhereState.WhereState_WaitInTeacherMode != m_State )
 		{
 			Debug.LogWarning( "TrySwitchToMoveMode() invalid state." ) ;
 			return ;
@@ -157,7 +215,8 @@ public class WhereSystem : MonoBehaviour
 
 	public void TrySwitchToAnswerMode()
 	{
-		if( WhereState.WhereState_WaitInMoveMode != m_State )
+		if( WhereState.WhereState_WaitInMoveMode != m_State 
+		   && WhereState.WhereState_WaitInTeacherMode != m_State )
 		{
 			Debug.LogWarning( "TrySwitchToAnswerMode() invalid state." ) ;
 			return ;
@@ -344,6 +403,11 @@ public class WhereSystem : MonoBehaviour
 			break ;
 		case WhereState.WhereState_WaitCorrectAnimation :
 			DoWhereState_WaitCorrectAnimation() ;
+			break ;
+			
+		case WhereState.WhereState_EnterTeacherMode :
+			break ;
+		case WhereState.WhereState_WaitInTeacherMode :
 			break ;
 		}
 	}
