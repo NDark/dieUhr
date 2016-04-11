@@ -126,6 +126,7 @@ public class WhereSystem : MonoBehaviour
 			return ;
 		}
 		
+		InitTeachersModePopupList() ;
 		m_TeacherMenuAlpha.PlayForward() ;
 		
 		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
@@ -547,7 +548,6 @@ public class WhereSystem : MonoBehaviour
 		this.transform.rotation = Quaternion.identity ;
 		SwitchGUI( true ) ;
 		
-		InitTeachersModePopupList() ;
 	}
 
 	
