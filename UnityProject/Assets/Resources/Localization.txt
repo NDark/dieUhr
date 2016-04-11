@@ -110,3 +110,5 @@ WhereExample_In,Der Müll ist in dem Korb.\nDas Handy steckt in der Tasche.,The 
 WhereExample_Zwischen,Das Geld fallt zwischen dem Schränken.\nDer Hund ist zwischen der Katze und dem Vogel.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
 TeacherSettingTitle,Gewohnheit,Custom,設定模式
 TeacherSettingConfirm,bestätigen,Confirm,確認
+TeacherSettingSubjectLabel,Subjekt,Subject,主詞
+TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係
