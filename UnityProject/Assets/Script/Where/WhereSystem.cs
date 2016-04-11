@@ -127,6 +127,7 @@ public class WhereSystem : MonoBehaviour
 		}
 		
 		InitTeachersModePopupList() ;
+		
 		m_TeacherMenuAlpha.PlayForward() ;
 		
 		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
@@ -913,7 +914,7 @@ public class WhereSystem : MonoBehaviour
 		{
 			m_TeacherModeScenePopUpList.Clear() ;
 			m_TeacherModeSceneToKey.Clear() ;
-			string sceneString = "" ;
+			string sceneString = string.Empty ;
 			for( int i = 0 ; i < m_SceneKey.Length ; ++i )
 			{
 				sceneString = Localization.Get( "WhereScene_" + m_SceneKey[i] ) ;
@@ -924,13 +925,12 @@ public class WhereSystem : MonoBehaviour
 			
 		}
 		
-		List<string> allWhereKey = new List<string>() ;
-		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
-		{
-			allWhereKey.Add( m_WhereKey[ i ] );
-		}
-			
-		InitTeachersModePopupList_Where( allWhereKey ) ;
+		List<string> validWhereKeys = 
+			CollectValidWhereFromSceneObject( 
+				m_Scenes[ 
+					m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ] 
+			, false ) ;
+		InitTeachersModePopupList_Where( validWhereKeys ) ;
 		
 	}
 	
