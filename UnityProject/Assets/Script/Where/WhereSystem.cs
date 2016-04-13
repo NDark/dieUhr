@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+public enum GenderOfNoun
+{
+	Male , 
+	Female ,
+	Neutral ,
+	Plural
+}
+
 public enum WhereState
 {
 	WhereState_None = 0 ,
@@ -10,6 +18,9 @@ public enum WhereState
 	WhereState_EnterMoveMode ,
 	WhereState_WaitInMoveMode ,
 	WhereState_WaitCorrectAnimation ,
+	
+	WhereState_EnterTeacherMode ,
+	WhereState_WaitInTeacherMode ,
 }
 
 public class ScreenCollectData
@@ -42,7 +53,15 @@ public class WhereSystem : MonoBehaviour
 	public AudioSource m_CorrectAudio = null ;
 	public Camera m_2DCamera = null ;
 	public GameObject m_MoveModeTouchRegion = null ;
+	public Transform m_MoveModeFussballStandbyPos = null ;
 	
+	public TweenAlpha m_TeacherMenuAlpha = null ;
+	public GameObject m_TeacherModeButton = null ;
+	public UIPopupList m_TeacherModeScenePopUpList = null ;
+	public UIPopupList m_TeacherModeWherePopUpList = null ;
+	
+	private Dictionary<string,string> m_TeacherModeSceneToKey = new Dictionary<string, string>() ;
+	private Dictionary<string,string> m_TeacherModeWhereToKey = new Dictionary<string, string>() ;
 	
 	private string [] m_TargetKey = 
 	{
@@ -90,6 +109,94 @@ public class WhereSystem : MonoBehaviour
 	float m_ShowExampleWaitTime = 3.0f ;
 	float m_ShowExampleSet = 0.0f ;
 	
+	public void TryEnterTeacherMode()
+	{
+		if( WhereState.WhereState_WaitInAnswerMode != m_State 
+		   && WhereState.WhereState_WaitInMoveMode != m_State 
+		   && WhereState.WhereState_WaitInTeacherMode != m_State 
+		   )
+		{
+			Debug.LogWarning( "TryEnterTeacherMode() invalid state=" + m_State ) ;
+			return ;
+		}
+		
+		if( null == m_TeacherMenuAlpha )
+		{
+			Debug.LogError( "TryEnterTeacherMode() null == m_TeacherMenuAlpha" ) ;		
+			return ;
+		}
+		
+		InitTeachersModePopupList() ;
+		
+		m_TeacherMenuAlpha.PlayForward() ;
+		
+		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
+		NGUITools.SetActive( m_RotateLeftButton , false ) ;
+		NGUITools.SetActive( m_RotateRightButton , false ) ;
+		NGUITools.SetActive( m_ShuffleNextButton , false ) ;
+		NGUITools.SetActive( m_MoveModeTouchRegion , false ) ;
+		
+		NGUITools.SetActive( m_MoveModeButton , true ) ;
+		NGUITools.SetActive( m_AnswerModeButton , true ) ;
+		
+		ReleaveScene( m_CurrentScene , m_Fussball ) ;
+		
+		
+		
+		m_State = WhereState.WhereState_EnterTeacherMode ;
+	}
+	
+	public void TryReselectScene()
+	{
+		if( WhereState.WhereState_EnterTeacherMode != m_State )
+		{
+			Debug.LogWarning( "TryWaitInTeacherMode() invalid state=" + m_State ) ;
+			return ;
+		}	
+		
+		
+		string subjectKey = m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ;
+		m_CurrentSceneKey = subjectKey ;
+		m_CurrentScene = m_Scenes[ m_CurrentSceneKey ] ;
+		
+		List<string> validWhereKeys = CollectValidWhereFromSceneObject( m_CurrentScene , false ) ;
+		InitTeachersModePopupList_Where( validWhereKeys ) ;
+		
+	}
+	
+	public void TryWaitInTeacherMode()
+	{
+		if( WhereState.WhereState_EnterTeacherMode != m_State )
+		{
+			Debug.LogWarning( "TryWaitInTeacherMode() invalid state=" + m_State ) ;
+			return ;
+		}
+		
+		if( null == m_TeacherMenuAlpha )
+		{
+			Debug.LogError( "TryEnterTeacherMode() null == m_TeacherMenuAlpha" ) ;		
+			return ;
+		}
+		
+		m_TeacherMenuAlpha.PlayReverse() ;
+		
+		string subjectKey = m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ;
+		string whereKey = m_TeacherModeWhereToKey[ m_TeacherModeWherePopUpList.value ] ;
+		m_CurrentSceneKey = subjectKey ;
+		m_CurrentScene = m_Scenes[ m_CurrentSceneKey ] ;
+		m_CurrentWhereKey = whereKey ;
+		CheckWhereIsReference( m_CurrentScene ) ;
+		Debug.Log("m_CurrentSceneKey" + m_CurrentSceneKey );
+		Debug.Log("m_CurrentWhereKey" + m_CurrentWhereKey );
+		
+		ResetAnswerContent() ;
+		ResetExampleContent() ;
+		
+		SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
+		
+		m_State = WhereState.WhereState_WaitInTeacherMode ;
+	}
+	
 	public void TryNextInAnswerMode()
 	{
 		if( WhereState.WhereState_WaitInAnswerMode != m_State )
@@ -99,6 +206,8 @@ public class WhereSystem : MonoBehaviour
 		}
 		
 		ReleaveScene( m_CurrentScene , m_Fussball ) ;
+		
+		NGUITools.SetActive( this.m_InstructionText , false ) ;
 		
 		m_State = WhereState.WhereState_EnterAnswerMode ;
 	}
@@ -132,7 +241,8 @@ public class WhereSystem : MonoBehaviour
 	
 	public void TrySwitchToMoveMode()
 	{
-		if( WhereState.WhereState_WaitInAnswerMode != m_State )
+		if( WhereState.WhereState_WaitInAnswerMode != m_State 
+		   && WhereState.WhereState_WaitInTeacherMode != m_State )
 		{
 			Debug.LogWarning( "TrySwitchToMoveMode() invalid state." ) ;
 			return ;
@@ -147,7 +257,8 @@ public class WhereSystem : MonoBehaviour
 
 	public void TrySwitchToAnswerMode()
 	{
-		if( WhereState.WhereState_WaitInMoveMode != m_State )
+		if( WhereState.WhereState_WaitInMoveMode != m_State 
+		   && WhereState.WhereState_WaitInTeacherMode != m_State )
 		{
 			Debug.LogWarning( "TrySwitchToAnswerMode() invalid state." ) ;
 			return ;
@@ -187,6 +298,7 @@ public class WhereSystem : MonoBehaviour
 		if( false == m_IsCollected )
 		{
 			CollectWhereOnScreen() ;
+			
 		}
 		
 		if( m_WhereScreenVecs.Count <= 0 )
@@ -194,7 +306,9 @@ public class WhereSystem : MonoBehaviour
 			Debug.LogWarning( "DetectUserMouse() m_WhereScreenVecs is empty." ) ;
 			return ;
 		}
-
+		
+		NGUITools.SetActive( this.m_InstructionText , false ) ;
+		
 		int minIndex = -1 ;		
 		float minDistance = 999.99f ;
 		Debug.Log("_MousePosition" + _MousePosition );
@@ -246,12 +360,24 @@ public class WhereSystem : MonoBehaviour
 	public void SetAbleCollectWhereOnScreen()
 	{
 		this.m_IsAbleCollect = true ;
+		
+		
+		
+		if( WhereState.WhereState_WaitInMoveMode == m_State )
+		{
+			// set fuss ball to specified standby positon
+			m_Fussball.transform.position = m_MoveModeFussballStandbyPos.position ;
+		}
+		
 	}
 	
 	public void ResetAnswerContent()
 	{
 		if( m_State == WhereState.WhereState_WaitInAnswerMode 
-		   || m_State == WhereState.WhereState_EnterAnswerMode )
+		   || m_State == WhereState.WhereState_EnterAnswerMode 
+		   || m_State == WhereState.WhereState_EnterTeacherMode 
+		   || m_State == WhereState.WhereState_WaitInTeacherMode 
+		   )
 		{
 			m_AnswerLabel.text = CreateAnswer( m_TargetKey[ 0 ] , m_CurrentSceneKey , m_CurrentWhereKey , this.m_CurrentReferenceKey ) ;
 		}
@@ -265,15 +391,9 @@ public class WhereSystem : MonoBehaviour
 	
 	public void ResetExampleContent()
 	{
-		// string exampleKey = GetExampleKey( m_TargetIndex ) ;
-		// string exampleSentence = Localization.Get( exampleKey );
-		// UpdateExampleContent( exampleSentence ) ;
-	}
-	
-	// Use this for initialization
-	void Start () 
-	{
-		
+		string exampleKey = GetExampleKey( m_CurrentWhereKey ) ;
+		string exampleSentence = Localization.Get( exampleKey );
+		UpdateExampleContent( exampleSentence ) ;
 	}
 	
 	// Update is called once per frame
@@ -296,6 +416,7 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeWhere( m_CurrentScene ) ;
 			
 			ResetAnswerContent() ;
+			ResetExampleContent() ;
 			
 			SetPresentScene( m_CurrentScene , m_Fussball , m_CurrentWhereKey ) ;
 			m_State = WhereState.WhereState_WaitInAnswerMode ;
@@ -311,6 +432,7 @@ public class WhereSystem : MonoBehaviour
 			RandonmizeWhere( m_CurrentScene ) ;
 			
 			ResetAnswerContent() ;
+			ResetExampleContent() ;
 			
 			SetPresentScene( m_CurrentScene , null , string.Empty ) ;
 			
@@ -326,6 +448,14 @@ public class WhereSystem : MonoBehaviour
 			break ;
 		case WhereState.WhereState_WaitCorrectAnimation :
 			DoWhereState_WaitCorrectAnimation() ;
+			break ;
+			
+		case WhereState.WhereState_EnterTeacherMode :
+			break ;
+		case WhereState.WhereState_WaitInTeacherMode :
+			
+			CheckExampleTimer() ;
+			
 			break ;
 		}
 	}
@@ -418,8 +548,11 @@ public class WhereSystem : MonoBehaviour
 		
 		this.transform.rotation = Quaternion.identity ;
 		SwitchGUI( true ) ;
+		
 	}
 
+	
+	
 	private void RandonmizeScene()
 	{
 		int count = 0 ;
@@ -438,12 +571,13 @@ public class WhereSystem : MonoBehaviour
 		}
 	}
 	
-	private void RandonmizeWhere( GameObject _CurrentScene ) 
+	private List<string> CollectValidWhereFromSceneObject( GameObject _CurrentScene , bool m_CurrentWhereKeyExclusive ) 
 	{
-		List<string> validWhereKey = new List<string>() ;
+		List<string> ret = new List<string>() ;
 		for( int i = 0 ; i < m_WhereKey.Length ; ++i )
 		{
-			if( m_CurrentWhereKey == m_WhereKey[ i ] )
+			if( true == m_CurrentWhereKeyExclusive 
+			&& m_CurrentWhereKey == m_WhereKey[ i ] )
 			{
 				continue ;
 			}
@@ -452,21 +586,14 @@ public class WhereSystem : MonoBehaviour
 			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
-				
-				validWhereKey.Add( m_WhereKey[ i ] ) ;
+				ret.Add( m_WhereKey[ i ] ) ;
 			}					
 		}
-		
-		if( 0 == validWhereKey.Count )
-		{
-			Debug.LogError("0 == validWhereKey");
-			return ;
-		}
-		
-		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
-		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
-		// Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
-		
+		return ret ;
+	}
+	
+	private void CheckWhereIsReference( GameObject _CurrentScene )
+	{
 		if( "Zwischen" == m_CurrentWhereKey )
 		{
 			// randomize a reference object from scene
@@ -481,6 +608,25 @@ public class WhereSystem : MonoBehaviour
 				// Debug.LogWarning ("RandonmizeWhere() referenceObj=" + referenceObj.name );	
 			}	
 		}
+	}
+	
+	private void RandonmizeWhere( GameObject _CurrentScene ) 
+	{
+		List<string> validWhereKey 
+		= CollectValidWhereFromSceneObject( _CurrentScene , true ) ;
+		
+		if( 0 == validWhereKey.Count )
+		{
+			Debug.LogError("0 == validWhereKey");
+			return ;
+		}
+		
+		int randomIndex = Random.Range( 0 , validWhereKey.Count ) ;
+		m_CurrentWhereKey = validWhereKey[ randomIndex ] ;
+		// Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
+		
+		CheckWhereIsReference( _CurrentScene ) ;
+
 		
 		ShowExampleButton( false ) ;
 	}
@@ -587,7 +733,10 @@ public class WhereSystem : MonoBehaviour
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
+		
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		sceneString = DativTheNoun( sceneString ) ;
+		
 		string referenceString = string.Empty;
 		if( string.Empty != _ReferenceKey )
 		{
@@ -596,7 +745,7 @@ public class WhereSystem : MonoBehaviour
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
-		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
+		localWhereString = localWhereString.Replace( "<reference>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
@@ -616,11 +765,13 @@ public class WhereSystem : MonoBehaviour
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
+		sceneString = AkkusativTheNoun( sceneString ) ;
+		
 		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
-		localWhereString = localWhereString.Replace( "<refernce>" , referenceString ) ;
+		localWhereString = localWhereString.Replace( "<reference>" , referenceString ) ;
 		localWhereString = ReplaceDativShort( localWhereString ) ;
 		localWhereString = ReplaceFirstUpperCase( localWhereString ) ;
 		return localWhereString ;
@@ -669,6 +820,119 @@ public class WhereSystem : MonoBehaviour
 			m_State = WhereState.WhereState_EnterMoveMode ;
 		}
 	}	
+	
+	private GenderOfNoun GetGender( string _Input )
+	{
+		string lowerString = _Input.ToLower() ;
+		if( -1 != lowerString.IndexOf( "der" ) )
+		{
+			return GenderOfNoun.Male ;
+		}
+		else if( -1 != lowerString.IndexOf( "die" ) 
+		        && lowerString.Length - 1 == lowerString.LastIndexOf( "n" ) )
+		{
+			return GenderOfNoun.Plural ;
+		}
+		else if( -1 != lowerString.IndexOf( "das" ) )
+		{
+			return GenderOfNoun.Neutral ;
+		}
+		else // if( -1 != lowerString.IndexOf( "die" ) )
+		{
+			return GenderOfNoun.Female ;
+		}
+
+	}
+	
+	private string AkkusativTheNoun( string _Input )
+	{
+		string ret = _Input ;
+		GenderOfNoun gender = GetGender( _Input ) ;
+		switch( gender )
+		{
+		case GenderOfNoun.Male :
+			ret = ret.Replace( "der" , "den" ) ;
+			break ;
+		}
+		return ret ;
+	}
+	
+	private string DativTheNoun( string _Input )
+	{
+		string ret = _Input ;
+		GenderOfNoun gender = GetGender( _Input ) ;
+		switch( gender )
+		{
+		case GenderOfNoun.Male :
+			ret = ret.Replace( "der" , "dem" ) ;
+			break ;
+		case GenderOfNoun.Female :
+			ret = ret.Replace( "die" , "der" ) ;
+			break ;
+		case GenderOfNoun.Neutral :
+			ret = ret.Replace( "das" , "dem" ) ;
+			break ;
+		case GenderOfNoun.Plural :
+			ret = ret.Replace( "die" , "den" ) ;
+			break ;
+		}
+		return ret ;
+	}
+	
+	private string GetExampleKey( string _WhereKey )
+	{
+		return "WhereExample_" + _WhereKey ;
+	}
+	
+	private void InitTeachersModePopupList_Where( List<string> _WhereKey )
+	{
+		
+		if( null != m_TeacherModeWherePopUpList )
+		{
+			m_TeacherModeWherePopUpList.Clear() ;
+			m_TeacherModeWhereToKey.Clear() ;
+			string whereString = "" ;
+			for( int i = 0 ; i < _WhereKey.Count ; ++i )
+			{
+				whereString = Localization.Get( "WhereKey_" + _WhereKey[i] ) ;
+				whereString = whereString.Replace( "<target>" , "..." ) ;
+				whereString = whereString.Replace( "<scene>" , "..." ) ;
+				whereString = whereString.Replace( "<reference>" , "..." ) ;
+				whereString = whereString.Replace( "(Dativ)" , "" ) ;
+				
+				m_TeacherModeWherePopUpList.AddItem( whereString ) ;
+				m_TeacherModeWhereToKey.Add( whereString , _WhereKey[ i ] ) ;
+			}
+			m_TeacherModeWherePopUpList.value = whereString ;
+			
+		}
+	}
+	
+	private void InitTeachersModePopupList()
+	{
+		if( null != m_TeacherModeScenePopUpList )
+		{
+			m_TeacherModeScenePopUpList.Clear() ;
+			m_TeacherModeSceneToKey.Clear() ;
+			string sceneString = string.Empty ;
+			for( int i = 0 ; i < m_SceneKey.Length ; ++i )
+			{
+				sceneString = Localization.Get( "WhereScene_" + m_SceneKey[i] ) ;
+				m_TeacherModeScenePopUpList.AddItem( sceneString ) ;
+				m_TeacherModeSceneToKey.Add( sceneString , m_SceneKey[ i ] ) ;
+			}
+			m_TeacherModeScenePopUpList.value = sceneString ;
+			
+		}
+		
+		List<string> validWhereKeys = 
+			CollectValidWhereFromSceneObject( 
+				m_Scenes[ 
+					m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ] 
+			, false ) ;
+		InitTeachersModePopupList_Where( validWhereKeys ) ;
+		
+	}
 	
 	private float m_CorrectAnswerWaitSec = 1.0f ;
 	private float m_CorrectAnswerWaitTime = 0.0f ;		

@@ -61,8 +61,8 @@ ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersectio
 ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。
 ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。
 ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。
-ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr hat links bis zur Ampel abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
-ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nBis zur Kreuzung hat er rechts abgebogen.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
+ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
+ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
 ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口
 ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。
 ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
@@ -74,28 +74,41 @@ ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今�
 ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
 ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
-WhereIntroductionContent,WhereIntroductionContent,"The user may see the correct expression of ' ... is at ...' in answer mode, and then in touch mode, try move target to correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。"
+WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。"
 WhereNextButton,Nächste,Next,下一個
-WhereTarget_Fussball,das Fußball,the soccor,足球
-WhereScene_Desk,dem Tisch,the desk,桌子
-WhereScene_Shelf,dem Regal,the shelf,架子
-WhereScene_Cabinet,dem Schrank,the cabinet,櫃子
-WhereScene_Television,dem Fernsehen,the TV,電視
-WhereKey_Uber,<target> ist über <scene>.,<target> is on <scene>.,<target>在<scene>上面。
-WhereKey_Auf,<target> ist auf <scene>.,<target> is above <scene>.,<target>在<scene>上方。
-WhereKey_Unter,<target> ist unter <scene>.,<target> is below <scene>.,<target>在<scene>下方。
-WhereKey_Vor,<target> ist vor <scene>.,<target> is in front of <scene>.,<target>在<scene>前面。
-WhereKey_Hinter,<target> ist hinter <scene>.,<target> is behind <scene>.,<target>在<scene>後面。
-WhereKey_Neben,<target> ist neben <scene>.,<target> is next to <scene>.,<target>在<scene>旁邊。
-WhereKey_An,<target> ist an <scene>.,<target> is at side of <scene>.,<target>靠在<scene>旁邊。
-WhereKey_In,<target> ist in <scene>.,<target> is in <scene>.,<target>在<scene>裡面。
-WhereKey_Zwischen,<target> ist zwischen <scene> und <refernce>.,<target> is between <scene> and <reference>.,<target>在<scene>與<refernce>之間。
-WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.,Please put <target> on <scene>.,請把<target>放在<scene>上面。
-WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.,Please put <target> above <scene>.,請把<target>放在<scene>上方。
-WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.,Please put <target> below <scene>.,請把<target>放在<scene>下方。
-WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.,Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
-WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.,Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Legen Sie <target> neben <scene> bitte.,Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
-WhereInstruction_An,Legen Sie <target> an <scene> bitte.,Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
-WhereInstruction_In,Legen Sie <target> in <scene> bitte.,Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <refernce> bitte.,Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<refernce>之間。
+WhereTarget_Fussball,der Fußball,the soccer,足球
+WhereScene_Desk,der Tisch,the desk,桌子
+WhereScene_Shelf,das Regal,the shelf,架子
+WhereScene_Cabinet,der Schrank,the cabinet,櫃子
+WhereScene_Television,der Fernseher,the TV,電視
+WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。
+WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。
+WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。
+WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。
+WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。
+WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<target>在<scene>旁邊。
+WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。
+WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。
+WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
+WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
+WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
+WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
+WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
+WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
+WhereInstruction_Neben,Legen Sie <target> rechts neben <scene> bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_An,Legen Sie <target> an <scene> bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
+WhereInstruction_In,Legen Sie <target> in <scene> bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
+WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
+WhereExample_Uber,Die Lampe ist über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
+WhereExample_Auf,Die Katze ist auf dem Auto.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
+WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。
+WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Vogel steht vor dem Stuhl.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。
+WhereExample_Hinter,Die Katze ist hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。
+WhereExample_Neben,Das Hund ist neben der Katze.\nDas Mobel steht neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
+WhereExample_An,Die Lampe ist an der Decke.\nDie Katze sitzt an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
+WhereExample_In,Der Müll ist in dem Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
+WhereExample_Zwischen,Das Geld fallt zwischen dem Schränken.\nDer Hund ist zwischen der Katze und dem Vogel.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
+TeacherSettingTitle,Gewohnheit,Custom,設定模式
+TeacherSettingConfirm,bestätigen,Confirm,確認
+TeacherSettingSubjectLabel,Subjekt,Subject,主詞
+TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係
