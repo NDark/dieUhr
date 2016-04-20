@@ -90,15 +90,15 @@ WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<
 WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。
 WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。
 WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
-WhereInstruction_Uber,Legen Sie <target> über <scene> bitte.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
-WhereInstruction_Auf,Legen Sie <target> auf <scene> bitte.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
-WhereInstruction_Unter,Legen Sie <target> unter <scene> bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
-WhereInstruction_Vor,Legen Sie <target> vor <scene> bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
-WhereInstruction_Hinter,Legen Sie <target> hinter <scene> bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Legen Sie <target> rechts neben <scene> bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
-WhereInstruction_An,Legen Sie <target> an <scene> bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
-WhereInstruction_In,Legen Sie <target> in <scene> bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
+WhereInstruction_Uber,Legen Sie <target> über <scene>, bitte.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
+WhereInstruction_Auf,Legen Sie <target> auf <scene>, bitte.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
+WhereInstruction_Unter,Legen Sie <target> unter <scene>, bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
+WhereInstruction_Vor,Legen Sie <target> vor <scene>, bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
+WhereInstruction_Hinter,Legen Sie <target> hinter <scene>, bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
+WhereInstruction_Neben,Legen Sie <target> rechts neben <scene>, bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_An,Legen Sie <target> an <scene>, bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
+WhereInstruction_In,Legen Sie <target> in <scene>, bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
+WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference>, bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
 WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
 WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
 WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。
