@@ -764,6 +764,7 @@ public class WhereSystem : MonoBehaviour
 		string localWhereString = Localization.Get( localizationWhereKey ) ;
 		
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
+		targetString = AkkusativTheNoun( targetString ) ;
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
 		sceneString = AkkusativTheNoun( sceneString ) ;
 		
