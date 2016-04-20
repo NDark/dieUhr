@@ -99,15 +99,15 @@ WhereInstruction_Neben,Legen Sie <target> rechts neben <scene> bitte.(Akkusativ)
 WhereInstruction_An,Legen Sie <target> an <scene> bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
 WhereInstruction_In,Legen Sie <target> in <scene> bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
 WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference> bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
-WhereExample_Uber,Die Lampe ist über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
-WhereExample_Auf,Die Katze ist auf dem Auto.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
+WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
+WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
 WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。
-WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Vogel steht vor dem Stuhl.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。
-WhereExample_Hinter,Die Katze ist hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。
-WhereExample_Neben,Das Hund ist neben der Katze.\nDas Mobel steht neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
-WhereExample_An,Die Lampe ist an der Decke.\nDie Katze sitzt an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
-WhereExample_In,Der Müll ist in dem Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
-WhereExample_Zwischen,Das Geld fallt zwischen dem Schränken.\nDer Hund ist zwischen der Katze und dem Vogel.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
+WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Kind sitzt vor dem Fernseher.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。
+WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。
+WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
+WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
+WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
+WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
 TeacherSettingTitle,Gewohnheit,Custom,設定模式
 TeacherSettingConfirm,bestätigen,Confirm,確認
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞
