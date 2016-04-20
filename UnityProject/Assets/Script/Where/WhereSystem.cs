@@ -741,6 +741,7 @@ public class WhereSystem : MonoBehaviour
 		if( string.Empty != _ReferenceKey )
 		{
 			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
+			referenceString = DativTheNoun( referenceString ) ;
 		}
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
@@ -768,7 +769,13 @@ public class WhereSystem : MonoBehaviour
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
 		sceneString = AkkusativTheNoun( sceneString ) ;
 		
-		string referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
+		string referenceString = string.Empty ;
+		if( string.Empty != _ReferenceKey )
+		{
+			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
+			referenceString = AkkusativTheNoun( referenceString ) ;
+		}
+		
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
 		localWhereString = localWhereString.Replace( "<scene>" , sceneString ) ;
