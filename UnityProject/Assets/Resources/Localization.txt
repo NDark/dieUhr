@@ -107,7 +107,7 @@ WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem
 WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
 WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
 WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
-WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
+WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。
 TeacherSettingTitle,Gewohnheit,Custom,設定模式
 TeacherSettingConfirm,bestätigen,Confirm,確認
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞
