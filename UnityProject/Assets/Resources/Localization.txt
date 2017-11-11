@@ -38,7 +38,7 @@ h2,,,兩
 30,Dreißig,thirty,三十
 40,Vierzig,forty,四十
 50,Fünfzig,fifty,五十
-AcknowledgeMarcus,Vielen danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
+AcknowledgeMarcus,"Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","Acknowledge to Marcus Breit and Paula Kersten for the consultation.","感謝語言指導：Marcus Breit，Paula Kerste。"
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
