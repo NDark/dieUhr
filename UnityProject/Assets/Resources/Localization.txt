@@ -38,7 +38,7 @@ h2,,,兩
 30,Dreißig,thirty,三十
 40,Vierzig,forty,四十
 50,Fünfzig,fifty,五十
-AcknowledgeMarcus,Vielen danke an Marcus Breit und Paula Kersten für die Beratung.,Acknowledge to Marcus Breit and Paula Kersten for the consultation.,感謝語言指導：Marcus Breit，Paula Kerste。
+AcknowledgeMarcus,"Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","Acknowledge to Marcus Breit and Paula Kersten for the consultation.","感謝語言指導：Marcus Breit，Paula Kerste。"
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
 LocationKey_Straight,immer geradeaus gehen,go straight,直走
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
@@ -90,15 +90,15 @@ WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<
 WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。
 WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。
 WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
-WhereInstruction_Uber,Legen Sie <target> über <scene>, bitte.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
-WhereInstruction_Auf,Legen Sie <target> auf <scene>, bitte.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
-WhereInstruction_Unter,Legen Sie <target> unter <scene>, bitte.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
-WhereInstruction_Vor,Legen Sie <target> vor <scene>, bitte.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
-WhereInstruction_Hinter,Legen Sie <target> hinter <scene>, bitte.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Legen Sie <target> rechts neben <scene>, bitte.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
-WhereInstruction_An,Legen Sie <target> an <scene>, bitte.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
-WhereInstruction_In,Legen Sie <target> in <scene>, bitte.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Legen Sie <target> zwischen <scene> und <reference>, bitte.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
+WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
+WhereInstruction_Auf,Bitte legen Sie <target> auf <scene>.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
+WhereInstruction_Unter,Bitte legen Sie <target> unter <scene>.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
+WhereInstruction_Vor,Bitte legen Sie <target> vor <scene>.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
+WhereInstruction_Hinter,Bitte legen Sie <target> hinter <scene>.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
+WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
+WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
+WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
+WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
 WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
 WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
 WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。
@@ -107,7 +107,7 @@ WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem
 WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
 WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
 WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
-WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n狗在貓跟鳥之間。
+WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。
 TeacherSettingTitle,Gewohnheit,Custom,設定模式
 TeacherSettingConfirm,bestätigen,Confirm,確認
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞
