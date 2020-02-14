@@ -478,7 +478,7 @@ public class WhereSystem : MonoBehaviour
 		
 		if( string.Empty != _WhereKey )
 		{
-			Transform dummy = _SceneObj.transform.FindChild("Dummy_" + _WhereKey);
+			Transform dummy = _SceneObj.transform.Find("Dummy_" + _WhereKey);
 			if( null != _TargetObject && null != dummy )
 			{
 				_TargetObject.transform.parent = dummy.transform ;
@@ -514,7 +514,7 @@ public class WhereSystem : MonoBehaviour
 		_TargetObject.transform.parent = this.transform ;
 		_TargetObject.transform.position = m_ScenesStandbyPos.position ;
 		
-		Transform referenceDummy = _SceneObj.transform.FindChild("Dummy_Reference" );
+		Transform referenceDummy = _SceneObj.transform.Find("Dummy_Reference" );
 		if( null != referenceDummy )
 		{
 			for( int j = 0 ; j < referenceDummy.childCount ; ++j )
@@ -539,7 +539,7 @@ public class WhereSystem : MonoBehaviour
 		
 		for( int i = 0 ; i < m_SceneKey.Length ; ++i )
 		{
-			Transform trans = m_SceneParent.transform.FindChild( m_SceneKey[i] + "Prefab" ) ;
+			Transform trans = m_SceneParent.transform.Find( m_SceneKey[i] + "Prefab" ) ;
 			if( null != trans )
 			{
 				m_Scenes.Add( m_SceneKey[ i ] , trans.gameObject ) ;
@@ -583,7 +583,7 @@ public class WhereSystem : MonoBehaviour
 			}
 			
 			// Debug.Log ("RandonmizeWhere() validWhereKey.Add=" + m_WhereKey[ i ] );
-			Transform dummy = _CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
+			Transform dummy = _CurrentScene.transform.Find("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
 				ret.Add( m_WhereKey[ i ] ) ;
@@ -599,7 +599,7 @@ public class WhereSystem : MonoBehaviour
 			// randomize a reference object from scene
 			GameObject referenceObj = RandomizeAnotherScene( m_CurrentSceneKey ) ;
 			
-			Transform referenceDummy = _CurrentScene.transform.FindChild("Dummy_Reference" );
+			Transform referenceDummy = _CurrentScene.transform.Find("Dummy_Reference" );
 			if( null != referenceDummy )
 			{
 				referenceObj.transform.parent = referenceDummy.transform ;
@@ -671,7 +671,7 @@ public class WhereSystem : MonoBehaviour
 				continue ;
 			}
 			
-			Transform dummy = m_CurrentScene.transform.FindChild("Dummy_" + m_WhereKey[ i ] );
+			Transform dummy = m_CurrentScene.transform.Find("Dummy_" + m_WhereKey[ i ] );
 			if( null != dummy )
 			{
 				ScreenCollectData data = new ScreenCollectData() ;
