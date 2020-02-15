@@ -12,3 +12,4 @@
 /UnityProject/UnityProject.userprefs
 .DS_Store
 /UnityProject/*.apk
+/KeyStore/*.keystore
