@@ -7,16 +7,19 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scene/Title.unity
-    guid: 00000000000000000000000000000000
+    guid: b4e9ee8c9e5e41740a0c4fa417451f0c
   - enabled: 1
     path: Assets/Scene/Clock.unity
-    guid: 00000000000000000000000000000000
+    guid: dfe0e5bba26a2c546ac2f907a183fc1e
   - enabled: 1
     path: Assets/Scene/Location.unity
-    guid: 00000000000000000000000000000000
+    guid: 9200bfa9ee7c44c46b1d7df3c6fb6439
   - enabled: 1
     path: Assets/Scene/AcknowledgeScene.unity
-    guid: 00000000000000000000000000000000
+    guid: 8ef6f620d6cd7a048aba953a551ad03d
   - enabled: 1
     path: Assets/Scene/Where.unity
-    guid: 00000000000000000000000000000000
+    guid: f59e00c32bba7f14cbd726df19315dba
+  - enabled: 1
+    path: Assets/Scene/CrossPlay.unity
+    guid: cfefb4d797cb9924b801b1a2abfd066f
