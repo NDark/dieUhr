@@ -541,8 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acef07bd8658d24f8e81b3433467240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GooglePlayMarket: {fileID: 0}
-  m_AppStore: {fileID: 0}
+  m_GooglePlayMarket: {fileID: 59448900}
+  m_AppStore: {fileID: 888610613}
 --- !u!65 &340312680
 BoxCollider:
   m_ObjectHideFlags: 0
