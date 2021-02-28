@@ -112,3 +112,6 @@ TeacherSettingTitle,Gewohnheit,Custom,設定模式
 TeacherSettingConfirm,bestätigen,Confirm,確認
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞
 TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係
+CrossPlay.Title,Weitere App vom Entwickler,More Game From Developer,開發者其他遊戲
+CrossPlay.ReallyReally,Really Really,Really Really,真的
+CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來
