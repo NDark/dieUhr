@@ -188,8 +188,6 @@ public class WhereSystem : MonoBehaviour
 		m_CurrentScene = m_Scenes[ m_CurrentSceneKey ] ;
 		m_CurrentWhereKey = whereKey ;
 		CheckWhereIsReference( m_CurrentScene ) ;
-		Debug.Log("m_CurrentSceneKey" + m_CurrentSceneKey );
-		Debug.Log("m_CurrentWhereKey" + m_CurrentWhereKey );
 		
 		ResetAnswerContent() ;
 		ResetExampleContent() ;
@@ -493,7 +491,6 @@ public class WhereSystem : MonoBehaviour
 	
 	public void ReleaveScene( GameObject _SceneObj , GameObject _TargetObject )
 	{
-		Debug.Log("ReleaveScene");
 		if( null == _SceneObj )
 		{
 			Debug.LogError("null == _SceneObj");
