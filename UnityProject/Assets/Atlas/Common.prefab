@@ -43,8 +43,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 19240497f89a6914c9500828eeef85d0, type: 2}
   mSprites:
   - name: Arrow
-    x: 81
-    y: 217
+    x: 245
+    y: 192
     width: 64
     height: 64
     borderLeft: 0
@@ -56,8 +56,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ArrowBlue
-    x: 0
-    y: 282
+    x: 126
+    y: 155
     width: 118
     height: 101
     borderLeft: 0
@@ -70,9 +70,9 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Correct
     x: 0
-    y: 384
+    y: 16
     width: 128
-    height: 128
+    height: 118
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MessageBox
-    x: 119
-    y: 303
+    x: 210
+    y: 74
     width: 80
     height: 80
     borderLeft: 25
@@ -95,8 +95,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MessageBoxWhite
-    x: 0
-    y: 201
+    x: 129
+    y: 74
     width: 80
     height: 80
     borderLeft: 25
@@ -108,8 +108,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: OctagonBackground
-    x: 129
-    y: 391
+    x: 0
+    y: 135
     width: 125
     height: 121
     borderLeft: 30
@@ -121,8 +121,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Question_Mark
-    x: 200
-    y: 321
+    x: 129
+    y: 11
     width: 46
     height: 62
     borderLeft: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: WhileSliced
-    x: 119
-    y: 293
+    x: 0
+    y: 6
     width: 9
     height: 9
     borderLeft: 3

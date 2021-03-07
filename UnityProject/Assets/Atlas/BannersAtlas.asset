@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125b9f6e6906d6e4897a443b3c12729c, type: 3}
+  m_Name: BannersAtlas
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 17ed695e54172424c9b1e6a2943e952b, type: 2}
+  mSprites:
+  - name: ReallyReally
+    x: 0
+    y: 709
+    width: 851
+    height: 315
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: VillageTactics
+    x: 0
+    y: 396
+    width: 820
+    height: 312
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}

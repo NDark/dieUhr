@@ -6,7 +6,7 @@ public class PlaneOnColliderEnter : MonoBehaviour
 	public WhereSystem m_System = null ;
 	void OnTriggerEnter( Collider _Collider )
 	{
-		Debug.LogWarning("OnTriggerEnter()");
+		// Debug.LogWarning("OnTriggerEnter()");
 		m_System.SetAbleCollectWhereOnScreen() ;
 	}
 	

@@ -58,8 +58,10 @@ public class WhereSystem : MonoBehaviour
 	public TweenAlpha m_TeacherMenuAlpha = null ;
 	public GameObject m_TeacherModeButton = null ;
 	public UIPopupList m_TeacherModeScenePopUpList = null ;
+	public UILabel m_TeacherModeScenePopUpListMainLabel = null;
 	public UIPopupList m_TeacherModeWherePopUpList = null ;
-	
+	public UILabel m_TeacherModeWherePopUpListLabel = null;
+
 	private Dictionary<string,string> m_TeacherModeSceneToKey = new Dictionary<string, string>() ;
 	private Dictionary<string,string> m_TeacherModeWhereToKey = new Dictionary<string, string>() ;
 	
@@ -155,7 +157,7 @@ public class WhereSystem : MonoBehaviour
 		}	
 		
 		
-		string subjectKey = m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ;
+		string subjectKey = m_TeacherModeSceneToKey[m_TeacherModeScenePopUpListMainLabel.text ] ;
 		m_CurrentSceneKey = subjectKey ;
 		m_CurrentScene = m_Scenes[ m_CurrentSceneKey ] ;
 		
@@ -180,14 +182,12 @@ public class WhereSystem : MonoBehaviour
 		
 		m_TeacherMenuAlpha.PlayReverse() ;
 		
-		string subjectKey = m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ;
-		string whereKey = m_TeacherModeWhereToKey[ m_TeacherModeWherePopUpList.value ] ;
+		string subjectKey = m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpListMainLabel.text ] ;
+		string whereKey = m_TeacherModeWhereToKey[ m_TeacherModeWherePopUpListLabel.text ] ;
 		m_CurrentSceneKey = subjectKey ;
 		m_CurrentScene = m_Scenes[ m_CurrentSceneKey ] ;
 		m_CurrentWhereKey = whereKey ;
 		CheckWhereIsReference( m_CurrentScene ) ;
-		Debug.Log("m_CurrentSceneKey" + m_CurrentSceneKey );
-		Debug.Log("m_CurrentWhereKey" + m_CurrentWhereKey );
 		
 		ResetAnswerContent() ;
 		ResetExampleContent() ;
@@ -491,7 +491,6 @@ public class WhereSystem : MonoBehaviour
 	
 	public void ReleaveScene( GameObject _SceneObj , GameObject _TargetObject )
 	{
-		Debug.Log("ReleaveScene");
 		if( null == _SceneObj )
 		{
 			Debug.LogError("null == _SceneObj");
@@ -911,7 +910,7 @@ public class WhereSystem : MonoBehaviour
 				m_TeacherModeWherePopUpList.AddItem( whereString ) ;
 				m_TeacherModeWhereToKey.Add( whereString , _WhereKey[ i ] ) ;
 			}
-			m_TeacherModeWherePopUpList.value = whereString ;
+			m_TeacherModeWherePopUpListLabel.text = whereString ;
 			
 		}
 	}
@@ -929,14 +928,15 @@ public class WhereSystem : MonoBehaviour
 				m_TeacherModeScenePopUpList.AddItem( sceneString ) ;
 				m_TeacherModeSceneToKey.Add( sceneString , m_SceneKey[ i ] ) ;
 			}
-			m_TeacherModeScenePopUpList.value = sceneString ;
 			
+			m_TeacherModeScenePopUpListMainLabel.text = sceneString ;
+
 		}
 		
 		List<string> validWhereKeys = 
 			CollectValidWhereFromSceneObject( 
 				m_Scenes[ 
-					m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpList.value ] ] 
+					m_TeacherModeSceneToKey[ m_TeacherModeScenePopUpListMainLabel.text ] ] 
 			, false ) ;
 		InitTeachersModePopupList_Where( validWhereKeys ) ;
 		
