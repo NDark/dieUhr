@@ -65,7 +65,6 @@ public static class ClockData
 
 		if ("Minute" == _Key)
         {
-			
 			int aroundMinute = (value + 3) / 6;
 			if (aroundMinute >= 60)
 			{

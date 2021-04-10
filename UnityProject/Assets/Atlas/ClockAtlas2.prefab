@@ -82,7 +82,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: clock_mode
-    x: 642
+    x: 513
     y: 127
     width: 128
     height: 128
@@ -95,7 +95,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: digital_mode
-    x: 513
+    x: 642
     y: 127
     width: 128
     height: 128
@@ -134,7 +134,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MinuteArrow
-    x: 885
+    x: 934
     y: 0
     width: 48
     height: 512
@@ -147,6 +147,19 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MinuteArrowDot
+    x: 885
+    y: 0
+    width: 48
+    height: 512
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MinuteArrowSmallDot
     x: 836
     y: 0
     width: 48
