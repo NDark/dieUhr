@@ -43,8 +43,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: bfbd35bf691c3734a90f5719cde338cb, type: 2}
   mSprites:
   - name: background
-    x: 972
-    y: 2039
+    x: 513
+    y: 56
     width: 9
     height: 9
     borderLeft: 3
@@ -56,8 +56,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: black
-    x: 908
-    y: 1988
+    x: 513
+    y: 66
     width: 60
     height: 60
     borderLeft: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Clock
     x: 0
-    y: 1536
+    y: 0
     width: 512
     height: 512
     borderLeft: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: clock_mode
-    x: 776
-    y: 1920
+    x: 513
+    y: 127
     width: 128
     height: 128
     borderLeft: 0
@@ -95,8 +95,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: digital_mode
-    x: 516
-    y: 1660
+    x: 642
+    y: 127
     width: 128
     height: 128
     borderLeft: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: HourArrow
-    x: 0
-    y: 1020
+    x: 770
+    y: 0
     width: 65
     height: 512
     borderLeft: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: information
-    x: 516
-    y: 1792
+    x: 513
+    y: 256
     width: 256
     height: 256
     borderLeft: 0
@@ -134,8 +134,34 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MinuteArrow
-    x: 69
-    y: 1020
+    x: 934
+    y: 0
+    width: 48
+    height: 512
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MinuteArrowDot
+    x: 885
+    y: 0
+    width: 48
+    height: 512
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MinuteArrowSmallDot
+    x: 836
+    y: 0
     width: 48
     height: 512
     borderLeft: 0
