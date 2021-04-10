@@ -104,12 +104,13 @@ public class DragArrow : MonoBehaviour
         Debug.Log("_Angle=" + _Angle);
         Debug.Log("avgLastValue=" + avgLastValue);
         //*/
+		// check rotate from after 12 to before 12 , or otherwise. (pass midnight)
         if ( _Angle < 360 
         && _Angle > 270 
         && avgLastValue >= 0 
         && avgLastValue < 90)
         {
-			Debug.LogWarning("go back _Angle=" + _Angle + " avg="+ avgLastValue);
+			// Debug.LogWarning("go back _Angle=" + _Angle + " avg="+ avgLastValue);
             // counter clock wise
             if (0 == hourInt)
             {
@@ -125,7 +126,7 @@ public class DragArrow : MonoBehaviour
         	&& avgLastValue < 360 )
         {
             // clock wise
-			Debug.LogWarning("go next _Angle=" + _Angle + " avg="+ avgLastValue);
+			// Debug.LogWarning("go next _Angle=" + _Angle + " avg="+ avgLastValue);
             m_Angle = (hourInt + 1) * 30;
             ClockData.DoSetValue(this.key, (int)(m_Angle));
             return;

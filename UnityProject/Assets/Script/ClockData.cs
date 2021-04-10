@@ -24,13 +24,17 @@ using System.Collections;
 public static class ClockData
 {
 
-    static UILabel m_Label = null;
-    static GameObject m_ExampleButton = null ;
-	static UILabel m_ExampleContent = null ;
-    
-    static int m_Minute = 0;
-    static int m_Hour = 0;
-    static bool m_IsDigital = false;
+	static UILabel m_Label = null;
+	static GameObject m_ExampleButton = null;
+	static UILabel m_ExampleContent = null;
+
+	static int m_Minute = 0;
+	static int m_Hour { 
+		get { return (m_HourFromInput + additionalHourFromMinute); }
+		set { m_HourFromInput = value; } 
+	}
+	static int m_HourFromInput = 0;
+	static bool m_IsDigital = false;
 
 	static int m_RandomIndex = 0 ;
 	
@@ -57,17 +61,31 @@ public static class ClockData
 
     public static void DoSetValue(string _Key, int value)
     {
-        if ("Minute" == _Key)
+		// Debug.Log("value" + value);
+
+		if ("Minute" == _Key)
         {
-            m_Minute = value / 6;
-        }
+			
+			int aroundMinute = (value + 3) / 6;
+			if (aroundMinute >= 60)
+			{
+				additionalHourFromMinute = 1;
+			}
+			else
+			{
+				additionalHourFromMinute = 0;
+			}
+			m_Minute = aroundMinute%60;
+
+		}
         else if ("Hour" == _Key)
         {
-            m_Hour = value / 30;
+            m_Hour = value / 30 ;
         }
         
     }
 
+	static int additionalHourFromMinute = 0;
     public static void DoCalculateString(string _Key, int value)
     {
         DoSetValue(_Key, value);
@@ -94,7 +112,10 @@ public static class ClockData
 
     public static void CalculateString_TraditionalChinese( int _Hour , int _Minute )
     {
-        string minuteStr = "";
+		// Debug.Log("_Minute"+ _Minute);
+		// Debug.Log("_Hour"+ _Hour);
+
+		string minuteStr = "";
         string hourStr = "";
 
         if (_Hour == 2)
@@ -130,7 +151,7 @@ public static class ClockData
         }
 
         // special case
-        if (_Minute == 0 && _Hour == 0)
+        if (_Minute == 0 && (_Hour == 0 || _Hour == 12))
         {
             m_Label.text = Localization.Get("Mitternacht");
         }
@@ -285,7 +306,7 @@ public static class ClockData
         hourStr = WordFromDigital(_Hour);
         string hourStrWiths = WordFromDigital_ConsiderOne(_Hour);
 
-        if (_Minute == 0 && _Hour == 0)
+        if (_Minute == 0 && (_Hour == 0|| 12== _Hour))
         {
             m_Label.text = Localization.Get("Mitternacht");
         }
