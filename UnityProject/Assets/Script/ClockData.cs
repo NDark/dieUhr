@@ -79,7 +79,7 @@ public static class ClockData
 		}
         else if ("Hour" == _Key)
         {
-            int m_Hour = value / 30 ;
+            m_Hour = value / 30 ;
 			additionalHourFromMinute = 0;
 
 		}
