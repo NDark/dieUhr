@@ -177,7 +177,7 @@ public class DragArrow : MonoBehaviour
         }
         else if (this.minuteSprite)
         {
-            hourSprite.UpdateRotationByHourAngle(_Angle);
+			minuteSprite.UpdateRotationByHourAngle(_Angle);
         }
     }
 
