@@ -461,7 +461,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetButton: {fileID: 1824653623}
   hourSprite: {fileID: 0}
-  minuteSprite: {fileID: 0}
+  minuteSprite: {fileID: 377049934}
   uiLabel: {fileID: 716069379}
   exampleButton: {fileID: 1949409863}
   exampleContent: {fileID: 30851672}
@@ -5301,7 +5301,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
