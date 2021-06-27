@@ -163,6 +163,7 @@ PlayerSettings:
     Standalone: unity.ndark.die Uhr
     Tizen: org.ndark.dieuhr
     iOS: org.ndark.dieuhr
+    iPhone: org.ndark.dieuhr
     tvOS: org.ndark.dieuhr
   buildNumber:
     iOS: 25
