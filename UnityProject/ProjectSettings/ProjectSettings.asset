@@ -126,7 +126,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 3.14
+  bundleVersion: 3.15
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -165,7 +165,7 @@ PlayerSettings:
     iOS: org.ndark.dieuhr
     tvOS: org.ndark.dieuhr
   buildNumber:
-    iOS: 25
+    iOS: 26
   AndroidBundleVersionCode: 25
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
