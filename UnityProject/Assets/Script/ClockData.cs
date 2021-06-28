@@ -80,7 +80,9 @@ public static class ClockData
         else if ("Hour" == _Key)
         {
             m_Hour = value / 30 ;
-        }
+			additionalHourFromMinute = 0;
+
+		}
         
     }
 
@@ -376,9 +378,13 @@ public static class ClockData
 
     public static void CalculateString()
     {
-        // Debug.Log("m_Minute" + m_Minute);
-        // Debug.Log("m_Hour"+ m_Hour);
-        if (null == m_Label)
+		/*
+        Debug.Log("m_Minute" + m_Minute);
+        Debug.Log("m_Hour"+ m_Hour);
+		Debug.Log("additionalHourFromMinute" + additionalHourFromMinute);
+		//*/
+
+		if (null == m_Label)
         {
             return;
         }

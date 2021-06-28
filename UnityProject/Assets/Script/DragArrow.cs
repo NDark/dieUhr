@@ -83,8 +83,8 @@ public class DragArrow : MonoBehaviour
 		m_Angle = 0 ;
 	 	this.lastUpdateMin.Clear() ;
 	}
-  
-    public void UpdateRotationByMinuteAngle(float _Angle)
+
+	public void UpdateRotationByMinuteAngle(float _Angle)
     {
 
         if (lastUpdateMin.Count > 1)
@@ -150,9 +150,18 @@ public class DragArrow : MonoBehaviour
         }
         return sum;
     }
+
     public void UpdateRotationByHourAngle(float _Angle)
-    {
-    }
+	{
+		int hourInt = Mathf.FloorToInt(_Angle / 30);
+		float degreePassHour = _Angle - hourInt * 30;
+
+		// every 30 degree is 360 degree in minute.
+		float minuteDegree = degreePassHour * 12;
+		m_Angle = minuteDegree;
+		DoUpdateRotationByAngle(m_Angle);
+		ClockData.DoSetValue(this.key, (int)(m_Angle));
+	}
 
     void DoUpdateRotationByAngle(float _Angle)
     {
@@ -168,7 +177,7 @@ public class DragArrow : MonoBehaviour
         }
         else if (this.minuteSprite)
         {
-            hourSprite.UpdateRotationByHourAngle(_Angle);
+			minuteSprite.UpdateRotationByHourAngle(_Angle);
         }
     }
 

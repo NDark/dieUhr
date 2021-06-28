@@ -108,7 +108,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: HourArrow
-    x: 770
+    x: 771
     y: 0
     width: 65
     height: 512
