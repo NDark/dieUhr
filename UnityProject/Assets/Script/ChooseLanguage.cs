@@ -16,13 +16,9 @@ public class ChooseLanguage : MonoBehaviour {
         Localization.language = "TraditionalChinese";
     }
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public void ChoosePolish()
+    {
+        Localization.language = "Polish";
+    }
+
 }
