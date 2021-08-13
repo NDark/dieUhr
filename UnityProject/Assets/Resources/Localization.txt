@@ -1,121 +1,121 @@
-KEY,Deutsch,English,TraditionalChinese
-IntroductionTitle,Einführung,Introduction,說明
-IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。"
-Dreiviertel,Dreiviertel,A quarter to,四十五分
-Viertel,Viertel,A quarter,十五分
-nach,nach,past,之後
-vor,vor,before,之前
-Halb,Halb,Half past,半
-halb,halb,half,半
-Uhr,Uhr,o'clock,點
-to,,to,差
-Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午
-SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.
-PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入
-Reset,Uhr zurücksetzen,Reset the clock,重置時鐘
-0,Null,zero,零
-1,Ein,one,一
-2,Zwei,two,二
-h2,,,兩
-3,Drei,three,三
-4,Vier,four,四
-5,Fünf,five,五
-6,Sechs,six,六
-7,Sieben,seven,七
-8,Acht,eight,八
-9,Neun,nine,九
-10,Zehn,ten,十
-11,Elf,eleven,十一
-12,Zwölf,twelve,十二
-13,Dreizehn,thirteen,十三
-14,Vierzehn,fourteen,十四
-15,Fünfzehn,fifteen,十五
-16,Sechzehn,sixteen,十六
-17,Siebzehn,seventeen,十七
-18,Achtzehn,eighteen,十八
-19,Neunzehn,nineteen,十九
-20,Zwanzig,twenty,二十
-30,Dreißig,thirty,三十
-40,Vierzig,forty,四十
-50,Fünfzig,fifty,五十
-WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者的隻字片語"
-AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝語言指導：Marcus Breit，Paula Kerste。"
-LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。"
-LocationKey_Straight,immer geradeaus gehen,go straight,直走
-LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>
-LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>
-LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面
-LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>
-LocationKey_Pass,an <etwas> vorbei gehen,go pass <...> ,行經 <...> 
-LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>
-LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> 
-LocationKey_TurnLeft,links abbiegen,turn left,左轉
-LocationKey_TurnRight,rechts abbiegen,turn right,右轉
-LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>
-ExampleShort,z.B.,ex.,例
-ExampleLong,zum Beispiel,Example,例句
-ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。
-ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。
-ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。
-ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。
-ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersection.,開到十字路口。
-ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。
-ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。
-ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。
-ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。
-ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。
-ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口
-ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。
-ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。
-ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。
-ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。
-ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。
-ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。
-ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。
-ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。
-ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？
-ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？
-WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。"
-WhereNextButton,Nächste,Next,下一個
-WhereTarget_Fussball,der Fußball,the soccer,足球
-WhereScene_Desk,der Tisch,the desk,桌子
-WhereScene_Shelf,das Regal,the shelf,架子
-WhereScene_Cabinet,der Schrank,the cabinet,櫃子
-WhereScene_Television,der Fernseher,the TV,電視
-WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。
-WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。
-WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。
-WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。
-WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。
-WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<target>在<scene>旁邊。
-WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。
-WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。
-WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。
-WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。
-WhereInstruction_Auf,Bitte legen Sie <target> auf <scene>.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。
-WhereInstruction_Unter,Bitte legen Sie <target> unter <scene>.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。
-WhereInstruction_Vor,Bitte legen Sie <target> vor <scene>.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。
-WhereInstruction_Hinter,Bitte legen Sie <target> hinter <scene>.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。
-WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。
-WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。
-WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。
-WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。
-WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。
-WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。
-WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。
-WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Kind sitzt vor dem Fernseher.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。
-WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。
-WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。
-WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。
-WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。
-WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。
-TeacherSettingTitle,Gewohnheit,Custom,設定模式
-TeacherSettingConfirm,bestätigen,Confirm,確認
-TeacherSettingSubjectLabel,Subjekt,Subject,主詞
-TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係
-Title.Theme.Time,Zeit,Time,時間
-Title.Theme.Direction,Richtung ,Direction,方向指引
-Title.Theme.Location,Ort,Location,位置指引
-CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲
-CrossPlay.ReallyReally,Really Really,Really Really,真的
-CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來
+KEY,Deutsch,English,TraditionalChinese,Polish
+IntroductionTitle,Einführung,Introduction,說明,Introduction
+IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system."
+Dreiviertel,Dreiviertel,A quarter to,四十五分,A quarter to
+Viertel,Viertel,A quarter,十五分,A quarter
+nach,nach,past,之後,past
+vor,vor,before,之前,before
+Halb,Halb,Half past,半,Half past
+halb,halb,half,半,half
+Uhr,Uhr,o'clock,點,o'clock
+to,,to,差,to
+Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,Północ lub Południe
+SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.,A German tutoring App.
+PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Choose the topic to enter
+Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Reset the clock
+0,Null,zero,零,zero
+1,Ein,one,一,one
+2,Zwei,two,二,two
+h2,,,兩,
+3,Drei,three,三,three
+4,Vier,four,四,four
+5,Fünf,five,五,five
+6,Sechs,six,六,six
+7,Sieben,seven,七,seven
+8,Acht,eight,八,eight
+9,Neun,nine,九,nine
+10,Zehn,ten,十,ten
+11,Elf,eleven,十一,eleven
+12,Zwölf,twelve,十二,twelve
+13,Dreizehn,thirteen,十三,thirteen
+14,Vierzehn,fourteen,十四,fourteen
+15,Fünfzehn,fifteen,十五,fifteen
+16,Sechzehn,sixteen,十六,sixteen
+17,Siebzehn,seventeen,十七,seventeen
+18,Achtzehn,eighteen,十八,eighteen
+19,Neunzehn,nineteen,十九,nineteen
+20,Zwanzig,twenty,二十,twenty
+30,Dreißig,thirty,三十,thirty
+40,Vierzig,forty,四十,forty
+50,Fünfzig,fifty,五十,fifty
+WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者的隻字片語","A word from developer."
+AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝語言指導：Marcus Breit，Paula Kerste。","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation."
+LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression."
+LocationKey_Straight,immer geradeaus gehen,go straight,直走,go straight
+LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>,along <the river>
+LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>,over <die Brucke>
+LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面,the opposite side of <the church>
+LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>,until <the intersection>
+LocationKey_Pass,an <etwas> vorbei gehen,go pass <...> ,行經 <...> ,go pass <...> 
+LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>,arround <the roundabout>
+LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> ,go through <the park>
+LocationKey_TurnLeft,links abbiegen,turn left,左轉,turn left
+LocationKey_TurnRight,rechts abbiegen,turn right,右轉,turn right
+LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>,drive through <the intersection>
+ExampleShort,z.B.,ex.,例,ex.
+ExampleLong,zum Beispiel,Example,例句,Example
+ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Please go straight.
+ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,I walk along the river.\nGo along the river.
+ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,I walk over the bridge.\nDrive over the bridge.
+ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。,The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.
+ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersection.,開到十字路口。,Drive until the intersection.
+ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。,I go pass the park.\nGo pass the park.\nGo pass the post.
+ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。,I drive arond the roundabout.
+ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。,Go through the forest.\nGo through the city center.\nGo through the park.
+ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。,You turn left at street.\nHe turned left until the signal.
+ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。,Turn right here.\nHe turned right at the intersection.
+ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口,Drive through the intersection.
+ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。,I drive to office at <time>.
+ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,We eat lunch at <time>.
+ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。,He do grocery at <time>.
+ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,They will watch movie at <time>.
+ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,I go sport at <time>.
+ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,We meet at <time>.
+ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Today I depart at <time>.
+ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,We come at <time>.
+ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Can you pick me up at <time>.
+ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Do you have time today at <time>.
+WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring."
+WhereNextButton,Nächste,Next,下一個,Next
+WhereTarget_Fussball,der Fußball,the soccer,足球,the soccer
+WhereScene_Desk,der Tisch,the desk,桌子,the desk
+WhereScene_Shelf,das Regal,the shelf,架子,the shelf
+WhereScene_Cabinet,der Schrank,the cabinet,櫃子,the cabinet
+WhereScene_Television,der Fernseher,the TV,電視,the TV
+WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。,<target> is on <scene>.
+WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。,<target> is above <scene>.
+WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。,<target> is below <scene>.
+WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。,<target> is in front of <scene>.
+WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。,<target> is behind <scene>.
+WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<target>在<scene>旁邊。,<target> is next to <scene>.
+WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。,<target> is at side of <scene>.
+WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。,<target> is in <scene>.
+WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。,<target> is between <scene> and <reference>.
+WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。,Please put <target> on <scene>.
+WhereInstruction_Auf,Bitte legen Sie <target> auf <scene>.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。,Please put <target> above <scene>.
+WhereInstruction_Unter,Bitte legen Sie <target> unter <scene>.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。,Please put <target> below <scene>.
+WhereInstruction_Vor,Bitte legen Sie <target> vor <scene>.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。,Please put <target> in front of <scene>.
+WhereInstruction_Hinter,Bitte legen Sie <target> hinter <scene>.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。,Please put <target> behind <scene>.
+WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。,Please put <target> next to <scene>.
+WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。,Please put <target> at side of <scene>.
+WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。,Please put <target> in <scene>.
+WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。,Please put <target> between <scene> and <reference>.
+WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。,The lamp is above the desk.\nThe picture hangs above the television.
+WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。,The cat is on the car.\nThe book lays on the desk.
+WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。,The dog is under the desk.\nThe pen lays under the book.
+WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Kind sitzt vor dem Fernseher.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.
+WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。,The cat is behind the sofa.\nThe shelf stands behind the chair.
+WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。,The dog is next to the cat.\nThe forniture stand next to the door.
+WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。,The lamp is under the ceil.\nThe cat sits by the wall.
+WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。,The trash is in the basket.\nThe cellphone sticks in the bag.
+WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.
+TeacherSettingTitle,Gewohnheit,Custom,設定模式,Custom
+TeacherSettingConfirm,bestätigen,Confirm,確認,Confirm
+TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Subject
+TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係,Loccation
+Title.Theme.Time,Zeit,Time,時間,Time
+Title.Theme.Direction,Richtung ,Direction,方向指引,Direction
+Title.Theme.Location,Ort,Location,位置指引,Location
+CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲,Więcej gier tego autora
+CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
+CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
