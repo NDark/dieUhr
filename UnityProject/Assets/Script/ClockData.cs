@@ -416,7 +416,18 @@ public static class ClockData
             }
             
         }
-
+		else if ("Polish" == Localization.language)
+        {
+            if (m_IsDigital)
+            {
+                CalculateString_Deutsch_DigitalMode(m_Hour, m_Minute);
+            }
+            else
+            {
+                CalculateString_Deutsch(m_Hour, m_Minute);
+            }
+            
+        }
     }
 
     static string DeutschMinuteFromDigital( int _Digital )
