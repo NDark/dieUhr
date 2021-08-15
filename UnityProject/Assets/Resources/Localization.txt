@@ -1,43 +1,64 @@
 KEY,Deutsch,English,TraditionalChinese,Polish
 IntroductionTitle,Einführung,Introduction,說明,Introduction
 IntroductionContent,"Um die gewünschte Zeit einzustellen, sollte der Benutzer die Zeiger vorsichtig bewegen. \n\nDie richtige Uhrzeit in der herkömmlichen Sprechweise wird dann oben angezeigt.\n\nHinweis:\n\nDiese App sollte am besten als Erganzung im Rahmen eines Deutschunterrichtes benutzt werden.\n\nSie hilft dir dabei die Uhrzeiten auf Deutsch zu lernen.","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system.","請調整指針，時間會顯示在上面。建議：使用這個軟體搭配德文課程學習傳統的時間念法。","The user should rotate the clockhand carefully in order to let it show the desired time.\n\nThe right traditional time description will be shown in the top. \n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the traditional german clock system."
-Dreiviertel,Dreiviertel,A quarter to,四十五分,A quarter to
-Viertel,Viertel,A quarter,十五分,A quarter
-nach,nach,past,之後,past
-vor,vor,before,之前,before
-Halb,Halb,Half past,半,Half past
-halb,halb,half,半,half
+Dreiviertel,Dreiviertel,A quarter to,四十五分,trzy kwartały
+Viertel,Viertel,A quarter,十五分,kwartał
+nach,nach,past,之後,po
+vor,vor,before,之前,za
+Halb,Halb,Half past,半,w pół do (HR)
+halb,halb,half,半,w pół do (HR)
 Uhr,Uhr,o'clock,點,(HR) godzina
-to,,to,差,to
+to,,to,差,za (MN) (HR)
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,o północy albo w południe
 SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.,A German tutoring App.
 PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Choose the topic to enter
 Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Reset the clock
 0,Null,zero,零,zero
-1,Ein,one,一,pierwsza
-2,Zwei,two,二,druga
+1,Ein,one,一,jeden
+2,Zwei,two,二,dwa
 h2,,,兩,
-3,Drei,three,三,trzecia
-4,Vier,four,四,czwarta
-5,Fünf,five,五,piąta
-6,Sechs,six,六,szósty
-7,Sieben,seven,七,siódma
-8,Acht,eight,八,ósma
-9,Neun,nine,九,dziewiąta
-10,Zehn,ten,十,dziesiąta
-11,Elf,eleven,十一,jedenasta
-12,Zwölf,twelve,十二,dwunasta
-13,Dreizehn,thirteen,十三,thirteen
-14,Vierzehn,fourteen,十四,fourteen
-15,Fünfzehn,fifteen,十五,fifteen
-16,Sechzehn,sixteen,十六,sixteen
-17,Siebzehn,seventeen,十七,seventeen
-18,Achtzehn,eighteen,十八,eighteen
-19,Neunzehn,nineteen,十九,nineteen
-20,Zwanzig,twenty,二十,twenty
-30,Dreißig,thirty,三十,thirty
-40,Vierzig,forty,四十,forty
-50,Fünfzig,fifty,五十,fifty
+3,Drei,three,三,trzy
+4,Vier,four,四,cztery
+5,Fünf,five,五,pięć
+6,Sechs,six,六,sześć
+7,Sieben,seven,七,siedem
+8,Acht,eight,八,osiem
+9,Neun,nine,九,dziewięć
+10,Zehn,ten,十,dziesięć
+11,Elf,eleven,十一,jedenaście
+12,Zwölf,twelve,十二,dwanaście
+13,Dreizehn,thirteen,十三,trzynaście
+14,Vierzehn,fourteen,十四,czternaście
+15,Fünfzehn,fifteen,十五,piętnaście
+16,Sechzehn,sixteen,十六,szesnaście
+17,Siebzehn,seventeen,十七,siedemnaście
+18,Achtzehn,eighteen,十八,osiemnaście
+19,Neunzehn,nineteen,十九,dziewiętnaście
+20,Zwanzig,twenty,二十,dwadzieścia
+30,Dreißig,thirty,三十,trzydzieści
+40,Vierzig,forty,四十,czterdzieśc
+50,Fünfzig,fifty,五十,pięćdziesiąt
+0rd,0rd,0rd,0rd,zero
+1rd,1rd,1rd,1rd,pierwsza
+2rd,2rd,2rd,2rd,druga
+3rd,3rd,3rd,3rd,trzecia
+4rd,4rd,4rd,4rd,czwarta
+5rd,5rd,5rd,5rd,piąta
+6rd,6rd,6rd,6rd,szósty
+7rd,7rd,7rd,7rd,siódma
+8rd,8rd,8rd,8rd,ósma
+9rd,9rd,9rd,9rd,dziewiąta
+10rd,10rd,10rd,10rd,dziesiąta
+11rd,11rd,11rd,11rd,jedenasta
+12rd,12rd,12rd,12rd,dwunasta
+13rd,13rd,13rd,13rd,trzynasta
+14rd,14rd,14rd,14rd,czternasta
+15rd,15rd,15rd,15rd,piętnasta
+16rd,16rd,16rd,16rd,szesnasta
+17rd,17rd,17rd,17rd,siedemnasta
+18rd,18rd,18rd,18rd,osiemnasta
+19rd,19rd,19rd,19rd,dziewiętnasta
+20rd,20rd,20rd,20rd,dwudziesta
 WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者的隻字片語","A word from developer."
 AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝語言指導：Marcus Breit，Paula Kerste。","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation."
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression."

@@ -466,6 +466,11 @@ public static class ClockData
         }
 
     }
+	
+    static string WordFromNumberRd(int _Digital)
+    {
+        return Localization.Get( _Digital.ToString() + "rd" );
+    }
 
     static string WordFromDigital(int _Digital)
     {
@@ -506,15 +511,15 @@ public static class ClockData
         string hourStr = "";
         // special case
 
-        hourStr = WordFromDigital(_Hour);
+        hourStr = WordFromNumberRd(_Hour);
 
-		if( 1 == _Minute )
-		{
-			minuteStr = WordFromDigital_ConsiderOne(_Minute) ;
-		}
-		else
-		{
-        	minuteStr = DeutschMinuteFromDigital(_Minute) ;
+		if (_Minute < 20 || _Minute%10 == 0 )
+        {
+            minuteStr = WordFromDigital(_Minute);
+        }
+        else
+        {
+            minuteStr = WordFromDigital(_Minute / 10 * 10 ) + " " + WordFromDigital(_Minute%10);
         }
         
         if (_Minute == 0)
@@ -525,7 +530,7 @@ public static class ClockData
         }
         else
         {
-            m_Label.text = hourStr + " " + Localization.Get("Uhr") + " "  + minuteStr;
+            m_Label.text = hourStr + " " + minuteStr;
         }
 
     }
@@ -546,8 +551,8 @@ public static class ClockData
         {
             _HourPlus1 -= 12;
         }
-        hourStr = WordFromDigital(_Hour);
-        string hourStrWiths = WordFromDigital_ConsiderOne(_Hour);
+
+        hourStr = WordFromNumberRd(_Hour);
 
         if (_Minute == 0 && (_Hour == 0|| 12== _Hour))
         {
@@ -562,29 +567,34 @@ public static class ClockData
 		
         else if (_Minute == 15)
         {
-
-
-            // Viertel after (hour)
-            minuteStr = Localization.Get("Viertel");
-
-            m_Label.text = minuteStr + " " + Localization.Get("nach") + " " + hourStrWiths;
+            // kwartał po (hour)
+            string str2 = Localization.Get("Viertel") + " " + Localization.Get("nach") + " " + hourStr;
+			minuteStr = WordFromDigital(m_Minute);
+			string str1 = minuteStr + " " + Localization.Get("nach") + " " + hourStr;
+			m_Label.text = str2 + " (albo " + str1 + ")";
         }
         else if (_Minute == 45)
         {
+            // trzy kwartały po (hour)
             
-            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
+			string str1 = Localization.Get("Dreiviertel") + " " + Localization.Get("nach") + " " + hourStr;
+			
+			string hourPlus1Str = WordFromNumberRd(_HourPlus1);
 
-            minuteStr = Localization.Get("Viertel");
-
-            m_Label.text = minuteStr + " " + Localization.Get("vor") + " " + hourStr;
+			//  Za kwartał (hour+1)
+			string format = Localization.Get("to") ;
+			string str2 = format ;
+			str2 = str2.Replace("(MN)",Localization.Get("Viertel"));
+			str2 = str2.Replace("(HR)",hourPlus1Str);
+            m_Label.text = str2 + " (albo " + str1 + ")";
         }
         else if (_Minute == 30)
         {
-            
-            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
-            minuteStr = Localization.Get("Halb") + " ";
-            
-            m_Label.text = minuteStr + hourStr;
+			// w pół do czwartej
+            string format = Localization.Get("Halb") ;
+            hourStr = WordFromNumberRd(_HourPlus1);
+            string str = format.Replace("(HR)",hourStr) ;
+            m_Label.text = str;
         }
         else
         {
