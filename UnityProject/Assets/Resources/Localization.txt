@@ -7,26 +7,26 @@ nach,nach,past,之後,past
 vor,vor,before,之前,before
 Halb,Halb,Half past,半,Half past
 halb,halb,half,半,half
-Uhr,Uhr,o'clock,點,o'clock
+Uhr,Uhr,o'clock,點,(HR) godzina
 to,,to,差,to
-Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,Północ lub Południe
+Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,o północy albo w południe
 SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.,A German tutoring App.
 PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Choose the topic to enter
 Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Reset the clock
 0,Null,zero,零,zero
-1,Ein,one,一,one
-2,Zwei,two,二,two
+1,Ein,one,一,pierwsza
+2,Zwei,two,二,druga
 h2,,,兩,
-3,Drei,three,三,three
-4,Vier,four,四,four
-5,Fünf,five,五,five
-6,Sechs,six,六,six
-7,Sieben,seven,七,seven
-8,Acht,eight,八,eight
-9,Neun,nine,九,nine
-10,Zehn,ten,十,ten
-11,Elf,eleven,十一,eleven
-12,Zwölf,twelve,十二,twelve
+3,Drei,three,三,trzecia
+4,Vier,four,四,czwarta
+5,Fünf,five,五,piąta
+6,Sechs,six,六,szósty
+7,Sieben,seven,七,siódma
+8,Acht,eight,八,ósma
+9,Neun,nine,九,dziewiąta
+10,Zehn,ten,十,dziesiąta
+11,Elf,eleven,十一,jedenasta
+12,Zwölf,twelve,十二,dwunasta
 13,Dreizehn,thirteen,十三,thirteen
 14,Vierzehn,fourteen,十四,fourteen
 15,Fünfzehn,fifteen,十五,fifteen

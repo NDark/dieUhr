@@ -420,11 +420,11 @@ public static class ClockData
         {
             if (m_IsDigital)
             {
-                CalculateString_Deutsch_DigitalMode(m_Hour, m_Minute);
+                CalculateString_Polish_DigitalMode(m_Hour, m_Minute);
             }
             else
             {
-                CalculateString_Deutsch(m_Hour, m_Minute);
+                CalculateString_Polish_Tradition(m_Hour, m_Minute);
             }
             
         }
@@ -498,6 +498,123 @@ public static class ClockData
 		
 		_Label.text = _Content ; 
 	}
+	
+
+    public static void CalculateString_Polish_DigitalMode(int _Hour, int _Minute)
+    {
+        string minuteStr = "";
+        string hourStr = "";
+        // special case
+
+        hourStr = WordFromDigital(_Hour);
+
+		if( 1 == _Minute )
+		{
+			minuteStr = WordFromDigital_ConsiderOne(_Minute) ;
+		}
+		else
+		{
+        	minuteStr = DeutschMinuteFromDigital(_Minute) ;
+        }
+        
+        if (_Minute == 0)
+        {
+			string format = Localization.Get("Uhr");
+			string onOclockStr = format.Replace("(HR)" ,hourStr );
+            m_Label.text = onOclockStr ;
+        }
+        else
+        {
+            m_Label.text = hourStr + " " + Localization.Get("Uhr") + " "  + minuteStr;
+        }
+
+    }
+
+	
+    public static void CalculateString_Polish_Tradition(int _Hour, int _Minute)
+    {
+        string minuteStr = "";
+        string hourStr = "";
+
+        if (_Hour > 12)
+        {
+            _Hour -= 12;
+        }
+
+        int _HourPlus1 = _Hour + 1;
+        if (_HourPlus1 > 12)
+        {
+            _HourPlus1 -= 12;
+        }
+        hourStr = WordFromDigital(_Hour);
+        string hourStrWiths = WordFromDigital_ConsiderOne(_Hour);
+
+        if (_Minute == 0 && (_Hour == 0|| 12== _Hour))
+        {
+            m_Label.text = Localization.Get("Mitternacht");
+        }
+        else if (_Minute == 0)
+        {
+			string format = Localization.Get("Uhr");
+			string onOclockStr = format.Replace("(HR)" ,hourStr );
+            m_Label.text = onOclockStr ;
+        }
+		
+        else if (_Minute == 15)
+        {
+
+
+            // Viertel after (hour)
+            minuteStr = Localization.Get("Viertel");
+
+            m_Label.text = minuteStr + " " + Localization.Get("nach") + " " + hourStrWiths;
+        }
+        else if (_Minute == 45)
+        {
+            
+            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
+
+            minuteStr = Localization.Get("Viertel");
+
+            m_Label.text = minuteStr + " " + Localization.Get("vor") + " " + hourStr;
+        }
+        else if (_Minute == 30)
+        {
+            
+            hourStr = WordFromDigital_ConsiderOne(_HourPlus1);
+            minuteStr = Localization.Get("Halb") + " ";
+            
+            m_Label.text = minuteStr + hourStr;
+        }
+        else
+        {
+
+            if (_Minute >= 20 && _Minute < 30)
+            {
+				minuteStr = WordFromDigital_ConsiderOne(30 - m_Minute);
+                hourStr = "vor halb " + WordFromDigital_ConsiderOne(_HourPlus1);
+            }
+            else if (_Minute > 30 && _Minute <= 40)
+            {
+				minuteStr = WordFromDigital_ConsiderOne(m_Minute - 30);
+                hourStr = "nach halb " + WordFromDigital_ConsiderOne(_HourPlus1);
+            }
+            else if (_Minute > 40 && _Minute < 60)
+            {
+				minuteStr = WordFromDigital_ConsiderOne(60 - _Minute) ;
+                hourStr = "vor " + WordFromDigital_ConsiderOne(_HourPlus1);
+            }
+            else if (_Minute >= 1 && _Minute < 20)
+            {
+				minuteStr = WordFromDigital_ConsiderOne(_Minute);
+                hourStr = "nach " + WordFromDigital_ConsiderOne(_Hour);
+            }
+            m_Label.text = minuteStr + " " + hourStr;
+        }
+
+    }
+
+
 
 
 }
