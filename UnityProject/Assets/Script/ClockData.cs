@@ -94,8 +94,16 @@ public static class ClockData
         
         // update content
         
-		m_RandomIndex = Random.Range( 0 , 10 ) ;
-		UpdateExampleSentence() ;
+		m_RandomIndex = Random.Range( 0 , 4 ) ;
+		if ("Polish" == Localization.language)
+		{ 
+			UpdateExampleSentence_Polish();
+		}
+		else 
+		{ 
+			UpdateExampleSentence() ;
+		}
+		
 
     }
     
@@ -624,6 +632,34 @@ public static class ClockData
 
     }
 
+	
+	public static void UpdateExampleSentence_Polish()
+	{
+		string key = "ClockExampleKey_" + m_RandomIndex ;
+		string exampleSentence = Localization.Get( key ) ;
+		string replaceTimeKey = "<otime>" ;
+		var timeStr =m_Label.text;
+		Debug.Log("timeStr" + timeStr);
+
+		// pierwsza godzina -> o pierwszej godzinie
+		if(timeStr.EndsWith("godzina") && !timeStr.StartsWith("o ") )
+		{ 
+			char [] splitor = { ' '} ;
+			var strvec = timeStr.Split(splitor);
+			if( strvec.Length>0 )
+			{ 
+				var lastIndex = strvec[0].LastIndexOf("a") ;
+				timeStr = "o " + strvec[0].Substring(0,lastIndex) + "ej " + "godzinie" ;
+			}
+		}
+
+		exampleSentence = exampleSentence.Replace( replaceTimeKey , timeStr ) ;
+
+		UpdateNGUILabel( m_ExampleContent , exampleSentence ) ;
+		
+		// show button
+		ShowNGUIObj( m_ExampleButton , true ) ;	
+	}	
 
 
 

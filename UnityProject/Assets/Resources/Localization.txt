@@ -12,7 +12,7 @@ to,,to,差,za (MN) (HR)
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,o północy albo w południe
 SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.,A German tutoring App.
 PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Choose the topic to enter
-Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Reset the clock
+Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Wyzeruj zegar
 0,Null,zero,零,zero
 1,Ein,one,一,jeden
 2,Zwei,two,二,dwa
@@ -73,7 +73,7 @@ LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園>
 LocationKey_TurnLeft,links abbiegen,turn left,左轉,turn left
 LocationKey_TurnRight,rechts abbiegen,turn right,右轉,turn right
 LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>,drive through <the intersection>
-ExampleShort,z.B.,ex.,例,ex.
+ExampleShort,z.B.,ex.,例,np.
 ExampleLong,zum Beispiel,Example,例句,Example
 ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Please go straight.
 ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,I walk along the river.\nGo along the river.
@@ -86,10 +86,10 @@ ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe
 ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。,You turn left at street.\nHe turned left until the signal.
 ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。,Turn right here.\nHe turned right at the intersection.
 ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口,Drive through the intersection.
-ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。,I drive to office at <time>.
-ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,We eat lunch at <time>.
-ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。,He do grocery at <time>.
-ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,They will watch movie at <time>.
+ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。,Jadę do biura <otime>.
+ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,Jemy obiad <otime>.
+ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。,Idzie na zakupy <otime>.
+ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,Zamierzają obejrzeć film <otime>.
 ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,I go sport at <time>.
 ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,We meet at <time>.
 ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Today I depart at <time>.
