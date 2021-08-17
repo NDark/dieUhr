@@ -94,21 +94,18 @@ public static class ClockData
         
         // update content
         
-		m_RandomIndex = Random.Range( 0 , 4 ) ;
-		if ("Polish" == Localization.language)
-		{ 
-			UpdateExampleSentence_Polish();
-		}
-		else 
-		{ 
-			UpdateExampleSentence() ;
-		}
-		
-
+		m_RandomIndex = Random.Range( 0 , 10 ) ;
+		UpdateExampleSentence() ;
     }
     
 	public static void UpdateExampleSentence()
 	{
+		if ("Polish" == Localization.language)
+		{ 
+			UpdateExampleSentence_Polish();
+			return ;
+		}
+
 		string key = "ClockExampleKey_" + m_RandomIndex ;
 		string exampleSentence = Localization.Get( key ) ;
 		string replaceTimeKey = "<time>" ;
@@ -622,13 +619,18 @@ public static class ClockData
 
             if (_Minute >= 20 && _Minute < 30)
             {
-				minuteStr = WordFromDigital_ConsiderOne(30 - m_Minute);
-                hourStr = "vor halb " + WordFromDigital_ConsiderOne(_HourPlus1);
+				minuteStr = WordFromDigital_ConsiderPolishMinuty(30 - m_Minute);
+				string format = Localization.Get("Halb");
+				hourStr = format.Replace("(HR)" , PolishTaToTEj( WordFromNumberRd(_HourPlus1) ) );
+                hourStr = Localization.Get("vor") + " " + hourStr;
             }
             else if (_Minute > 30 && _Minute <= 40)
             {
-				minuteStr = WordFromDigital_ConsiderOne(m_Minute - 30);
-                hourStr = "nach halb " + WordFromDigital_ConsiderOne(_HourPlus1);
+				minuteStr = WordFromDigital_ConsiderPolishMinuty(m_Minute - 30);
+				string format = Localization.Get("Halb");
+				hourStr = format.Replace("(HR)" , PolishTaToTEj( WordFromNumberRd(_HourPlus1) ) );
+                hourStr = Localization.Get("nach") + " " + hourStr;
+
             }
             else if (_Minute > 40 && _Minute < 60)
             {
@@ -662,16 +664,18 @@ public static class ClockData
 		string key = "ClockExampleKey_" + m_RandomIndex ;
 		string exampleSentence = Localization.Get( key ) ;
 		string replaceTimeKey = "<otime>" ;
-		var timeStr =m_Label.text;
+		var timeStr = string.Empty ;
+		var orgStr  =m_Label.text;
 		// Debug.Log("timeStr" + timeStr);
 
 		char [] splitor = { ' '} ;
-		var strvec = timeStr.Split(splitor);
+		var strvec = orgStr.Split(splitor);
 		// pierwsza godzina -> o pierwszej godzinie
-		if( !timeStr.StartsWith("o ") && strvec.Length>0
+		
+		if( !orgStr.StartsWith("o ") && strvec.Length>0
 			&& strvec[0].EndsWith("a") )
 		{ 
-			if( timeStr.EndsWith("godzina"))
+			if( orgStr.EndsWith("godzina"))
 			{ 
 				timeStr = "o " + PolishTaToTEj( strvec[0] ) + " godzinie" ;
 			}
@@ -685,6 +689,12 @@ public static class ClockData
 			}
 			
 		}
+
+		if( string.IsNullOrEmpty(timeStr ))
+		{ 
+			timeStr = "o " + orgStr ;
+		}
+		
 
 		exampleSentence = exampleSentence.Replace( replaceTimeKey , timeStr ) ;
 
