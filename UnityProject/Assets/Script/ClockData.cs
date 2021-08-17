@@ -692,7 +692,15 @@ public static class ClockData
 
 		if( string.IsNullOrEmpty(timeStr ))
 		{ 
-			timeStr = "o " + orgStr ;
+			if( orgStr.StartsWith("o"))
+			{
+				timeStr = orgStr ;
+			}
+			else 
+			{
+				timeStr = "o " + orgStr ;
+			}
+			
 		}
 		
 
