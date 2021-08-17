@@ -690,6 +690,10 @@ public static class ClockData
 			
 		}
 
+		/*
+		Debug.Log("orgStr=" + orgStr);
+		Debug.Log("timeStr=" + timeStr);
+		//*/
 		if( string.IsNullOrEmpty(timeStr ))
 		{ 
 			if( orgStr.StartsWith("o"))

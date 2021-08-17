@@ -96,12 +96,12 @@ ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,�
 ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,Jemy obiad <otime>.
 ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。,Idzie na zakupy <otime>.
 ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,Zamierzają obejrzeć film <otime>.
-ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,I go sport at <time>.
-ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,We meet at <time>.
-ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Today I depart at <time>.
-ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,We come at <time>.
-ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Can you pick me up at <time>.
-ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Do you have time today at <time>.
+ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,I go sport at <otime>.
+ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,We meet at <otime>.
+ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Today I depart at <otime>.
+ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,We come at <otime>.
+ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Can you pick me up at <otime>.
+ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Do you have time today at <otime>.
 WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring."
 WhereNextButton,Nächste,Next,下一個,Next
 WhereTarget_Fussball,der Fußball,the soccer,足球,the soccer
