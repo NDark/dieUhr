@@ -12,8 +12,8 @@ minute,Minute,Minute,Minute,minuta
 minutes,Minutes,Minutes,Minutes,minuty
 to,,to,差,za (MN) (HR)
 Mitternacht,Mitternacht oder Mittag,Midnight or Noon,午夜 或 中午,o północy albo w południe
-SubTitle,Eine App für den Deutschunterricht,A German tutoring App.,德文學習App.,A German tutoring App.
-PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Choose the topic to enter
+SubTitle,Eine App für den Deutschunterricht,A language tutoring App.,德文學習App.,Aplikacja do nauki języków.
+PressContinue,Wählen Sie das Thema,Choose the topic to enter,請選擇主題進入,Wybierz temat aby zacząć
 Reset,Uhr zurücksetzen,Reset the clock,重置時鐘,Wyzeruj zegar
 0,Null,zero,零,zero
 1,Ein,one,一,jeden
@@ -146,3 +146,6 @@ Title.Theme.Location,Ort,Location,位置指引,Location
 CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲,Więcej gier tego autora
 CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
+Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
+Introduction.Location,,"Understand the expresstion of location.","方向的表示。",
+Introduction.Clock,,"Expression of finding object.","位置的表示。",
