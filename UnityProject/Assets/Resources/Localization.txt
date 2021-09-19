@@ -5,8 +5,8 @@ Dreiviertel,Dreiviertel,A quarter to,四十五分,trzy kwartały
 Viertel,Viertel,A quarter,十五分,kwartał
 nach,nach,past,之後,po
 vor,vor,before,之前,do
-Halb,Halb,Half past,半,w pół do (HR)
-halb,halb,half,半,w pół do (HR)
+Halb,Halb,Half past,半,wpół do (HR)
+halb,halb,half,半,wpół do (HR)
 Uhr,Uhr,o'clock,點,(HR) godzina
 minute,Minute,Minute,Minute,minuta
 minutes,Minutes,Minutes,Minutes,minuty
@@ -61,10 +61,10 @@ h2,,,兩,
 18rd,18rd,18rd,18rd,osiemnasta
 19rd,19rd,19rd,19rd,dziewiętnasta
 20rd,20rd,20rd,20rd,dwudziesta
-21rd,21rd,21rd,21rd,dwudziesty pierwszy
-22rd,22rd,22rd,22rd,dwudziesty druga
-23rd,23rd,23rd,23rd,dwudziesty trzecia
-24rd,24rd,24rd,24rd,dwudziesty czwarta
+21rd,21rd,21rd,21rd,dwudziesta pierwsza
+22rd,22rd,22rd,22rd,dwudziesta druga
+23rd,23rd,23rd,23rd,dwudziesta trzecia
+24rd,24rd,24rd,24rd,dwudziesta czwarta
 WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者的隻字片語","A word from developer."
 AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝語言指導：Marcus Breit，Paula Kerste。","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation."
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression."
@@ -148,4 +148,4 @@ CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
 Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
 Introduction.Location,,"Understand the expresstion of location.","方向的表示。",
-Introduction.Clock,,"Expression of finding object.","位置的表示。",
+Introduction.Where,,"Expression of finding object.","位置的表示。",
