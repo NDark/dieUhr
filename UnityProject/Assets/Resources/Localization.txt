@@ -149,3 +149,4 @@ CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，
 Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
 Introduction.Location,,"Understand the expresstion of location.","方向的表示。",
 Introduction.Where,,"Expression of finding object.","位置的表示。",
+CrossPlay.BarbarianCivilization,Barbarische Zivilisation.,Barbarian Civilization,文明傳出去，蠻族進不來,Cywilizacja barbarzyńska
