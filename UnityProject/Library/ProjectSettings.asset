@@ -22,7 +22,7 @@ PlayerSettings:
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 1
+  m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -39,9 +39,7 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos:
-  - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
-    duration: 2
+  m_SplashScreenLogos: []
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -168,8 +166,8 @@ PlayerSettings:
     iPhone: org.ndark.dieuhr
     tvOS: org.ndark.dieuhr
   buildNumber:
-    iOS: 27
-  AndroidBundleVersionCode: 26
+    iOS: 28
+  AndroidBundleVersionCode: 28
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -262,7 +260,7 @@ PlayerSettings:
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
   templateDefaultScene: 
-  AndroidTargetArchitectures: 3
+  AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: D:/WORKSPACE/Github/dieUhr/Key/NDark_DieUhr.keystore
@@ -350,7 +348,9 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 809b18888b556ae449b1d9aacb114e9b, type: 3}
+      - {fileID: 2800000, guid: 9e4692312219b7a42b943c51e1d5a0e9, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
