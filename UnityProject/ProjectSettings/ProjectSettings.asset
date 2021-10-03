@@ -166,8 +166,8 @@ PlayerSettings:
     iPhone: org.ndark.dieuhr
     tvOS: org.ndark.dieuhr
   buildNumber:
-    iOS: 27
-  AndroidBundleVersionCode: 26
+    iOS: 28
+  AndroidBundleVersionCode: 28
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -348,7 +348,9 @@ PlayerSettings:
       m_Height: 36
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 809b18888b556ae449b1d9aacb114e9b, type: 3}
+      - {fileID: 2800000, guid: 9e4692312219b7a42b943c51e1d5a0e9, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
