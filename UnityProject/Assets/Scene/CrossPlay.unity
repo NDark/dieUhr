@@ -789,9 +789,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 447, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1598488150}
-  - {fileID: 340312678}
   - {fileID: 881275938}
+  - {fileID: 340312678}
+  - {fileID: 1598488150}
   m_Father: {fileID: 1823251758}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1427,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &881275938
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1444,7 @@ Transform:
   - {fileID: 268338650}
   - {fileID: 1504005467}
   m_Father: {fileID: 389073342}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &881275939
 MonoBehaviour:
@@ -2381,7 +2381,7 @@ Transform:
   - {fileID: 811604942}
   - {fileID: 35514809}
   m_Father: {fileID: 389073342}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1598488151
 BoxCollider:
