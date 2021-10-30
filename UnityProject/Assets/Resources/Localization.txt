@@ -103,7 +103,7 @@ ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>
 ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Czy możesz mnie podwieźć dzisiaj <otime>.
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Czy masz czas dzisiaj <otime>.
 WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring."
-WhereNextButton,Nächste,Next,下一個,Next
+WhereNextButton,Nächste,Next,下一個,następny
 WhereTarget_Fussball,der Fußball,the soccer,足球,piłka
 WhereScene_Desk,der Tisch,the desk,桌子,biurko
 WhereScene_Shelf,das Regal,the shelf,架子,półka
