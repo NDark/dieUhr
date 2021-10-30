@@ -896,7 +896,7 @@ public class WhereSystem : MonoBehaviour
 	{
 		string ret = _Input;
 
-		string orgWhereValue = Localization.Get( "WhereScene_" + whereKey);
+		string orgWhereValue = Localization.Get("WhereKey_" + whereKey);
 		string replaceWhereValue = string.Empty ;
 
 		switch (whereKey)
@@ -906,7 +906,7 @@ public class WhereSystem : MonoBehaviour
 				// _dative
 				replaceWhereValue = Localization.Get(whereKey + "_dative");
 				// biurko -> biurka
-				_Input.Replace(orgWhereValue, replaceWhereValue);
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 
 			case "Vor":
@@ -916,7 +916,7 @@ public class WhereSystem : MonoBehaviour
 				// _genitive
 				replaceWhereValue = Localization.Get(whereKey + "_genitive");
 				// biurko -> biurku
-				_Input.Replace(orgWhereValue, replaceWhereValue);
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 
 			case "Auf":
@@ -925,7 +925,7 @@ public class WhereSystem : MonoBehaviour
 				// _instrumental
 				replaceWhereValue = Localization.Get(whereKey + "_instrumental");
 				// biurko -> biurkiem
-				_Input.Replace(orgWhereValue, replaceWhereValue);
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 		}
 		return ret;
