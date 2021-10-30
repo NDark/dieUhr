@@ -734,13 +734,18 @@ public class WhereSystem : MonoBehaviour
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
-		sceneString = DativTheNoun( sceneString ) ;
+		sceneString = (Localization.language == "Polish")
+			? Polish_ConjugateTheNoun(sceneString, _WhereKey)
+			: German_DativTheNoun(sceneString);
 		
 		string referenceString = string.Empty;
-		if( string.Empty != _ReferenceKey )
+		if( string.Empty != _ReferenceKey)// between there are 2 objects.
 		{
 			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
-			referenceString = DativTheNoun( referenceString ) ;
+			referenceString = (Localization.language == "Polish")
+				? Polish_ConjugateTheNoun(referenceString, _WhereKey)
+				: German_DativTheNoun(referenceString);
+
 		}
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
@@ -864,7 +869,8 @@ public class WhereSystem : MonoBehaviour
 		return ret ;
 	}
 	
-	private string DativTheNoun( string _Input )
+	
+	private string German_DativTheNoun( string _Input )
 	{
 		string ret = _Input ;
 		GenderOfNoun gender = GetGender( _Input ) ;
@@ -885,7 +891,27 @@ public class WhereSystem : MonoBehaviour
 		}
 		return ret ;
 	}
-	
+
+	private string Polish_ConjugateTheNoun(string _Input , string whereKey )
+	{
+		string ret = _Input;
+
+		switch (whereKey)
+		{
+			case "Uber":
+			case "Auf":
+			case "Unter":
+			case "Vor":
+			case "Hinter":
+			case "Neben":
+			case "An":
+			case "In":
+			case "Zwischen":
+				break;
+		}
+		return ret;
+	}
+
 	private string GetExampleKey( string _WhereKey )
 	{
 		return "WhereExample_" + _WhereKey ;
