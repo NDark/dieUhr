@@ -68,7 +68,7 @@ h2,,,兩,
 WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者的隻字片語","Słowo od dewelopera."
 AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝語言指導：Marcus Breit，Paula Kerste。","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. Acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation."
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression."
-LocationKey_Straight,immer geradeaus gehen,go straight,直走,go straight
+LocationKey_Straight,immer geradeaus gehen,go straight,直走,idź prosto
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>,along <the river>
 LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>,over <die Brucke>
 LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面,the opposite side of <the church>
@@ -81,7 +81,7 @@ LocationKey_TurnRight,rechts abbiegen,turn right,右轉,turn right
 LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>,drive through <the intersection>
 ExampleShort,z.B.,ex.,例,np.
 ExampleLong,zum Beispiel,Example,例句,Na przykład
-ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Please go straight.
+ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Proszę idź prosto.
 ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,I walk along the river.\nGo along the river.
 ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,I walk over the bridge.\nDrive over the bridge.
 ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。,The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.
@@ -104,11 +104,11 @@ ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Czy masz czas dzisiaj <otime>.
 WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring."
 WhereNextButton,Nächste,Next,下一個,Next
-WhereTarget_Fussball,der Fußball,the soccer,足球,the soccer
-WhereScene_Desk,der Tisch,the desk,桌子,the desk
-WhereScene_Shelf,das Regal,the shelf,架子,the shelf
-WhereScene_Cabinet,der Schrank,the cabinet,櫃子,the cabinet
-WhereScene_Television,der Fernseher,the TV,電視,the TV
+WhereTarget_Fussball,der Fußball,the soccer,足球,piłka
+WhereScene_Desk,der Tisch,the desk,桌子,biurko
+WhereScene_Shelf,das Regal,the shelf,架子,półka
+WhereScene_Cabinet,der Schrank,the cabinet,櫃子,szafka
+WhereScene_Television,der Fernseher,the TV,電視,telewizor
 WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。,<target> is on <scene>.
 WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。,<target> is above <scene>.
 WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。,<target> is below <scene>.
@@ -146,7 +146,7 @@ Title.Theme.Location,Ort,Location,位置指引,Szukaniem
 CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲,Więcej gier tego autora
 CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
-Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
-Introduction.Location,,"Understand the expresstion of location.","方向的表示。",
-Introduction.Where,,"Expression of finding object.","位置的表示。",
 CrossPlay.BarbarianCivilization,Barbarische Zivilisation.,Barbarian Civilization,文明傳出去，蠻族進不來,Cywilizacja barbarzyńska
+Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
+Introduction.Location,,"Understand the expresstion of location.","方向的表示。","słownictwo związane z kierunkami"
+Introduction.Where,,"Expression of finding object.","位置的表示。","słownictwo związane z odnajdywaniem przedmiotów"
