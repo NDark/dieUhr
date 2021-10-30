@@ -735,7 +735,7 @@ public class WhereSystem : MonoBehaviour
 		
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
 		sceneString = (Localization.language == "Polish")
-			? Polish_ConjugateTheNoun(sceneString, _WhereKey)
+			? Polish_ConjugateTheNoun(sceneString, _SceneKey, _WhereKey)
 			: German_DativTheNoun(sceneString);
 		
 		string referenceString = string.Empty;
@@ -743,7 +743,7 @@ public class WhereSystem : MonoBehaviour
 		{
 			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
 			referenceString = (Localization.language == "Polish")
-				? Polish_ConjugateTheNoun(referenceString, _WhereKey)
+				? Polish_ConjugateTheNoun(referenceString, _ReferenceKey, _WhereKey)
 				: German_DativTheNoun(referenceString);
 
 		}
@@ -892,11 +892,11 @@ public class WhereSystem : MonoBehaviour
 		return ret ;
 	}
 
-	private string Polish_ConjugateTheNoun(string _Input , string whereKey )
+	private string Polish_ConjugateTheNoun(string _Input , string objKey , string whereKey )
 	{
 		string ret = _Input;
 
-		string orgWhereValue = Localization.Get("WhereKey_" + whereKey);
+		string orgWhereValue = Localization.Get("WhereScene_" + objKey);
 		string replaceWhereValue = string.Empty ;
 
 		switch (whereKey)
@@ -904,7 +904,7 @@ public class WhereSystem : MonoBehaviour
 			case "Uber":
 			case "In":
 				// _dative
-				replaceWhereValue = Localization.Get(whereKey + "_dative");
+				replaceWhereValue = Localization.Get(objKey + "_dative");
 				// biurko -> biurka
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
@@ -914,7 +914,7 @@ public class WhereSystem : MonoBehaviour
 			case "An":
 			case "Neben":
 				// _genitive
-				replaceWhereValue = Localization.Get(whereKey + "_genitive");
+				replaceWhereValue = Localization.Get(objKey + "_genitive");
 				// biurko -> biurku
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
@@ -923,7 +923,7 @@ public class WhereSystem : MonoBehaviour
 			case "Unter":
 			case "Zwischen":
 				// _instrumental
-				replaceWhereValue = Localization.Get(whereKey + "_instrumental");
+				replaceWhereValue = Localization.Get(objKey + "_instrumental");
 				// biurko -> biurkiem
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
