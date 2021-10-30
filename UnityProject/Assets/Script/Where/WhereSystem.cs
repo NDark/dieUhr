@@ -896,17 +896,36 @@ public class WhereSystem : MonoBehaviour
 	{
 		string ret = _Input;
 
+		string orgWhereValue = Localization.Get( "WhereScene_" + whereKey);
+		string replaceWhereValue = string.Empty ;
+
 		switch (whereKey)
 		{
 			case "Uber":
-			case "Auf":
-			case "Unter":
+			case "In":
+				// _dative
+				replaceWhereValue = Localization.Get(whereKey + "_dative");
+				// biurko -> biurka
+				_Input.Replace(orgWhereValue, replaceWhereValue);
+				break;
+
 			case "Vor":
 			case "Hinter":
-			case "Neben":
 			case "An":
-			case "In":
+			case "Neben":
+				// _genitive
+				replaceWhereValue = Localization.Get(whereKey + "_genitive");
+				// biurko -> biurku
+				_Input.Replace(orgWhereValue, replaceWhereValue);
+				break;
+
+			case "Auf":
+			case "Unter":
 			case "Zwischen":
+				// _instrumental
+				replaceWhereValue = Localization.Get(whereKey + "_instrumental");
+				// biurko -> biurkiem
+				_Input.Replace(orgWhereValue, replaceWhereValue);
 				break;
 		}
 		return ret;
