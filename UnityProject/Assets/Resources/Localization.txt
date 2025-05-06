@@ -70,7 +70,7 @@ AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte.  Ich mach
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression."
 LocationKey_Straight,immer geradeaus gehen,go straight,直走,idź prosto
 LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>,along <the river>
-LocationKey_Bridge,über <die Brücke>,over <die Brucke>,過 <橋>,over <die Brucke>
+LocationKey_Bridge,über <die Brücke>,over <the bridge>,過 <橋>,over <die Brucke>
 LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面,the opposite side of <the church>
 LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>,until <the intersection>
 LocationKey_Pass,an <etwas> vorbei gehen,go pass <...> ,行經 <...> ,go pass <...> 
@@ -82,8 +82,8 @@ LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the i
 ExampleShort,z.B.,ex.,例,np.
 ExampleLong,zum Beispiel,Example,例句,Na przykład
 ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Proszę idź prosto.
-ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,I walk along the river.\nGo along the river.
-ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,I walk over the bridge.\nDrive over the bridge.
+ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,Idę wzdłuż rzeki.\nProszę idź wzdłuż rzeki.
+ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,I walk over the bridge.\nProszę przejedź skrzyżowanie.
 ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。,The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.
 ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersection.,開到十字路口。,Drive until the intersection.
 ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。,I go pass the park.\nGo pass the park.\nGo pass the post.
@@ -139,15 +139,15 @@ WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ)
 WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。,Please put <target> at side of <scene>.
 WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。,Please put <target> in <scene>.
 WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。,Please put <target> between <scene> and <reference>.
-WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。,The lamp is above the desk.\nThe picture hangs above the television.
-WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。,The cat is on the car.\nThe book lays on the desk.
-WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。,The dog is under the desk.\nThe pen lays under the book.
-WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Kind sitzt vor dem Fernseher.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.
-WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。,The cat is behind the sofa.\nThe shelf stands behind the chair.
-WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。,The dog is next to the cat.\nThe forniture stand next to the door.
-WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe cat sits by the wall.,燈在天花板。\n貓坐在牆邊。,The lamp is under the ceil.\nThe cat sits by the wall.
-WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。,The trash is in the basket.\nThe cellphone sticks in the bag.
-WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.
+WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。,Lampa jest nad biurkiem.\nObraz wisi nad telewizorem.
+WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。,Kot jest na samochodzie.\nKsiążka jest na biurku.
+WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。,Pies jest pod biurkiem.\nDługopis jest pod książką.
+WhereExample_Vor,Der Tisch ist vor dem Schrank.\nDas Kind sitzt vor dem Fernseher.,The desk is in the front of the cabinet.\nThe bird stands in the front of the chair.,桌子在櫃子前面。\n鳥站在椅子前面。,Biurko jest przed szafką.\nPtak jest przed krzesłem.
+WhereExample_Hinter,Die Katze liegt hinter dem Sofa.\nDas Regal steht hinter dem Stuhl.,The cat is behind the sofa.\nThe shelf stands behind the chair.,貓在沙發後面。\n架子站在椅子後面。,Kot jest za sofą.\nPółka jest za krzesłem.
+WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der Tür.,The dog is next to the cat.\nThe forniture stand next to the door.,狗在貓旁邊。\n家具在門旁邊。,Pies jest obok kota.\nMeble są obok drzwi.
+WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe table is against the wall.,燈在天花板。\n桌子靠在牆邊。,Lampa jest pod sufitem.\nStół stoi przy ścianie.
+WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。,Śmieci są w koszu.\nTelefon komórkowy jest w torbie.
+WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。,Pieniądze spadają między szafkami.\nPieniądze są między szafkami.\nPies jest między kotem a ptakiem..
 TeacherSettingTitle,Gewohnheit,Custom,設定模式,Custom
 TeacherSettingConfirm,bestätigen,Confirm,確認,Confirm
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Subject
