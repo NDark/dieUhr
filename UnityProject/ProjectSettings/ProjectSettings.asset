@@ -166,7 +166,7 @@ PlayerSettings:
     iPhone: org.ndark.dieuhr
     tvOS: org.ndark.dieuhr
   buildNumber:
-    iOS: 28
+    iOS: 29
   AndroidBundleVersionCode: 29
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
