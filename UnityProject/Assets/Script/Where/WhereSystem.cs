@@ -901,17 +901,18 @@ public class WhereSystem : MonoBehaviour
 
 		switch (whereKey)
 		{
-			case "Uber":
+			
+			case "Auf": // on (touched)
 			case "In":
+			case "An":
 				// _dative
 				replaceWhereValue = Localization.Get(objKey + "_dative");
 				// biurko -> biurka
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 
-			case "Vor":
+			
 			case "Hinter":
-			case "An":
 			case "Neben":
 				// _genitive
 				replaceWhereValue = Localization.Get(objKey + "_genitive");
@@ -919,7 +920,8 @@ public class WhereSystem : MonoBehaviour
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 
-			case "Auf":
+			case "Vor":
+			case "Uber": // above (un touched)
 			case "Unter":
 			case "Zwischen":
 				// _instrumental

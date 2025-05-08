@@ -121,13 +121,13 @@ Desk_genitive,(NONE),(NONE),(NONE),biurka
 Shelf_genitive,(NONE),(NONE),(NONE),półki
 Cabinet_genitive,(NONE),(NONE),(NONE),szafki
 Television_genitive,(NONE),(NONE),(NONE),telewizora
-WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。,<target> jest na <scene>.
-WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。,<target> jest nad <scene>.
+WhereKey_Uber,<target> ist über <scene>.(Dativ),<target> is above <scene>.,<target>在<scene>上方。,<target> jest nad <scene>.
+WhereKey_Auf,<target> ist auf <scene>.(Dativ),<target> is on <scene>.,<target>在<scene>上面。,<target> jest na <scene>.
 WhereKey_Unter,<target> ist unter <scene>.(Dativ),<target> is below <scene>.,<target>在<scene>下方。,<target> jest pod <scene>.
-WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。,<target> jest z przodu <scene>.
-WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。,<target> jest z tyłu <scene>.
+WhereKey_Vor,<target> ist vor <scene>.(Dativ),<target> is in front of <scene>.,<target>在<scene>前面。,<target> jest przed <scene>.
+WhereKey_Hinter,<target> ist hinter <scene>.(Dativ),<target> is behind <scene>.,<target>在<scene>後面。,<target> jest za <scene>.
 WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<target>在<scene>旁邊。,<target> jest obok <scene>.
-WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。,<target> jest z prawej strony <scene>.
+WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。,<target> jest przy <scene>.
 WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。,<target> jest w <scene>.
 WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。,<target> jest pomiędzy <scene> a <reference>.
 WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。,Please put <target> on <scene>.
