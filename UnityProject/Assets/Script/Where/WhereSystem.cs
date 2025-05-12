@@ -912,14 +912,15 @@ public class WhereSystem : MonoBehaviour
 				break;
 
 			
-			case "Hinter":
 			case "Neben":
+				// inside : w środku , back side of : z tyłu , next to : obok 
 				// _genitive
 				replaceWhereValue = Localization.Get(objKey + "_genitive");
 				// biurko -> biurku
 				ret = ret.Replace(orgWhereValue, replaceWhereValue);
 				break;
 
+			case "Hinter":
 			case "Vor":
 			case "Uber": // above (un touched)
 			case "Unter":
