@@ -102,7 +102,7 @@ ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今�
 ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,Przychodzimy <otime>.
 ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Czy możesz mnie podwieźć dzisiaj <otime>.
 ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Czy masz czas dzisiaj <otime>.
-WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習位置的表達方式。","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real german class or tutoring."
+WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real language class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配語言課程學習位置的表達方式。","Użytkownik może zobaczyć prawidłowe wyrażenie „…. is at ...” w trybie odpowiedzi, a następnie w trybie dotykowym spróbować przesunąć cel do właściwej pozycji zgodnie z instrukcją.\n\nPorada:\n\nTa aplikacja najlepiej sprawdza się jako dodatek do prawdziwych zajęć językowych lub korepetycji."
 WhereNextButton,Nächste,Next,下一個,następny
 WhereTarget_Fussball,der Fußball,the soccer,足球,piłka
 WhereScene_Desk,der Tisch,the desk,桌子,biurko
@@ -130,15 +130,15 @@ WhereKey_Neben,<target> ist neben <scene>.(Dativ),<target> is next to <scene>.,<
 WhereKey_An,<target> ist an <scene>.(Dativ),<target> is at side of <scene>.,<target>靠在<scene>旁邊。,<target> jest przy <scene>.
 WhereKey_In,<target> ist in <scene>.(Dativ),<target> is in <scene>.,<target>在<scene>裡面。,<target> jest w <scene>.
 WhereKey_Zwischen,<target> ist zwischen <scene> und <reference>.(Dativ),<target> is between <scene> and <reference>.,<target>在<scene>與<reference>之間。,<target> jest pomiędzy <scene> a <reference>.
-WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。,Please put <target> on <scene>.
-WhereInstruction_Auf,Bitte legen Sie <target> auf <scene>.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。,Please put <target> above <scene>.
-WhereInstruction_Unter,Bitte legen Sie <target> unter <scene>.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。,Please put <target> below <scene>.
-WhereInstruction_Vor,Bitte legen Sie <target> vor <scene>.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。,Please put <target> in front of <scene>.
-WhereInstruction_Hinter,Bitte legen Sie <target> hinter <scene>.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。,Please put <target> behind <scene>.
-WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。,Please put <target> next to <scene>.
-WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。,Please put <target> at side of <scene>.
-WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。,Please put <target> in <scene>.
-WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。,Please put <target> between <scene> and <reference>.
+WhereInstruction_Uber,Bitte legen Sie <target> über <scene>.(Akkusativ),Please put <target> on <scene>.,請把<target>放在<scene>上面。,Proszę połóż <obiekt> nad <lokalizacja>.
+WhereInstruction_Auf,Bitte legen Sie <target> auf <scene>.(Akkusativ),Please put <target> above <scene>.,請把<target>放在<scene>上方。,Proszę połóż <obiekt> na <lokalizacja>.
+WhereInstruction_Unter,Bitte legen Sie <target> unter <scene>.(Akkusativ),Please put <target> below <scene>.,請把<target>放在<scene>下方。,Proszę połóż <obiekt> pod <lokalizacja>.
+WhereInstruction_Vor,Bitte legen Sie <target> vor <scene>.(Akkusativ),Please put <target> in front of <scene>.,請把<target>放在<scene>前面。,Proszę połóż <obiekt> przed <lokalizacja>.
+WhereInstruction_Hinter,Bitte legen Sie <target> hinter <scene>.(Akkusativ),Please put <target> behind <scene>.,請把<target>放在<scene>後面。,Proszę połóż <obiekt> za <lokalizacja>.
+WhereInstruction_Neben,Bitte legen Sie <target> rechts neben <scene>.(Akkusativ),Please put <target> next to <scene>.,請把<target>放在<scene>旁邊。,Proszę połóż <obiekt> obok <lokalizacja>.
+WhereInstruction_An,Bitte legen Sie <target> an <scene>.(Akkusativ),Please put <target> at side of <scene>.,請把<target>靠在<scene>旁邊。,Proszę połóż <obiekt> przy <lokalizacja>.
+WhereInstruction_In,Bitte legen Sie <target> in <scene>.(Akkusativ),Please put <target> in <scene>.,請把<target>放在<scene>裡面。,Proszę połóż <obiekt> w <lokalizacja>.
+WhereInstruction_Zwischen,Bitte legen Sie <target> zwischen <scene> und <reference>.(Akkusativ),Please put <target> between <scene> and <reference>.,請把<target>放在<scene>與<reference>之間。,Proszę połóż <obiekt> pomiędzy <lokalizacja> a <odniesienie>.
 WhereExample_Uber,Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.,The lamp is above the desk.\nThe picture hangs above the television.,燈在桌子上。\n照片掛在電視上方。,Lampa jest nad biurkiem.\nObraz wisi nad telewizorem.
 WhereExample_Auf,Die Katze schläft auf dem Bett.\nDas Buch liegt auf dem Tisch.,The cat is on the car.\nThe book lays on the desk.,貓在車子上。\n書本躺在桌子上。,Kot jest na samochodzie.\nKsiążka jest na biurku.
 WhereExample_Unter,Der Hund ist unter dem Tisch.\nDer Stift liegt unter dem Buch.,The dog is under the desk.\nThe pen lays under the book.,狗在桌子下。\n筆在書本下。,Pies jest pod biurkiem.\nDługopis jest pod książką.
@@ -148,10 +148,10 @@ WhereExample_Neben,Die Lampe ist neben dem Bett.\nDie Möbel stehen neben der T�
 WhereExample_An,Die Lampe hängt an der Decke.\nDer Tisch steht an der Wand.,The lamp is under the ceil.\nThe table is against the wall.,燈在天花板。\n桌子靠在牆邊。,Lampa jest pod sufitem.\nStół stoi przy ścianie.
 WhereExample_In,Der Müll ist im Korb.\nDas Handy steckt in der Tasche.,The trash is in the basket.\nThe cellphone sticks in the bag.,垃圾在籃子裡。\n手機插在包包裡。,Śmieci są w koszu.\nTelefon komórkowy jest w torbie.
 WhereExample_Zwischen,Das Geld fällt zwischen die Schränke.(Akkusativ)\nDas Geld liegt zwischen den Schränken.(Dativ)\nDer Schreibtisch steht zwischen dem Schrank und dem Bett.,The money falls between cabinets.\nThe money lies between cabinets.\nThe dog is between the cat and the bird.,錢掉在櫃子間。\n錢在櫃子間。\n狗在貓跟鳥之間。,Pieniądze spadają między szafkami.\nPieniądze są między szafkami.\nPies jest między kotem a ptakiem..
-TeacherSettingTitle,Gewohnheit,Custom,設定模式,Custom
-TeacherSettingConfirm,bestätigen,Confirm,確認,Confirm
-TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Subject
-TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係,Loccation
+TeacherSettingTitle,Anpassen,Customize,設定模式,Dostosuj
+TeacherSettingConfirm,bestätigen,Confirm,確認,Potwierdzać
+TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Obiekt
+TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係,Lokalizacja
 Title.Theme.Time,Zeit,Time,時間,Zegar
 Title.Theme.Direction,Richtung ,Direction,方向指引,Kierunkami
 Title.Theme.Location,Ort,Location,位置指引,Szukaniem
