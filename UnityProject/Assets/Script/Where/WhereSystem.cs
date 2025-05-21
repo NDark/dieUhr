@@ -734,13 +734,18 @@ public class WhereSystem : MonoBehaviour
 		string targetString = Localization.Get( "WhereTarget_" + _TargetKey ) ;
 		
 		string sceneString = Localization.Get( "WhereScene_" + _SceneKey ) ;
-		sceneString = DativTheNoun( sceneString ) ;
+		sceneString = (Localization.language == "Polish")
+			? Polish_ConjugateTheNoun(sceneString, _SceneKey, _WhereKey)
+			: German_DativTheNoun(sceneString);
 		
 		string referenceString = string.Empty;
-		if( string.Empty != _ReferenceKey )
+		if( string.Empty != _ReferenceKey)// between there are 2 objects.
 		{
 			referenceString = Localization.Get( "WhereScene_" + _ReferenceKey ) ;
-			referenceString = DativTheNoun( referenceString ) ;
+			referenceString = (Localization.language == "Polish")
+				? Polish_ConjugateTheNoun(referenceString, _ReferenceKey, _WhereKey)
+				: German_DativTheNoun(referenceString);
+
 		}
 		
 		localWhereString = localWhereString.Replace( "<target>" , targetString ) ;
@@ -864,7 +869,8 @@ public class WhereSystem : MonoBehaviour
 		return ret ;
 	}
 	
-	private string DativTheNoun( string _Input )
+	
+	private string German_DativTheNoun( string _Input )
 	{
 		string ret = _Input ;
 		GenderOfNoun gender = GetGender( _Input ) ;
@@ -885,7 +891,49 @@ public class WhereSystem : MonoBehaviour
 		}
 		return ret ;
 	}
-	
+
+	private string Polish_ConjugateTheNoun(string _Input , string objKey , string whereKey )
+	{
+		string ret = _Input;
+
+		string orgWhereValue = Localization.Get("WhereScene_" + objKey);
+		string replaceWhereValue = string.Empty ;
+
+		switch (whereKey)
+		{
+			
+			case "Auf": // on (touched)
+			case "In":
+			case "An":
+				// _dative
+				replaceWhereValue = Localization.Get(objKey + "_dative");
+				// biurko -> biurka
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
+				break;
+
+			
+			case "Neben":
+				// inside : w środku , back side of : z tyłu , next to : obok 
+				// _genitive
+				replaceWhereValue = Localization.Get(objKey + "_genitive");
+				// biurko -> biurku
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
+				break;
+
+			case "Hinter":
+			case "Vor":
+			case "Uber": // above (un touched)
+			case "Unter":
+			case "Zwischen":
+				// _instrumental
+				replaceWhereValue = Localization.Get(objKey + "_instrumental");
+				// biurko -> biurkiem
+				ret = ret.Replace(orgWhereValue, replaceWhereValue);
+				break;
+		}
+		return ret;
+	}
+
 	private string GetExampleKey( string _WhereKey )
 	{
 		return "WhereExample_" + _WhereKey ;
