@@ -263,7 +263,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/WORKSPACE/Github/dieUhr/Key/NDark_DieUhr.keystore
+  AndroidKeystoreName: /Users/ndark/Documents/Github/dieUhr/NDark_DieUhr.keystore
   AndroidKeyaliasName: dieuhr
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -639,7 +639,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     4: ResultLabel
   platformArchitecture:
-    iOS: 2
+    iOS: 1
   scriptingBackend:
     Android: 1
     Metro: 2
