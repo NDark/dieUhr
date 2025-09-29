@@ -21,9 +21,10 @@ public class BodyManager : MonoBehaviour
 
 	public BodyInputHelper m_MoveModeTouchRegion = null;
 
-	public enum BodyType
+
+	public enum BodyType : int
 	{
-		Head,
+		Head = 0 ,
 		Neck,
 		Chest,
 		Belly,
@@ -32,6 +33,7 @@ public class BodyManager : MonoBehaviour
 		Hand,
 		Leg,
 		Foot,
+		Max,
 	} ;
 
 	public enum BodyState
@@ -45,7 +47,8 @@ public class BodyManager : MonoBehaviour
 		WaitCorrectAnimation,
 	}
 
-	string m_CurrentBodyKey = string.Empty;
+	string m_CurrentSelectPart = string.Empty;
+	string m_CurrentAnswerKey = string.Empty;
 	public BodyState m_State = BodyState.None;
 
 	float m_ShowExampleWaitTime = 3.0f;
@@ -53,62 +56,65 @@ public class BodyManager : MonoBehaviour
 
 	public void TrySwitchToQuestionMode()
 	{
-		/*if (WhereState.WhereState_WaitInAnswerMode != m_State
-		   && WhereState.WhereState_WaitInTeacherMode != m_State)
+		if ( m_State == BodyState.ShowPartMode )
 		{
-			Debug.LogWarning("TrySwitchToMoveMode() invalid state.");
-			return;
+			SetupGUI(isShowBodyPartMode: false);
+			m_State = BodyState.QuestionMode_Init;
 		}
-
-		ReleaveScene(m_CurrentScene, m_Fussball);
-
-		SwitchGUI(false);
-		//*/
-		SetupGUI(isShowBodyPartMode: false);
-		m_State = BodyState.QuestionMode_Init;
 
 	}
 
 	public void TrySwitchToShowPartMode()
 	{
-		/*
-		if (WhereState.WhereState_WaitInMoveMode != m_State
-		   && WhereState.WhereState_WaitInTeacherMode != m_State)
+		if (m_State == BodyState.QuestionMode)
 		{
-			Debug.LogWarning("TrySwitchToAnswerMode() invalid state.");
+			SetupGUI(isShowBodyPartMode: true);
+			m_State = BodyState.ShowPartMode_Init;
 			return;
 		}
-
-
-		ReleaveScene(m_CurrentScene, m_Fussball);
-
-
-		this.transform.rotation = Quaternion.identity;
-		SwitchGUI(true);
-		//*/
-		SetupGUI(isShowBodyPartMode: true);
-		m_State = BodyState.ShowPartMode_Init ;
 	}
-
-
 
 	public void OnUserClick()
 	{
-		Debug.LogWarning("OnUserClick");
-		/*
-		if (m_State != WhereState.WhereState_WaitInMoveMode)
+
+		NGUITools.SetActive(this.m_InstructionObj, false);
+
+		if (BodyState.ShowPartMode != m_State
+			&& BodyState.QuestionMode != m_State
+			)
 		{
-			Debug.LogError("DetectUserMouse() invalid state.");
+			Debug.LogError("OnUserClick() invalid state.");
 			return;
 		}
 
-		if (m_CurrentWhereKey == m_CurrentSelectKey)
-		{
-			PlayCorrectAnimation(true);
-			m_CorrectAnswerWaitTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec;
-			m_State = WhereState.WhereState_WaitCorrectAnimation;
+		switch( m_State)
+		{ 
+			case BodyState.ShowPartMode :
+
+				// detect user part
+				m_CurrentAnswerKey = string.Empty ;
+
+				// show part name from m_CurrentSelectPart
+				// m_CurrentAnswerKey
+				bool hasClickOnValidPart = string.Empty != m_CurrentAnswerKey;
+				this.ResetAnswerContent();
+				if(hasClickOnValidPart)
+				{
+					this.ResetExampleContent();
+				}
+				NGUITools.SetActive(m_InstructionObj, hasClickOnValidPart);
+
+				break;
+			case BodyState.QuestionMode:
+				if (m_CurrentAnswerKey == m_CurrentSelectPart)
+				{
+					PlayCorrectAnimation(true);
+					m_CorrectAnswerWaitCheckTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec;
+					m_State = BodyState.WaitCorrectAnimation;
+				}
+				break;
 		}
-		//*/
+
 	}
 
 
@@ -138,13 +144,25 @@ public class BodyManager : MonoBehaviour
 				break;
 
 			case BodyState.ShowPartMode_Init:
+				m_CurrentAnswerKey = string.Empty ;
+				NGUITools.SetActive(m_InstructionObj, true);
+				ResetAnswerContent();
+				ShowExampleButton(false);// no example until key is click
 				m_State = BodyState.ShowPartMode;
 				break;
 			case BodyState.ShowPartMode:
-				CheckExampleTimer();
+				if(!string.IsNullOrEmpty(m_CurrentAnswerKey))
+				{
+					CheckExampleTimer();
+				}
+				
 				break;
 
 			case BodyState.QuestionMode_Init:
+
+				this.RandomizeTopic();
+				this.ResetExampleContent();
+				this.ResetAnswerContent();
 				m_State = BodyState.QuestionMode;
 				break;
 			case BodyState.QuestionMode:
@@ -170,33 +188,41 @@ public class BodyManager : MonoBehaviour
 
 	public void ResetAnswerContent()
 	{
-		Debug.LogError("ResetAnswerContent");
-		/*
-		if (m_State == WhereState.WhereState_WaitInAnswerMode
-		   || m_State == WhereState.WhereState_EnterAnswerMode
-		   || m_State == WhereState.WhereState_EnterTeacherMode
-		   || m_State == WhereState.WhereState_WaitInTeacherMode
-		   )
+		switch(m_State)
 		{
-			m_AnswerLabel.text = CreateAnswer(m_TargetKey[0], m_CurrentSceneKey, m_CurrentWhereKey, this.m_CurrentReferenceKey);
+			case BodyState.ShowPartMode_Init:
+			case BodyState.ShowPartMode:
+				if(string.IsNullOrEmpty(m_CurrentAnswerKey))
+				{
+					m_AnswerLabel.text = string.Empty;
+				}
+				else
+				{
+					m_AnswerLabel.text = Localization.Get("Body." + m_CurrentAnswerKey);
+				}
+				break ;
+			case BodyState.QuestionMode_Init:
+			case BodyState.QuestionMode:
+				string fmt = Localization.Get("Body.QuestionOnAnswerFmt");
+				string answerText = string.Format(fmt , Localization.Get("Body." + m_CurrentAnswerKey) );
+				m_AnswerLabel.text = answerText;
+				break;
+
 		}
-		else if (m_State == WhereState.WhereState_WaitInMoveMode
-				|| m_State == WhereState.WhereState_EnterMoveMode)
-		{
-			m_AnswerLabel.text = CreateInstruction(m_TargetKey[0], m_CurrentSceneKey, m_CurrentWhereKey, this.m_CurrentReferenceKey);
-		}
-		//*/
 	}
 
 	public void ResetExampleContent()
 	{
-		Debug.LogError("ResetExampleContent");
-		/*
-		string exampleKey = GetExampleKey(m_CurrentWhereKey);
+		string exampleKey = GetExampleKey(m_CurrentAnswerKey);
 		string exampleSentence = Localization.Get(exampleKey);
 		UpdateExampleContent(exampleSentence);
-		//*/
 	}
+
+	private string GetExampleKey(string _WhereKey)
+	{
+		return "WhereExample." + _WhereKey;
+	}
+
 
 	private void UpdateExampleContent(string _Content)
 	{
@@ -232,25 +258,12 @@ public class BodyManager : MonoBehaviour
 		NGUITools.SetActive(m_ExampleButton, _Show);
 	}
 
-	void RandonmizeTopic(GameObject _CurrentScene)
+	void RandomizeTopic()
 	{
-		/*
-		List<string> validWhereKey
-		= CollectValidWhereFromSceneObject(_CurrentScene, true);
+		int randomIndex = Random.Range(0, (int) BodyType.Max );
+		m_CurrentAnswerKey = ((BodyType) randomIndex ).ToString();
+		Debug.LogWarning ("RandomizeTopic() m_CurrentAnswerKey=" + m_CurrentAnswerKey);
 
-		if (0 == validWhereKey.Count)
-		{
-			Debug.LogError("0 == validWhereKey");
-			return;
-		}
-
-		int randomIndex = Random.Range(0, validWhereKey.Count);
-		m_CurrentWhereKey = validWhereKey[randomIndex];
-		// Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
-
-		CheckWhereIsReference(_CurrentScene);
-
-		//*/
 		ShowExampleButton(false);
 	}
 
@@ -311,15 +324,15 @@ public class BodyManager : MonoBehaviour
 	private void WaitCorrectAnimation()
 	{
 		
-		if (Time.timeSinceLevelLoad > m_AnswerWaitCheckTime)
+		if (Time.timeSinceLevelLoad > m_CorrectAnswerWaitCheckTime)
 		{
 			// ReleaveScene(m_CurrentScene, m_Fussball);
 			PlayCorrectAnimation(false);
-			m_State = BodyState.QuestionMode_Init;
+			m_State = BodyState.QuestionMode_Init;// go back to question mode
 		}
 		
 	}
 
 	private float m_CorrectAnswerWaitSec = 1.0f;
-	private float m_AnswerWaitCheckTime = 0.0f;
+	private float m_CorrectAnswerWaitCheckTime = 0.0f;
 }

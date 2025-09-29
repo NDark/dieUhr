@@ -171,5 +171,6 @@ Body.Arm,der Arm,Arm,臂,Ramię
 Body.Hand,die Hand,Hand,手,Dłoń
 Body.Leg,das Bein,Leg,腿,Noga
 Body.Foot,der Fuß,Foot,足,Stopa
-Introduction.Body,"(Introduction.Body)","(Introduction.Body)","(Introduction.Body)","(Introduction.Body)"
-Body.IntroductionContent,"Body.IntroductionContent","Body.IntroductionContent","Body.IntroductionContent","Body.IntroductionContent"
+Introduction.Body,"Tap on Body Part","Tap on Body Part","Tap on Body Part","Tap on Body Part"
+Body.IntroductionContent,"Tap on Body Part(Long)","Tap on Body Part(Long)","Tap on Body Part(Long)","Tap on Body Part(Long)"
+Body.QuestionOnAnswerFmt,"Please tap on the part of {0}","Please tap on the part of {0}","Please tap on the part of {0}","Please tap on the part of {0}"
