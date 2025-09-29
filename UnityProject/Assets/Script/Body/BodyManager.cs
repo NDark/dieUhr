@@ -12,7 +12,7 @@ public class BodyManager : MonoBehaviour
 	public GameObject m_QuestionModeButton = null;
 	public GameObject m_ExampleButton = null;
 
-	public GameObject m_InstructionObj = null;
+	public UILabel m_InstructionText = null;
 	public TweenAlpha m_CorrectAlpha = null;
 	public AudioSource m_CorrectAudio = null;
 
@@ -77,7 +77,7 @@ public class BodyManager : MonoBehaviour
 	public void OnUserClick()
 	{
 
-		NGUITools.SetActive(this.m_InstructionObj, false);
+		NGUITools.SetActive(this.m_InstructionText.gameObject, false);
 
 		if (BodyState.ShowPartMode != m_State
 			&& BodyState.QuestionMode != m_State
@@ -102,7 +102,7 @@ public class BodyManager : MonoBehaviour
 				{
 					this.ResetExampleContent();
 				}
-				NGUITools.SetActive(m_InstructionObj, hasClickOnValidPart);
+				NGUITools.SetActive(m_InstructionText.gameObject, hasClickOnValidPart);
 
 				break;
 			case BodyState.QuestionMode:
@@ -145,7 +145,7 @@ public class BodyManager : MonoBehaviour
 
 			case BodyState.ShowPartMode_Init:
 				m_CurrentAnswerKey = string.Empty ;
-				NGUITools.SetActive(m_InstructionObj, true);
+				NGUITools.SetActive(m_InstructionText.gameObject, true);
 				ResetAnswerContent();
 				ShowExampleButton(false);// no example until key is click
 				m_State = BodyState.ShowPartMode;
@@ -211,16 +211,26 @@ public class BodyManager : MonoBehaviour
 		}
 	}
 
+
+	public void ResetInstructionText()
+	{
+		m_InstructionText.text = Localization.Get("Introduction.Body");
+	}
+
 	public void ResetExampleContent()
 	{
-		string exampleKey = GetExampleKey(m_CurrentAnswerKey);
-		string exampleSentence = Localization.Get(exampleKey);
-		UpdateExampleContent(exampleSentence);
+		if(!string.IsNullOrEmpty(m_CurrentAnswerKey))
+		{
+			string exampleKey = GetExampleKey(m_CurrentAnswerKey);
+			string exampleSentence = Localization.Get(exampleKey);
+			UpdateExampleContent(exampleSentence);
+		}
+		
 	}
 
 	private string GetExampleKey(string _WhereKey)
 	{
-		return "WhereExample." + _WhereKey;
+		return "BodyExample." + _WhereKey;
 	}
 
 

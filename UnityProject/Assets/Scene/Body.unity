@@ -882,6 +882,10 @@ MonoBehaviour:
     mMethodName: ResetAnswerContent
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 1012787971}
+    mMethodName: ResetInstructionText
+    mParameters: []
+    oneShot: 0
 --- !u!114 &229970771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2400,6 +2404,10 @@ MonoBehaviour:
     mMethodName: ResetAnswerContent
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 1012787971}
+    mMethodName: ResetInstructionText
+    mParameters: []
+    oneShot: 0
 --- !u!65 &1011828794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2499,7 +2507,7 @@ MonoBehaviour:
   m_ShowBodyPartModeButton: {fileID: 1219332184}
   m_QuestionModeButton: {fileID: 1591716460}
   m_ExampleButton: {fileID: 1653932003}
-  m_InstructionObj: {fileID: 1155602139}
+  m_InstructionText: {fileID: 1155602141}
   m_CorrectAlpha: {fileID: 1045702781}
   m_CorrectAudio: {fileID: 1045702783}
   m_2DCamera: {fileID: 1162129665}
@@ -4239,6 +4247,10 @@ MonoBehaviour:
     mMethodName: ResetAnswerContent
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 1012787971}
+    mMethodName: ResetInstructionText
+    mParameters: []
+    oneShot: 0
 --- !u!65 &1439479416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4928,6 +4940,10 @@ MonoBehaviour:
     oneShot: 0
   - mTarget: {fileID: 1012787971}
     mMethodName: ResetAnswerContent
+    mParameters: []
+    oneShot: 0
+  - mTarget: {fileID: 1012787971}
+    mMethodName: ResetInstructionText
     mParameters: []
     oneShot: 0
 --- !u!114 &1575381951
