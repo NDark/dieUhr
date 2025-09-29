@@ -23,3 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/CrossPlay.unity
     guid: cfefb4d797cb9924b801b1a2abfd066f
+  - enabled: 1
+    path: Assets/Scene/Body.unity
+    guid: ac31505ea78118348b48e1aba56e146c
+  m_configObjects: {}
