@@ -6,6 +6,51 @@ public class BodyManager : MonoBehaviour
 {
 	public UILabel m_AnswerLabel = null;
 	public UILabel m_ExampleContent = null;
+	public GameObject m_AvatarGameObj = null;
+
+	public GameObject m_ShowBodyPartModeButton = null;
+	public GameObject m_QuestionModeButton = null;
+	public GameObject m_ExampleButton = null;
+
+	public GameObject m_InstructionObj = null;
+	public TweenAlpha m_CorrectAlpha = null;
+	public AudioSource m_CorrectAudio = null;
+
+	public Camera m_2DCamera = null;
+	public Camera m_3DCamera = null;
+
+	public BodyInputHelper m_MoveModeTouchRegion = null;
+
+	public enum BodyType
+	{
+		Head,
+		Neck,
+		Chest,
+		Belly,
+		Shoulder,
+		Arm,
+		Hand,
+		Leg,
+		Foot,
+	} ;
+
+	public enum BodyState
+	{
+		None = 0,
+		Initialize,
+		ShowPartMode_Init,
+		ShowPartMode,
+		QuestionMode_Init,
+		QuestionMode,
+		WaitCorrectAnimation,
+	}
+
+	string m_CurrentBodyKey = string.Empty;
+	public BodyState m_State = BodyState.None;
+
+	float m_ShowExampleWaitTime = 3.0f;
+	float m_ShowExampleCheckTime = 0.0f;
+
 
 	public void OnUserClick()
 	{
@@ -42,8 +87,55 @@ public class BodyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+		switch (m_State)
+		{
+			case BodyState.None:
+				m_State = BodyState.Initialize;
+				break;
+			case BodyState.Initialize:
+				Initialize();
+				m_State = BodyState.ShowPartMode_Init;
+				break;
+
+			case BodyState.ShowPartMode_Init:
+				m_State = BodyState.ShowPartMode;
+				break;
+			case BodyState.ShowPartMode:
+				CheckExampleTimer();
+				break;
+
+			case BodyState.QuestionMode_Init:
+				m_State = BodyState.QuestionMode;
+				break;
+			case BodyState.QuestionMode:
+				CheckExampleTimer();
+				break;
+			case BodyState.WaitCorrectAnimation:
+				WaitCorrectAnimation();
+				break;
+
+		}
+	}
+
+	void Initialize()
+	{
+		SetupGUI(true);
+	}
+
+	void SetupGUI(bool _AnswerMode)
+	{
+		Debug.LogWarning("SwitchGUI");
+		/*
+		NGUITools.SetActive(m_RotateLeftButton, !_AnswerMode);
+		NGUITools.SetActive(m_RotateRightButton, !_AnswerMode);
+		NGUITools.SetActive(m_ShuffleNextButton, _AnswerMode);
+
+		NGUITools.SetActive(m_MoveModeButton, _AnswerMode);
+		NGUITools.SetActive(m_AnswerModeButton, !_AnswerMode);
+
+		NGUITools.SetActive(m_MoveModeTouchRegion, !_AnswerMode);
+		//*/
+	}
 
 	public void ResetAnswerContent()
 	{
@@ -85,4 +177,118 @@ public class BodyManager : MonoBehaviour
 		m_ExampleContent.text = _Content;
 	}
 
+	private void ResetExampleTimer()
+	{
+		float waitTime = Random.Range(m_ShowExampleWaitTime / 2.0f, m_ShowExampleWaitTime);
+		m_ShowExampleCheckTime = Time.timeSinceLevelLoad + waitTime;
+	}
+
+	private void CheckExampleTimer()
+	{
+		if (Time.timeSinceLevelLoad > m_ShowExampleCheckTime)
+		{
+			ShowExampleButton(true);
+		}
+	}
+
+	private void ShowExampleButton(bool _Show)
+	{
+		if (null == this.m_ExampleButton)
+		{
+			return;
+		}
+
+		NGUITools.SetActive(m_ExampleButton, _Show);
+	}
+
+	void RandonmizeTopic(GameObject _CurrentScene)
+	{
+		/*
+		List<string> validWhereKey
+		= CollectValidWhereFromSceneObject(_CurrentScene, true);
+
+		if (0 == validWhereKey.Count)
+		{
+			Debug.LogError("0 == validWhereKey");
+			return;
+		}
+
+		int randomIndex = Random.Range(0, validWhereKey.Count);
+		m_CurrentWhereKey = validWhereKey[randomIndex];
+		// Debug.LogWarning ("RandonmizeWhere() m_CurrentWhereKey=" + m_CurrentWhereKey);
+
+		CheckWhereIsReference(_CurrentScene);
+
+		//*/
+		ShowExampleButton(false);
+	}
+
+
+	public string CreateInstruction(string _TargetKey
+							   , string _SceneKey
+							   , string _WhereKey
+							   , string _ReferenceKey)
+	{
+
+		//		Debug.Log("CreateInstruction()" + _TargetKey );
+		//		Debug.Log("CreateInstruction()" + _SceneKey );
+		//		Debug.Log("CreateInstruction()" + _WhereKey );
+		//		
+		string localizationWhereKey = "WhereInstruction_" + _WhereKey;
+		string localWhereString = Localization.Get(localizationWhereKey);
+		/*
+		string targetString = Localization.Get("WhereTarget_" + _TargetKey);
+		targetString = AkkusativTheNoun(targetString);
+		string sceneString = Localization.Get("WhereScene_" + _SceneKey);
+		sceneString = AkkusativTheNoun(sceneString);
+
+		string referenceString = string.Empty;
+		if (string.Empty != _ReferenceKey)
+		{
+			referenceString = Localization.Get("WhereScene_" + _ReferenceKey);
+			referenceString = AkkusativTheNoun(referenceString);
+		}
+
+
+		localWhereString = localWhereString.Replace("<target>", targetString);
+		localWhereString = localWhereString.Replace("<scene>", sceneString);
+		localWhereString = localWhereString.Replace("<reference>", referenceString);
+		localWhereString = ReplaceDativShort(localWhereString);
+		localWhereString = ReplaceFirstUpperCase(localWhereString);
+		//*/
+		return localWhereString;
+	}
+
+	private void PlayCorrectAnimation(bool _Forward)
+	{
+		if (null == m_CorrectAlpha)
+		{
+			return;
+		}
+
+		if (true == _Forward)
+		{
+			m_CorrectAlpha.PlayForward();
+			m_CorrectAudio.Play();
+		}
+		else
+		{
+			m_CorrectAlpha.PlayReverse();
+		}
+	}
+
+	private void WaitCorrectAnimation()
+	{
+		
+		if (Time.timeSinceLevelLoad > m_AnswerWaitCheckTime)
+		{
+			// ReleaveScene(m_CurrentScene, m_Fussball);
+			PlayCorrectAnimation(false);
+			m_State = BodyState.QuestionMode_Init;
+		}
+		
+	}
+
+	private float m_CorrectAnswerWaitSec = 1.0f;
+	private float m_AnswerWaitCheckTime = 0.0f;
 }
