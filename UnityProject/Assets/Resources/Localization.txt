@@ -160,5 +160,16 @@ CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
 CrossPlay.BarbarianCivilization,Barbarische Zivilisation.,Barbarian Civilization,文明傳出去，蠻族進不來,Cywilizacja barbarzyńska
 Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
-Introduction.Location,,"Understand the expresstion of location.","方向的表示。","słownictwo związane z kierunkami"
-Introduction.Where,,"Expression of finding object.","位置的表示。","słownictwo związane z odnajdywaniem przedmiotów"
+Introduction.Location,"Den Ausdruck des Ortes verstehen.","Understand the expresstion of location.","方向的表示。","słownictwo związane z kierunkami"
+Introduction.Where,"Ausdruck des Findens eines Objekts.","Expression of finding object.","位置的表示。","słownictwo związane z odnajdywaniem przedmiotów"
+Body.Head,der Kopf,Head,頭,Głowa
+Body.Neck,der Hals,Neck,頸,Szyja
+Body.Chest,die Brust,Chest,胸,Klatka piersiowa
+Body.Belly,der Bauch,Belly,腹,Brzuch
+Body.Shoulder,die Schulter,Shoulder,肩,Bark
+Body.Arm,der Arm,Arm,臂,Ramię
+Body.Hand,die Hand,Hand,手,Dłoń
+Body.Leg,das Bein,Leg,腿,Noga
+Body.Foot,der Fuß,Foot,足,Stopa
+Introduction.Body,"(Introduction.Body)","(Introduction.Body)","(Introduction.Body)","(Introduction.Body)"
+Body.IntroductionContent,"Body.IntroductionContent","Body.IntroductionContent","Body.IntroductionContent","Body.IntroductionContent"
