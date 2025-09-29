@@ -51,6 +51,46 @@ public class BodyManager : MonoBehaviour
 	float m_ShowExampleWaitTime = 3.0f;
 	float m_ShowExampleCheckTime = 0.0f;
 
+	public void TrySwitchToQuestionMode()
+	{
+		/*if (WhereState.WhereState_WaitInAnswerMode != m_State
+		   && WhereState.WhereState_WaitInTeacherMode != m_State)
+		{
+			Debug.LogWarning("TrySwitchToMoveMode() invalid state.");
+			return;
+		}
+
+		ReleaveScene(m_CurrentScene, m_Fussball);
+
+		SwitchGUI(false);
+		//*/
+		SetupGUI(isShowBodyPartMode: false);
+		m_State = BodyState.QuestionMode_Init;
+
+	}
+
+	public void TrySwitchToShowPartMode()
+	{
+		/*
+		if (WhereState.WhereState_WaitInMoveMode != m_State
+		   && WhereState.WhereState_WaitInTeacherMode != m_State)
+		{
+			Debug.LogWarning("TrySwitchToAnswerMode() invalid state.");
+			return;
+		}
+
+
+		ReleaveScene(m_CurrentScene, m_Fussball);
+
+
+		this.transform.rotation = Quaternion.identity;
+		SwitchGUI(true);
+		//*/
+		SetupGUI(isShowBodyPartMode: true);
+		m_State = BodyState.ShowPartMode_Init ;
+	}
+
+
 
 	public void OnUserClick()
 	{
@@ -119,22 +159,13 @@ public class BodyManager : MonoBehaviour
 
 	void Initialize()
 	{
-		SetupGUI(true);
+		SetupGUI( isShowBodyPartMode : true);
 	}
 
-	void SetupGUI(bool _AnswerMode)
+	void SetupGUI( bool isShowBodyPartMode )
 	{
-		Debug.LogWarning("SwitchGUI");
-		/*
-		NGUITools.SetActive(m_RotateLeftButton, !_AnswerMode);
-		NGUITools.SetActive(m_RotateRightButton, !_AnswerMode);
-		NGUITools.SetActive(m_ShuffleNextButton, _AnswerMode);
-
-		NGUITools.SetActive(m_MoveModeButton, _AnswerMode);
-		NGUITools.SetActive(m_AnswerModeButton, !_AnswerMode);
-
-		NGUITools.SetActive(m_MoveModeTouchRegion, !_AnswerMode);
-		//*/
+		NGUITools.SetActive(m_ShowBodyPartModeButton, !isShowBodyPartMode);
+		NGUITools.SetActive(m_QuestionModeButton, isShowBodyPartMode);
 	}
 
 	public void ResetAnswerContent()
