@@ -331,7 +331,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: button04_small
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!65 &91169393
@@ -919,8 +919,8 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: OctagonBackground
+  mAtlas: {fileID: 11400000, guid: 4a0445f5c2392d447857ab3cc51b9f6d, type: 2}
+  mSpriteName: box2
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!65 &206729754
@@ -2181,7 +2181,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: OctagonBackground
+  mSpriteName: box2
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &829541583
@@ -2565,7 +2565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962021163
 Transform:
   m_ObjectHideFlags: 0
@@ -2706,7 +2706,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 1
   aspectRatio: 1
-  mType: 0
+  mType: 1
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
@@ -2720,7 +2720,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &1011828790
@@ -3605,7 +3605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142536150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 91169391}
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   leftAnchor:
     target: {fileID: 91169391}
     relative: 0
-    absolute: 17
+    absolute: 18
   rightAnchor:
     target: {fileID: 91169391}
     relative: 1
@@ -3634,22 +3634,22 @@ MonoBehaviour:
   bottomAnchor:
     target: {fileID: 91169391}
     relative: 0
-    absolute: 16
+    absolute: 14
   topAnchor:
     target: {fileID: 91169391}
     relative: 1
     absolute: -14
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 122
-  mHeight: 55
+  mWidth: 121
+  mHeight: 57
   mDepth: 24
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.2181818
+  aspectRatio: 2.4210527
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
@@ -3664,7 +3664,7 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mApplyGradient: 1
+  mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: button04_small
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &1184454129
@@ -6225,7 +6225,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: information
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &1701207791
@@ -6682,7 +6682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898910042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1184454127}
@@ -6707,26 +6707,26 @@ MonoBehaviour:
   rightAnchor:
     target: {fileID: 1184454127}
     relative: 1
-    absolute: -16
+    absolute: -12
   bottomAnchor:
     target: {fileID: 1184454127}
     relative: 0
-    absolute: 12
+    absolute: 10
   topAnchor:
     target: {fileID: 1184454127}
     relative: 1
     absolute: -10
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 1}
+  mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 134
-  mHeight: 64
+  mWidth: 138
+  mHeight: 66
   mDepth: 24
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.09375
+  aspectRatio: 2.090909
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
@@ -6736,12 +6736,12 @@ MonoBehaviour:
   mAlignment: 0
   mEncoding: 1
   mMaxLineCount: 0
-  mEffectStyle: 0
-  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mEffectStyle: 2
+  mEffectColor: {r: 0.6037736, g: 0.2723708, b: 0.019935932, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mApplyGradient: 1
+  mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0

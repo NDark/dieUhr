@@ -93,8 +93,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MessageBox
-    x: 255
-    y: 95
+    x: 248
+    y: 176
     width: 80
     height: 80
     borderLeft: 25
@@ -106,8 +106,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MessageBoxWhite
-    x: 248
-    y: 176
+    x: 255
+    y: 95
     width: 80
     height: 80
     borderLeft: 25
@@ -145,7 +145,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: WhileSliced
-    x: 129
+    x: 151
     y: 145
     width: 9
     height: 9
@@ -153,6 +153,19 @@ MonoBehaviour:
     borderRight: 3
     borderTop: 3
     borderBottom: 3
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: box2
+    x: 129
+    y: 133
+    width: 21
+    height: 21
+    borderLeft: 8
+    borderRight: 8
+    borderTop: 8
+    borderBottom: 8
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
