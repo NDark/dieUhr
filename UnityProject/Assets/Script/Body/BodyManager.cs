@@ -153,8 +153,8 @@ public class BodyManager : MonoBehaviour
 		}
 
 		ShowNailObj(hasClickOnValidPart, minDistPos);
+		
 
-		this.ResetExampleContent();
 	}
 
 	public void OnUserClick()
@@ -222,13 +222,14 @@ public class BodyManager : MonoBehaviour
 				{
 					CheckExampleTimer();
 				}
-				
+
 				break;
 
 			case BodyState.QuestionMode_Init:
 
 				this.RandomizeTopic();
 				this.ResetExampleContent();
+				this.ShowExampleButton(true);
 				this.ResetAnswerContent();
 				m_State = BodyState.QuestionMode;
 				break;
@@ -238,8 +239,9 @@ public class BodyManager : MonoBehaviour
 			case BodyState.WaitCorrectAnimation:
 				WaitCorrectAnimation();
 				break;
-
 		}
+
+		UpdateNailObj();
 	}
 
 	void Initialize()
@@ -345,8 +347,7 @@ public class BodyManager : MonoBehaviour
 	{
 		int randomIndex = Random.Range(0, (int) BodyType.Max );
 		m_CurrentAnswerKey = ((BodyType) randomIndex ).ToString();
-		Debug.LogWarning ("RandomizeTopic() m_CurrentAnswerKey=" + m_CurrentAnswerKey);
-
+		// Debug.LogWarning ("RandomizeTopic() m_CurrentAnswerKey=" + m_CurrentAnswerKey);
 		ShowExampleButton(false);
 	}
 
@@ -419,8 +420,33 @@ public class BodyManager : MonoBehaviour
 	void ShowNailObj( bool show , Vector3 pos)
 	{
 		m_NailObj.SetActive(show);
-		m_NailObj.transform.position = pos ;
+		m_NailTargetPos = pos ;
+		pos.z += 3;
+		m_NailObj.transform.position = pos;
+
+		if(show)
+		{
+			m_NailIsMoving = true;
+		}
+		
 	}
+
+	void UpdateNailObj()
+	{ 
+		if(m_NailIsMoving)
+		{
+			m_NailObj.transform.position = Vector3.MoveTowards(m_NailObj.transform.position, m_NailTargetPos, Time.deltaTime * m_NailSpeed );
+
+			if( Vector3.Distance(m_NailObj.transform.position , m_NailTargetPos) < 0.1f )
+			{ 
+				m_NailIsMoving = false ;
+			}
+		}
+	}
+
+	float m_NailSpeed = 10f ;
+	bool m_NailIsMoving = false ;
+	Vector3 m_NailTargetPos = Vector3.zero;
 
 	private float m_CorrectAnswerWaitSec = 1.0f;
 	private float m_CorrectAnswerWaitCheckTime = 0.0f;

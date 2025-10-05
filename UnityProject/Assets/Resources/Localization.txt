@@ -165,21 +165,21 @@ Introduction.Where,"Ausdruck des Findens eines Objekts.","Expression of finding 
 Body.Head,der Kopf,Head,頭,Głowa
 Body.Neck,der Hals,Neck,頸,Szyja
 Body.Chest,die Brust,Chest,胸,Klatka piersiowa
-Body.Belly,der Bauch,Belly,腹,Brzuch
-Body.Shoulder,die Schulter,Shoulder,肩,Bark
-Body.Arm,der Arm,Arm,臂,Ramię
-Body.Hand,die Hand,Hand,手,Dłoń
-Body.Leg,das Bein,Leg,腿,Noga
-Body.Foot,der Fuß,Foot,足,Stopa
-Introduction.Body,"Tap on Body Part","Tap on Body Part","Tap on Body Part","Tap on Body Part"
-Body.IntroductionContent,"Tap on Body Part(Long)","Tap on Body Part(Long)","Tap on Body Part(Long)","Tap on Body Part(Long)"
-Body.QuestionOnAnswerFmt,"Please tap on the part of {0}","Please tap on the part of {0}","Please tap on the part of {0}","Please tap on the part of {0}"
-BodyExample.Head,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Neck,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Chest,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Belly,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Shoulder,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Arm,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Hand,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Leg,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
-BodyExample.Foot,"Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher.","Die Lampe hängt über dem Tisch.\nDas Bild hängt über dem Fernseher."
+Body.Belly,der Bauch,Belly,腹(肚子),Brzuch
+Body.Shoulder,die Schulter,Shoulder,肩(肩膀),Bark
+Body.Arm,der Arm,Arm,臂(手臂),Ramię
+Body.Hand,die Hand,Hand,手(手掌),Dłoń
+Body.Leg,das Bein,Leg,腿(大腿/小腿),Noga
+Body.Foot,der Fuß,Foot,足(腳掌),Stopa
+Introduction.Body,"Bitte tippen Sie auf den Körperteil","Please tap on the body part","請點擊身體部位","Proszę dotknąć części ciała"
+Body.IntroductionContent,"Erfahren Sie mehr über Körperteile und testen Sie Ihr Verständnis. Empfehlung: Nutzen Sie diese App ergänzend zu einem Sprachkurs, um Begriffe zu Körperteilen zu lernen.","Learn about body parts and test your understanding. Recommendation: Use this app alongside a language course to learn body part terms.","請了解關於身體部位，然後測試自己對身體部位的理解。建議：使用這個軟體搭配語言課程學習身體部位的說法。","Poznaj części ciała i sprawdź swoją wiedzę. Zalecenie: Używaj tej aplikacji w połączeniu z kursem językowym, aby nauczyć się terminów związanych z częściami ciała."
+Body.QuestionOnAnswerFmt,"Bitte tippen Sie auf den Teil von {0}","Please tap on the part of {0}",“請點擊 {0} 的部位”,"Proszę dotknąć części {0}"
+BodyExample.Head,"Der Mensch hat nur einen Kopf.\n","Human has only one head.\n","人類只有一個頭。\n","Człowiek ma tylko jedną głowę.\n"
+BodyExample.Neck,"Der Hals verbindet die Brust mit dem Kopf.\n","Neck connects chest with the head.\n","脖子連接胸部和頭。\n","Szyja łączy klatkę piersiową z głową.\n"
+BodyExample.Chest,"Die Brust schützt wichtige Organe.\n","Chest protects important organs.\n","胸部保護重要的器官。\n","Klatka piersiowa chroni ważne organy.\n"
+BodyExample.Belly,"Der Bauch lagert Fett ohne ausreichende Bewegung.\n","Belly stacks fat without proper exercise.\n","腹部在缺乏運動時堆積脂肪。\n","Brzuch odkłada tłuszcz bez odpowiednich ćwiczeń.\n"
+BodyExample.Shoulder,"Die Polizisten zucken mit den Schultern, um keinen Kommentar abzugeben.\n","The police officers shrug their shoulders to give no comment.\n","警察聳聳肩膀表示不予置評。\n","Policjanci wzruszają ramionami, aby nie komentować.\n"
+BodyExample.Arm,"Die Reisenden winken mit den Armen, um einen Bus anzuhalten.\n","The travellers wave their arms to stop a bus.\n","旅客揮動手臂攔下一輛公車。\n","Podróżni machają rękami, aby zatrzymać autobus.\n"
+BodyExample.Hand,"Dieses Paar hält beim Gehen Händchen.\n","This couple holds hands while walking.\n","這對情侶邊走邊牽著手。\n","Ta para trzyma się za ręce podczas spaceru.\n"
+BodyExample.Leg,"Diese Reisenden strecken in einer kleinen Kabine die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
+BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenständen auf der Straße zu schützen.\n","Shoes are used to protect feet from sharp objects on the street.\n","鞋子用來保護腳掌避免被路上的尖銳物刺傷。\n","Buty służą do ochrony stóp przed ostrymi przedmiotami na ulicy.\n"
