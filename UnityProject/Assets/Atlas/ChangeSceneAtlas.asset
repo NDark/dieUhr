@@ -15,8 +15,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: cac1fe1e16012904bb317311d5829d11, type: 2}
   mSprites:
   - name: Back
-    x: 387
-    y: 162
+    x: 0
+    y: 31
     width: 94
     height: 94
     borderLeft: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: clock_mode
     x: 0
-    y: 128
+    y: 126
     width: 128
     height: 128
     borderLeft: 0
@@ -41,8 +41,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: LocationIcon
-    x: 129
-    y: 128
+    x: 0
+    y: 384
     width: 128
     height: 128
     borderLeft: 0
@@ -54,8 +54,21 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Where
-    x: 258
-    y: 128
+    x: 0
+    y: 255
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Body2
+    x: 129
+    y: 384
     width: 128
     height: 128
     borderLeft: 0

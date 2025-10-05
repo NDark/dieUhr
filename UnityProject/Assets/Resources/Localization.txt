@@ -183,3 +183,4 @@ BodyExample.Arm,"Die Reisenden winken mit den Armen, um einen Bus anzuhalten.\n"
 BodyExample.Hand,"Dieses Paar hält beim Gehen Händchen.\n","This couple holds hands while walking.\n","這對情侶邊走邊牽著手。\n","Ta para trzyma się za ręce podczas spaceru.\n"
 BodyExample.Leg,"Diese Reisenden strecken in einer kleinen Kabine die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
 BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenständen auf der Straße zu schützen.\n","Shoes are used to protect feet from sharp objects on the street.\n","鞋子用來保護腳掌避免被路上的尖銳物刺傷。\n","Buty służą do ochrony stóp przed ostrymi przedmiotami na ulicy.\n"
+Title.Theme.Body,Körperteil,Body Part,身體部位,Część ciała
