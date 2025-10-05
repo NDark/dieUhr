@@ -186,7 +186,7 @@ BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenstände
 Title.Theme.Body,Körperteil,Body Part,身體部位,Część ciała
 CrossPlay.SecInc,S.E.C. Inc.,S.E.C. Inc.,打怪特勤隊,S.E.C. Inc.
 CrossPlay.FantasyLogistics,Fantasy Courier,Fantasy Courier,異世界物流士,Fantasy Courier
-TitleRateMePanel.Description,"Bitte bewerten Sie unser Spiel und teilen Sie uns mit, was Sie davon halten.","Please rate and let us know how you feel about our game.","歡迎到商店對遊戲給出評分。","Oceń naszą grę i daj nam znać, co o niej myślisz."
+TitleRateMePanel.Description,"Diese App ist kostenlos, aber die Entwicklung nimmt meine Zeit in Anspruch. Ich brauche Ihre Unterstützung. Bitte hinterlassen Sie eine Bewertung und teilen Sie mir Ihre Meinung mit.","This app is free but takes my time to develop. I need your support. Please leave review and let me know how you feel.","此應用程式免費提供但仍花費心力開發，一點評價與建議都能讓它更好。","Ta aplikacja jest darmowa, ale jej rozwój zajmuje mi dużo czasu. Potrzebuję Twojego wsparcia. Proszę, zostaw recenzję i daj mi znać, co o niej myślisz."
 CommonButton.Confirm,Bestätigen,Confirm,確認,Potwierdzać
 CommonButton.Close,Schließen,Close,關閉,Zamknąć
 TitleRateMePanel.Title,Bewerten Sie uns,Rate Us,評價,Oceń nas
