@@ -2330,7 +2330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962021163
 Transform:
   m_ObjectHideFlags: 0
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 1
   aspectRatio: 1
-  mType: 0
+  mType: 1
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &1011828790
@@ -2837,7 +2837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045702779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -132, y: 0, z: 0}
+  m_LocalPosition: {x: -132, y: 103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426207355}
@@ -3887,7 +3887,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
-  mType: 0
+  mType: 1
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
@@ -3901,7 +3901,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &1225283913
@@ -5391,7 +5391,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 47, y: 47, z: 0}
+  m_Size: {x: 33, y: 45, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1591716466
 MonoBehaviour:
@@ -5424,14 +5424,14 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 47
-  mHeight: 47
+  mWidth: 33
+  mHeight: 45
   mDepth: 22
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
-  keepAspectRatio: 1
-  aspectRatio: 1
+  keepAspectRatio: 2
+  aspectRatio: 0.7419355
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -5676,7 +5676,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &1668211433
@@ -5800,7 +5800,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
@@ -5913,7 +5913,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: information
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &1701207791
@@ -6733,7 +6733,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
