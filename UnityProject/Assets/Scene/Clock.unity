@@ -479,7 +479,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657107283}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: Question_Mark
+  mSpriteName: information
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &666063338
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: information
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &1701207791
@@ -5345,8 +5345,8 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mAtlas: {fileID: 11400000, guid: 4a0445f5c2392d447857ab3cc51b9f6d, type: 2}
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &1824653628
@@ -5565,7 +5565,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 11499106, guid: f30771992048ab94781be9c9944d7bd2, type: 3}
-  mSpriteName: MessageBox
+  mSpriteName: Button13
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!4 &1949409869
@@ -5704,7 +5704,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mClipping: 0
