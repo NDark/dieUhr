@@ -24,6 +24,7 @@ public class BodyManager : MonoBehaviour
 
 	public TweenPosition m_NejiTweenPos = null ;
 	public TweenAlpha m_NejiTweenAlpha = null;
+	public AudioSource m_NejiAudio = null;
 
 	public enum BodyType : int
 	{
@@ -469,6 +470,7 @@ public class BodyManager : MonoBehaviour
 
 	IEnumerator ActiveNeji()
 	{
+		m_NejiAudio.Play();
 		m_NejiTweenPos.ResetToBeginning() ;
 		m_NejiTweenAlpha.ResetToBeginning();
 		yield return new WaitForSeconds(1);
