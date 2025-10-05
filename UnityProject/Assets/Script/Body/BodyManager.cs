@@ -22,6 +22,8 @@ public class BodyManager : MonoBehaviour
 
 	public BodyInputHelper m_MoveModeTouchRegion = null;
 
+	public TweenPosition m_NejiTweenPos = null ;
+	public TweenAlpha m_NejiTweenAlpha = null;
 
 	public enum BodyType : int
 	{
@@ -112,10 +114,12 @@ public class BodyManager : MonoBehaviour
 			{
 				vibrationTarget = helper ;
 			}
+			StartCoroutine(ActiveNeji());
 		}
 		else
 		{
 		}
+		
 		ShowNailObj(hasClickOnValidPart , minDistPos , vibrationTarget );
 
 		this.ResetAnswerContent();
@@ -163,11 +167,12 @@ public class BodyManager : MonoBehaviour
 			{
 				vibrationTarget = helper;
 			}
+			StartCoroutine(ActiveNeji());
 		}
 		else
 		{
 		}
-
+		
 		ShowNailObj(hasClickOnValidPart, minDistPos, vibrationTarget);
 		
 
@@ -462,7 +467,16 @@ public class BodyManager : MonoBehaviour
 		}
 	}
 
-	float m_NailSpeed = 10f ;
+	IEnumerator ActiveNeji()
+	{
+		m_NejiTweenPos.ResetToBeginning() ;
+		m_NejiTweenAlpha.ResetToBeginning();
+		yield return new WaitForSeconds(1);
+		m_NejiTweenPos.PlayForward();
+		m_NejiTweenAlpha.PlayForward();
+
+	}
+float m_NailSpeed = 10f ;
 	bool m_NailIsMoving = false ;
 	Vector3 m_NailTargetPos = Vector3.zero;
 	BodyVibrationHelper m_NailVibrationHelper = null ;
