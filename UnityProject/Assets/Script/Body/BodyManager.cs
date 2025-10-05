@@ -7,6 +7,7 @@ public class BodyManager : MonoBehaviour
 	public UILabel m_AnswerLabel = null;
 	public UILabel m_ExampleContent = null;
 	public GameObject m_AvatarGameObj = null;
+	public GameObject m_NailObj = null;
 
 	public GameObject m_ShowBodyPartModeButton = null;
 	public GameObject m_QuestionModeButton = null;
@@ -74,9 +75,49 @@ public class BodyManager : MonoBehaviour
 		}
 	}
 
+	void DetectUserClick_ShowPartMode()
+	{
+		// detect user part
+		m_CurrentAnswerKey = string.Empty;
+
+		var ray = m_3DCamera.ScreenPointToRay(Input.mousePosition);
+		var hits = Physics.RaycastAll(ray);
+		float minDist = float.MaxValue ;
+		Vector3 minDistPos = Vector3.zero;
+		foreach(var hit in hits )
+		{ 
+			
+			var tempdist = hit.distance ;
+			if( tempdist < minDist)
+			{ 
+				minDist = tempdist;
+				m_CurrentAnswerKey = hit.collider.name ;
+				minDistPos = hit.collider.transform.position;
+			}
+		}
+
+		Debug.Log("m_CurrentAnswerKey=" + m_CurrentAnswerKey);
+		// show part name from m_CurrentSelectPart
+		// m_CurrentAnswerKey
+		bool hasClickOnValidPart = string.Empty != m_CurrentAnswerKey;
+		this.ResetAnswerContent();
+		if (hasClickOnValidPart)
+		{
+			m_CorrectAudio.Play();
+		}
+		else
+		{
+		}
+		ShowNailObj(hasClickOnValidPart , minDistPos);
+
+		this.ResetAnswerContent();
+		this.ResetExampleContent();
+
+		NGUITools.SetActive(m_InstructionText.gameObject, hasClickOnValidPart);
+
+	}
 	public void OnUserClick()
 	{
-
 		NGUITools.SetActive(this.m_InstructionText.gameObject, false);
 
 		if (BodyState.ShowPartMode != m_State
@@ -90,20 +131,9 @@ public class BodyManager : MonoBehaviour
 		switch( m_State)
 		{ 
 			case BodyState.ShowPartMode :
-
-				// detect user part
-				m_CurrentAnswerKey = string.Empty ;
-
-				// show part name from m_CurrentSelectPart
-				// m_CurrentAnswerKey
-				bool hasClickOnValidPart = string.Empty != m_CurrentAnswerKey;
-				this.ResetAnswerContent();
-				if(hasClickOnValidPart)
-				{
-					this.ResetExampleContent();
+				{ 
+					this.DetectUserClick_ShowPartMode();
 				}
-				NGUITools.SetActive(m_InstructionText.gameObject, hasClickOnValidPart);
-
 				break;
 			case BodyState.QuestionMode:
 				if (m_CurrentAnswerKey == m_CurrentSelectPart)
@@ -224,8 +254,14 @@ public class BodyManager : MonoBehaviour
 			string exampleKey = GetExampleKey(m_CurrentAnswerKey);
 			string exampleSentence = Localization.Get(exampleKey);
 			UpdateExampleContent(exampleSentence);
+			ShowExampleButton(true);
+		}
+		else
+		{
+			ShowExampleButton(false);
 		}
 		
+
 	}
 
 	private string GetExampleKey(string _WhereKey)
@@ -341,6 +377,12 @@ public class BodyManager : MonoBehaviour
 			m_State = BodyState.QuestionMode_Init;// go back to question mode
 		}
 		
+	}
+
+	void ShowNailObj( bool show , Vector3 pos)
+	{
+		m_NailObj.SetActive(show);
+		m_NailObj.transform.position = pos ;
 	}
 
 	private float m_CorrectAnswerWaitSec = 1.0f;
