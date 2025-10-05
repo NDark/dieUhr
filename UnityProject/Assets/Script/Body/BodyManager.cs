@@ -83,6 +83,8 @@ public class BodyManager : MonoBehaviour
 		var ray = m_3DCamera.ScreenPointToRay(Input.mousePosition);
 		var hits = Physics.RaycastAll(ray);
 		float minDist = float.MaxValue ;
+		Collider minDistCollider = null ;
+		BodyVibrationHelper vibrationTarget = null ;
 		Vector3 minDistPos = Vector3.zero;
 		foreach(var hit in hits )
 		{ 
@@ -93,6 +95,7 @@ public class BodyManager : MonoBehaviour
 				minDist = tempdist;
 				m_CurrentAnswerKey = hit.collider.name ;
 				minDistPos = hit.collider.transform.position;
+				minDistCollider = hit.collider;
 			}
 		}
 
@@ -104,11 +107,16 @@ public class BodyManager : MonoBehaviour
 		if (hasClickOnValidPart)
 		{
 			m_CorrectAudio.Play();
+			BodyVibrationHelper helper = minDistCollider.GetComponent<BodyVibrationHelper>();
+			if(null!= helper)
+			{
+				vibrationTarget = helper ;
+			}
 		}
 		else
 		{
 		}
-		ShowNailObj(hasClickOnValidPart , minDistPos);
+		ShowNailObj(hasClickOnValidPart , minDistPos , vibrationTarget );
 
 		this.ResetAnswerContent();
 		this.ResetExampleContent();
@@ -126,6 +134,8 @@ public class BodyManager : MonoBehaviour
 		var hits = Physics.RaycastAll(ray);
 		float minDist = float.MaxValue;
 		Vector3 minDistPos = Vector3.zero;
+		Collider minDistCollider = null;
+		BodyVibrationHelper vibrationTarget = null;
 		foreach (var hit in hits)
 		{
 
@@ -135,6 +145,7 @@ public class BodyManager : MonoBehaviour
 				minDist = tempdist;
 				m_CurrentSelectPart = hit.collider.name;
 				minDistPos = hit.collider.transform.position;
+				minDistCollider = hit.collider;
 			}
 		}
 
@@ -147,12 +158,17 @@ public class BodyManager : MonoBehaviour
 			PlayCorrectAnimation(true);
 			m_CorrectAnswerWaitCheckTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec;
 			m_State = BodyState.WaitCorrectAnimation;
+			BodyVibrationHelper helper = minDistCollider.GetComponent<BodyVibrationHelper>();
+			if (null != helper)
+			{
+				vibrationTarget = helper;
+			}
 		}
 		else
 		{
 		}
 
-		ShowNailObj(hasClickOnValidPart, minDistPos);
+		ShowNailObj(hasClickOnValidPart, minDistPos, vibrationTarget);
 		
 
 	}
@@ -417,10 +433,11 @@ public class BodyManager : MonoBehaviour
 		
 	}
 
-	void ShowNailObj( bool show , Vector3 pos)
+	void ShowNailObj( bool show , Vector3 pos , BodyVibrationHelper helper )
 	{
 		m_NailObj.SetActive(show);
 		m_NailTargetPos = pos ;
+		m_NailVibrationHelper = helper;
 		pos.z += 3;
 		m_NailObj.transform.position = pos;
 
@@ -440,6 +457,7 @@ public class BodyManager : MonoBehaviour
 			if( Vector3.Distance(m_NailObj.transform.position , m_NailTargetPos) < 0.1f )
 			{ 
 				m_NailIsMoving = false ;
+				m_NailVibrationHelper.ActiveVibration();
 			}
 		}
 	}
@@ -447,6 +465,7 @@ public class BodyManager : MonoBehaviour
 	float m_NailSpeed = 10f ;
 	bool m_NailIsMoving = false ;
 	Vector3 m_NailTargetPos = Vector3.zero;
+	BodyVibrationHelper m_NailVibrationHelper = null ;
 
 	private float m_CorrectAnswerWaitSec = 1.0f;
 	private float m_CorrectAnswerWaitCheckTime = 0.0f;
