@@ -637,7 +637,9 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    4: ResultLabel
+    1: ENABLE_USE_OpenURL_iOS
+    4: ResultLabel;ENABLE_USE_OpenURL_iOS
+    7: ENABLE_USE_OpenURL_iOS
   platformArchitecture:
     iOS: 1
   scriptingBackend:
