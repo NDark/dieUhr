@@ -113,7 +113,7 @@ public class BodyManager : MonoBehaviour
 		this.ResetAnswerContent();
 		this.ResetExampleContent();
 
-		NGUITools.SetActive(m_InstructionText.gameObject, hasClickOnValidPart);
+		NGUITools.SetActive(m_InstructionText.gameObject, !hasClickOnValidPart);
 
 	}
 	public void OnUserClick()
