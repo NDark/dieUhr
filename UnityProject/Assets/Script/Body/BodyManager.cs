@@ -96,7 +96,7 @@ public class BodyManager : MonoBehaviour
 			}
 		}
 
-		Debug.Log("m_CurrentAnswerKey=" + m_CurrentAnswerKey);
+		// Debug.Log("m_CurrentAnswerKey=" + m_CurrentAnswerKey);
 		// show part name from m_CurrentSelectPart
 		// m_CurrentAnswerKey
 		bool hasClickOnValidPart = string.Empty != m_CurrentAnswerKey;
@@ -116,6 +116,47 @@ public class BodyManager : MonoBehaviour
 		NGUITools.SetActive(m_InstructionText.gameObject, !hasClickOnValidPart);
 
 	}
+
+	void DetectUserClick_QuestionMode()
+	{
+		// detect user part
+		m_CurrentSelectPart = string.Empty;
+
+		var ray = m_3DCamera.ScreenPointToRay(Input.mousePosition);
+		var hits = Physics.RaycastAll(ray);
+		float minDist = float.MaxValue;
+		Vector3 minDistPos = Vector3.zero;
+		foreach (var hit in hits)
+		{
+
+			var tempdist = hit.distance;
+			if (tempdist < minDist)
+			{
+				minDist = tempdist;
+				m_CurrentSelectPart = hit.collider.name;
+				minDistPos = hit.collider.transform.position;
+			}
+		}
+
+		// Debug.Log("m_CurrentAnswerKey=" + m_CurrentAnswerKey);
+		// show part name from m_CurrentSelectPart
+		// m_CurrentAnswerKey
+		bool hasClickOnValidPart = m_CurrentAnswerKey == m_CurrentSelectPart;
+		if (hasClickOnValidPart)
+		{
+			PlayCorrectAnimation(true);
+			m_CorrectAnswerWaitCheckTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec;
+			m_State = BodyState.WaitCorrectAnimation;
+		}
+		else
+		{
+		}
+
+		ShowNailObj(hasClickOnValidPart, minDistPos);
+
+		this.ResetExampleContent();
+	}
+
 	public void OnUserClick()
 	{
 		NGUITools.SetActive(this.m_InstructionText.gameObject, false);
@@ -136,12 +177,8 @@ public class BodyManager : MonoBehaviour
 				}
 				break;
 			case BodyState.QuestionMode:
-				if (m_CurrentAnswerKey == m_CurrentSelectPart)
-				{
-					PlayCorrectAnimation(true);
-					m_CorrectAnswerWaitCheckTime = Time.timeSinceLevelLoad + m_CorrectAnswerWaitSec;
-					m_State = BodyState.WaitCorrectAnimation;
-				}
+				this.DetectUserClick_QuestionMode();
+
 				break;
 		}
 
