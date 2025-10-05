@@ -27,11 +27,37 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: FantasyLogistics
+    x: 852
+    y: 709
+    width: 851
+    height: 315
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: ReallyReally
     x: 0
     y: 709
     width: 851
     height: 315
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: SECInc
+    x: 821
+    y: 396
+    width: 820
+    height: 312
     borderLeft: 0
     borderRight: 0
     borderTop: 0
