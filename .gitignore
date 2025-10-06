@@ -8,6 +8,10 @@
 /UnityProject/obj
 /UnityProject/Library/
 /UnityProject/.vs
+/UnityProject/.vs*
+/UnityProject/UserSettings/*
+/UnityProject/Logs
+
 /Publish
 /UnityProject/UnityProject.userprefs
 .DS_Store
