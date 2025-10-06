@@ -13,6 +13,7 @@ Along with my learning path, This app. "die Uhr" has another new update since 20
 * Topic of time is at about A1.1. (ex. Er kauft um halb Drei.)
 * Topic of traffic direction is at A1.2. (ex. Biegen Sie dort rechts ab.)
 * Topic of location is also at A1.2. (ex. Der Hund ist unter dem Tisch.)
+* Topic of part is added at version 4.1. (ex. der Kopf.)
 
 Acknowledge to my tutors Marcus ( #1LI0ajSM ) and Paula ( #1MKoVAb1 ) who provided me contents, and helped debugging this App. continuously.
 
@@ -28,6 +29,7 @@ The target audience of this app are German tutors and students, to assist the te
 * 傳統時間念法大概是在 A1.1。 (例句： Er kauft um halb Drei ein.)
 * 交通方向則是在 A1.2. (例句： Biegen Sie dort rechts ab.)
 * 位置則是接著交通的後面 A1.2. (例句： Der Hund ist unter dem Tisch.)
+* 4.1版本 是 身體部位 (例句： der Kopf.)
 
 感謝家教老師 Marcus ( #1LI0ajSM ) 及 Paula ( #1MKoVAb1 ) 提供文本，及協助勘誤。
 
@@ -44,6 +46,7 @@ Meine erste App. ,`die Uhr` hat upgedatet. Jetzt hat sie die Uhrzeiten, die Rich
 * Die traditionelle Deutsche Uhrzeit ist in A1.1. (z.B. Er kauft um halb Drei.)
 * Die Richtungsangaben ist in A1.2. (z.B. Biegen Sie dort rechts ab.)
 * Die Ortsangaben ist auch in A1.2. (z.B. Der Hund ist unter dem Tisch.)
+* Temat części został dodany w wersji 4.1. (np. der Kopf.)
 
 Vielen danke an meine lehrer Marcus ( #1LI0ajSM ) und Paula ( #1MKoVAb1 ) für die Beratung.
 
