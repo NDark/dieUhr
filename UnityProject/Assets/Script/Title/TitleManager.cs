@@ -56,7 +56,7 @@ public class TitleManager : MonoBehaviour
 
 		if (Application.platform == RuntimePlatform.IPhonePlayer)
 		{
-			m_OpenBrower.m_Url = "https://apps.apple.com/app/id1063018346"
+			m_OpenBrower.m_Url = "https://apps.apple.com/app/id1063018346";
 		}
 		else // if (Application.platform == RuntimePlatform.Android)
 		{
