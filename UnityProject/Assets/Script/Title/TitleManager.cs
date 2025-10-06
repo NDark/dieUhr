@@ -5,6 +5,7 @@ using UnityEngine;
 public class TitleManager : MonoBehaviour
 {
 	public GameObject m_TitleRateMeConfirmMenu = null ;
+	public OnClickOpenBrower m_OpenBrower = null;
 
 	public void HideRateMeMenu()
 	{
@@ -15,6 +16,7 @@ public class TitleManager : MonoBehaviour
 	{
 		m_TitleRateMeConfirmMenu.SetActive(false); 
 		PlayerPrefs.SetInt("PlayerPrefs_RateMe", 1);
+		this.RedirectStore();
 	}
 
 	void Awake()
@@ -46,5 +48,21 @@ public class TitleManager : MonoBehaviour
 			}
 		}
 		
+	}
+
+
+	void RedirectStore()
+	{
+
+		if (Application.platform == RuntimePlatform.IPhonePlayer)
+		{
+			m_OpenBrower.m_Url = "https://apps.apple.com/app/id1063018346"
+		}
+		else // if (Application.platform == RuntimePlatform.Android)
+		{
+			m_OpenBrower.m_Url = "https://play.google.com/store/apps/details?id=org.ndark.dieuhr";
+		}
+		
+		m_OpenBrower.OpenBrower();
 	}
 }

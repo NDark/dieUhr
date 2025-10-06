@@ -41,7 +41,8 @@ Kommentieren Sie bitte.
 # Download link (下載連結)
 
 1. Google Play Market:  https://play.google.com/store/apps/details?id=org.ndark.dieuhr
-1. iOS App Store: https://itunes.apple.com/app/id1063018346
+1. iOS App Store(mobile): https://apps.apple.com/app/id1063018346
+1. iOS App Store(desktop): https://itunes.apple.com/app/id1063018346
 
 
 # Screen Shots
