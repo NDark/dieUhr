@@ -1254,7 +1254,7 @@ MonoBehaviour:
   cellHeight: 373.3
   animateSmoothly: 0
   animateFadeIn: 0
-  hideInactive: 0
+  hideInactive: 1
   keepWithinPanel: 0
   sorted: 0
 --- !u!1 &414354060
@@ -3508,7 +3508,7 @@ Transform:
   m_GameObject: {fileID: 1598488149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1119.8999, z: 0}
+  m_LocalPosition: {x: 0, y: -746.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
