@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -123,8 +123,12 @@ public class UIKeyNavigation : MonoBehaviour
 		if (!Application.isPlaying) return;
 #endif
 		mStarted = true;
+
 		if (startsSelected && isColliderEnabled)
+		{
 			UICamera.selectedObject = gameObject;
+			if (UICamera.currentScheme == UICamera.ControlScheme.Controller) UICamera.hoveredObject = gameObject;
+		}
 	}
 
 	protected virtual void OnDisable () { list.Remove(this); }

@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //			  NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -122,7 +122,7 @@ static public class NGUITools
 
 				if (mListener == null)
 				{
-#if W2
+#if W2 || SIGHTSEER
 					var cam = MainCamera.instance;
 #else
 					var cam = Camera.main;
@@ -139,7 +139,7 @@ static public class NGUITools
 #if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 					audioSource = mListener.audio;
 #else
-					audioSource = mListener.GetComponent<AudioSource>();
+					audioSource = mListener.FastGetComponent<AudioSource>();
 #endif
 					if (audioSource == null) audioSource = mListener.gameObject.AddComponent<AudioSource>();
 				}
@@ -244,7 +244,7 @@ static public class NGUITools
 			if (cam && (cam.cullingMask & layerMask) != 0)
 				return cam;
 		}
-#if W2
+#if W2 || SIGHTSEER
 		cam = MainCamera.instance;
 #else
 		cam = Camera.main;
@@ -282,8 +282,8 @@ static public class NGUITools
 		if (go != null)
 		{
 			// 3D collider
-			Collider col = go.GetComponent<Collider>();
-			BoxCollider box = col as BoxCollider;
+			var col = go.FastGetComponent<Collider>();
+			var box = col as BoxCollider;
 
 			if (box != null)
 			{
@@ -295,7 +295,7 @@ static public class NGUITools
 			if (col != null) return;
 
 			// 2D collider
-			BoxCollider2D box2 = go.GetComponent<BoxCollider2D>();
+			var box2 = go.FastGetComponent<BoxCollider2D>();
 
 			if (box2 != null)
 			{
@@ -312,7 +312,7 @@ static public class NGUITools
 #if UNITY_EDITOR
 				UnityEditor.Undo.RegisterCreatedObjectUndo(box2, "Add Collider");
 #endif
-				UIWidget widget = go.GetComponent<UIWidget>();
+				var widget = go.FastGetComponent<UIWidget>();
 				if (widget != null) widget.autoResizeBoxCollider = true;
 				UpdateWidgetCollider(box2, considerInactive);
 				return;
@@ -325,7 +325,7 @@ static public class NGUITools
 #endif
 				box.isTrigger = true;
 
-				UIWidget widget = go.GetComponent<UIWidget>();
+				var widget = go.FastGetComponent<UIWidget>();
 				if (widget != null) widget.autoResizeBoxCollider = true;
 				UpdateWidgetCollider(box, considerInactive);
 			}
@@ -350,14 +350,15 @@ static public class NGUITools
 	{
 		if (go != null)
 		{
-			BoxCollider bc = go.GetComponent<BoxCollider>();
+			var bc = go.FastGetComponent<BoxCollider>();
 
 			if (bc != null)
 			{
 				UpdateWidgetCollider(bc, considerInactive);
 				return;
 			}
-			BoxCollider2D box2 = go.GetComponent<BoxCollider2D>();
+
+			var box2 = go.FastGetComponent<BoxCollider2D>();
 			if (box2 != null) UpdateWidgetCollider(box2, considerInactive);
 		}
 	}
@@ -371,7 +372,7 @@ static public class NGUITools
 		if (box != null)
 		{
 			var go = box.gameObject;
-			var w = go.GetComponent<UIWidget>();
+			var w = go.FastGetComponent<UIWidget>();
 
 			if (w != null)
 			{
@@ -409,9 +410,31 @@ static public class NGUITools
 	static public void UpdateWidgetCollider (UIWidget w)
 	{
 		if (w == null) return;
-		var bc = w.GetComponent<BoxCollider>();
+		var bc = w.FastGetComponent<BoxCollider>();
 		if (bc != null) UpdateWidgetCollider(w, bc);
-		else UpdateWidgetCollider(w, w.GetComponent<BoxCollider2D>());
+		else UpdateWidgetCollider(w, w.FastGetComponent<BoxCollider2D>());
+	}
+
+	/// <summary>
+	/// GetComponent() allocates memory in Unity. TryGetComponent() does not, but it requires allocating a local variable just to do a null check. This fixes that.
+	/// </summary>
+
+	static public T FastGetComponent<T> (this Component c) where T : Component
+	{
+		T t;
+		if (c && c.TryGetComponent(out t)) return t;
+		return null;
+	}
+
+	/// <summary>
+	/// GetComponent() allocates memory in Unity. TryGetComponent() does not, but it requires allocating a local variable just to do a null check. This fixes that.
+	/// </summary>
+
+	static public T FastGetComponent<T> (this GameObject c) where T : Component
+	{
+		T t;
+		if (c && c.TryGetComponent(out t)) return t;
+		return null;
 	}
 
 	/// <summary>
@@ -469,21 +492,12 @@ static public class NGUITools
 				var c = new Vector2((region.x + region.z) * 0.5f, (region.y + region.w) * 0.5f);
 				var s = new Vector2(region.z - region.x, region.w - region.y);
 
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-				if (c != box.center || s != box.size)
-				{
-					box.center = c;
-					box.size = s;
-					NGUITools.SetDirty(box);
-				}
-#else
 				if (c != box.offset || s != box.size)
 				{
 					box.offset = c;
 					box.size = s;
 					NGUITools.SetDirty(box);
 				}
-#endif
 			}
 			else
 			{
@@ -491,21 +505,12 @@ static public class NGUITools
 				var c = Vector2.Lerp(corners[0], corners[2], 0.5f);
 				var s = (Vector2)(corners[2] - corners[0]);
 
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-				if (c != box.center || s != box.size)
-				{
-					box.center = c;
-					box.size = s;
-					NGUITools.SetDirty(box);
-				}
-#else
 				if (c != box.offset || s != box.size)
 				{
 					box.offset = c;
 					box.size = s;
 					NGUITools.SetDirty(box);
 				}
-#endif
 			}
 #if UNITY_EDITOR
 			NGUITools.SetDirty(box);
@@ -521,10 +526,10 @@ static public class NGUITools
 	{
 		if (box != null)
 		{
-			GameObject go = box.gameObject;
-			UIWidget w = go.GetComponent<UIWidget>();
+			var go = box.gameObject;
+			UIWidget w;
 
-			if (w != null)
+			if (go.TryGetComponent(out w))
 			{
 				var dr = w.drawRegion;
 
@@ -534,21 +539,12 @@ static public class NGUITools
 					var c = new Vector2((region.x + region.z) * 0.5f, (region.y + region.w) * 0.5f);
 					var s = new Vector2(region.z - region.x, region.w - region.y);
 
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-					if (c != box.center || s != box.size)
-					{
-						box.center = c;
-						box.size = s;
-						NGUITools.SetDirty(box);
-					}
-#else
 					if (c != box.offset || s != box.size)
 					{
 						box.offset = c;
 						box.size = s;
 						NGUITools.SetDirty(box);
 					}
-#endif
 				}
 				else
 				{
@@ -556,31 +552,18 @@ static public class NGUITools
 					var c = Vector2.Lerp(corners[0], corners[2], 0.5f);
 					var s = (Vector2)(corners[2] - corners[0]);
 
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-					if (c != box.center || s != box.size)
-					{
-						box.center = c;
-						box.size = s;
-						NGUITools.SetDirty(box);
-					}
-#else
 					if (c != box.offset || s != box.size)
 					{
 						box.offset = c;
 						box.size = s;
 						NGUITools.SetDirty(box);
 					}
-#endif
 				}
 			}
 			else
 			{
-				Bounds b = NGUIMath.CalculateRelativeWidgetBounds(go.transform, considerInactive);
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-				box.center = b.center;
-#else
+				var b = NGUIMath.CalculateRelativeWidgetBounds(go.transform, considerInactive);
 				box.offset = b.center;
-#endif
 				box.size = new Vector2(b.size.x, b.size.y);
 			}
 #if UNITY_EDITOR
@@ -660,8 +643,11 @@ static public class NGUITools
 	static public void CheckForPrefabStage (GameObject gameObject)
 	{
 #if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
-
-		var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage (gameObject);
+#if UNITY_2021_2_OR_NEWER
+		var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage(gameObject);
+#else
+		var prefabStage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetPrefabStage(gameObject);
+#endif
 		if (prefabStage == null)
 			return;
 
@@ -681,7 +667,7 @@ static public class NGUITools
 		while (instanceRoot.parent != null)
 			instanceRoot = instanceRoot.parent;
 
-		GameObject container = UnityEditor.EditorUtility.CreateGameObjectWithHideFlags ("UIRoot (Environment)", HideFlags.DontSave);
+		var container = UnityEditor.EditorUtility.CreateGameObjectWithHideFlags ("UIRoot (Environment)", HideFlags.DontSave);
 		container.layer = instanceRoot.gameObject.layer;
 
 		if (missingRoot)
@@ -738,6 +724,21 @@ static public class NGUITools
 	}
 
 #if UNITY_5_5_OR_NEWER
+	/// <summary>
+	/// Add a child object.
+	/// </summary>
+
+	static public GameObject AddChild (this Transform parent)
+	{
+		var go = new GameObject();
+		var t = go.transform;
+		t.parent = parent;
+		t.localPosition = Vector3.zero;
+		t.localRotation = Quaternion.identity;
+		t.localScale = Vector3.one;
+		return go;
+	}
+
 	/// <summary>
 	/// Instantiate an object and add it to the specified parent.
 	/// </summary>
@@ -815,44 +816,38 @@ static public class NGUITools
 #endif
 	}
 
+	[System.NonSerialized] static System.Collections.Generic.List<UIWidget> s_widgets = new List<UIWidget>();
+
 	/// <summary>
 	/// Calculate the game object's depth based on the widgets within, and also taking panel depth into consideration.
 	/// </summary>
 
 	static public int CalculateRaycastDepth (GameObject go)
 	{
-#if UNITY_5_5_OR_NEWER
-		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#else
-		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-#endif
-		var w = go.GetComponent<UIWidget>();
+		UIWidget w;
+		if (go.TryGetComponent(out w)) return w.raycastDepth;
 
-		if (w != null)
+		s_widgets.Clear();
+		go.GetComponentsInChildren(s_widgets);
+
+		for (int i = 0, imax = s_widgets.Count; i < imax; ++i)
 		{
-#if UNITY_5_5_OR_NEWER
-			UnityEngine.Profiling.Profiler.EndSample();
-#else
-			Profiler.EndSample();
-#endif
-			return w.raycastDepth;
+			var sw = s_widgets[i];
+
+			if (!sw.isSelectable || !sw.enabled)
+			{
+				s_widgets.RemoveAt(i--);
+				--imax;
+			}
 		}
 
-		var widgets = go.GetComponentsInChildren<UIWidget>();
-#if UNITY_5_5_OR_NEWER
-		UnityEngine.Profiling.Profiler.EndSample();
-#else
-		Profiler.EndSample();
-#endif
-
-		if (widgets.Length == 0) return 0;
+		if (s_widgets.Count == 0) return 0;
 
 		int depth = int.MaxValue;
 
-		for (int i = 0, imax = widgets.Length; i < imax; ++i)
+		for (int i = 0, imax = s_widgets.Count; i < imax; ++i)
 		{
-			if (widgets[i].enabled)
-				depth = Mathf.Min(depth, widgets[i].raycastDepth);
+			depth = Mathf.Min(depth, s_widgets[i].raycastDepth);
 		}
 		return depth;
 	}
@@ -866,9 +861,15 @@ static public class NGUITools
 		if (go)
 		{
 			int depth = -1;
-			UIWidget[] widgets = go.GetComponentsInChildren<UIWidget>();
-			for (int i = 0, imax = widgets.Length; i < imax; ++i)
-				depth = Mathf.Max(depth, widgets[i].depth);
+
+			s_widgets.Clear();
+			go.GetComponentsInChildren(s_widgets);
+
+			for (int i = 0, imax = s_widgets.Count; i < imax; ++i)
+			{
+				var w = s_widgets[i];
+				if (w.isSelectable && w.enabled) depth = Mathf.Max(depth, w.depth);
+			}
 			return depth + 1;
 		}
 		return 0;
@@ -883,17 +884,20 @@ static public class NGUITools
 		if (go && ignoreChildrenWithColliders)
 		{
 			int depth = -1;
-			UIWidget[] widgets = go.GetComponentsInChildren<UIWidget>();
+			s_widgets.Clear();
+			go.GetComponentsInChildren(s_widgets);
 
-			for (int i = 0, imax = widgets.Length; i < imax; ++i)
+			for (int i = 0, imax = s_widgets.Count; i < imax; ++i)
 			{
-				UIWidget w = widgets[i];
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-				if (w.cachedGameObject != go && (w.collider != null || w.GetComponent<Collider2D>() != null)) continue;
-#else
-				if (w.cachedGameObject != go && (w.GetComponent<Collider>() != null || w.GetComponent<Collider2D>() != null)) continue;
-#endif
-				depth = Mathf.Max(depth, w.depth);
+				var w = s_widgets[i];
+
+				if (w.isSelectable && w.enabled)
+				{
+					Collider c;
+					Collider2D c2;
+					if (w.cachedGameObject != go && (w.TryGetComponent(out c) || w.TryGetComponent(out c2))) continue;
+					depth = Mathf.Max(depth, w.depth);
+				}
 			}
 			return depth + 1;
 		}
@@ -909,9 +913,9 @@ static public class NGUITools
 	{
 		if (go != null)
 		{
-			UIPanel panel = go.GetComponent<UIPanel>();
-
-			if (panel != null)
+			UIPanel panel;
+			
+			if (go.TryGetComponent(out panel))
 			{
 				UIPanel[] panels = go.GetComponentsInChildren<UIPanel>(true);
 
@@ -1115,13 +1119,9 @@ static public class NGUITools
 		// If we are working with a different UI type, we need to treat it as a brand-new one instead
 		if (root != null)
 		{
-			UICamera cam = root.GetComponentInChildren<UICamera>();
+			var cam = root.GetComponentInChildren<UICamera>();
 
-#if UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
-			if (cam != null && cam.camera.isOrthoGraphic == advanced3D)
-#else
-			if (cam != null && cam.GetComponent<Camera>().orthographic == advanced3D)
-#endif
+			if (cam != null && cam.FastGetComponent<Camera>().orthographic == advanced3D)
 			{
 				trans = null;
 				root = null;
@@ -1245,7 +1245,7 @@ static public class NGUITools
 	{
 		for (int i = 0; i < t.childCount; ++i)
 		{
-			Transform child = t.GetChild(i);
+			var child = t.GetChild(i);
 			child.gameObject.layer = layer;
 			SetChildLayer(child, layer);
 		}
@@ -1345,21 +1345,10 @@ static public class NGUITools
 	static public T FindInParents<T> (GameObject go) where T : Component
 	{
 		if (go == null) return null;
-
-#if UNITY_5_5_OR_NEWER
-		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponentInParent)");
 		var comp = go.GetComponentInParent<T>();
 		UnityEngine.Profiling.Profiler.EndSample();
-#else
-		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-		var comp = go.GetComponentInParent<T>();
-		Profiler.EndSample();
-#endif
-#if UNITY_FLASH
-		return (T)comp;
-#else
 		return comp;
-#endif
 	}
 
 	/// <summary>
@@ -1371,20 +1360,10 @@ static public class NGUITools
 	{
 		if (trans == null) return null;
 
-#if UNITY_5_5_OR_NEWER
-		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
+		UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (GetComponentInParent)");
 		var comp = trans.GetComponentInParent<T>();
 		UnityEngine.Profiling.Profiler.EndSample();
-#else
-		Profiler.BeginSample("Editor-only GC allocation (GetComponent)");
-		var comp = trans.GetComponentInParent<T>();
-		Profiler.EndSample();
-#endif
-#if UNITY_FLASH
-		return (T)comp;
-#else
 		return comp;
-#endif
 	}
 
 	/// <summary>
@@ -1432,18 +1411,10 @@ static public class NGUITools
 
 	static public void DestroyChildren (this Transform t)
 	{
-		bool isPlaying = Application.isPlaying;
-
 		while (t.childCount != 0)
 		{
-			Transform child = t.GetChild(0);
-
-			if (isPlaying)
-			{
-				child.parent = null;
-				UnityEngine.Object.Destroy(child.gameObject);
-			}
-			else UnityEngine.Object.DestroyImmediate(child.gameObject);
+			var child = t.GetChild(0);
+			Destroy(child.gameObject);
 		}
 	}
 
@@ -1455,7 +1426,7 @@ static public class NGUITools
 	{
 		if (obj != null)
 		{
-			if (Application.isEditor) UnityEngine.Object.DestroyImmediate(obj);
+			if (Application.installMode == ApplicationInstallMode.Editor) UnityEngine.Object.DestroyImmediate(obj);
 			else UnityEngine.Object.Destroy(obj);
 		}
 	}
@@ -1573,10 +1544,9 @@ static public class NGUITools
 	[System.Diagnostics.DebuggerStepThrough]
 	static void CallCreatePanel (Transform t)
 	{
-		var w = t.GetComponent<UIWidget>();
-		if (w != null) w.CreatePanel();
-		for (int i = 0, imax = t.childCount; i < imax; ++i)
-			CallCreatePanel(t.GetChild(i));
+		UIWidget w;
+		if (t.TryGetComponent(out w)) w.CreatePanel();
+		for (int i = 0, imax = t.childCount; i < imax; ++i) CallCreatePanel(t.GetChild(i));
 	}
 
 	/// <summary>
@@ -1683,10 +1653,13 @@ static public class NGUITools
 
 	static public void MakePixelPerfect (Transform t)
 	{
-		UIWidget w = t.GetComponent<UIWidget>();
-		if (w != null) w.MakePixelPerfect();
+		UIWidget w;
+		if (t.TryGetComponent(out w)) w.MakePixelPerfect();
 
-		if (t.GetComponent<UIAnchor>() == null && t.GetComponent<UIRoot>() == null)
+		UIAnchor a;
+		UIRoot r;
+
+		if (!t.TryGetComponent(out a) && !t.TryGetComponent(out r))
 		{
 #if UNITY_EDITOR
 			RegisterUndo(t, "Make Pixel-Perfect");
@@ -1696,8 +1669,7 @@ static public class NGUITools
 		}
 
 		// Recurse into children
-		for (int i = 0, imax = t.childCount; i < imax; ++i)
-			MakePixelPerfect(t.GetChild(i));
+		for (int i = 0, imax = t.childCount; i < imax; ++i) MakePixelPerfect(t.GetChild(i));
 	}
 
 	/// <summary>
@@ -1755,26 +1727,31 @@ static public class NGUITools
 	{
 		bounds = NGUIMath.CalculateRelativeWidgetBounds(transform, content, considerInactive);
 
-		Vector3 min = bounds.min;
-		Vector3 max = bounds.max;
-		Vector3 size = bounds.size;
+		var min = bounds.min;
+		var max = bounds.max;
+		var size = bounds.size;
 
 		size.x += min.x;
 		size.y -= max.y;
+
+		var w = Screen.width;
+		var h = Screen.height;
+		var s = 1f;
 
 		if (cam != null)
 		{
 			// Since the screen can be of different than expected size, we want to convert
 			// mouse coordinates to view space, then convert that to world position.
-			pos.x = Mathf.Clamp01(pos.x / Screen.width);
-			pos.y = Mathf.Clamp01(pos.y / Screen.height);
+			pos.x = Mathf.Clamp01(pos.x / w);
+			pos.y = Mathf.Clamp01(pos.y / h);
 
 			// Calculate the ratio of the camera's target orthographic size to current screen size
 			float activeSize = cam.orthographicSize / transform.parent.lossyScale.y;
-			float ratio = (Screen.height * 0.5f) / activeSize;
+			float ratio = (h * 0.5f) / activeSize;
 
 			// Calculate the maximum on-screen size of the tooltip window
-			max = new Vector2(ratio * size.x / Screen.width, ratio * size.y / Screen.height);
+			max = new Vector2(ratio * size.x / w, ratio * Mathf.Min(size.y, h) / h);
+			s = (size.y > h) ? h / size.y : 1f;
 
 			// Limit the tooltip to always be visible
 			pos.x = Mathf.Min(pos.x, 1f - max.x);
@@ -1789,14 +1766,16 @@ static public class NGUITools
 		else
 		{
 			// Don't let the tooltip leave the screen area
-			if (pos.x + size.x > Screen.width) pos.x = Screen.width - size.x;
+			if (pos.x + size.x > w) pos.x = w - size.x;
 			if (pos.y - size.y < 0f) pos.y = size.y;
 
 			// Simple calculation that assumes that the camera is of fixed size
-			pos.x -= Screen.width * 0.5f;
-			pos.y -= Screen.height * 0.5f;
+			pos.x -= w * 0.5f;
+			pos.y -= h * 0.5f;
 		}
+
 		transform.localPosition = pos;
+		transform.localScale = new Vector3(s, s, s);
 	}
 
 	/// <summary>
@@ -1878,7 +1857,7 @@ static public class NGUITools
 
 	static public void MarkParentAsChanged (GameObject go)
 	{
-		UIRect[] rects = go.GetComponentsInChildren<UIRect>();
+		var rects = go.GetComponentsInChildren<UIRect>();
 		for (int i = 0, imax = rects.Length; i < imax; ++i)
 			rects[i].ParentHasChanged();
 	}
@@ -1891,7 +1870,7 @@ static public class NGUITools
 	{
 		get
 		{
-			TextEditor te = new TextEditor();
+			var te = new TextEditor();
 			te.Paste();
 #if UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2
 			return te.content.text;
@@ -1928,24 +1907,17 @@ static public class NGUITools
 
 	static public T AddMissingComponent<T> (this GameObject go) where T : Component
 	{
-#if UNITY_FLASH
-		object comp = go.GetComponent<T>();
-#else
-		T comp = go.GetComponent<T>();
-#endif
+		T comp;
+		go.TryGetComponent(out comp);
+		
 		if (comp == null)
 		{
 #if UNITY_EDITOR
-			if (!Application.isPlaying)
-				RegisterUndo(go, "Add " + typeof(T));
+			if (!Application.isPlaying) RegisterUndo(go, "Add " + typeof(T));
 #endif
 			comp = go.AddComponent<T>();
 		}
-#if UNITY_FLASH
-		return (T)comp;
-#else
 		return comp;
-#endif
 	}
 
 	// Temporary variable to avoid GC allocation
@@ -2142,7 +2114,7 @@ static public class NGUITools
 #if !UNITY_EDITOR && (UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO || UNITY_WP8 || UNITY_WP_8_1)
 			comp.SendMessage(funcName, SendMessageOptions.DontRequireReceiver);
 #else
-			MethodInfo method = comp.GetType().GetMethod(funcName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+			var method = comp.GetType().GetMethod(funcName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			if (method != null) method.Invoke(comp, null);
 #endif
 		}
@@ -2154,10 +2126,17 @@ static public class NGUITools
 
 	static public void ExecuteAll<T> (GameObject root, string funcName) where T : Component
 	{
-		Execute<T>(root, funcName);
-		Transform t = root.transform;
-		for (int i = 0, imax = t.childCount; i < imax; ++i)
-			ExecuteAll<T>(t.GetChild(i).gameObject, funcName);
+		if (root.activeInHierarchy)
+		{
+			Execute<T>(root, funcName);
+			var t = root.transform;
+
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
+			{
+				var go = t.GetChild(i).gameObject;
+				ExecuteAll<T>(go, funcName);
+			}
+		}
 	}
 
 	/// <summary>
@@ -2193,11 +2172,7 @@ static public class NGUITools
 
 			if (mSizeFrame != frame || !Application.isPlaying)
 			{
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.BeginSample("Editor-only GC allocation (NGUITools.screenSize)");
-#else
-				Profiler.BeginSample("Editor-only GC allocation (NGUITools.screenSize)");
-#endif
 				mSizeFrame = frame;
 
 				if (s_GetSizeOfMainGameView == null && !mCheckedMainViewFunc)
@@ -2236,14 +2211,7 @@ static public class NGUITools
 //#endif
 				}
 				else mGameSize = new Vector2(Screen.width, Screen.height);
-#if UNITY_5_5_OR_NEWER
 				UnityEngine.Profiling.Profiler.EndSample();
-#else
-				Profiler.EndSample();
-#endif
-				#if UNITY_EDITOR && W2
-				if (mGameSize.magnitude > 4000f) Debug.LogWarning(mGameSize);
-				#endif
 			}
 			return mGameSize;
 		}
@@ -2511,8 +2479,8 @@ static public class NGUITools
 			case KeyCode.KeypadEquals: return "KQ";
 			case KeyCode.UpArrow: return "UP";
 			case KeyCode.DownArrow: return "DN";
-			case KeyCode.RightArrow: return "LT";
-			case KeyCode.LeftArrow: return "RT";
+			case KeyCode.RightArrow: return "RT";
+			case KeyCode.LeftArrow: return "LT";
 			case KeyCode.Insert: return "Ins";
 			case KeyCode.Home: return "Home";
 			case KeyCode.End: return "End";
@@ -2553,16 +2521,16 @@ static public class NGUITools
 			case KeyCode.JoystickButton1: return "(B)";
 			case KeyCode.JoystickButton2: return "(X)";
 			case KeyCode.JoystickButton3: return "(Y)";
-			case KeyCode.JoystickButton4: return "(RB)";
-			case KeyCode.JoystickButton5: return "(LB)";
+			case KeyCode.JoystickButton4: return "(LB)";
+			case KeyCode.JoystickButton5: return "(RB)";
 			case KeyCode.JoystickButton6: return "(Back)";
 			case KeyCode.JoystickButton7: return "(Start)";
 			case KeyCode.JoystickButton8: return "(LS)";
 			case KeyCode.JoystickButton9: return "(RS)";
-			case KeyCode.JoystickButton10: return "J10";
-			case KeyCode.JoystickButton11: return "J11";
-			case KeyCode.JoystickButton12: return "J12";
-			case KeyCode.JoystickButton13: return "J13";
+			case KeyCode.JoystickButton10: return "(DL)";
+			case KeyCode.JoystickButton11: return "(DR)";
+			case KeyCode.JoystickButton12: return "(DU)";
+			case KeyCode.JoystickButton13: return "(DD)";
 			case KeyCode.JoystickButton14: return "J14";
 			case KeyCode.JoystickButton15: return "J15";
 			case KeyCode.JoystickButton16: return "J16";
@@ -2670,8 +2638,8 @@ static public class NGUITools
 		if (caption == "KQ") return KeyCode.KeypadEquals;
 		if (caption == "UP") return KeyCode.UpArrow;
 		if (caption == "DN") return KeyCode.DownArrow;
-		if (caption == "LT") return KeyCode.RightArrow;
-		if (caption == "RT") return KeyCode.LeftArrow;
+		if (caption == "RT") return KeyCode.RightArrow;
+		if (caption == "LT") return KeyCode.LeftArrow;
 		if (caption == "Ins") return KeyCode.Insert;
 		if (caption == "Home") return KeyCode.Home;
 		if (caption == "End") return KeyCode.End;
@@ -2712,16 +2680,16 @@ static public class NGUITools
 		if (caption == "(B)") return KeyCode.JoystickButton1;
 		if (caption == "(X)") return KeyCode.JoystickButton2;
 		if (caption == "(Y)") return KeyCode.JoystickButton3;
-		if (caption == "(RB)") return KeyCode.JoystickButton4;
-		if (caption == "(LB)") return KeyCode.JoystickButton5;
+		if (caption == "(LB)") return KeyCode.JoystickButton4;
+		if (caption == "(RB)") return KeyCode.JoystickButton5;
 		if (caption == "(Back)") return KeyCode.JoystickButton6;
 		if (caption == "(Start)") return KeyCode.JoystickButton7;
 		if (caption == "(LS)") return KeyCode.JoystickButton8;
 		if (caption == "(RS)") return KeyCode.JoystickButton9;
-		if (caption == "J10") return KeyCode.JoystickButton10;
-		if (caption == "J11") return KeyCode.JoystickButton11;
-		if (caption == "J12") return KeyCode.JoystickButton12;
-		if (caption == "J13") return KeyCode.JoystickButton13;
+		if (caption == "(DL)") return KeyCode.JoystickButton10;
+		if (caption == "(DR)") return KeyCode.JoystickButton11;
+		if (caption == "(DU)") return KeyCode.JoystickButton12;
+		if (caption == "(DD)") return KeyCode.JoystickButton13;
 		if (caption == "J14") return KeyCode.JoystickButton14;
 		if (caption == "J15") return KeyCode.JoystickButton15;
 		if (caption == "J16") return KeyCode.JoystickButton16;
@@ -2731,9 +2699,9 @@ static public class NGUITools
 		return KeyCode.None;
 	}
 
-	static Dictionary<string, UIWidget> mWidgets = new Dictionary<string, UIWidget>();
-	static UIPanel mRoot;
-	static GameObject mGo;
+	[System.NonSerialized] static Dictionary<string, UIWidget> mWidgets = new Dictionary<string, UIWidget>();
+	[System.NonSerialized] static UIPanel mRoot;
+	[System.NonSerialized] static GameObject mGo;
 
 	public delegate void OnInitFunc<T> (T w) where T : UIWidget;
 
@@ -2806,7 +2774,7 @@ static public class NGUITools
 				Mathf.GammaToLinearSpace(c.r),
 				Mathf.GammaToLinearSpace(c.g),
 				Mathf.GammaToLinearSpace(c.b),
-				Mathf.GammaToLinearSpace(c.a));
+				c.a);
 		}
 		return c;
 	}
@@ -2826,7 +2794,7 @@ static public class NGUITools
 				Mathf.LinearToGammaSpace(c.r),
 				Mathf.LinearToGammaSpace(c.g),
 				Mathf.LinearToGammaSpace(c.b),
-				Mathf.LinearToGammaSpace(c.a));
+				c.a);
 		}
 		return c;
 	}
@@ -2900,7 +2868,7 @@ static public class NGUITools
 		{
 			var lbl = labels[i];
 
-			if (lbl.bitmapFont != null && lbl.atlas == before)
+			if (lbl.font != null && lbl.atlas == before)
 			{
 				lbl.atlas = after;
 #if UNITY_EDITOR

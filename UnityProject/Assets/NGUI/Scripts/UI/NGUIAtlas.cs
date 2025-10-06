@@ -1,11 +1,25 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+
+/// <summary>
+/// Simple interface that can be used anywhere. Used by the atlas maker to specify any desired custom processing that apply to textures before adding them to the atlas.
+/// The returned texture will be automatically destroyed after the atlas gets created (unless it matches the original).
+/// To create a pre-processor, have your script implement this interface, then reference the game object it's attached to in the Atlas Maker.
+/// Example usage: having an off-screen renderer that composits several sprites together (for example a skill icon), then renders it into a smaller texture.
+/// </summary>
+
+public interface INGUITextureProcessor
+{
+	void PrepareToProcess (List<Texture> textures);
+
+	Texture Process (Texture src);
+}
 
 /// <summary>
 /// Generic interface for the atlas class, making it possible to support both the prefab-based UIAtlas and scriptable object-based NGUIAtlas.
@@ -119,10 +133,10 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 	[HideInInspector][SerializeField] UnityEngine.Object mReplacement;
 
 	// Whether the atlas is using a pre-multiplied alpha material. -1 = not checked. 0 = no. 1 = yes.
-	[System.NonSerialized] int mPMA = -1;
+	[NonSerialized] int mPMA = -1;
 
 	// Dictionary lookup to speed up sprite retrieval at run-time
-	[System.NonSerialized] Dictionary<string, int> mSpriteIndices = new Dictionary<string, int>();
+	[NonSerialized] Dictionary<string, int> mSpriteIndices = new Dictionary<string, int>();
 
 	/// <summary>
 	/// Material used by the atlas.
@@ -196,8 +210,16 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 		set
 		{
 			var rep = replacement;
-			if (rep != null) rep.spriteList = value;
-			else mSprites = value;
+
+			if (rep != null)
+			{
+				rep.spriteList = value;
+			}
+			else
+			{
+				mSprites = value;
+				mSpriteIndices.Clear();
+			}
 		}
 	}
 
@@ -290,65 +312,27 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 		{
 			if (mSprites.Count == 0) return null;
 
+			// Rebuild the dictionary if it's empty
+			if (mSpriteIndices.Count == 0)
+			{
+				for (int i = 0, imax = mSprites.Count; i < imax; ++i)
+					mSpriteIndices[mSprites[i].name] = i;
+			}
+
+			int index;
+
 			// O(1) lookup via a dictionary
-#if UNITY_EDITOR
-			if (Application.isPlaying)
-#endif
-			{
-				// The number of indices differs from the sprite list? Rebuild the indices.
-				if (mSpriteIndices.Count != mSprites.Count)
-					MarkSpriteListAsChanged();
-
-				int index;
-				if (mSpriteIndices.TryGetValue(name, out index))
-				{
-					// If the sprite is present, return it as-is
-					if (index > -1 && index < mSprites.Count) return mSprites[index];
-
-					// The sprite index was out of range -- perhaps the sprite was removed? Rebuild the indices.
-					MarkSpriteListAsChanged();
-
-					// Try to look up the index again
-					return mSpriteIndices.TryGetValue(name, out index) ? mSprites[index] : null;
-				}
-			}
-
-			// Sequential O(N) lookup.
-			for (int i = 0, imax = mSprites.Count; i < imax; ++i)
-			{
-				UISpriteData s = mSprites[i];
-
-				// string.Equals doesn't seem to work with Flash export
-				if (!string.IsNullOrEmpty(s.name) && name == s.name)
-				{
-#if UNITY_EDITOR
-					if (!Application.isPlaying) return s;
-#endif
-					// If this point was reached then the sprite is present in the non-indexed list,
-					// so the sprite indices should be updated.
-					MarkSpriteListAsChanged();
-					return s;
-				}
-			}
+			if (!mSpriteIndices.TryGetValue(name, out index)) return null;
+			return mSprites[index];
 		}
 		return null;
 	}
 
 	/// <summary>
-	/// Rebuild the sprite indices. Call this after modifying the spriteList at run time.
+	/// Should be used when sprite names change for any reason.
 	/// </summary>
 
-	public void MarkSpriteListAsChanged ()
-	{
-#if UNITY_EDITOR
-		if (Application.isPlaying)
-#endif
-		{
-			mSpriteIndices.Clear();
-			for (int i = 0, imax = mSprites.Count; i < imax; ++i)
-				mSpriteIndices[mSprites[i].name] = i;
-		}
-	}
+	public void RebuildSpriteCache () { mSpriteIndices.Clear(); }
 
 	/// <summary>
 	/// Sort the list of sprites within the atlas, making them alphabetical.
@@ -357,6 +341,7 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 	public void SortAlphabetically ()
 	{
 		mSprites.Sort(delegate(UISpriteData s1, UISpriteData s2) { return s1.name.CompareTo(s2.name); });
+		mSpriteIndices.Clear();
 #if UNITY_EDITOR
 		NGUITools.SetDirty(this);
 #endif
@@ -375,7 +360,7 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 
 		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
 		{
-			UISpriteData s = mSprites[i];
+			var s = mSprites[i];
 			if (s != null && !string.IsNullOrEmpty(s.name)) list.Add(s.name);
 		}
 		return list;
@@ -515,9 +500,9 @@ public class NGUIAtlas : ScriptableObject, INGUIAtlas
 			if (NGUITools.CheckIfRelated(this, lbl.atlas))
 			{
 				var atl = lbl.atlas;
-				var font = lbl.bitmapFont;
-				lbl.bitmapFont = null;
-				lbl.bitmapFont = font;
+				var font = lbl.font;
+				lbl.font = null;
+				lbl.font = font;
 #if UNITY_EDITOR
 				NGUITools.SetDirty(lbl);
 #endif

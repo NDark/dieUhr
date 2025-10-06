@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 #if UNITY_EDITOR || !UNITY_FLASH
@@ -358,7 +358,7 @@ public class EventDelegate
 		{
 			if (mTarget != null && !string.IsNullOrEmpty(mMethodName))
 			{
-				System.Type type = mTarget.GetType();
+				var type = mTarget.GetType();
  #if NETFX_CORE
 				try
 				{
@@ -402,7 +402,7 @@ public class EventDelegate
 
 				if (mMethod == null)
 				{
-					Debug.LogError("Could not find method '" + mMethodName + "' on " + mTarget.GetType(), mTarget);
+					Debug.LogError("Could not find method '" + mMethodName + "' on " + mTarget.GetType() + ". This may also happen if there are overloaded functions with the same name with different parameters.", mTarget);
 					return;
 				}
 

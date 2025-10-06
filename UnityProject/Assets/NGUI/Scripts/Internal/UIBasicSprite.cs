@@ -251,9 +251,66 @@ public abstract class UIBasicSprite : UIWidget
 	/// <summary>
 	/// Trimmed space in the atlas around the sprite. X = left, Y = bottom, Z = right, W = top. Overridden in UISprite.
 	/// </summary>
-	protected virtual Vector4 padding
+	protected virtual Vector4 padding { get { return new Vector4(0, 0, 0, 0); } }
+
+	/// <summary>
+	/// Whether a gradient will be applied.
+	/// </summary>
+
+	public bool applyGradient
 	{
-		get { return new Vector4(0, 0, 0, 0); }
+		get
+		{
+			return mApplyGradient;
+		}
+		set
+		{
+			if (mApplyGradient != value)
+			{
+				mApplyGradient = value;
+				MarkAsChanged();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Top gradient color.
+	/// </summary>
+
+	public Color gradientTop
+	{
+		get
+		{
+			return mGradientTop;
+		}
+		set
+		{
+			if (mGradientTop != value)
+			{
+				mGradientTop = value;
+				if (mApplyGradient) MarkAsChanged();
+			}
+		}
+	}
+
+	/// <summary>
+	/// Bottom gradient color.
+	/// </summary>
+
+	public Color gradientBottom
+	{
+		get
+		{
+			return mGradientBottom;
+		}
+		set
+		{
+			if (mGradientBottom != value)
+			{
+				mGradientBottom = value;
+				if (mApplyGradient) MarkAsChanged();
+			}
+		}
 	}
 
 #if UNITY_EDITOR
@@ -270,8 +327,8 @@ public abstract class UIBasicSprite : UIWidget
 
 #region Fill Functions
 	// Static variables to reduce garbage collection
-	static protected Vector2[] mTempPos = new Vector2[4];
-	static protected Vector2[] mTempUVs = new Vector2[4];
+	[System.NonSerialized] static protected Vector2[] mTempPos = new Vector2[4];
+	[System.NonSerialized] static protected Vector2[] mTempUVs = new Vector2[4];
 
 	/// <summary>
 	/// Convenience function that returns the drawn UVs after flipping gets considered.
@@ -382,7 +439,7 @@ public abstract class UIBasicSprite : UIWidget
 
 	protected void SlicedFill (List<Vector3> verts, List<Vector2> uvs, List<Color> cols, ref Vector4 v, ref Vector4 u, ref Color gc)
 	{
-		Vector4 br = border * pixelSize;
+		var br = border * pixelSize;
 		
 		if (br.x == 0f && br.y == 0f && br.z == 0f && br.w == 0f)
 		{
@@ -481,9 +538,10 @@ public abstract class UIBasicSprite : UIWidget
 
 	[System.Diagnostics.DebuggerHidden]
 	[System.Diagnostics.DebuggerStepThrough]
-	void AddVertexColours (List<Color> cols, ref Color color, int x, int y)
+	protected void AddVertexColours (List<Color> cols, ref Color color, int x, int y)
 	{
-		Vector4 br = border * pixelSize;
+		var br = border * pixelSize;
+
 		if (type == Type.Simple || (br.x == 0f && br.y == 0f && br.z == 0f && br.w == 0f))
 		{
 			if (y == 0 || y == 1)
@@ -497,24 +555,21 @@ public abstract class UIBasicSprite : UIWidget
 		}
 		else
 		{
-			if (y == 0)
-			{
-				cols.Add(color*mGradientBottom);
-			}
+			if (y == 0) cols.Add(color * mGradientBottom);
+
 			if (y == 1)
 			{
 				var gradient = Color.Lerp(mGradientBottom, mGradientTop, br.y / mHeight);
-				cols.Add(color*gradient);
+				cols.Add(color * gradient);
 			}
+			
 			if (y == 2)
 			{
 				var gradient = Color.Lerp(mGradientTop, mGradientBottom, br.w / mHeight);
-				cols.Add(color*gradient);
+				cols.Add(color * gradient);
 			}
-			if (y == 3)
-			{
-				cols.Add(color*mGradientTop);
-			}
+
+			if (y == 3) cols.Add(color * mGradientTop);
 		}
 	}
 
@@ -792,6 +847,21 @@ public abstract class UIBasicSprite : UIWidget
 		{
 			verts.Add(mTempPos[i]);
 			uvs.Add(mTempUVs[i]);
+		}
+
+		// Only adding filled color support for a basic horizontal fill. The sprite fill is hidden in inspector for filled sprites anyway.
+		if (mApplyGradient && mFillDirection == FillDirection.Horizontal)
+		{
+			AddVertexColours(cols, ref c, 1, 1);
+			AddVertexColours(cols, ref c, 1, 2);
+			AddVertexColours(cols, ref c, 2, 2);
+			AddVertexColours(cols, ref c, 2, 1);
+		}
+		else
+		{
+			cols.Add(c);
+			cols.Add(c);
+			cols.Add(c);
 			cols.Add(c);
 		}
 	}

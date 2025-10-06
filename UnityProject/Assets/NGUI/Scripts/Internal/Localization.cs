@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -49,25 +49,25 @@ static public class Localization
 	/// Whether the localization dictionary has been loaded.
 	/// </summary>
 
-	static public bool localizationHasBeenSet = false;
+	[System.NonSerialized] static public bool localizationHasBeenSet = false;
 
 	// Loaded languages, if any
-	static string[] mLanguages = null;
+	[System.NonSerialized] static string[] mLanguages = null;
 
 	// Key = Value dictionary (single language)
-	static Dictionary<string, string> mOldDictionary = new Dictionary<string, string>();
+	[System.NonSerialized] static Dictionary<string, string> mOldDictionary = new Dictionary<string, string>();
 
 	// Key = Values dictionary (multiple languages)
-	static Dictionary<string, string[]> mDictionary = new Dictionary<string, string[]>();
+	[System.NonSerialized] static Dictionary<string, string[]> mDictionary = new Dictionary<string, string[]>();
 
 	// Replacement dictionary forces a specific value instead of the existing entry
-	static Dictionary<string, string> mReplacement = new Dictionary<string, string>();
+	[System.NonSerialized] static Dictionary<string, string> mReplacement = new Dictionary<string, string>();
 
 	// Index of the selected language within the multi-language dictionary
-	static int mLanguageIndex = -1;
+	[System.NonSerialized] static int mLanguageIndex = -1;
 
 	// Currently selected language
-	static string mLanguage;
+	[System.NonSerialized] static string mLanguage;
 
 	/// <summary>
 	/// Localization dictionary. Dictionary key is the localization key.
@@ -146,40 +146,95 @@ static public class Localization
 	static bool LoadDictionary (string value, bool merge = false)
 	{
 		// Try to load the Localization CSV
-		byte[] bytes = null;
+		var retVal = false;
+		localizationHasBeenSet = false;
 
-		if (!localizationHasBeenSet)
+		// Primary localization asset
+		var asset = Resources.Load<TextAsset>(value);
+
+		if (asset != null && LoadCSV(asset.bytes, merge, false))
 		{
-			if (loadFunction == null)
+			retVal = true;
+			merge = true;
+		}
+
+		// All other localization files in the Localization folder
+		var assets = Resources.LoadAll<TextAsset>("Localization");
+
+		if (assets != null && assets.Length > 0)
+		{
+			foreach (var a in assets)
 			{
-				var asset = Resources.Load<TextAsset>("Localization");
-				if (asset != null) bytes = asset.bytes;
-#if W2
-				else bytes = TNet.Tools.ReadFile("Localization.txt") ?? TNet.Tools.ReadFile("Localization.csv");
-#endif
+				if (LoadCSV(a.bytes, merge, false))
+				{
+					retVal = true;
+					merge = true;
+				}
 			}
-			else bytes = loadFunction("Localization");
-			localizationHasBeenSet = true;
 		}
 
-		// Try to load the localization file
-		if (LoadCSV(bytes, merge)) return true;
-		if (string.IsNullOrEmpty(value)) value = mLanguage;
-
-		// If this point was reached, the localization file was not present
-		if (string.IsNullOrEmpty(value)) return false;
-
-		// Not a referenced asset -- try to load it dynamically
-		if (loadFunction == null)
+		// Custom load function
+		if (loadFunction != null && LoadCSV(loadFunction(value), merge, false))
 		{
-			var asset = Resources.Load<TextAsset>(value);
-			if (asset != null) bytes = asset.bytes;
+			retVal = true;
+			merge = true;
 		}
-		else bytes = loadFunction(value);
 
-		if (bytes != null)
+#if TNET
+		// Dynamic resource loading from My Documents/<AppName>/Localization
+		if (Application.isPlaying)
 		{
-			Set(value, bytes);
+			var bytes = TNet.Tools.ReadFile("Localization.txt") ?? TNet.Tools.ReadFile("Localization.csv");
+
+			if (LoadCSV(bytes, merge, false))
+			{
+				retVal = true;
+				merge = true;
+			}
+
+			if (!string.IsNullOrEmpty(TNet.Tools.applicationDirectory))
+			{
+				var path = TNet.Tools.GetDocumentsPath("Localization");
+				var files = TNet.Tools.FindFiles(path, "*.txt");
+
+				if (files != null)
+				{
+					foreach (var f in files)
+					{
+						var b = TNet.Tools.ReadFile(f);
+
+						if (LoadCSV(b, merge, false))
+						{
+							retVal = true;
+							merge = true;
+						}
+					}
+				}
+
+				files = TNet.Tools.FindFiles(path, "*.csv");
+
+				if (files != null)
+				{
+					foreach (var f in files)
+					{
+						var b = TNet.Tools.ReadFile(f);
+
+						if (LoadCSV(b, merge, false))
+						{
+							retVal = true;
+							merge = true;
+						}
+					}
+				}
+			}
+		}
+#endif
+		localizationHasBeenSet = true;
+
+		if (retVal)
+		{
+			if (onLocalize != null) onLocalize();
+			UIRoot.Broadcast("OnLocalize");
 			return true;
 		}
 		return false;
@@ -189,7 +244,7 @@ static public class Localization
 	/// Load the specified language.
 	/// </summary>
 
-	static bool LoadAndSelect (string value)
+	static public bool LoadAndSelect (string value)
 	{
 		if (!string.IsNullOrEmpty(value))
 		{
@@ -223,7 +278,7 @@ static public class Localization
 
 	static public void Set (string languageName, byte[] bytes)
 	{
-		ByteReader reader = new ByteReader(bytes);
+		var reader = new ByteReader(bytes);
 		Set(languageName, reader.ReadDictionary());
 	}
 
@@ -247,13 +302,44 @@ static public class Localization
 	/// Load the specified CSV file.
 	/// </summary>
 
-	static public bool LoadCSV (TextAsset asset, bool merge = false) { return LoadCSV(asset.bytes, asset, merge); }
+	static public bool LoadCSV (TextAsset asset, bool merge = false, bool notify = true) { return LoadCSV(asset.bytes, asset, merge, notify); }
 
 	/// <summary>
 	/// Load the specified CSV file.
 	/// </summary>
 
-	static public bool LoadCSV (byte[] bytes, bool merge = false) { return LoadCSV(bytes, null, merge); }
+	static public bool LoadCSV (byte[] bytes, bool merge = false, bool notify = true) { return LoadCSV(bytes, null, merge, notify); }
+
+	/// <summary>
+	/// Save the entire localization data into the specified path in CSV file format.
+	/// </summary>
+
+	static public void SaveCSV (string path)
+	{
+		var dict = dictionary;
+		var sb = new System.Text.StringBuilder();
+
+		foreach (var d in dict)
+		{
+			sb.Append(d.Key);
+
+			foreach (var v in d.Value)
+			{
+				sb.Append(",\"");
+				sb.Append(v);
+				sb.Append("\"");
+			}
+
+			sb.Append("\n");
+		}
+
+		string dir = System.IO.Path.GetDirectoryName(path);
+
+		if (!string.IsNullOrEmpty(dir) && !System.IO.Directory.Exists(dir))
+			System.IO.Directory.CreateDirectory(dir);
+
+		System.IO.File.WriteAllText(path, sb.ToString());
+	}
 
 	static bool mMerging = false;
 
@@ -272,16 +358,28 @@ static public class Localization
 	/// Load the specified CSV file.
 	/// </summary>
 
-	static bool LoadCSV (byte[] bytes, TextAsset asset, bool merge = false)
+	static bool LoadCSV (byte[] bytes, TextAsset asset, bool merge = false, bool notify = true)
 	{
 		if (bytes == null) return false;
-		ByteReader reader = new ByteReader(bytes);
+		var reader = new ByteReader(bytes);
 
 		// The first line should contain "KEY", followed by languages.
 		var header = reader.ReadCSV();
 
+		if (header == null)
+		{
+			if (asset != null) Debug.LogError("Unable to parse " + asset.name + " as a CSV file", asset);
+			else Debug.LogError("Unable to parse the specified data as a CSV file");
+			return false;
+		}
+
 		// There must be at least two columns in a valid CSV file
-		if (header.size < 2) return false;
+		if (header.size < 2)
+		{
+			Debug.LogWarning("Invalid CSV file: expected at least two columns.", asset);
+			return false;
+		}
+
 		header.RemoveAt(0);
 
 		string[] languagesToAdd = null;
@@ -341,6 +439,7 @@ static public class Localization
 						arr[newSize - 1] = arr[0];
 						newDict.Add(pair.Key, arr);
 					}
+
 					mDictionary = newDict;
 				}
 			}
@@ -369,7 +468,7 @@ static public class Localization
 			mMerging = false;
 		}
 
-		if (merge)
+		if (merge && notify)
 		{
 			if (onLocalize != null) onLocalize();
 			UIRoot.Broadcast("OnLocalize");
@@ -542,16 +641,39 @@ static public class Localization
 		}
 
 		if (mReplacement.ContainsKey(key)) return true;
-		if (mLanguageIndex != -1 && mDictionary.ContainsKey(key)) return true;
+
+		if (mLanguageIndex != -1)
+		{
+			if (mDictionary.ContainsKey(key)) return true;
+			if (mDictionary.ContainsKey(key + "0")) return true;
+		}
+
 		if (mOldDictionary.ContainsKey(key)) return true;
 		return false;
 	}
 
 	/// <summary>
+	/// Localize the specified value. If the value is missing, 'fallback' value is used instead. No warning will be shown if the 'key' value is missing.
+	/// </summary>
+
+	static public string Get (string key, string fallback, bool warnIfMissing = true)
+	{
+		if (Has(key)) return Get(key, warnIfMissing);
+		return Get(fallback, warnIfMissing);
+	}
+
+	/// <summary>
+	/// Get the localized value of chosen key. The 'random seed' is used to retrieve a consistent result in case there are
+	/// multiple entries, for example when requesting "SomeKey" and the loc file has "SomeKey0", "SomeKey1" and "SomeKey2" instead.
+	/// </summary>
+
+	static public string Get (string key, ulong randomSeed) { return Get(key, true, randomSeed); }
+
+	/// <summary>
 	/// Localize the specified value.
 	/// </summary>
 
-	static public string Get (string key, bool warnIfMissing = true)
+	static public string Get (string key, bool warnIfMissing = true, ulong randomSeed = 0)
 	{
 		if (string.IsNullOrEmpty(key)) return null;
 
@@ -564,7 +686,7 @@ static public class Localization
 			return null;
 		}
 
-		string lang = language;
+		var lang = language;
 
 		if (mLanguageIndex == -1)
 		{
@@ -581,18 +703,19 @@ static public class Localization
 		if (mLanguageIndex == -1)
 		{
 			mLanguageIndex = 0;
-			mLanguage = mLanguages[0];
-			Debug.LogWarning("Language not found: " + lang);
+			language = mLanguages[0];
+			PlayerPrefs.SetString("Language", mLanguage);
+			Debug.LogWarning("Language not found: " + lang + ", switching to " + mLanguage);
 		}
 
 		string val;
 		string[] vals;
 
-		UICamera.ControlScheme scheme = UICamera.currentScheme;
+		var scheme = UICamera.currentScheme;
 
 		if (scheme == UICamera.ControlScheme.Touch)
 		{
-			string altKey = key + " Mobile";
+			var altKey = key + " Mobile";
 			if (mReplacement.TryGetValue(altKey, out val)) return val;
 
 			if (mLanguageIndex != -1 && mDictionary.TryGetValue(altKey, out vals))
@@ -604,7 +727,7 @@ static public class Localization
 		}
 		else if (scheme == UICamera.ControlScheme.Controller)
 		{
-			string altKey = key + " Controller";
+			var altKey = key + " Controller";
 			if (mReplacement.TryGetValue(altKey, out val)) return val;
 
 			if (mLanguageIndex != -1 && mDictionary.TryGetValue(altKey, out vals))
@@ -617,16 +740,51 @@ static public class Localization
 
 		if (mReplacement.TryGetValue(key, out val)) return val;
 
-		if (mLanguageIndex != -1 && mDictionary.TryGetValue(key, out vals))
+		if (mLanguageIndex != -1)
 		{
-			if (mLanguageIndex < vals.Length)
+			if (mDictionary.TryGetValue(key, out vals))
 			{
-				string s = vals[mLanguageIndex];
-				if (string.IsNullOrEmpty(s)) s = vals[0];
-				return s;
+				if (mLanguageIndex < vals.Length)
+				{
+					var s = vals[mLanguageIndex];
+					if (string.IsNullOrEmpty(s)) s = vals[0];
+					return s;
+				}
+				return vals[0];
 			}
-			return vals[0];
+			else if (mDictionary.ContainsKey(key + "0"))
+			{
+				// This is a special way of specifying multiple choice values from localization. Instead of specifying an exact value, like "test",
+				// you can specify several, labeled "test0", "test1", "test3", etc, then request them as "test". A random one will be returned.
+				// Up to 20 values are supported (0 through 19, inclusive).
+				var last = 0;
+
+				for (int i = 1; i < 20; ++i)
+				{
+					if (mDictionary.ContainsKey(key + i)) last = i;
+					else break;
+				}
+
+				#if W2
+				if (randomSeed != 0)
+				{
+					var rg = new RandomGenerator((uint)randomSeed);
+					mDictionary.TryGetValue(key + rg.Range(0, last + 1), out vals);
+				}
+				else
+				#endif
+				mDictionary.TryGetValue(key + Random.Range(0, last + 1), out vals);
+
+				if (mLanguageIndex < vals.Length)
+				{
+					var s = vals[mLanguageIndex];
+					if (string.IsNullOrEmpty(s)) s = vals[0];
+					return s;
+				}
+				return vals[0];
+			}
 		}
+
 		if (mOldDictionary.TryGetValue(key, out val)) return val;
 
 #if UNITY_EDITOR
@@ -637,7 +795,7 @@ static public class Localization
 			if (!mIgnoreMissing.Contains(key))
 			{
 				mIgnoreMissing.Add(key);
-				Debug.LogWarning("Localization key not found: '" + key + "' for language " + lang);
+				Debug.LogWarning("Localization key not found: '" + key + "' for language " + mLanguage);
 			}
 		}
 #endif
