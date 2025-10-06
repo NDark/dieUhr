@@ -67,11 +67,11 @@ https://play.google.com/store/apps/details?id=org.ndark.dieuhr
 ![Imgur](https://i.imgur.com/k7wURBi.jpg)
 
 
-# The major update on v4.0 3.0版後的重大更新
+# The major update on v4.0 (4.0版後的重大更新)
 
 1. Add topic "Body". 新增身體部位的主題。
 
-# The major update on v3.0 3.0版後的重大更新
+# The major update on v3.0 (3.0版後的重大更新)
 
 1. Add topic "where". 新增在哪裡的主題。
 1. Really fix the error of ein und eins as h:59 and h:29 , h:31. 修正幾個一分的文法錯誤。
