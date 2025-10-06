@@ -240,7 +240,7 @@ public class LocationSystem : MonoBehaviour
 			answerLabel.text = m_AnswerStrings[ m_TargetIndex ] ;
 			string exampleKey = GetExampleKey( m_TargetIndex ) ;
 			string exampleSentence = Localization.Get( exampleKey );
-			Debug.Log("exampleSentence" + exampleSentence);
+			// Debug.Log("exampleSentence=" + exampleSentence);
 			UpdateExampleContent( exampleSentence ) ;
 			this.IsInAnimation = false ;
 			return true ;
