@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -24,6 +24,12 @@ public class UISprite : UIBasicSprite
 
 	[System.NonSerialized] protected UISpriteData mSprite;
 	[System.NonSerialized] bool mSpriteSet = false;
+
+	/// <summary>
+	/// If set, will automatically make the sprite pixel-perfect every time it's changed.
+	/// </summary>
+
+	[System.NonSerialized] public bool autoMakePixelPerfect = false;
 
 	/// <summary>
 	/// Main texture is assigned on the atlas.
@@ -166,6 +172,7 @@ public class UISprite : UIBasicSprite
 				mSprite = null;
 				mChanged = true;
 				mSpriteSet = false;
+				MarkAsChanged();
 			}
 			else if (mSpriteName != value)
 			{
@@ -174,6 +181,8 @@ public class UISprite : UIBasicSprite
 				mSprite = null;
 				mChanged = true;
 				mSpriteSet = false;
+				MarkAsChanged();
+				if (autoMakePixelPerfect) MakePixelPerfect();
 			}
 		}
 	}
@@ -201,66 +210,6 @@ public class UISprite : UIBasicSprite
 			{
 				centerType = value ? AdvancedType.Sliced : AdvancedType.Invisible;
 				MarkAsChanged();
-			}
-		}
-	}
-
-	/// <summary>
-	/// Whether a gradient will be applied.
-	/// </summary>
-
-	public bool applyGradient
-	{
-		get
-		{
-			return mApplyGradient;
-		}
-		set
-		{
-			if (mApplyGradient != value)
-			{
-				mApplyGradient = value;
-				MarkAsChanged();
-			}
-		}
-	}
-
-	/// <summary>
-	/// Top gradient color.
-	/// </summary>
-
-	public Color gradientTop
-	{
-		get
-		{
-			return mGradientTop;
-		}
-		set
-		{
-			if (mGradientTop != value)
-			{
-				mGradientTop = value;
-				if (mApplyGradient) MarkAsChanged();
-			}
-		}
-	}
-
-	/// <summary>
-	/// Bottom gradient color.
-	/// </summary>
-
-	public Color gradientBottom
-	{
-		get
-		{
-			return mGradientBottom;
-		}
-		set
-		{
-			if (mGradientBottom != value)
-			{
-				mGradientBottom = value;
-				if (mApplyGradient) MarkAsChanged();
 			}
 		}
 	}
@@ -435,7 +384,7 @@ public class UISprite : UIBasicSprite
 				}
 			}
 
-			if (mDrawRegion.x != 0f || mDrawRegion.y != 0f || mDrawRegion.z != 1f || mDrawRegion.w != 0f)
+			if (mDrawRegion.x != 0f || mDrawRegion.y != 0f || mDrawRegion.z != 1f || mDrawRegion.w != 1f)
 			{
 				float fw, fh;
 
@@ -450,6 +399,7 @@ public class UISprite : UIBasicSprite
 					fw = (br.x + br.z);
 					fh = (br.y + br.w);
 				}
+
 				var vx = Mathf.Lerp(x0, x1 - fw, mDrawRegion.x);
 				var vy = Mathf.Lerp(y0, y1 - fh, mDrawRegion.y);
 				var vz = Mathf.Lerp(x0 + fw, x1, mDrawRegion.z);

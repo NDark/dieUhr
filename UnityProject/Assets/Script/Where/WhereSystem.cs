@@ -563,7 +563,7 @@ public class WhereSystem : MonoBehaviour
 			{
 				m_CurrentSceneKey = sceneEnum.Current.Key ;
 				m_CurrentScene = sceneEnum.Current.Value ;
-				Debug.LogWarning ("RandonmizeScene() m_CurrentSceneKey=" + m_CurrentSceneKey);
+				// Debug.LogWarning ("RandonmizeScene() m_CurrentSceneKey=" + m_CurrentSceneKey);
 				break ;
 			}
 			++count ;

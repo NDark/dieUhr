@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -39,25 +39,25 @@ public class UIDragDropItem : MonoBehaviour
 
 	#region Common functionality
 
-	[System.NonSerialized] protected Transform mTrans;
-	[System.NonSerialized] protected Transform mParent;
-	[System.NonSerialized] protected Collider mCollider;
-	[System.NonSerialized] protected Collider2D mCollider2D;
-	[System.NonSerialized] protected UIButton mButton;
-	[System.NonSerialized] protected UIRoot mRoot;
-	[System.NonSerialized] protected UIGrid mGrid;
-	[System.NonSerialized] protected UITable mTable;
-	[System.NonSerialized] protected float mDragStartTime = 0f;
-	[System.NonSerialized] protected UIDragScrollView mDragScrollView = null;
-	[System.NonSerialized] protected bool mPressed = false;
-	[System.NonSerialized] protected bool mDragging = false;
-	[System.NonSerialized] protected UICamera.MouseOrTouch mTouch;
+	[NonSerialized] protected Transform mTrans;
+	[NonSerialized] protected Transform mParent;
+	[NonSerialized] protected Collider mCollider;
+	[NonSerialized] protected Collider2D mCollider2D;
+	[NonSerialized] protected UIButton mButton;
+	[NonSerialized] protected UIRoot mRoot;
+	[NonSerialized] protected UIGrid mGrid;
+	[NonSerialized] protected UITable mTable;
+	[NonSerialized] protected float mDragStartTime = 0f;
+	[NonSerialized] protected UIDragScrollView mDragScrollView = null;
+	[NonSerialized] protected bool mPressed = false;
+	[NonSerialized] protected bool mDragging = false;
+	[NonSerialized] protected UICamera.MouseOrTouch mTouch;
 
 	/// <summary>
 	/// List of items that are currently being dragged.
 	/// </summary>
 
-	[System.NonSerialized] static public List<UIDragDropItem> draggedItems = new List<UIDragDropItem>();
+	[NonSerialized] static public List<UIDragDropItem> draggedItems = new List<UIDragDropItem>();
 
 	/// <summary>
 	/// Whether this object is currently being dragged.
@@ -65,9 +65,25 @@ public class UIDragDropItem : MonoBehaviour
 
 	static public bool IsDragged (GameObject go)
 	{
-		foreach (var drag in draggedItems) if (drag.gameObject == go) return true;
+		for (int i = 0; i < draggedItems.Count; ++i)
+		{
+			var drag = draggedItems[i];
+
+			if (!drag)
+			{
+				Debug.LogWarning("UIDragDropItem has been destroyed without calling its OnDragDropEnd() function");
+				draggedItems.RemoveAt(i--);
+			}
+			else if (drag.gameObject == go) return true;
+		}
 		return false;
 	}
+
+	/// <summary>
+	/// Checked before the drag operation can begin. Can be overwritten with conditions.
+	/// </summary>
+
+	public virtual bool canBeDragged { get { return true; } set { } }
 
 	protected virtual void Awake ()
 	{
@@ -104,7 +120,7 @@ public class UIDragDropItem : MonoBehaviour
 		mDragScrollView = GetComponent<UIDragScrollView>();
 	}
 
-	[System.NonSerialized] static int mIgnoreClick = 0;
+	[NonSerialized] static int mIgnoreClick = 0;
 
 	/// <summary>
 	/// Record the time the item was pressed on.
@@ -132,7 +148,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void OnClick ()
 	{
-		if (mIgnoreClick == Time.frameCount) return;
+		if (!interactable || mIgnoreClick == Time.frameCount || !canBeDragged) return;
 
 		if (clickToDrag && !mDragging && UICamera.currentTouchID == -1 && draggedItems.Count == 0)
 		{
@@ -179,7 +195,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void Update ()
 	{
-		if (restriction == Restriction.PressAndHold)
+		if (restriction == Restriction.PressAndHold && canBeDragged)
 		{
 			if (mPressed && !mDragging && mDragStartTime < RealTime.time)
 				StartDragging();
@@ -192,7 +208,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void OnDragStart ()
 	{
-		if (!interactable) return;
+		if (!interactable || !canBeDragged || !mPressed) return;
 		if (!enabled || mTouch != UICamera.currentTouch) return;
 
 		// If we have a restriction, check to see if its condition has been met first
@@ -214,6 +230,7 @@ public class UIDragDropItem : MonoBehaviour
 				return;
 			}
 		}
+
 		StartDragging();
 	}
 
@@ -223,7 +240,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	public virtual UIDragDropItem StartDragging ()
 	{
-		if (!interactable || !transform || !transform.parent) return null;
+		if (!interactable || !canBeDragged || !transform || !transform.parent) return null;
 
 		if (!mDragging)
 		{
@@ -277,7 +294,13 @@ public class UIDragDropItem : MonoBehaviour
 	/// Called on the cloned object when it was duplicated.
 	/// </summary>
 
-	protected virtual void OnClone (GameObject original) { }
+	protected virtual void OnClone (GameObject original)
+	{
+		var o = original.GetComponent<UIDragDropItem>();
+		mParent = o.mParent;
+		mGrid = o.mGrid;
+		mTable = o.mTable;
+	}
 
 	/// <summary>
 	/// Perform the dragging.
@@ -315,7 +338,7 @@ public class UIDragDropItem : MonoBehaviour
 		}
 	}
 
-#endregion
+	#endregion
 
 	/// <summary>
 	/// Perform any logic related to starting the drag & drop operation.
@@ -323,8 +346,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void OnDragDropStart ()
 	{
-		if (!draggedItems.Contains(this))
-			draggedItems.Add(this);
+		if (!draggedItems.Contains(this)) draggedItems.Add(this);
 
 		// Automatically disable the scroll view
 		if (mDragScrollView != null) mDragScrollView.enabled = false;
@@ -343,14 +365,14 @@ public class UIDragDropItem : MonoBehaviour
 		if (UIDragDropRoot.root != null)
 			mTrans.parent = UIDragDropRoot.root;
 
-		Vector3 pos = mTrans.localPosition;
+		var pos = mTrans.localPosition;
 		pos.z = 0f;
 		mTrans.localPosition = pos;
 
-		TweenPosition tp = GetComponent<TweenPosition>();
+		var tp = GetComponent<TweenPosition>();
 		if (tp != null) tp.enabled = false;
 
-		SpringPosition sp = GetComponent<SpringPosition>();
+		var sp = GetComponent<SpringPosition>();
 		if (sp != null) sp.enabled = false;
 
 		// Notify the widgets that the parent has changed
@@ -366,7 +388,12 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void OnDragDropMove (Vector2 delta)
 	{
-		if (mParent != null) mTrans.localPosition += mTrans.InverseTransformDirection((Vector3)delta);
+		if (mParent != null)
+		{
+			var v3 = mTrans.InverseTransformDirection((Vector3)delta);
+			if (mRoot != null) v3 = mRoot.transform.TransformDirection(v3);
+			mTrans.localPosition += v3;
+		}
 	}
 
 	/// <summary>
@@ -387,7 +414,7 @@ public class UIDragDropItem : MonoBehaviour
 			else if (mCollider2D != null) mCollider2D.enabled = true;
 
 			// Is there a droppable container?
-			UIDragDropContainer container = surface ? NGUITools.FindInParents<UIDragDropContainer>(surface) : null;
+			var container = surface ? NGUITools.FindInParents<UIDragDropContainer>(surface) : null;
 
 			if (container != null)
 			{
@@ -397,6 +424,7 @@ public class UIDragDropItem : MonoBehaviour
 				Vector3 pos = mTrans.localPosition;
 				pos.z = 0f;
 				mTrans.localPosition = pos;
+				mParent = mTrans.parent;
 			}
 			else
 			{
@@ -405,7 +433,6 @@ public class UIDragDropItem : MonoBehaviour
 			}
 
 			// Update the grid and table references
-			mParent = mTrans.parent;
 			mGrid = NGUITools.FindInParents<UIGrid>(mParent);
 			mTable = NGUITools.FindInParents<UITable>(mParent);
 
@@ -419,6 +446,25 @@ public class UIDragDropItem : MonoBehaviour
 			if (mGrid != null) mGrid.repositionNow = true;
 		}
 
+		if (surface)
+		{
+			var cam = UICamera.FindCameraForLayer(surface.layer);
+
+			if (cam && !cam.eventsGoToColliders)
+			{
+				if (cam.eventType == UICamera.EventType.World_3D)
+				{
+					var rb = surface.GetComponentInParent<Rigidbody>();
+					if (rb) surface = rb.gameObject;
+				}
+				else if (cam.eventType == UICamera.EventType.World_2D)
+				{
+					var rb = surface.GetComponentInParent<Rigidbody2D>();
+					if (rb) surface = rb.gameObject;
+				}
+			}
+		}
+
 		// We're now done
 		OnDragDropEnd(surface);
 
@@ -429,7 +475,7 @@ public class UIDragDropItem : MonoBehaviour
 	/// Called at the end of OnDragDropRelease, indicating that the cloned object should now be destroyed.
 	/// </summary>
 
-	protected virtual void DestroySelf () { NGUITools.Destroy(gameObject); }
+	protected virtual void DestroySelf () { Destroy(gameObject); }
 
 	/// <summary>
 	/// Function called when the object gets reparented after the drop operation finishes.

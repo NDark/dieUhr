@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -104,6 +104,8 @@ public class UIFontMaker : EditorWindow
 		Repaint();
 	}
 
+	[System.NonSerialized] static bool s_working = false;
+
 	/// <summary>
 	/// Draw the UI for this tool.
 	/// </summary>
@@ -188,6 +190,8 @@ public class UIFontMaker : EditorWindow
 			// Choose the font style if there are multiple faces present
 			if (mType == FontType.GeneratedBitmap)
 			{
+				NGUISettings.FMPadding = EditorGUILayout.IntField("Padding", NGUISettings.FMPadding, GUILayout.Width(120f));
+
 				if (!FreeType.isPresent)
 				{
 					string filename = (Application.platform == RuntimePlatform.WindowsEditor) ? "FreeType.dll" : "FreeType.dylib";
@@ -216,7 +220,7 @@ public class UIFontMaker : EditorWindow
 				}
 				else if (ttf != null)
 				{
-					string[] faces = FreeType.GetFaces(ttf);
+					var faces = FreeType.GetFaces(ttf);
 
 					if (faces != null)
 					{
@@ -376,7 +380,7 @@ public class UIFontMaker : EditorWindow
 			}
 		}
 
-		if (create == Create.None) return;
+		if (s_working || create == Create.None) return;
 
 		// Open the "Save As" file dialog
 		var path = EditorUtility.SaveFilePanelInProject("Save As", "New Font.asset", "asset", "Save font as...", NGUISettings.currentPath);
@@ -405,6 +409,9 @@ public class UIFontMaker : EditorWindow
 			asset.dynamicFont = NGUISettings.FMFont;
 			asset.dynamicFontStyle = NGUISettings.fontStyle;
 			asset.defaultSize = NGUISettings.FMSize;
+
+			var kerning = FreeType.GetKerning(NGUISettings.FMFont, NGUISettings.FMSize, mFaceIndex, NGUISettings.charsToInclude);
+			asset.SetKerning(kerning);
 		}
 		else if (create == Create.Import)
 		{
@@ -460,11 +467,14 @@ public class UIFontMaker : EditorWindow
 			BMFont bmFont;
 			Texture2D tex;
 
+			s_working = true;
+
 			if (FreeType.CreateFont(
 				NGUISettings.FMFont,
 				NGUISettings.FMSize, mFaceIndex,
 				NGUISettings.fontKerning,
-				NGUISettings.charsToInclude, 1, out bmFont, out tex))
+				NGUISettings.charsToInclude,
+				NGUISettings.FMPadding, out bmFont, out tex))
 			{
 				asset.bmFont = bmFont;
 				tex.name = fontName;
@@ -472,7 +482,7 @@ public class UIFontMaker : EditorWindow
 				if (NGUISettings.atlas != null)
 				{
 					// Add this texture to the atlas and destroy it
-					UIAtlasMaker.AddOrUpdate(NGUISettings.atlas, tex);
+					UIAtlasMaker.AddOrUpdate(NGUISettings.atlas, tex, NGUISettings.FMPadding);
 					NGUITools.DestroyImmediate(tex);
 					NGUISettings.fontTexture = null;
 					tex = null;
@@ -518,13 +528,22 @@ public class UIFontMaker : EditorWindow
 					asset.atlas = null;
 					asset.material = mat;
 				}
+
+				s_working = false;
 			}
-			else return;
+			else
+			{
+				s_working = false;
+				return;
+			}
 		}
 
 		if (asset != null)
 		{
-			AssetDatabase.CreateAsset(asset, path);
+			var existing = AssetDatabase.LoadMainAssetAtPath(path);
+			if (existing != null) EditorUtility.CopySerialized(asset, existing);
+			else AssetDatabase.CreateAsset(asset, path);
+
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 

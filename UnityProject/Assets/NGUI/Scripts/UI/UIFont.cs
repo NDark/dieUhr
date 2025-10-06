@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 // Dynamic font support contributed by the NGUI community members:
@@ -36,6 +36,21 @@ public class UIFont : MonoBehaviour, INGUIFont
 	[System.NonSerialized] UISpriteData mSprite = null;
 	[System.NonSerialized] int mPMA = -1;
 	[System.NonSerialized] int mPacked = -1;
+
+	/// <summary>
+	/// Explicitly specified font type. Legacy behaviour would always determine this automatically in the past.
+	/// </summary>
+
+	public NGUIFontType type
+	{
+		get
+		{
+			if (replacement != null) return NGUIFontType.Reference;
+			if (dynamicFont != null) return NGUIFontType.Dynamic;
+			return NGUIFontType.Bitmap;
+		}
+		set { }
+	}
 
 	/// <summary>
 	/// Access to the BMFont class directly.
@@ -166,6 +181,8 @@ public class UIFont : MonoBehaviour, INGUIFont
 			}
 		}
 	}
+
+	public INGUIAtlas symbolAtlas { get { return atlas; } }
 
 	/// <summary>
 	/// Convenience method that returns the chosen sprite inside the atlas.
@@ -380,6 +397,25 @@ public class UIFont : MonoBehaviour, INGUIFont
 	}
 
 	/// <summary>
+	/// This feature was added after deprecating this class, so it's not actually used here.
+	/// </summary>
+
+	public int spaceWidth
+	{
+		get
+		{
+			var rep = replacement;
+			if (rep != null) return rep.spaceWidth;
+			return 0;
+		}
+		set
+		{
+			var rep = replacement;
+			if (rep != null) rep.spaceWidth = value;
+		}
+	}
+
+	/// <summary>
 	/// Retrieves the sprite used by the font, if any.
 	/// </summary>
 
@@ -399,7 +435,8 @@ public class UIFont : MonoBehaviour, INGUIFont
 				if (mSprite == null) mFont.spriteName = null;
 				else UpdateUVRect();
 
-				for (int i = 0, imax = mSymbols.Count; i < imax; ++i) symbols[i].MarkAsChanged();
+				var sym = symbols;
+				for (int i = 0, imax = sym.Count; i < imax; ++i) sym[i].MarkAsChanged();
 			}
 			return mSprite;
 		}
@@ -583,16 +620,17 @@ public class UIFont : MonoBehaviour, INGUIFont
 		{
 			var lbl = labels[i];
 
-			if (lbl.enabled && NGUITools.GetActive(lbl.gameObject) && NGUITools.CheckIfRelated(this, lbl.bitmapFont as INGUIFont))
+			if (lbl.enabled && NGUITools.GetActive(lbl.gameObject) && NGUITools.CheckIfRelated(this, lbl.font as INGUIFont))
 			{
-				var fnt = lbl.bitmapFont;
-				lbl.bitmapFont = null;
-				lbl.bitmapFont = fnt;
+				var fnt = lbl.font;
+				lbl.font = null;
+				lbl.font = fnt;
 			}
 		}
 
 		// Clear all symbols
-		for (int i = 0, imax = symbols.Count; i < imax; ++i) symbols[i].MarkAsChanged();
+		var sym = symbols;
+		for (int i = 0, imax = sym.Count; i < imax; ++i) sym[i].MarkAsChanged();
 	}
 
 	/// <summary>
@@ -645,13 +683,13 @@ public class UIFont : MonoBehaviour, INGUIFont
 	{
 		for (int i = 0, imax = mSymbols.Count; i < imax; ++i)
 		{
-			BMSymbol sym = mSymbols[i];
+			var sym = mSymbols[i];
 			if (sym.sequence == sequence) return sym;
 		}
 
 		if (createIfMissing)
 		{
-			BMSymbol sym = new BMSymbol();
+			var sym = new BMSymbol();
 			sym.sequence = sequence;
 			mSymbols.Add(sym);
 			return sym;
@@ -673,13 +711,13 @@ public class UIFont : MonoBehaviour, INGUIFont
 		// Run through all symbols
 		for (int i = 0; i < count; ++i)
 		{
-			BMSymbol sym = mSymbols[i];
+			var sym = mSymbols[i];
 
 			// If the symbol's length is longer, move on
 			int symbolLength = sym.length;
 			if (symbolLength == 0 || textLength < symbolLength) continue;
 
-			bool match = true;
+			var match = true;
 
 			// Match the characters
 			for (int c = 0; c < symbolLength; ++c)
@@ -701,11 +739,12 @@ public class UIFont : MonoBehaviour, INGUIFont
 	/// Add a new symbol to the font.
 	/// </summary>
 
-	public void AddSymbol (string sequence, string spriteName)
+	public BMSymbol AddSymbol (string sequence, string spriteName)
 	{
-		BMSymbol symbol = GetSymbol(sequence, true);
+		var symbol = GetSymbol(sequence, true);
 		symbol.spriteName = spriteName;
 		MarkAsChanged();
+		return symbol;
 	}
 
 	/// <summary>
@@ -714,7 +753,7 @@ public class UIFont : MonoBehaviour, INGUIFont
 
 	public void RemoveSymbol (string sequence)
 	{
-		BMSymbol symbol = GetSymbol(sequence, false);
+		var symbol = GetSymbol(sequence, false);
 		if (symbol != null) symbols.Remove(symbol);
 		MarkAsChanged();
 	}
@@ -725,7 +764,7 @@ public class UIFont : MonoBehaviour, INGUIFont
 
 	public void RenameSymbol (string before, string after)
 	{
-		BMSymbol symbol = GetSymbol(before, false);
+		var symbol = GetSymbol(before, false);
 		if (symbol != null) symbol.sequence = after;
 		MarkAsChanged();
 	}

@@ -3,9 +3,10 @@
 --- !u!1 &181278
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 442230}
   - component: {fileID: 11499106}
@@ -18,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &442230
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -31,19 +33,20 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11499106
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181278}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 19240497f89a6914c9500828eeef85d0, type: 2}
+  material: {fileID: 0}
   mSprites:
   - name: Arrow
-    x: 245
+    x: 329
     y: 192
     width: 64
     height: 64
@@ -56,7 +59,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ArrowBlue
-    x: 126
+    x: 129
     y: 155
     width: 118
     height: 101
@@ -68,9 +71,35 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: button04_small
+    x: 255
+    y: 32
+    width: 62
+    height: 62
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Button13
+    x: 336
+    y: 154
+    width: 37
+    height: 37
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: Correct
-    x: 0
-    y: 16
+    x: 126
+    y: 9
     width: 128
     height: 118
     borderLeft: 0
@@ -81,9 +110,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: information
+    x: 0
+    y: 128
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: MessageBox
-    x: 210
-    y: 74
+    x: 255
+    y: 95
     width: 80
     height: 80
     borderLeft: 25
@@ -95,8 +137,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: MessageBoxWhite
-    x: 129
-    y: 74
+    x: 248
+    y: 176
     width: 80
     height: 80
     borderLeft: 25
@@ -109,7 +151,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: OctagonBackground
     x: 0
-    y: 135
+    y: 6
     width: 125
     height: 121
     borderLeft: 30
@@ -121,8 +163,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Question_Mark
-    x: 129
-    y: 11
+    x: 318
+    y: 32
     width: 46
     height: 62
     borderLeft: 0
@@ -134,8 +176,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: WhileSliced
-    x: 0
-    y: 6
+    x: 129
+    y: 145
     width: 9
     height: 9
     borderLeft: 3
@@ -147,33 +189,6 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   mPixelSize: 1
-  mReplacement: {fileID: 0}
+  mReplacement: {fileID: 11400000, guid: 4a0445f5c2392d447857ab3cc51b9f6d, type: 2}
   mCoordinates: 0
   sprites: []
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: mSprites.Array.data[1].borderLeft
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: mSprites.Array.data[1].borderRight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: mSprites.Array.data[1].borderBottom
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: mSprites.Array.data[1].borderTop
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 181278}
-  m_IsPrefabParent: 1

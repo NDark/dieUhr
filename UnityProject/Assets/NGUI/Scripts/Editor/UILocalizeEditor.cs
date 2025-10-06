@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEditor;
 using System.Collections.Generic;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(UILocalize), true)]
+[CustomEditor(typeof(UILocalize), false)]
 public class UILocalizeEditor : Editor
 {
 	List<string> mKeys;

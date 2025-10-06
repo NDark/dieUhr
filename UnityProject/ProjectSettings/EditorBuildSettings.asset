@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/Init.unity
+    guid: 087239d5bd0b9344aa7319d71c5e6ab8
+  - enabled: 1
     path: Assets/Scene/Title.unity
     guid: b4e9ee8c9e5e41740a0c4fa417451f0c
   - enabled: 1
@@ -23,3 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/CrossPlay.unity
     guid: cfefb4d797cb9924b801b1a2abfd066f
+  - enabled: 1
+    path: Assets/Scene/Body.unity
+    guid: ac31505ea78118348b48e1aba56e146c
+  m_configObjects: {}

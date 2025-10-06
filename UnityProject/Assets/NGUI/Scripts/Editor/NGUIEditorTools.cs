@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //			  NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using System.Collections.Generic;
@@ -80,7 +80,7 @@ static public class NGUIEditorTools
 
 	private static Texture2D CreateDummyTex ()
 	{
-		Texture2D tex = new Texture2D(1, 1);
+		var tex = new Texture2D(1, 1);
 		tex.name = "[Generated] Dummy Texture";
 		tex.hideFlags = HideFlags.DontSave;
 		tex.filterMode = FilterMode.Point;
@@ -95,14 +95,24 @@ static public class NGUIEditorTools
 
 	private static Texture2D CreateCheckerTex (Color c0, Color c1)
 	{
-		Texture2D tex = new Texture2D(16, 16);
+		var tex = new Texture2D(128, 128);
 		tex.name = "[Generated] Checker Texture";
 		tex.hideFlags = HideFlags.DontSave;
 
-		for (int y = 0; y < 8; ++y) for (int x = 0; x < 8; ++x) tex.SetPixel(x, y, c1);
-		for (int y = 8; y < 16; ++y) for (int x = 0; x < 8; ++x) tex.SetPixel(x, y, c0);
-		for (int y = 0; y < 8; ++y) for (int x = 8; x < 16; ++x) tex.SetPixel(x, y, c0);
-		for (int y = 8; y < 16; ++y) for (int x = 8; x < 16; ++x) tex.SetPixel(x, y, c1);
+		for (int iy = 0; iy < 8; ++iy)
+		{
+			var oy = iy * 16;
+
+			for (int ix = 0; ix < 8; ++ix)
+			{
+				var ox = ix * 16;
+
+				for (int y = 0; y < 8; ++y) for (int x = 0; x < 8; ++x) tex.SetPixel(ox + x, oy + y, c1);
+				for (int y = 8; y < 16; ++y) for (int x = 0; x < 8; ++x) tex.SetPixel(ox + x, oy + y, c0);
+				for (int y = 0; y < 8; ++y) for (int x = 8; x < 16; ++x) tex.SetPixel(ox + x, oy + y, c0);
+				for (int y = 8; y < 16; ++y) for (int x = 8; x < 16; ++x) tex.SetPixel(ox + x, oy + y, c1);
+			}
+		}
 
 		tex.Apply();
 		tex.filterMode = FilterMode.Point;
@@ -140,20 +150,30 @@ static public class NGUIEditorTools
 
 	static public void DrawTiledTexture (Rect rect, Texture tex)
 	{
-		GUI.BeginGroup(rect);
-		{
-			int width = Mathf.RoundToInt(rect.width);
-			int height = Mathf.RoundToInt(rect.height);
+		int width = Mathf.RoundToInt(rect.width);
+		int height = Mathf.RoundToInt(rect.height);
+		var tw = tex.width;
+		var th = tex.height;
 
-			for (int y = 0; y < height; y += tex.height)
+		if (width <= tw && height <= th)
+		{
+			var tc = new Rect(0f, 0f, (float)width / tw, (float)height / th);
+			GUI.DrawTextureWithTexCoords(rect, tex, tc, true);
+		}
+		else
+		{
+			GUI.BeginGroup(rect);
 			{
-				for (int x = 0; x < width; x += tex.width)
+				for (int y = 0; y < height; y += th)
 				{
-					GUI.DrawTexture(new Rect(x, y, tex.width, tex.height), tex);
+					for (int x = 0; x < width; x += tw)
+					{
+						GUI.DrawTexture(new Rect(x, y, tw, th), tex);
+					}
 				}
 			}
+			GUI.EndGroup();
 		}
-		GUI.EndGroup();
 	}
 
 	/// <summary>
@@ -285,12 +305,30 @@ static public class NGUIEditorTools
 
 		if (Event.current.type == EventType.Repaint)
 		{
-			Texture2D tex = blankTexture;
-			Rect rect = GUILayoutUtility.GetLastRect();
+			var tex = blankTexture;
+			var rect = GUILayoutUtility.GetLastRect();
 			GUI.color = new Color(0f, 0f, 0f, 0.25f);
 			GUI.DrawTexture(new Rect(0f, rect.yMin + 6f, Screen.width, 4f), tex);
 			GUI.DrawTexture(new Rect(0f, rect.yMin + 6f, Screen.width, 1f), tex);
 			GUI.DrawTexture(new Rect(0f, rect.yMin + 9f, Screen.width, 1f), tex);
+			GUI.color = Color.white;
+		}
+	}
+
+	/// <summary>
+	/// Draw a visible thin separator in addition to adding some padding.
+	/// </summary>
+
+	static public void DrawThinSeparator ()
+	{
+		GUILayout.Space(4f);
+
+		if (Event.current.type == EventType.Repaint)
+		{
+			var tex = blankTexture;
+			var rect = GUILayoutUtility.GetLastRect();
+			GUI.color = new Color(0f, 0f, 0f, 0.25f);
+			GUI.DrawTexture(new Rect(0f, rect.yMin, Screen.width, 2f), tex);
 			GUI.color = Color.white;
 		}
 	}
@@ -480,27 +518,31 @@ static public class NGUIEditorTools
 	static public bool MakeTextureReadable (string path, bool force)
 	{
 		if (string.IsNullOrEmpty(path)) return false;
-		TextureImporter ti = AssetImporter.GetAtPath(path) as TextureImporter;
+		var ti = AssetImporter.GetAtPath(path) as TextureImporter;
 		if (ti == null) return false;
 
-		TextureImporterSettings settings = new TextureImporterSettings();
+		var settings = new TextureImporterSettings();
 		ti.ReadTextureSettings(settings);
 
-		if (force || !settings.readable || settings.npotScale != TextureImporterNPOTScale.None)
+		if (force || !settings.readable || settings.npotScale != TextureImporterNPOTScale.None || ti.textureCompression != TextureImporterCompression.Uncompressed)
 		{
 			settings.readable = true;
-#if !UNITY_4_7 && !UNITY_5_3 && !UNITY_5_4
+
 			if (NGUISettings.trueColorAtlas)
 			{
 				var platform = ti.GetDefaultPlatformTextureSettings();
 				platform.format = TextureImporterFormat.RGBA32;
 			}
-#else
-			if (NGUISettings.trueColorAtlas) settings.textureFormat = TextureImporterFormat.AutomaticTruecolor;
-#endif
+
 			settings.npotScale = TextureImporterNPOTScale.None;
+			ti.textureCompression = TextureImporterCompression.Uncompressed;
 			ti.SetTextureSettings(settings);
+
+#if UNITY_5_6
 			AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate | ImportAssetOptions.ForceSynchronousImport);
+#else
+			ti.SaveAndReimport();
+#endif
 		}
 		return true;
 	}
@@ -519,38 +561,31 @@ static public class NGUIEditorTools
 		ti.ReadTextureSettings(settings);
 
 		if (force || settings.readable ||
-#if UNITY_5_5_OR_NEWER
 			ti.maxTextureSize < 4096 ||
 			(NGUISettings.trueColorAtlas && ti.textureCompression != TextureImporterCompression.Uncompressed) ||
-#else
-			settings.maxTextureSize < 4096 ||
-#endif
 			settings.wrapMode != TextureWrapMode.Clamp ||
 			settings.npotScale != TextureImporterNPOTScale.ToNearest)
 		{
 			settings.readable = false;
-#if !UNITY_4_7 && !UNITY_5_3 && !UNITY_5_4
 			ti.maxTextureSize = 4096;
-#else
-			settings.maxTextureSize = 4096;
-#endif
 			settings.wrapMode = TextureWrapMode.Clamp;
 			settings.npotScale = TextureImporterNPOTScale.ToNearest;
 
 			if (NGUISettings.trueColorAtlas)
 			{
-#if UNITY_5_5_OR_NEWER
 				ti.textureCompression = TextureImporterCompression.Uncompressed;
-#else
-				settings.textureFormat = TextureImporterFormat.ARGB32;
-#endif
 				settings.filterMode = FilterMode.Trilinear;
 			}
 
 			settings.aniso = 4;
 			settings.alphaIsTransparency = alphaTransparency;
 			ti.SetTextureSettings(settings);
+			
+#if UNITY_5_6
 			AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate | ImportAssetOptions.ForceSynchronousImport);
+#else
+			ti.SaveAndReimport();
+#endif
 		}
 		return true;
 	}
@@ -567,7 +602,7 @@ static public class NGUIEditorTools
 			else if (!MakeTextureAnAtlas(path, force, alphaTransparency)) return null;
 			//return AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D)) as Texture2D;
 
-			Texture2D tex = AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D)) as Texture2D;
+			var tex = AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D)) as Texture2D;
 			AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 			return tex;
 		}
@@ -582,7 +617,7 @@ static public class NGUIEditorTools
 	{
 		if (tex != null)
 		{
-			string path = AssetDatabase.GetAssetPath(tex.GetInstanceID());
+			var path = AssetDatabase.GetAssetPath(tex.GetInstanceID());
 			return ImportTexture(path, forInput, force, alphaTransparency);
 		}
 		return null;
@@ -1151,7 +1186,7 @@ static public class NGUIEditorTools
 					mEditedName = null;
 				}
 
-				string newName = GUILayout.TextField(string.IsNullOrEmpty(mEditedName) ? spriteName : mEditedName);
+				var newName = GUILayout.TextField(string.IsNullOrEmpty(mEditedName) ? spriteName : mEditedName);
 
 				if (newName != spriteName)
 				{
@@ -1183,6 +1218,9 @@ static public class NGUIEditorTools
 							mLastSprite = newName;
 							spriteName = newName;
 							mEditedName = null;
+
+							var na = atlas as NGUIAtlas;
+							if (na != null) na.RebuildSpriteCache();
 
 							NGUITools.SetDirty(atlas as Object, "Edit Sprite Name");
 							NGUISettings.atlas = atlas;
@@ -1253,7 +1291,7 @@ static public class NGUIEditorTools
 	}
 
 #if UNITY_2018_3_OR_NEWER
-	// Contributed by B9 of https://discord.gg/tasharen
+	// Contributed by B9 of https://discord.com/invite/tasharen
 	static void OpenAsset (GameObject go)
 	{
 		// Supporting opening of prefabs in Play mode is a bit of a can of worms if target might have ExecuteInEditMode
@@ -1739,17 +1777,17 @@ static public class NGUIEditorTools
 
 	static public List<UIWidget> SceneViewRaycast (Vector2 mousePos)
 	{
-		List<UIWidget> list = new List<UIWidget>();
+		var list = new List<UIWidget>();
 
 		for (int i = 0; i < UIPanel.list.Count; ++i)
 		{
-			UIPanel p = UIPanel.list[i];
+			var p = UIPanel.list[i];
 
 			for (int b = 0; b < p.widgets.Count; ++b)
 			{
-				UIWidget w = p.widgets[b];
-				if (!w.isVisible) continue;
-				Vector3[] corners = w.worldCorners;
+				var w = p.widgets[b];
+				if (!w.isVisible || !w.isSelectable) continue;
+				var corners = w.worldCorners;
 				if (SceneViewDistanceToRectangle(corners, mousePos) == 0f)
 					list.Add(w);
 			}
@@ -1774,7 +1812,7 @@ static public class NGUIEditorTools
 	static public bool SelectWidget (GameObject start, Vector2 pos, bool inFront)
 	{
 		GameObject go = null;
-		List<UIWidget> widgets = SceneViewRaycast(pos);
+		var widgets = SceneViewRaycast(pos);
 		if (widgets == null || widgets.Count == 0) return false;
 		bool found = false;
 
@@ -1784,13 +1822,14 @@ static public class NGUIEditorTools
 			{
 				for (int i = 0; i < widgets.Count; ++i)
 				{
-					UIWidget w = widgets[i];
+					var w = widgets[i];
 
 					if (w.cachedGameObject == start)
 					{
 						found = true;
 						break;
 					}
+
 					go = w.cachedGameObject;
 				}
 			}
@@ -1951,15 +1990,15 @@ static public class NGUIEditorTools
 	static public void UpgradeTexturesToSprites (INGUIAtlas atlas)
 	{
 		if (atlas == null) return;
-		List<UITexture> uits = FindAll<UITexture>();
+		var uits = FindAll<UITexture>();
 
 		if (uits.Count > 0)
 		{
-			UIWidget selectedTex = (UIWidgetInspector.instance != null && UIWidgetInspector.instance.target != null) ?
+			var selectedTex = (UIWidgetInspector.instance != null && UIWidgetInspector.instance.target != null) ?
 				UIWidgetInspector.instance.target as UITexture : null;
 
 			// Determine the object instance ID of the UISprite class
-			int spriteID = GetClassID<UISprite>();
+			var spriteID = GetClassID<UISprite>();
 
 			// Run through all the UI textures and change them to sprites
 			for (int i = 0; i < uits.Count; ++i)
@@ -1972,7 +2011,45 @@ static public class NGUIEditorTools
 
 					if (atlasSprite != null)
 					{
-						SerializedObject ob = ReplaceClass(uiTexture, spriteID);
+						var ob = ReplaceClass(uiTexture, spriteID);
+						ob.FindProperty("mSpriteName").stringValue = uiTexture.mainTexture.name;
+						ob.FindProperty("mAtlas").objectReferenceValue = atlas as Object;
+						ob.ApplyModifiedProperties();
+					}
+				}
+			}
+
+			if (selectedTex != null)
+			{
+				// Repaint() doesn't work in this case because Unity doesn't realize that the underlying
+				// script type has changed and that a new editor script needs to be chosen.
+				//UIWidgetInspector.instance.Repaint();
+				Selection.activeGameObject = null;
+			}
+		}
+
+		var ui2s = FindAll<UI2DSprite>();
+
+		if (ui2s.Count > 0)
+		{
+			var selectedTex = (UIWidgetInspector.instance != null && UIWidgetInspector.instance.target != null) ?
+				UIWidgetInspector.instance.target as UI2DSprite : null;
+
+			// Determine the object instance ID of the UISprite class
+			var spriteID = GetClassID<UISprite>();
+
+			// Run through all the UI textures and change them to sprites
+			for (int i = 0; i < ui2s.Count; ++i)
+			{
+				var uiTexture = ui2s[i];
+
+				if (uiTexture != null && uiTexture.mainTexture != null)
+				{
+					var atlasSprite = atlas.GetSprite(uiTexture.mainTexture.name);
+
+					if (atlasSprite != null)
+					{
+						var ob = ReplaceClass(uiTexture, spriteID);
 						ob.FindProperty("mSpriteName").stringValue = uiTexture.mainTexture.name;
 						ob.FindProperty("mAtlas").objectReferenceValue = atlas as Object;
 						ob.ApplyModifiedProperties();
@@ -2356,11 +2433,14 @@ static public class NGUIEditorTools
 
 	static public string MakeReadable (this Texture2D tex, bool readable = true)
 	{
-		string path = AssetDatabase.GetAssetPath(tex);
-
+		var path = AssetDatabase.GetAssetPath(tex);
+#if UNITY_5_6
 		if (!string.IsNullOrEmpty(path))
+#else
+		if (!string.IsNullOrEmpty(path) && !tex.isReadable)
+#endif
 		{
-			TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+			var textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
 
 			if (textureImporter != null && textureImporter.isReadable != readable)
 			{

@@ -160,5 +160,33 @@ CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
 CrossPlay.BarbarianCivilization,Barbarische Zivilisation.,Barbarian Civilization,文明傳出去，蠻族進不來,Cywilizacja barbarzyńska
 Introduction.Clock,"Versuchen Sie, die Uhrzeiger zu drehen.","Try rotating the clock hands.","請控制旋轉指針。","Spróbuj obrócić zegar."
-Introduction.Location,,"Understand the expresstion of location.","方向的表示。","słownictwo związane z kierunkami"
-Introduction.Where,,"Expression of finding object.","位置的表示。","słownictwo związane z odnajdywaniem przedmiotów"
+Introduction.Location,"Den Ausdruck des Ortes verstehen.","Understand the expresstion of location.","方向的表示。","słownictwo związane z kierunkami"
+Introduction.Where,"Ausdruck des Findens eines Objekts.","Expression of finding object.","位置的表示。","słownictwo związane z odnajdywaniem przedmiotów"
+Body.Head,der Kopf,Head,頭,Głowa
+Body.Neck,der Hals,Neck,頸,Szyja
+Body.Chest,die Brust,Chest,胸,Klatka piersiowa
+Body.Belly,der Bauch,Belly,腹(肚子),Brzuch
+Body.Shoulder,die Schulter,Shoulder,肩(肩膀),Bark
+Body.Arm,der Arm,Arm,臂(手臂),Ramię
+Body.Hand,die Hand,Hand,手(手掌),Dłoń
+Body.Leg,das Bein,Leg,腿(大腿/小腿),Noga
+Body.Foot,der Fuß,Foot,足(腳掌),Stopa
+Introduction.Body,"Bitte tippen Sie auf den Körperteil","Please tap on the body part","請點擊身體部位","Proszę dotknąć części ciała"
+Body.IntroductionContent,"Erfahren Sie mehr über Körperteile und testen Sie Ihr Verständnis. Empfehlung: Nutzen Sie diese App ergänzend zu einem Sprachkurs, um Begriffe zu Körperteilen zu lernen.","Learn about body parts and test your understanding. Recommendation: Use this app alongside a language course to learn body part terms.","請了解關於身體部位，然後測試自己對身體部位的理解。建議：使用這個軟體搭配語言課程學習身體部位的說法。","Poznaj części ciała i sprawdź swoją wiedzę. Zalecenie: Używaj tej aplikacji w połączeniu z kursem językowym, aby nauczyć się terminów związanych z częściami ciała."
+Body.QuestionOnAnswerFmt,"Bitte tippen Sie auf den Teil von {0}","Please tap on the part of {0}",“請點擊 {0} 的部位”,"Proszę dotknąć części {0}"
+BodyExample.Head,"Der Mensch hat nur einen Kopf.\n","Human has only one head.\n","人類只有一個頭。\n","Człowiek ma tylko jedną głowę.\n"
+BodyExample.Neck,"Der Hals verbindet die Brust mit dem Kopf.\n","Neck connects chest with the head.\n","脖子連接胸部和頭。\n","Szyja łączy klatkę piersiową z głową.\n"
+BodyExample.Chest,"Die Brust schützt wichtige Organe.\n","Chest protects important organs.\n","胸部保護重要的器官。\n","Klatka piersiowa chroni ważne organy.\n"
+BodyExample.Belly,"Der Bauch lagert Fett ohne ausreichende Bewegung.\n","Belly stacks fat without proper exercise.\n","腹部在缺乏運動時堆積脂肪。\n","Brzuch odkłada tłuszcz bez odpowiednich ćwiczeń.\n"
+BodyExample.Shoulder,"Die Polizisten zucken mit den Schultern, um keinen Kommentar abzugeben.\n","The police officers shrug their shoulders to give no comment.\n","警察聳聳肩膀表示不予置評。\n","Policjanci wzruszają ramionami, aby nie komentować.\n"
+BodyExample.Arm,"Die Reisenden winken mit den Armen, um einen Bus anzuhalten.\n","The travellers wave their arms to stop a bus.\n","旅客揮動手臂攔下一輛公車。\n","Podróżni machają rękami, aby zatrzymać autobus.\n"
+BodyExample.Hand,"Dieses Paar hält beim Gehen Händchen.\n","This couple holds hands while walking.\n","這對情侶邊走邊牽著手。\n","Ta para trzyma się za ręce podczas spaceru.\n"
+BodyExample.Leg,"Diese Reisenden strecken in einer kleinen Kabine die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
+BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenständen auf der Straße zu schützen.\n","Shoes are used to protect feet from sharp objects on the street.\n","鞋子用來保護腳掌避免被路上的尖銳物刺傷。\n","Buty służą do ochrony stóp przed ostrymi przedmiotami na ulicy.\n"
+Title.Theme.Body,Körperteil,Body Part,身體部位,Część ciała
+CrossPlay.SecInc,S.E.C. Inc.,S.E.C. Inc.,打怪特勤隊,S.E.C. Inc.
+CrossPlay.FantasyLogistics,Fantasy Courier,Fantasy Courier,異世界物流士,Fantasy Courier
+TitleRateMePanel.Description,"Diese App ist kostenlos, aber die Entwicklung nimmt meine Zeit in Anspruch. Ich brauche Ihre Unterstützung. Bitte hinterlassen Sie eine Bewertung und teilen Sie mir Ihre Meinung mit.","This app is free but takes my time to develop. I need your support. Please leave review and let me know how you feel.","此應用程式免費提供但仍花費心力開發，一點評價與建議都能讓它更好。","Ta aplikacja jest darmowa, ale jej rozwój zajmuje mi dużo czasu. Potrzebuję Twojego wsparcia. Proszę, zostaw recenzję i daj mi znać, co o niej myślisz."
+CommonButton.Confirm,Bestätigen,Confirm,確認,Potwierdzać
+CommonButton.Close,Schließen,Close,關閉,Zamknąć
+TitleRateMePanel.Title,Bewerten Sie uns,Rate Us,評價,Oceń nas

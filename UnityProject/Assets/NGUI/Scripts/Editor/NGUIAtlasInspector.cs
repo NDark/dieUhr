@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -56,14 +56,14 @@ public class NGUIAtlasInspector : Editor
 
 		foreach (UILabel lbl in labels)
 		{
-			if (lbl.bitmapFont == null) continue;
+			if (lbl.font == null) continue;
 
-			var font = lbl.bitmapFont;
+			var font = lbl.font;
 
 			if (NGUITools.CheckIfRelated(font.atlas, mAtlas) && font.UsesSprite(sprite.name))
 			{
-				lbl.bitmapFont = null;
-				lbl.bitmapFont = font;
+				lbl.font = null;
+				lbl.font = font;
 				NGUITools.SetDirty(lbl);
 			}
 		}
@@ -177,7 +177,10 @@ public class NGUIAtlasInspector : Editor
 					atlasName = atlasName.Substring(path.LastIndexOfAny(new char[] { '/', '\\' }) + 1);
 					asset.name = atlasName;
 
-					AssetDatabase.CreateAsset(asset, path);
+					var existing = AssetDatabase.LoadMainAssetAtPath(path);
+					if (existing != null) EditorUtility.CopySerialized(asset, existing);
+					else AssetDatabase.CreateAsset(asset, path);
+
 					AssetDatabase.SaveAssets();
 					AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 
@@ -305,13 +308,13 @@ public class NGUIAtlasInspector : Editor
 
 					if (GUILayout.Button("Duplicate"))
 					{
-						UIAtlasMaker.SpriteEntry se = UIAtlasMaker.DuplicateSprite(mAtlas, sprite.name);
+						var se = UIAtlasMaker.DuplicateSprite(mAtlas, sprite.name);
 						if (se != null) NGUISettings.selectedSprite = se.name;
 					}
 
 					if (GUILayout.Button("Save As..."))
 					{
-						string path = EditorUtility.SaveFilePanel("Save As",
+						var path = EditorUtility.SaveFilePanel("Save As",
 							NGUISettings.currentPath, sprite.name + ".png", "png");
 
 						if (!string.IsNullOrEmpty(path))
@@ -433,7 +436,7 @@ public class NGUIAtlasInspector : Editor
 			int w2 = w1 + 2;
 			int h2 = h1 + 2;
 
-			Color32[] c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
+			var c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
 
 			if (se.temporaryTexture) DestroyImmediate(se.tex);
 
@@ -448,7 +451,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;
@@ -461,7 +467,7 @@ public class NGUIAtlasInspector : Editor
 
 	void AddClampedBorder (UISpriteData sprite)
 	{
-		List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+		var sprites = new List<UIAtlasMaker.SpriteEntry>();
 		UIAtlasMaker.ExtractSprites(mAtlas, sprites);
 		UIAtlasMaker.SpriteEntry se = null;
 
@@ -482,8 +488,8 @@ public class NGUIAtlasInspector : Editor
 			int w2 = se.tex.width + 2;
 			int h2 = se.tex.height + 2;
 
-			Color32[] c1 = se.tex.GetPixels32();
-			Color32[] c2 = new Color32[w2 * h2];
+			var c1 = se.tex.GetPixels32();
+			var c2 = new Color32[w2 * h2];
 
 			for (int y2 = 0; y2 < h2; ++y2)
 			{
@@ -509,7 +515,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;
@@ -522,7 +531,7 @@ public class NGUIAtlasInspector : Editor
 
 	void AddTiledBorder (UISpriteData sprite)
 	{
-		List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+		var sprites = new List<UIAtlasMaker.SpriteEntry>();
 		UIAtlasMaker.ExtractSprites(mAtlas, sprites);
 		UIAtlasMaker.SpriteEntry se = null;
 
@@ -543,8 +552,8 @@ public class NGUIAtlasInspector : Editor
 			int w2 = se.tex.width + 2;
 			int h2 = se.tex.height + 2;
 
-			Color32[] c1 = se.tex.GetPixels32();
-			Color32[] c2 = new Color32[w2 * h2];
+			var c1 = se.tex.GetPixels32();
+			var c2 = new Color32[w2 * h2];
 
 			for (int y2 = 0; y2 < h2; ++y2)
 			{
@@ -570,7 +579,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;
@@ -583,7 +595,7 @@ public class NGUIAtlasInspector : Editor
 
 	void CropBorder (UISpriteData sprite)
 	{
-		List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+		var sprites = new List<UIAtlasMaker.SpriteEntry>();
 		UIAtlasMaker.ExtractSprites(mAtlas, sprites);
 		UIAtlasMaker.SpriteEntry se = null;
 
@@ -604,8 +616,8 @@ public class NGUIAtlasInspector : Editor
 			int w2 = w1 - se.borderLeft - se.borderRight;
 			int h2 = h1 - se.borderTop - se.borderBottom;
 
-			Color32[] c1 = se.tex.GetPixels32();
-			Color32[] c2 = new Color32[w2 * h2];
+			var c1 = se.tex.GetPixels32();
+			var c2 = new Color32[w2 * h2];
 
 			for (int y2 = 0; y2 < h2; ++y2)
 			{
@@ -631,7 +643,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;
@@ -644,7 +659,7 @@ public class NGUIAtlasInspector : Editor
 
 	void AddShadow (UISpriteData sprite)
 	{
-		List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+		var sprites = new List<UIAtlasMaker.SpriteEntry>();
 		UIAtlasMaker.ExtractSprites(mAtlas, sprites);
 		UIAtlasMaker.SpriteEntry se = null;
 
@@ -665,7 +680,7 @@ public class NGUIAtlasInspector : Editor
 			int w2 = w1 + 2;
 			int h2 = h1 + 2;
 
-			Color32[] c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
+			var c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
 			NGUIEditorTools.AddShadow(c2, w2, h2, NGUISettings.backgroundColor);
 
 			if (se.temporaryTexture) DestroyImmediate(se.tex);
@@ -684,7 +699,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;
@@ -697,7 +715,7 @@ public class NGUIAtlasInspector : Editor
 
 	void AddOutline (UISpriteData sprite)
 	{
-		List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+		var sprites = new List<UIAtlasMaker.SpriteEntry>();
 		UIAtlasMaker.ExtractSprites(mAtlas, sprites);
 		UIAtlasMaker.SpriteEntry se = null;
 
@@ -718,7 +736,7 @@ public class NGUIAtlasInspector : Editor
 			int w2 = w1 + 2;
 			int h2 = h1 + 2;
 
-			Color32[] c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
+			var c2 = NGUIEditorTools.AddBorder(se.tex.GetPixels32(), w1, h1);
 			NGUIEditorTools.AddDepth(c2, w2, h2, NGUISettings.backgroundColor);
 
 			if (se.temporaryTexture) DestroyImmediate(se.tex);
@@ -737,7 +755,10 @@ public class NGUIAtlasInspector : Editor
 			se.tex.Apply();
 			se.temporaryTexture = true;
 
+			var before = NGUISettings.atlasTrimming;
+			NGUISettings.atlasTrimming = false;
 			UIAtlasMaker.UpdateAtlas(mAtlas, sprites);
+			NGUISettings.atlasTrimming = before;
 
 			DestroyImmediate(se.tex);
 			se.tex = null;

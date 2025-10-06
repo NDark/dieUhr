@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -415,6 +415,14 @@ public class UIPanelInspector : UIRectEditor
 			mPanel.alpha = alpha;
 		}
 
+		var alphaProp = EditorGUILayout.TextField("Shader Prop.", mPanel.alphaProperty);
+
+		if (alphaProp != mPanel.alphaProperty)
+		{
+			NGUIEditorTools.RegisterUndo("Panel Alpha", mPanel);
+			mPanel.alphaProperty = alphaProp;
+		}
+
 		GUILayout.BeginHorizontal();
 		{
 			EditorGUILayout.PrefixLabel("Depth");
@@ -657,9 +665,7 @@ public class UIPanelInspector : UIRectEditor
 				mPanel.RebuildAllDrawCalls();
 				NGUITools.SetDirty(mPanel);
 			}
-#if !UNITY_4_7
-			serializedObject.DrawProperty("shadowMode");
-#endif
+
 			GUILayout.BeginHorizontal();
 			bool cull = EditorGUILayout.Toggle("Cull", mPanel.cullWhileDragging, GUILayout.Width(100f));
 			GUILayout.Label("Cull widgets while dragging them", GUILayout.MinWidth(20f));

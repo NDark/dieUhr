@@ -1,9 +1,9 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
-#if !UNITY_EDITOR && (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY || UNITY_WINRT || UNITY_METRO)
+#if !UNITY_EDITOR && (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_WP_8_1 || UNITY_BLACKBERRY)
 #define MOBILE
 #endif
 
@@ -658,18 +658,7 @@ public class UIInput : MonoBehaviour
 			label.color = activeTextColor;
 #if MOBILE
 			RuntimePlatform pf = Application.platform;
-			if (pf == RuntimePlatform.IPhonePlayer
-				|| pf == RuntimePlatform.Android
-				|| pf == RuntimePlatform.WP8Player
- #if UNITY_4_3
-				|| pf == RuntimePlatform.BB10Player
- #else
-				|| pf == RuntimePlatform.BlackBerryPlayer
-				|| pf == RuntimePlatform.MetroPlayerARM
-				|| pf == RuntimePlatform.MetroPlayerX64
-				|| pf == RuntimePlatform.MetroPlayerX86
- #endif
-			)
+			if (pf == RuntimePlatform.IPhonePlayer || pf == RuntimePlatform.Android)
 			{
 				string val;
 				TouchScreenKeyboardType kt;
@@ -700,9 +689,6 @@ public class UIInput : MonoBehaviour
 					TouchScreenKeyboard.Open(val, kt, false, false, true) :
 					TouchScreenKeyboard.Open(val, kt, !inputShouldBeHidden && inputType == InputType.AutoCorrect,
 						label.multiLine && !hideInput, false, false, defaultText);
-#if UNITY_METRO
-				mKeyboard.active = true;
-#endif
 			}
 			else
 #endif // MOBILE
@@ -1268,7 +1254,19 @@ public class UIInput : MonoBehaviour
 	/// Ensure we've released the dynamically created resources.
 	/// </summary>
 
-	void OnDisable () { Cleanup(); }
+	void OnDisable ()
+	{
+		Cleanup();
+
+#if !MOBILE
+		if (mOnGUI != null)
+		{
+			Destroy(mOnGUI);
+			mOnGUI = null;
+		}
+#endif
+		if (selection == this) OnDeselectEvent();
+	}
 
 	/// <summary>
 	/// Cleanup.
@@ -1332,7 +1330,7 @@ public class UIInput : MonoBehaviour
 				{
 					processed = "";
 					string asterisk = "*";
-					var fnt = label.bitmapFont as INGUIFont;
+					var fnt = label.font as INGUIFont;
 					if (fnt != null && fnt.bmFont != null && fnt.bmFont.GetGlyph('*') == null) asterisk = "x";
 					for (int i = 0, imax = fullText.Length; i < imax; ++i) processed += asterisk;
 				}
@@ -1524,31 +1522,58 @@ public class UIInput : MonoBehaviour
 		}
 		else if (validation == Validation.Name)
 		{
-			char lastChar = (text.Length > 0) ? text[Mathf.Clamp(pos, 0, text.Length - 1)] : ' ';
-			char nextChar = (text.Length > 0) ? text[Mathf.Clamp(pos + 1, 0, text.Length - 1)] : '\n';
+			return ValidateNameChar(text, pos, ch);
+		}
+		return (char)0;
+	}
 
-			if (ch >= 'a' && ch <= 'z')
-			{
-				// Space followed by a letter -- make sure it's capitalized
-				if (lastChar == ' ') return (char)(ch - 'a' + 'A');
-				return ch;
-			}
-			else if (ch >= 'A' && ch <= 'Z')
-			{
-				// Uppercase letters are only allowed after spaces (and apostrophes)
-				if (lastChar != ' ' && lastChar != '\'') return (char)(ch - 'A' + 'a');
-				return ch;
-			}
-			else if (ch == '\'')
-			{
-				// Don't allow more than one apostrophe
-				if (lastChar != ' ' && lastChar != '\'' && nextChar != '\'' && !text.Contains("'")) return ch;
-			}
-			else if (ch == ' ')
-			{
-				// Don't allow more than one space in a row
-				if (lastChar != ' ' && lastChar != '\'' && nextChar != ' ' && nextChar != '\'') return ch;
-			}
+	/// <summary>
+	/// Use the name validation to validate the specified text.
+	/// </summary>
+
+	static public string ValidateName (string text)
+	{
+		var sb = new StringBuilder();
+
+		foreach (var ch in text)
+		{
+			var v = ValidateNameChar(sb.ToString(), sb.Length, ch);
+			if (v == (char)0) continue;
+			sb.Append(v);
+		}
+		return sb.ToString();
+	}
+
+	/// <summary>
+	/// Validate the specified character using naming validation.
+	/// </summary>
+
+	static public char ValidateNameChar (string text, int pos, char ch)
+	{
+		char lastChar = (text.Length > 0) ? text[Mathf.Clamp(pos, 0, text.Length - 1)] : ' ';
+		char nextChar = (text.Length > 0) ? text[Mathf.Clamp(pos + 1, 0, text.Length - 1)] : '\n';
+
+		if (ch >= 'a' && ch <= 'z')
+		{
+			// Space followed by a letter -- make sure it's capitalized
+			if (lastChar == ' ') return (char)(ch - 'a' + 'A');
+			return ch;
+		}
+		else if (ch >= 'A' && ch <= 'Z')
+		{
+			// Uppercase letters are only allowed after spaces (and apostrophes)
+			if (lastChar != ' ' && lastChar != '\'') return (char)(ch - 'A' + 'a');
+			return ch;
+		}
+		else if (ch == '\'')
+		{
+			// Don't allow more than one apostrophe
+			if (lastChar != ' ' && lastChar != '\'' && nextChar != '\'' && !text.Contains("'")) return ch;
+		}
+		else if (ch == ' ')
+		{
+			// Don't allow more than one space in a row
+			if (lastChar != ' ' && lastChar != '\'' && nextChar != ' ' && nextChar != '\'') return ch;
 		}
 		return (char)0;
 	}

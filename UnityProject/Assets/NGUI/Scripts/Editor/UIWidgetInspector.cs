@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -437,6 +437,7 @@ public class UIWidgetInspector : UIRectEditor
 		if (!UIWidget.showHandles) return;
 
 		mWidget = target as UIWidget;
+		if (!mWidget.isSelectable) return;
 
 		Transform t = mWidget.cachedTransform;
 
@@ -884,11 +885,18 @@ public class UIWidgetInspector : UIRectEditor
 		}
 	}
 
+	protected virtual void DrawWidgetSection (SerializedObject so, UIWidget w, bool isPrefab)
+	{
+		DrawPivot(so, w);
+		DrawDepth(so, w, isPrefab);
+		DrawDimensions(so, w, isPrefab);
+	}
+
 	/// <summary>
 	/// Draw common widget properties.
 	/// </summary>
 
-	static public void DrawInspectorProperties (SerializedObject so, UIWidget w, bool drawColor)
+	protected virtual void DrawInspectorProperties (SerializedObject so, UIWidget w, bool drawColor)
 	{
 		if (drawColor)
 		{
@@ -903,13 +911,12 @@ public class UIWidgetInspector : UIRectEditor
 			NGUIEditorTools.BeginContents();
 			if (NGUISettings.minimalisticLook) NGUIEditorTools.SetLabelWidth(70f);
 
-			DrawPivot(so, w);
-			DrawDepth(so, w, isPrefab);
-			DrawDimensions(so, w, isPrefab);
+			DrawWidgetSection(so, w, isPrefab);
+
 			if (NGUISettings.minimalisticLook) NGUIEditorTools.SetLabelWidth(70f);
 
-			SerializedProperty ratio = so.FindProperty("aspectRatio");
-			SerializedProperty aspect = so.FindProperty("keepAspectRatio");
+			var ratio = so.FindProperty("aspectRatio");
+			var aspect = so.FindProperty("keepAspectRatio");
 
 			GUILayout.BeginHorizontal();
 			{
@@ -934,6 +941,8 @@ public class UIWidgetInspector : UIRectEditor
 				}
 				GUILayout.EndHorizontal();
 			}
+
+			NGUIEditorTools.DrawProperty("Boundless", so.FindProperty("boundless"));
 			NGUIEditorTools.EndContents();
 		}
 	}
@@ -942,13 +951,12 @@ public class UIWidgetInspector : UIRectEditor
 	/// Draw widget's dimensions.
 	/// </summary>
 
-	static void DrawDimensions (SerializedObject so, UIWidget w, bool isPrefab)
+	protected void DrawDimensions (SerializedObject so, UIWidget w, bool isPrefab)
 	{
 		GUILayout.BeginHorizontal();
 		{
-			bool freezeSize = so.isEditingMultipleObjects;
-
-			UILabel lbl = w as UILabel;
+			var freezeSize = so.isEditingMultipleObjects;
+			var lbl = w as UILabel;
 
 			if (!freezeSize && lbl) freezeSize = (lbl.overflowMethod == UILabel.Overflow.ResizeFreely);
 
@@ -972,7 +980,7 @@ public class UIWidgetInspector : UIRectEditor
 
 			if (!freezeSize && lbl)
 			{
-				UILabel.Overflow ov = lbl.overflowMethod;
+				var ov = lbl.overflowMethod;
 				freezeSize = (ov == UILabel.Overflow.ResizeFreely || ov == UILabel.Overflow.ResizeHeight);
 			}
 
@@ -1030,10 +1038,8 @@ public class UIWidgetInspector : UIRectEditor
 	/// Draw widget's depth.
 	/// </summary>
 
-	static void DrawDepth (SerializedObject so, UIWidget w, bool isPrefab)
+	protected void DrawDepth (SerializedObject so, UIWidget w, bool isPrefab, bool warnIfShared = false)
 	{
-		if (isPrefab) return;
-
 		GUILayout.Space(2f);
 		GUILayout.BeginHorizontal();
 		{
@@ -1043,41 +1049,54 @@ public class UIWidgetInspector : UIRectEditor
 			{
 				foreach (GameObject go in Selection.gameObjects)
 				{
-					UIWidget pw = go.GetComponent<UIWidget>();
+					var pw = go.GetComponent<UIWidget>();
 					if (pw != null) pw.depth = w.depth - 1;
 				}
 			}
 
+			GUI.changed = false;
 			NGUIEditorTools.DrawProperty("", so, "mDepth", GUILayout.MinWidth(20f));
+
+			if (GUI.changed)
+			{
+				foreach (GameObject go in Selection.gameObjects)
+				{
+					var pw = go.GetComponent<UIWidget>();
+					if (pw != null) pw.MarkAsChanged();
+				}
+			}
 
 			if (GUILayout.Button("Forward", GUILayout.MinWidth(60f)))
 			{
 				foreach (GameObject go in Selection.gameObjects)
 				{
-					UIWidget pw = go.GetComponent<UIWidget>();
+					var pw = go.GetComponent<UIWidget>();
 					if (pw != null) pw.depth = w.depth + 1;
 				}
 			}
 		}
 		GUILayout.EndHorizontal();
 
-		int matchingDepths = 1;
-
-		UIPanel p = w.panel;
-
-		if (p != null)
+		if (warnIfShared)
 		{
-			for (int i = 0, imax = p.widgets.Count; i < imax; ++i)
+			int matchingDepths = 1;
+
+			var p = w.panel;
+
+			if (p != null)
 			{
-				UIWidget pw = p.widgets[i];
-				if (pw != w && pw.depth == w.depth)
-					++matchingDepths;
+				for (int i = 0, imax = p.widgets.Count; i < imax; ++i)
+				{
+					var pw = p.widgets[i];
+					if (pw != w && pw.depth == w.depth)
+						++matchingDepths;
+				}
 			}
-		}
 
-		if (matchingDepths > 1)
-		{
-			EditorGUILayout.HelpBox(matchingDepths + " widgets are sharing the depth value of " + w.depth, MessageType.Info);
+			if (matchingDepths > 1)
+			{
+				EditorGUILayout.HelpBox(matchingDepths + " widgets are sharing the depth value of " + w.depth, MessageType.Info);
+			}
 		}
 	}
 
@@ -1085,7 +1104,7 @@ public class UIWidgetInspector : UIRectEditor
 	/// Draw the widget's pivot.
 	/// </summary>
 
-	static void DrawPivot (SerializedObject so, UIWidget w)
+	protected void DrawPivot (SerializedObject so, UIWidget w)
 	{
 		SerializedProperty pv = so.FindProperty("mPivot");
 

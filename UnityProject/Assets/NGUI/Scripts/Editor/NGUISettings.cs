@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -312,6 +312,12 @@ public class NGUISettings
 		set { SetInt("NGUI FM Size", value); }
 	}
 
+	static public int FMPadding
+	{
+		get { return GetInt("NGUI FM Pad", 1); }
+		set { SetInt("NGUI FM Pad", value); }
+	}
+
 	static public bool fontKerning
 	{
 		get { return GetBool("NGUI Font Kerning", true); }
@@ -388,12 +394,6 @@ public class NGUISettings
 	{
 		get { return GetBool("NGUI AutoUpgrade", false); }
 		set { SetBool("NGUI AutoUpgrade", value); }
-	}
-
-	static public bool keepPadding
-	{
-		get { return GetBool("NGUI KeepPadding", false); }
-		set { SetBool("NGUI KeepPadding", value); }
 	}
 
 	static public bool forceSquareAtlas
@@ -507,6 +507,23 @@ public class NGUISettings
 		w.sprite2D = sprite2D;
 		w.width = 100;
 		w.height = 100;
+		return w;
+	}
+
+	/// <summary>
+	/// Convenience method -- add a circle.
+	/// </summary>
+
+	static public UICircle AddCircle (GameObject go)
+	{
+		var w = NGUITools.AddWidget<UICircle>(go);
+		w.name = "Circle";
+		w.atlas = atlas;
+		w.spriteName = selectedSprite;
+		w.pivot = pivot;
+		w.width = 100;
+		w.height = 100;
+		w.MakePixelPerfect();
 		return w;
 	}
 

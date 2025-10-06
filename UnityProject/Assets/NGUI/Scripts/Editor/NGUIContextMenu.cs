@@ -9,14 +9,14 @@ using System.Collections.Generic;
 
 static public class NGUIContextMenu
 {
-	[MenuItem("Help/NGUI Documentation (v.2018.3.0d)")]
+	[MenuItem("Help/NGUI Documentation (v.2025.07.01)")]
 	static void ShowHelp0 (MenuCommand command) { NGUIHelp.Show(); }
 
 	[MenuItem("Help/NGUI Support Archive (read-only)")]
 	static void ShowHelp01 (MenuCommand command) { Application.OpenURL("http://www.tasharen.com/forum/index.php?board=1.0"); }
 
 	[MenuItem("Help/NGUI Support Discord")]
-	static void ShowHelp02 (MenuCommand command) { Application.OpenURL("https://discord.gg/tasharen"); }
+	static void ShowHelp02 (MenuCommand command) { Application.OpenURL("https://discord.com/invite/tasharen"); }
 
 	[MenuItem("CONTEXT/UIWidget/Copy Widget")]
 	static void CopyStyle (MenuCommand command) { NGUISettings.CopyWidget(command.context as UIWidget); }
@@ -97,16 +97,10 @@ static public class NGUIContextMenu
 	static void ShowHelp23 (MenuCommand command) { NGUIHelp.Show(typeof(UICenterOnClick)); }
 
 	[MenuItem("CONTEXT/UITweener/Help")]
-	[MenuItem("CONTEXT/UIPlayTween/Help")]
 	static void ShowHelp24 (MenuCommand command) { NGUIHelp.Show(typeof(UITweener)); }
 
 	[MenuItem("CONTEXT/ActiveAnimation/Help")]
-	[MenuItem("CONTEXT/UIPlayAnimation/Help")]
 	static void ShowHelp25 (MenuCommand command) { NGUIHelp.Show(typeof(UIPlayAnimation)); }
-
-	[MenuItem("CONTEXT/UIScrollView/Help")]
-	[MenuItem("CONTEXT/UIDragScrollView/Help")]
-	static void ShowHelp26 (MenuCommand command) { NGUIHelp.Show(typeof(UIScrollView)); }
 
 	[MenuItem("CONTEXT/UIPanel/Help")]
 	static void ShowHelp27 (MenuCommand command) { NGUIHelp.Show(typeof(UIPanel)); }

@@ -1,6 +1,6 @@
 //-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -126,6 +126,12 @@ public class UIPopupList : UIWidgetContainer
 	/// </summary>
 
 	public FontStyle fontStyle = FontStyle.Normal;
+
+	/// <summary>
+	/// Symbol style.
+	/// </summary>
+
+	public NGUIText.SymbolStyle symbolStyle = NGUIText.SymbolStyle.Normal;
 
 	/// <summary>
 	/// Name of the sprite used to create the popup's background.
@@ -520,7 +526,7 @@ public class UIPopupList : UIWidgetContainer
 	/// Trigger all event notification callbacks.
 	/// </summary>
 
-	protected void TriggerCallbacks ()
+	public void TriggerCallbacks ()
 	{
 		if (!mExecuting)
 		{
@@ -568,13 +574,6 @@ public class UIPopupList : UIWidgetContainer
 		{
 			fontSize = (bm != null) ? Mathf.RoundToInt(bm.defaultSize * textScale) : 16;
 			textScale = 0f;
-		}
-
-		// Auto-upgrade to the true type font
-		if (trueTypeFont == null && bm != null && bm.isDynamic && bm.replacement == null)
-		{
-			trueTypeFont = bm.dynamicFont;
-			bitmapFont = null;
 		}
 	}
 
@@ -965,6 +964,9 @@ public class UIPopupList : UIWidgetContainer
 
 	public GameObject source;
 
+	[Tooltip("Depth at wich the popup panel will be created with")]
+	public int panelDepth = 10000;
+
 	/// <summary>
 	/// Show the popup list dialog.
 	/// </summary>
@@ -977,7 +979,7 @@ public class UIPopupList : UIWidgetContainer
 			StopCoroutine("CloseIfUnselected");
 
 			// Ensure the popup's source has the selection
-			UICamera.selectedObject = (UICamera.hoveredObject ?? gameObject);
+			UICamera.selectedObject = (UICamera.hoveredObject != null ? UICamera.hoveredObject : gameObject);
 			mSelection = UICamera.selectedObject;
 			source = mSelection;
 
@@ -1018,7 +1020,7 @@ public class UIPopupList : UIWidgetContainer
 				}
 
 				var panel = mChild.AddComponent<UIPanel>();
-				panel.depth = 1000000;
+				panel.depth = panelDepth;
 				panel.sortingOrder = mPanel.sortingOrder;
 			}
 
@@ -1122,7 +1124,10 @@ public class UIPopupList : UIWidgetContainer
 
 			// Clear the selection if it's no longer present
 			if (!items.Contains(mSelectedItem))
+			{
 				mSelectedItem = null;
+				TriggerCallbacks();
+			}
 
 			// Run through all items and create labels for each one
 			for (int i = 0, imax = items.Count; i < imax; ++i)
@@ -1132,17 +1137,18 @@ public class UIPopupList : UIWidgetContainer
 				UILabel lbl = NGUITools.AddWidget<UILabel>(mChild, mBackground.depth + 2);
 				lbl.name = i.ToString();
 				lbl.pivot = UIWidget.Pivot.TopLeft;
-				lbl.bitmapFont = bitmapFont as INGUIFont;
+				lbl.font = bitmapFont as INGUIFont;
 				lbl.trueTypeFont = trueTypeFont;
 				lbl.fontSize = fontSize;
 				lbl.fontStyle = fontStyle;
+				lbl.symbolDepth = lbl.depth + 1;
 				lbl.text = isLocalized ? Localization.Get(s) : s;
 				lbl.modifier = textModifier;
 				lbl.color = textColor;
 				lbl.cachedTransform.localPosition = new Vector3(bgPadding.x + padding.x - lbl.pivotOffset.x, y, -1f);
 				lbl.overflowMethod = UILabel.Overflow.ResizeFreely;
 				lbl.alignment = alignment;
-				lbl.symbolStyle = NGUIText.SymbolStyle.Colored;
+				lbl.symbolStyle = symbolStyle;
 				labels.Add(lbl);
 
 				contentHeight += lineHeight;

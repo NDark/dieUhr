@@ -1,6 +1,6 @@
 ﻿//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2019 Tasharen Entertainment Inc
+// Copyright © 2011-2023 Tasharen Entertainment Inc
 //-------------------------------------------------
 
 using UnityEngine;
@@ -24,9 +24,11 @@ public class UISpriteCollection : UIBasicSprite
 
 	public struct Sprite
 	{
+		public object obj;
 		public UISpriteData sprite;
 		public Vector2 pos;
 		public float rot;
+		public float scale;
 		public float width;
 		public float height;
 		public Color32 color;
@@ -34,6 +36,7 @@ public class UISpriteCollection : UIBasicSprite
 		public Type type;
 		public Flip flip;
 		public bool enabled;
+		public bool reactsToEvents;
 
 		/// <summary>
 		/// Calculate the sprite's drawing dimensions.
@@ -41,10 +44,12 @@ public class UISpriteCollection : UIBasicSprite
 
 		public Vector4 GetDrawingDimensions (float pixelSize)
 		{
-			var x0 = -pivot.x * width;
-			var y0 = -pivot.y * height;
-			var x1 = x0 + width;
-			var y1 = y0 + height;
+			var sw = width * scale;
+			var sh = height * scale;
+			var x0 = -pivot.x * sw;
+			var y0 = -pivot.y * sh;
+			var x1 = x0 + sw;
+			var y1 = y0 + sh;
 
 			if (sprite != null && type != Type.Tiled)
 			{
@@ -71,8 +76,8 @@ public class UISpriteCollection : UIBasicSprite
 					if ((w & 1) != 0) ++padRight;
 					if ((h & 1) != 0) ++padTop;
 
-					px = (1f / w) * width;
-					py = (1f / h) * height;
+					px = (1f / w) * sw;
+					py = (1f / h) * sh;
 				}
 
 				if (flip == Flip.Horizontally || flip == Flip.Both)
@@ -104,10 +109,16 @@ public class UISpriteCollection : UIBasicSprite
 	[HideInInspector, SerializeField] Object mAtlas;
 
 	// List of individual sprites
-	[System.NonSerialized] Dictionary<object, Sprite> mSprites = new Dictionary<object, Sprite>();
+	[System.NonSerialized] List<Sprite> mSprites = new List<Sprite>();
 
 	// Only valid during the OnFill process
 	[System.NonSerialized] UISpriteData mSprite;
+
+	/// <summary>
+	/// All of the managed sprites.
+	/// </summary>
+
+	public List<Sprite> sprites { get { return mSprites; } }
 
 	/// <summary>
 	/// Main texture is assigned on the atlas.
@@ -245,16 +256,15 @@ public class UISpriteCollection : UIBasicSprite
 		int offset = verts.Count;
 		var drawRegion = this.drawRegion;
 
-		foreach (var pair in mSprites)
+		foreach (var ent in mSprites)
 		{
-			var ent = pair.Value;
 			if (!ent.enabled) continue;
 
 			mSprite = ent.sprite;
 			if (mSprite == null) continue;
 
 			Color c = ent.color;
-			c.a = finalAlpha;
+			c.a *= finalAlpha;
 			if (c.a == 0f) continue;
 
 			var outer = new Rect(mSprite.x, mSprite.y, mSprite.width, mSprite.height);
@@ -351,11 +361,21 @@ public class UISpriteCollection : UIBasicSprite
 	}
 
 	/// <summary>
+	/// Add a new sprite entry to the collection. Kept for backwards compatibility.
+	/// </summary>
+
+	[System.Obsolete("Use AddSprite that specified the scale")]
+	public void AddSprite (object id, string spriteName, Vector2 pos, float width, float height, Color32 color, Vector2 pivot, float rot, Type type, Flip flip, bool enabled = true)
+	{
+		AddSprite(id, spriteName, pos, width, height, color, pivot, rot, 1f, type, flip, enabled);
+	}
+
+	/// <summary>
 	/// Add a new sprite entry to the collection.
 	/// </summary>
 
 	public void AddSprite (object id, string spriteName, Vector2 pos, float width, float height, Color32 color, Vector2 pivot,
-		float rot = 0f, Type type = Type.Simple, Flip flip = Flip.Nothing, bool enabled = true)
+		float rot = 0f, float scale = 1f, Type type = Type.Simple, Flip flip = Flip.Nothing, bool enabled = true, bool reactsToEvents = true)
 	{
 		if (mAtlas == null)
 		{
@@ -369,8 +389,10 @@ public class UISpriteCollection : UIBasicSprite
 		if (ia != null) sprite.sprite = ia.GetSprite(spriteName);
 		if (sprite.sprite == null) return;
 
+		sprite.obj = id;
 		sprite.pos = pos;
 		sprite.rot = rot;
+		sprite.scale = scale;
 		sprite.width = width;
 		sprite.height = height;
 		sprite.color = color;
@@ -378,9 +400,29 @@ public class UISpriteCollection : UIBasicSprite
 		sprite.type = type;
 		sprite.flip = flip;
 		sprite.enabled = enabled;
-		mSprites[id] = sprite;
+		sprite.reactsToEvents = reactsToEvents;
+		mSprites.Add(sprite);
 
 		if (enabled && !mChanged) MarkAsChanged();
+	}
+
+	/// <summary>
+	/// Move the specified object to the forefront (so that it's rendered last).
+	/// </summary>
+
+	public bool MoveToFront (object id)
+	{
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
+		{
+			if (mSprites[i].obj == id)
+			{
+				var sp = mSprites[i];
+				mSprites.RemoveAt(i);
+				mSprites.Add(sp);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/// <summary>
@@ -389,8 +431,7 @@ public class UISpriteCollection : UIBasicSprite
 
 	public Sprite? GetSprite (object id)
 	{
-		Sprite sp;
-		if (mSprites.TryGetValue(id, out sp)) return sp;
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i) if (mSprites[i].obj == id) return mSprites[i];
 		return null;
 	}
 
@@ -400,10 +441,14 @@ public class UISpriteCollection : UIBasicSprite
 
 	public bool RemoveSprite (object id)
 	{
-		if (mSprites.Remove(id))
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
 		{
-			if (!mChanged) MarkAsChanged();
-			return true;
+			if (mSprites[i].obj == id)
+			{
+				mSprites.RemoveAt(i);
+				if (!mChanged) MarkAsChanged();
+				return true;
+			}
 		}
 		return false;
 	}
@@ -412,9 +457,19 @@ public class UISpriteCollection : UIBasicSprite
 	/// Update the specified sprite.
 	/// </summary>
 
-	public bool SetSprite (object id, Sprite sp)
+	public bool SetSprite (Sprite sp)
 	{
-		mSprites[id] = sp;
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
+		{
+			if (mSprites[i].obj == sp.obj)
+			{
+				mSprites[i] = sp;
+				if (!mChanged) MarkAsChanged();
+				return true;
+			}
+		}
+
+		mSprites.Add(sp);
 		if (!mChanged) MarkAsChanged();
 		return true;
 	}
@@ -439,8 +494,7 @@ public class UISpriteCollection : UIBasicSprite
 
 	public bool IsActive (object id)
 	{
-		Sprite sp;
-		if (mSprites.TryGetValue(id, out sp)) return sp.enabled;
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i) if (mSprites[i].obj == id) return mSprites[i].enabled;
 		return false;
 	}
 
@@ -450,17 +504,20 @@ public class UISpriteCollection : UIBasicSprite
 
 	public bool SetActive (object id, bool visible)
 	{
-		Sprite sp;
-
-		if (mSprites.TryGetValue(id, out sp))
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
 		{
-			if (sp.enabled != visible)
+			if (mSprites[i].obj == id)
 			{
-				sp.enabled = visible;
-				mSprites[id] = sp;
-				if (!mChanged) MarkAsChanged();
+				var sp = mSprites[i];
+
+				if (sp.enabled != visible)
+				{
+					sp.enabled = visible;
+					mSprites[i] = sp;
+					if (!mChanged) MarkAsChanged();
+				}
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}
@@ -471,29 +528,83 @@ public class UISpriteCollection : UIBasicSprite
 
 	public bool SetPosition (object id, Vector2 pos, bool visible = true)
 	{
-		Sprite sp;
-
-		if (mSprites.TryGetValue(id, out sp))
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
 		{
-			if (sp.pos != pos)
+			if (mSprites[i].obj == id)
 			{
-				sp.pos = pos;
-				sp.enabled = visible;
-				mSprites[id] = sp;
-				if (!mChanged) MarkAsChanged();
+				var sp = mSprites[i];
+
+				if (sp.pos != pos || sp.enabled != visible)
+				{
+					sp.pos = pos;
+					sp.enabled = visible;
+					mSprites[i] = sp;
+					if (!mChanged) MarkAsChanged();
+				}
+				return true;
 			}
-			else if (sp.enabled != visible)
-			{
-				sp.enabled = visible;
-				mSprites[id] = sp;
-				if (!mChanged) MarkAsChanged();
-			}
-			return true;
 		}
 		return false;
 	}
 
-#region Event handling
+	/// <summary>
+	/// Set the sprite's position, rotation, scale and alpha.
+	/// </summary>
+
+	public bool SetSprite (object id, Vector2 pos, float rot, float scale, float alpha = 1f)
+	{
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
+		{
+			if (mSprites[i].obj == id)
+			{
+				var sp = mSprites[i];
+				var ba = (byte)Mathf.RoundToInt(alpha * 255f);
+
+				if (sp.pos != pos || sp.rot != rot || sp.scale != scale || (sp.enabled ? sp.color.a : 0) != ba)
+				{
+					sp.pos = pos;
+					sp.rot = rot;
+					sp.scale = scale;
+					sp.color.a = ba;
+					sp.enabled = (alpha != 0f);
+					mSprites[i] = sp;
+					if (!mChanged) MarkAsChanged();
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/// <summary>
+	/// Set the sprite's position, rotation, scale and color.
+	/// </summary>
+
+	public bool SetSprite (object id, Vector2 pos, float rot, float scale, Color color)
+	{
+		for (int i = 0, imax = mSprites.Count; i < imax; ++i)
+		{
+			if (mSprites[i].obj == id)
+			{
+				var sp = mSprites[i];
+
+				if (sp.pos != pos || sp.rot != rot || sp.scale != scale || sp.color != color)
+				{
+					sp.pos = pos;
+					sp.rot = rot;
+					sp.scale = scale;
+					sp.color = color;
+					sp.enabled = (alpha != 0f);
+					mSprites[i] = sp;
+					if (!mChanged) MarkAsChanged();
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	#region Event handling
 	public delegate void OnHoverCB (object obj, bool isOver);
 	public delegate void OnPressCB (object obj, bool isPressed);
 	public delegate void OnClickCB (object obj);
@@ -512,8 +623,7 @@ public class UISpriteCollection : UIBasicSprite
 
 	static Vector2 Rotate (Vector2 pos, float rot)
 	{
-		var dz = rot * Mathf.Deg2Rad;
-		var halfZ = dz * 0.5f;
+		var halfZ = rot * Mathf.Deg2Rad * 0.5f;
 		var sinz = Mathf.Sin(halfZ);
 		var cosz = Mathf.Cos(halfZ);
 		var num3 = sinz * 2f;
@@ -542,9 +652,11 @@ public class UISpriteCollection : UIBasicSprite
 	{
 		var pos = (Vector2)mTrans.InverseTransformPoint(worldPos);
 
-		foreach (var pair in mSprites)
+		for (int i = mSprites.Count; i > 0; )
 		{
-			var ent = pair.Value;
+			var ent = mSprites[--i];
+			if (!ent.reactsToEvents || ent.color.a == 0) continue;
+
 			var v = pos - ent.pos;
 			if (ent.rot != 0f) v = Rotate(v, -ent.rot);
 
@@ -555,7 +667,7 @@ public class UISpriteCollection : UIBasicSprite
 			if (v.x > dims.z) continue;
 			if (v.y > dims.w) continue;
 
-			return pair.Key;
+			return ent.obj;
 		}
 		return null;
 	}
@@ -568,9 +680,9 @@ public class UISpriteCollection : UIBasicSprite
 	{
 		var pos = (Vector2)mTrans.InverseTransformPoint(worldPos);
 
-		foreach (var pair in mSprites)
+		for (int i = mSprites.Count; i > 0;)
 		{
-			var ent = pair.Value;
+			var ent = mSprites[--i];
 			var v = pos - ent.pos;
 			if (ent.rot != 0f) v = Rotate(v, -ent.rot);
 
@@ -581,7 +693,7 @@ public class UISpriteCollection : UIBasicSprite
 			if (v.x > dims.z) continue;
 			if (v.y > dims.w) continue;
 
-			return pair.Value;
+			return ent;
 		}
 		return null;
 	}
