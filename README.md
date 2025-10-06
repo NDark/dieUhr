@@ -67,10 +67,9 @@ https://play.google.com/store/apps/details?id=org.ndark.dieuhr
 ![Imgur](https://i.imgur.com/k7wURBi.jpg)
 
 
-# What's new on 3.10
+# The major update on v4.0 3.0版後的重大更新
 
-1. support 64bit device.
-1. add description of themes.
+1. Add topic "Body". 新增身體部位的主題。
 
 # The major update on v3.0 3.0版後的重大更新
 
