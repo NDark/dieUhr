@@ -152,9 +152,9 @@ TeacherSettingTitle,Anpassen,Customize,設定模式,Dostosuj
 TeacherSettingConfirm,bestätigen,Confirm,確認,Potwierdzać
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Obiekt
 TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係,Lokalizacja
-Title.Theme.Time,Zeit,Time,時間,Zegar
+Title.Theme.Time,Zeit,Time,時間,Godziny
 Title.Theme.Direction,Richtung ,Direction,方向指引,Kierunkami
-Title.Theme.Location,Ort,Location,位置指引,Szukaniem
+Title.Theme.Location,Ort,Location,位置指引,Lokalizacja
 CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲,Więcej gier tego autora
 CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
@@ -183,7 +183,7 @@ BodyExample.Arm,"Die Reisenden winken mit den Armen, um einen Bus anzuhalten.\n"
 BodyExample.Hand,"Dieses Paar hält beim Gehen Händchen.\n","This couple holds hands while walking.\n","這對情侶邊走邊牽著手。\n","Ta para trzyma się za ręce podczas spaceru.\n"
 BodyExample.Leg,"Diese Reisenden strecken in einer kleinen Kabine die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
 BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenständen auf der Straße zu schützen.\n","Shoes are used to protect feet from sharp objects on the street.\n","鞋子用來保護腳掌避免被路上的尖銳物刺傷。\n","Buty służą do ochrony stóp przed ostrymi przedmiotami na ulicy.\n"
-Title.Theme.Body,Körperteil,Body Part,身體部位,Część ciała
+Title.Theme.Body,Körperteil,Body Part,身體部位,Części ciała
 CrossPlay.SecInc,S.E.C. Inc.,S.E.C. Inc.,打怪特勤隊,S.E.C. Inc.
 CrossPlay.FantasyLogistics,Fantasy Courier,Fantasy Courier,異世界物流士,Fantasy Courier
 TitleRateMePanel.Description,"Diese App ist kostenlos, aber die Entwicklung nimmt meine Zeit in Anspruch. Ich brauche Ihre Unterstützung. Bitte hinterlassen Sie eine Bewertung und teilen Sie mir Ihre Meinung mit.","This app is free but takes my time to develop. I need your support. Please leave review and let me know how you feel.","此應用程式免費提供但仍花費心力開發，一點評價與建議都能讓它更好。","Ta aplikacja jest darmowa, ale jej rozwój zajmuje mi dużo czasu. Potrzebuję Twojego wsparcia. Proszę, zostaw recenzję i daj mi znać, co o niej myślisz."
