@@ -1208,7 +1208,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3007
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11463834, guid: cac317e3285b03c438c7f3f431e1f335, type: 3}
+  mAtlas: {fileID: 11400000, guid: b87a67cc2fa619d4298c711f94ed0baa, type: 2}
   mSpriteName: Language_Deutsch
   mFixedAspect: 0
   mFillCenter: 1
@@ -1829,7 +1829,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3007
+  startingRenderQueue: 3008
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11463834, guid: cac317e3285b03c438c7f3f431e1f335, type: 3}
+  mAtlas: {fileID: 11400000, guid: b87a67cc2fa619d4298c711f94ed0baa, type: 2}
   mSpriteName: Language_TraditionalChinese
   mFixedAspect: 0
   mFillCenter: 1
@@ -3786,7 +3786,7 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11463834, guid: cac317e3285b03c438c7f3f431e1f335, type: 3}
+  mAtlas: {fileID: 11400000, guid: b87a67cc2fa619d4298c711f94ed0baa, type: 2}
   mSpriteName: Language_English
   mFixedAspect: 0
   mFillCenter: 1
@@ -4385,7 +4385,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3009
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mAlphaProp: 
@@ -5315,7 +5315,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3009
   mClipTexture: {fileID: 0}
   mAlpha: 0
   mAlphaProp: 
