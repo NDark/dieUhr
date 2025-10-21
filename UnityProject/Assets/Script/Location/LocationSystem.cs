@@ -439,7 +439,7 @@ public class LocationSystem : MonoBehaviour
 			return ;
 		}	
 		
-		Object prefab = Resources.Load("Location/PlanePrefab");
+		var prefab = Resources.Load("Location/PlanePrefab") as GameObject;
 		if( null == prefab )
 		{
 			return ;
@@ -474,8 +474,9 @@ public class LocationSystem : MonoBehaviour
 				
 				addObj.name = i.ToString() ;
 				addObj.transform.position = new Vector3( 0 , 70 * i , 0 ) ;
-				addObj.transform.localScale = new Vector3( 1 , 1 , 1 ) ;
-				
+				addObj.transform.localScale = prefab.transform.localScale;
+
+
 				SpriteRenderer sr = addObj.GetComponent<SpriteRenderer>();
 				if( null != sr )
 				{

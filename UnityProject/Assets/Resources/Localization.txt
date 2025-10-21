@@ -69,39 +69,39 @@ WordFromDeveloper,"Ein Wort vom Entwickler.","A word from developer.","開發者
 AcknowledgeMarcus,"Diese App wurde entwickelt, als ich Deutsch lernte. Ich mache keine Einnahmen daraus. Fühlen Sie sich frei zu verwenden und lassen Sie mich wissen, wenn es Fehler hat. Für den deutschen Teil vielen danke an Marcus Breit und Paula Kersten für die Beratung.","This app was developed as I learning German. I don't revenue from it. Feel free to use and please let me know when it has bug. As for the part of German, acknowledge to lecturers Marcus Breit and Paula Kersten for the consultation.","這個應用程式是開發者學習德語的作品。目前並沒有營利。如果有發現任何錯誤，歡迎讓我知道。非常感謝德語諮詢：Marcus Breit，Paula Kerste。","Ta aplikacja została opracowana, gdy uczyłem się niemieckiego. Nie czerpię z niej żadnych dochodów. Możesz swobodnie korzystać i daj mi znać, gdy pojawi się błąd. Jeśli chodzi o część niemiecką, dziękuję wykładowcom Marcusowi Breitowi i Pauli Kersten za konsultację."
 LocationIntroductionContent,"Die App verfügt über zwei Modi, einem Übungsmodus und einem Testmodus. Der Übungsmodus stellt die verschiedenen Richtungsangaben vor. Durch Auf- und Abschieben werden verschiedene Bilder und die dazugehörige Richtungsangabe sichtbar.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung im Rahmen eines Deutschunterrichtes benutzt werden.Sie hilft dir dabei die Richtungsangaben auf Deutsch zu lernen.","The user may slide and see the correct expression of each location in answer mode, and then test them on test mode.\n\nAdvice: \n\nThis app is best used as an addition in a real german class or tutoring. \n\nIt provides you an assistance to properly practice the german location expression.","請了解關於地點的表示方式，然後測試自己的能力。建議：使用這個軟體搭配德文課程學習地點的表達方式。","Użytkownik może przesuwać i zobaczyć prawidłowe wyrażenie każdej lokalizacji w trybie odpowiedzi, a następnie przetestować je w trybie testowym.\n\nPorada:\n\nTa aplikacja najlepiej sprawdza się jako dodatek w prawdziwych zajęciach z języka niemieckiego lub korepetycjach.\n\nZapewnia pomoc w prawidłowym ćwiczeniu wyrażenia lokalizacji."
 LocationKey_Straight,immer geradeaus gehen,go straight,直走,idź prosto
-LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>,along <the river>
-LocationKey_Bridge,über <die Brücke>,over <the bridge>,過 <橋>,over <die Brucke>
-LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面,the opposite side of <the church>
-LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>,until <the intersection>
-LocationKey_Pass,an <etwas> vorbei gehen,go pass <...> ,行經 <...> ,go pass <...> 
-LocationKey_RoundAbout,um <den Kreisverkehr> herum,arround <the roundabout>,繞行 <圓環>,arround <the roundabout>
-LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> ,go through <the park>
-LocationKey_TurnLeft,links abbiegen,turn left,左轉,turn left
-LocationKey_TurnRight,rechts abbiegen,turn right,右轉,turn right
-LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>,drive through <the intersection>
+LocationKey_AlongRiver,<das Flussufer> entlang,along <the river>,沿著<河流>,wzdłuż <rzeki>
+LocationKey_Bridge,über <die Brücke>,over <the bridge>,過 <橋>,przez <most>
+LocationKey_CrossStreet,gegenüber <der Kirche> (Dativ),the opposite side of <the church>,在 <教堂> 對面,po przeciwnej stronie <kościoła>
+LocationKey_Intersection,bis zur <Kreuzung>,until <the intersection>,到 <十字路口>,aż do <skrzyżowania>
+LocationKey_Pass,an <etwas> vorbei gehen,go pass <...> ,行經 <...> ,przejdź obok <...>
+LocationKey_RoundAbout,um <den Kreisverkehr> herum,around <the roundabout>,繞行 <圓環>,rondo okrąż <rondo>
+LocationKey_Through,durch <den Park> gehen,go through <the park>,穿越 <公園> ,przejdź przez <park>
+LocationKey_TurnLeft,links abbiegen,turn left,左轉,skręć w lewo
+LocationKey_TurnRight,rechts abbiegen,turn right,右轉,skręć w prawo
+LocationKey_ThroughInterception,über <die Kreuzung> fahren,drive through <the intersection>,穿越 <十字路口>,przejedź przez <skrzyżowanie>
 ExampleShort,z.B.,ex.,例,np.
 ExampleLong,zum Beispiel,Example,例句,Na przykład
 ExampleSentence_Straight,Bitte gehe immer geradeaus.\nGehe immer geradeaus.,Please go straight.,請直走。,Proszę idź prosto.
 ExampleSentence_AlongRiver,Ich gehe das Flussufer entlang.\nGehe das Flussufer entlang.,I walk along the river.\nGo along the river.,我沿著河流走。\n沿著河流走。,Idę wzdłuż rzeki.\nProszę idź wzdłuż rzeki.
-ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,I walk over the bridge.\nProszę przejedź skrzyżowanie.
-ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。,The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.
-ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersection.,開到十字路口。,Drive until the intersection.
-ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。,I go pass the park.\nGo pass the park.\nGo pass the post.
-ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。,I drive arond the roundabout.
-ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。,Go through the forest.\nGo through the city center.\nGo through the park.
-ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。,You turn left at street.\nHe turned left until the signal.
-ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。,Turn right here.\nHe turned right at the intersection.
-ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口,Drive through the intersection.
-ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。,Jadę do biura <otime>.
-ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,Jemy obiad <otime>.
-ClockExampleKey_2,Er kauft um <time> ein.,He do grocery at <time>.,他在<time>購物。,Idzie na zakupy <otime>.
-ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,Zamierzają obejrzeć film <otime>.
-ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,Ćwiczę <otime>.
-ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,Spotykamy <otime>.
-ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Wyjeżdżam dzisiaj <otime>.
-ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,Przychodzimy <otime>.
-ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Czy możesz mnie podwieźć dzisiaj <otime>.
-ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Czy masz czas dzisiaj <otime>.
+ExampleSentence_Bridge,Ich gehe über die Brücke.\nFahre über die Brücke.,I walk over the bridge.\nDrive over the bridge.,我走過橋。\n開過橋。,Idę przez most.\nPrzejedź przez most.
+ExampleSentence_CrossStreet,Das Auto steht gegenüber der Kirche. (Dativ Satz)\nDie Post ist gegenüber der Kirche. (Dativ Satz),The car stands at the oppsite side of the church.\nThe post ist at the opposite side of the church.,汽車就在教堂的對面。\n郵局就在教堂的對面。,Samochód stoi po przeciwnej stronie kościoła.\nPoczta znajduje się po przeciwnej stronie kościoła.
+ExampleSentence_Intersection,Fahre bis zur Kreuzung.,Drive until the intersection.,開到十字路口。,Jedź aż do skrzyżowania.
+ExampleSentence_Pass,Ich gehe am Park vorbei. (Dativ Satz)\nGehe am Park vorbei. (Dativ Satz)\nGehe an der Post vorbei. (Dativ Satz),I go pass the park.\nGo pass the park.\nGo pass the post.,我行經公園。經過公園。經過郵局。,Idę obok parku.\nPrzejdź obok parku.\nPrzejdź obok słupa.
+ExampleSentence_RoundAbout,Ich fahre um den Kreisverkehr herum.,I drive arond the roundabout.,我繞著圓環開。,Okrąż rondo.
+ExampleSentence_Through,Gehe durch den Wald.\nGehe durch das Stadtzentrum.\nGehe durch den Park.,Go through the forest.\nGo through the city center.\nGo through the park.,穿越這片樹林。\n穿越城市廣場。\n穿越公園。,Przejdź przez las.\nPrzejdź przez centrum miasta.\nPrzejdź przez park.
+ExampleSentence_TurnLeft,In Straße biegst du links ab.\nEr ist an der Ampel links abgebogen.\nAn der Ampel ist er links abgebogen.,You turn left at street.\nHe turned left until the signal.,在街口左轉。\n他在紅綠燈左轉。,Skręć w lewo na ulicy.\nSkręcił w lewo na światłach.
+ExampleSentence_TurnRight,Biegen Sie dort rechts ab.\nAn der Kreuzung ist er rechts abgebogen.\nBiege an der Kreuzung rechts ab.\nBiegen Sie an der Kreuzung rechts ab.\nBiege an der Ampel links ab.,Turn right here.\nHe turned right at the intersection.,在那裏右轉。他到十字路口右轉。,Skręć w prawo tutaj.\nSkręcił w prawo na skrzyżowaniu.
+ExampleSentence_ThroughInterception,Fahre über die Kreuzung.,Drive through the intersection.,開過十字路口,Przejedź przez skrzyżowanie.
+ClockExampleKey_0,Ich fahre um <time> ins Büro.,I drive to office at <time>.,我在<time>到辦公室。,Jeżdżę do biura o <czasie>.
+ClockExampleKey_1,Wir essen Mittagessen um <time>.,We eat lunch at <time>.,我們在<time>吃午餐。,Jemy obiad o <czasie>.
+ClockExampleKey_2,Er kauft um <time> ein.,He does grocery at <time>.,他在<time>購物。,On robi zakupy o <czasie>.
+ClockExampleKey_3,Sie gehen um <time> ins Kino.,They will watch movie at <time>.,他們在<time>要去看電影。,Oni będą oglądać film o <czasie>.
+ClockExampleKey_4,Ich gehe um <time> zum Sport.,I go sport at <time>.,我在<time>去運動。,Idę uprawiać sport o <czasie>.
+ClockExampleKey_5,Wir treffen uns um <time>.,We meet at <time>.,我們在<time>見。,Spotykamy się o <czasie>.
+ClockExampleKey_6,Heute fliege ich um <time> ab.,Today I depart at <time>.,今天我飛機<time>飛。,Dzisiaj wyjeżdżam o <czasie>.
+ClockExampleKey_7,Wir kommen um <time> an.,We come at <time>.,我們會在<time>到。,Przychodzimy o <czasie>.
+ClockExampleKey_8,Kannst du mich um <time> abholen?,Can you pick me up at <time>.,你能在<time>接我嗎？,Czy możesz mnie odebrać o <czasie>?
+ClockExampleKey_9,Hast du heute um <time> Zeit?,Do you have time today at <time>.,你今天<time>有空嗎？,Czy masz dziś czas o <czasie>?
 WhereIntroductionContent,"Der Benutzer sieht im Übungsmodus die richtigen Ortsangaben, z.Bsp.: 'Der Fußball ist neben dem Regal'. Im Testmodus kann der Benutzer den Fußball, gemäß der Anweisung, an die richtige Stelle bewegen.\n\nHinweis:\n\nDiese App sollte am besten als Ergänzung zu einem Deutschunterricht benutzt werden. Sie hilft dir dabei die Ortsangaben auf Deutsch zu lernen.","The user may see the correct expression of “…. is at ...' in the answer mode, and then in the touch mode, try to move the target to the correct position according to the instruction.\n\nAdvice: \n\nThis app is best used as an addition to a real language class or tutoring.","請了解關於位置的表示方式，然後測試自己的能力。建議：使用這個軟體搭配語言課程學習位置的表達方式。","Użytkownik może zobaczyć prawidłowe wyrażenie „…. is at ...” w trybie odpowiedzi, a następnie w trybie dotykowym spróbować przesunąć cel do właściwej pozycji zgodnie z instrukcją.\n\nPorada:\n\nTa aplikacja najlepiej sprawdza się jako dodatek do prawdziwych zajęć językowych lub korepetycji."
 WhereNextButton,Nächste,Next,下一個,następny
 WhereTarget_Fussball,der Fußball,the soccer,足球,piłka
@@ -152,9 +152,9 @@ TeacherSettingTitle,Anpassen,Customize,設定模式,Dostosuj
 TeacherSettingConfirm,bestätigen,Confirm,確認,Potwierdzać
 TeacherSettingSubjectLabel,Subjekt,Subject,主詞,Obiekt
 TeacherSettingWoLabel,Ortsangaben,Loccation,位置關係,Lokalizacja
-Title.Theme.Time,Zeit,Time,時間,Zegar
+Title.Theme.Time,Zeit,Time,時間,Godziny
 Title.Theme.Direction,Richtung ,Direction,方向指引,Kierunkami
-Title.Theme.Location,Ort,Location,位置指引,Szukaniem
+Title.Theme.Location,Ort,Location,位置指引,Lokalizacja
 CrossPlay.Title,Weitere App vom Entwickler,More Games From Developer,開發者其他遊戲,Więcej gier tego autora
 CrossPlay.ReallyReally,Really Really,Really Really,真的,Really Really
 CrossPlay.VillageTactics,Dörfer & Tactics,Villages & Tactics,村莊蓋出去，野獸進不來,Władca Osady
@@ -181,9 +181,9 @@ BodyExample.Belly,"Der Bauch lagert Fett ohne ausreichende Bewegung.\n","Belly s
 BodyExample.Shoulder,"Die Polizisten zucken mit den Schultern, um keinen Kommentar abzugeben.\n","The police officers shrug their shoulders to give no comment.\n","警察聳聳肩膀表示不予置評。\n","Policjanci wzruszają ramionami, aby nie komentować.\n"
 BodyExample.Arm,"Die Reisenden winken mit den Armen, um einen Bus anzuhalten.\n","The travellers wave their arms to stop a bus.\n","旅客揮動手臂攔下一輛公車。\n","Podróżni machają rękami, aby zatrzymać autobus.\n"
 BodyExample.Hand,"Dieses Paar hält beim Gehen Händchen.\n","This couple holds hands while walking.\n","這對情侶邊走邊牽著手。\n","Ta para trzyma się za ręce podczas spaceru.\n"
-BodyExample.Leg,"Diese Reisenden strecken in einer kleinen Kabine die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
+BodyExample.Leg,"Diese Reisenden strecken in einem kleinen Zugabteil die Beine aus.\n","These travellers stretch legs in a small cabin.\n","這些旅客在小小的艙內伸展雙腿。\n","Ci podróżni prostują nogi w małej kabinie.\n"
 BodyExample.Foot,"Schuhe werden benutzt, um die Füße vor scharfen Gegenständen auf der Straße zu schützen.\n","Shoes are used to protect feet from sharp objects on the street.\n","鞋子用來保護腳掌避免被路上的尖銳物刺傷。\n","Buty służą do ochrony stóp przed ostrymi przedmiotami na ulicy.\n"
-Title.Theme.Body,Körperteil,Body Part,身體部位,Część ciała
+Title.Theme.Body,Körperteil,Body Part,身體部位,Części ciała
 CrossPlay.SecInc,S.E.C. Inc.,S.E.C. Inc.,打怪特勤隊,S.E.C. Inc.
 CrossPlay.FantasyLogistics,Fantasy Courier,Fantasy Courier,異世界物流士,Fantasy Courier
 TitleRateMePanel.Description,"Diese App ist kostenlos, aber die Entwicklung nimmt meine Zeit in Anspruch. Ich brauche Ihre Unterstützung. Bitte hinterlassen Sie eine Bewertung und teilen Sie mir Ihre Meinung mit.","This app is free but takes my time to develop. I need your support. Please leave review and let me know how you feel.","此應用程式免費提供但仍花費心力開發，一點評價與建議都能讓它更好。","Ta aplikacja jest darmowa, ale jej rozwój zajmuje mi dużo czasu. Potrzebuję Twojego wsparcia. Proszę, zostaw recenzję i daj mi znać, co o niej myślisz."

@@ -65,7 +65,8 @@ https://play.google.com/store/apps/details?id=org.ndark.dieuhr
 
 # Screen Shots
 
-![Imgur](https://i.imgur.com/V48U8CI.jpg)
+![Imgur](https://i.meee.com.tw/ciWmwna.jpg)
+![Imgur](https://i.meee.com.tw/k7PB989.jpg)
 ![Imgur](https://i.imgur.com/ppZdUqx.jpg)
 ![Imgur](https://i.imgur.com/k7wURBi.jpg)
 
