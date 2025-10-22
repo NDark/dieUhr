@@ -67,8 +67,8 @@ https://play.google.com/store/apps/details?id=org.ndark.dieuhr
 
 ![Imgur](https://i.meee.com.tw/ciWmwna.jpg)
 ![Imgur](https://i.meee.com.tw/k7PB989.jpg)
-![Imgur](https://i.imgur.com/ppZdUqx.jpg)
-![Imgur](https://i.imgur.com/k7wURBi.jpg)
+![Imgur](https://i.meee.com.tw/plPh5PU.jpg)
+![Imgur](https://i.meee.com.tw/O4d5fU5.jpg)
 
 
 # The major update on v4.0 (4.0版後的重大更新)
